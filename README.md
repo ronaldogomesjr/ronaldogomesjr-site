@@ -1,33 +1,24 @@
-# Ronaldo Gomes Jr. Site — V23 CMS com OAuth
+# Ronaldo Gomes Jr. Site — V24 CMS OAuth Fix
 
-Versão estática com painel `/admin` e autenticação GitHub via funções Vercel.
+Esta versão corrige o callback do login GitHub no `/admin`.
 
-## O que esta versão adiciona em relação à V22
+## Correção principal
 
-- `/admin` com Decap CMS;
-- `/api/auth` para iniciar login com GitHub;
-- `/api/callback` para receber o retorno do GitHub;
-- `admin/config.yml` atualizado com `base_url: /api`;
-- `SETUP-ADMIN.md` com passo a passo.
+Na V23, a janela ficava parada em:
 
-## Fluxo depois de configurado
+`Autorizando GitHub...`
 
-1. Acesse `/admin`;
-2. Faça login com GitHub;
-3. Edite publicações, projetos, livros didáticos ou links;
-4. Clique em publicar;
-5. O Decap salva no GitHub;
-6. A Vercel publica automaticamente.
+Na V24, o arquivo `api/callback.js` envia a autorização imediatamente para o painel Decap CMS e fecha a janela.
 
-## Arquivos principais
+## Depois de subir esta versão
 
-- `admin/index.html`
-- `admin/config.yml`
-- `api/auth.js`
-- `api/callback.js`
-- `content/publicacoes.json`
-- `content/projetos.json`
-- `content/livros-didaticos.json`
-- `content/links.json`
+1. Suba todos os arquivos no GitHub.
+2. Aguarde o deploy da Vercel.
+3. Na Vercel, faça Redeploy se necessário.
+4. Acesse `/admin`.
+5. Clique em Login with GitHub.
 
-Leia `SETUP-ADMIN.md` antes de testar o login.
+As variáveis da Vercel continuam as mesmas:
+
+- `GITHUB_CLIENT_ID`
+- `GITHUB_CLIENT_SECRET`

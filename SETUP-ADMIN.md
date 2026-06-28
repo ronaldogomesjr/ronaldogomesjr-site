@@ -92,3 +92,10 @@ https://ronaldogomesjr.com
 
 Authorization callback URL:
 https://ronaldogomesjr.com/api/callback
+
+
+## Correção V24
+
+Se a janela ficava presa em `Autorizando GitHub...`, esta versão corrige o arquivo `api/callback.js`.
+
+Depois de subir a V24, mantenha o mesmo OAuth App e as mesmas variáveis na Vercel. Não é necessário recriar o Client ID nem o Client Secret.
