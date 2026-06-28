@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "tipo": "artigo",
+      "idioma": "pt",
+      "ano": "2026",
+      "titulo": "Artigo a inserir",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Nome do periódico",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1
+    },
+    {
+      "tipo": "capitulo",
+      "idioma": "pt",
+      "ano": "2026",
+      "titulo": "Capítulo a inserir",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Nome do livro",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 2
+    },
+    {
+      "tipo": "livro_academico",
+      "idioma": "pt",
+      "ano": "2026",
+      "titulo": "Livro acadêmico a inserir",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Editora",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 3
+    },
+    {
+      "tipo": "artigo",
+      "idioma": "en",
+      "ano": "2026",
+      "titulo": "Journal article to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Journal name",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 4
+    },
+    {
+      "tipo": "capitulo",
+      "idioma": "en",
+      "ano": "2026",
+      "titulo": "Book chapter to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Book title",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 5
+    },
+    {
+      "tipo": "livro_academico",
+      "idioma": "en",
+      "ano": "2026",
+      "titulo": "Academic book to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Publisher",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 6
+    }
+  ]
+}

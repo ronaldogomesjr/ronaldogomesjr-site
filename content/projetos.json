@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "idioma": "pt",
+      "titulo": "Projeto a inserir",
+      "descricao": "Descrição curta do projeto, com foco, objetivos e/ou parceria principal.",
+      "periodo": "2026–",
+      "parceiros": "UFMG",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1
+    },
+    {
+      "idioma": "en",
+      "titulo": "Project to add",
+      "descricao": "Short project description, including focus, aims, and/or main partnership.",
+      "periodo": "2026–",
+      "parceiros": "UFMG",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 2
+    }
+  ]
+}

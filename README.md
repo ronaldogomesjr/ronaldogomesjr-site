@@ -1,19 +1,47 @@
-# Ronaldo Gomes Jr. Site — V21 Static
+# Ronaldo Gomes Jr. Site — V22 CMS
 
-Versão estática, sem Next.js, sem npm install e sem build.
+Versão estática com painel de conteúdo em `/admin`.
 
-Correções desta versão:
-- corrige corte lateral do texto no celular com ajustes mais fortes de largura e overflow;
-- desativa autosizing de texto do iOS/Safari com `text-size-adjust: 100%`;
-- reduz e estabiliza a escala do texto no mobile;
-- centraliza e limita o diagrama no mobile;
-- reduz títulos das subpáginas para a mesma escala das palavras-chave da Home;
-- mantém a estrutura estática com 31 arquivos.
+## O que esta versão adiciona
 
-Como publicar:
-1. Suba todos os arquivos desta pasta no GitHub.
-2. Na Vercel, importe o repositório como projeto estático.
-3. Framework Preset: Other.
-4. Install Command: echo skip install.
-5. Build Command: echo no build.
-6. Output Directory: .
+- Painel Decap CMS em `/admin`;
+- Conteúdo editável para:
+  - publicações;
+  - projetos;
+  - livros didáticos;
+  - links;
+- Dados em arquivos JSON dentro da pasta `/content`;
+- Páginas que leem esses dados automaticamente, sem build.
+
+## Importante
+
+O painel `/admin` aparece no site, mas o login via GitHub precisa de configuração inicial de OAuth para funcionar na Vercel.
+
+Depois de configurar o OAuth uma vez, o fluxo será:
+
+1. acessar `/admin`;
+2. fazer login com GitHub;
+3. editar ou adicionar conteúdo;
+4. publicar;
+5. o Decap CMS salva no GitHub;
+6. a Vercel atualiza o site automaticamente.
+
+## Publicação
+
+Suba todos os arquivos desta pasta no GitHub:
+
+- `admin`
+- `assets`
+- `content`
+- `en`
+- `pt`
+- `index.html`
+- `README.md`
+- `vercel.json`
+
+Configuração da Vercel:
+
+- Framework Preset: Other
+- Install Command: `echo skip install`
+- Build Command: `echo no build`
+- Output Directory: `.`

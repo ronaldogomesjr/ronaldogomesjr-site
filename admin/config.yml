@@ -1,0 +1,97 @@
+backend:
+  name: github
+  repo: ronaldogomesjr/ronaldogomesjr-site
+  branch: main
+  # Para funcionar na Vercel, será necessário configurar um OAuth provider.
+  # Depois disso, você adiciona aqui:
+  # base_url: https://SEU-OAUTH-PROVIDER.vercel.app
+  # auth_endpoint: auth
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+locale: "pt"
+
+collections:
+  - name: "conteudo"
+    label: "Conteúdo do site"
+    files:
+      - label: "Publicações"
+        name: "publicacoes"
+        file: "content/publicacoes.json"
+        format: "json"
+        fields:
+          - label: "Publicações"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.ano}} — {{fields.titulo}}"
+            fields:
+              - {label: "Tipo", name: "tipo", widget: "select", options: [{label: "Artigo", value: "artigo"}, {label: "Capítulo", value: "capitulo"}, {label: "Livro acadêmico", value: "livro_academico"}]}
+              - {label: "Idioma", name: "idioma", widget: "select", options: ["pt", "en"], default: "pt"}
+              - {label: "Ano", name: "ano", widget: "string", required: false}
+              - {label: "Título", name: "titulo", widget: "string"}
+              - {label: "Autores", name: "autores", widget: "string", required: false}
+              - {label: "Veículo / periódico / livro / editora", name: "veiculo", widget: "string", required: false}
+              - {label: "Link externo", name: "link", widget: "string", required: false}
+              - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
+              - {label: "Destaque", name: "destaque", widget: "boolean", default: false, required: false}
+              - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
+
+      - label: "Projetos"
+        name: "projetos"
+        file: "content/projetos.json"
+        format: "json"
+        fields:
+          - label: "Projetos"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.titulo}}"
+            fields:
+              - {label: "Idioma", name: "idioma", widget: "select", options: ["pt", "en"], default: "pt"}
+              - {label: "Título", name: "titulo", widget: "string"}
+              - {label: "Descrição", name: "descricao", widget: "text", required: false}
+              - {label: "Período", name: "periodo", widget: "string", required: false}
+              - {label: "Parceiros", name: "parceiros", widget: "string", required: false}
+              - {label: "Link externo", name: "link", widget: "string", required: false}
+              - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
+              - {label: "Destaque", name: "destaque", widget: "boolean", default: false, required: false}
+              - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
+
+      - label: "Livros didáticos"
+        name: "livros_didaticos"
+        file: "content/livros-didaticos.json"
+        format: "json"
+        fields:
+          - label: "Livros didáticos"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.ano}} — {{fields.titulo}}"
+            fields:
+              - {label: "Idioma", name: "idioma", widget: "select", options: ["pt", "en"], default: "pt"}
+              - {label: "Título", name: "titulo", widget: "string"}
+              - {label: "Editora", name: "editora", widget: "string", required: false}
+              - {label: "Ano", name: "ano", widget: "string", required: false}
+              - {label: "Nível", name: "nivel", widget: "string", required: false}
+              - {label: "Descrição", name: "descricao", widget: "text", required: false}
+              - {label: "Link externo", name: "link", widget: "string", required: false}
+              - {label: "Imagem", name: "imagem", widget: "image", required: false}
+              - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
+              - {label: "Destaque", name: "destaque", widget: "boolean", default: false, required: false}
+              - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
+
+      - label: "Links"
+        name: "links"
+        file: "content/links.json"
+        format: "json"
+        fields:
+          - label: "Links"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.nome}}"
+            fields:
+              - {label: "Idioma", name: "idioma", widget: "select", options: ["pt", "en"], default: "pt"}
+              - {label: "Nome", name: "nome", widget: "string"}
+              - {label: "Tipo", name: "tipo", widget: "string", required: false}
+              - {label: "Link", name: "link", widget: "string", required: false}
+              - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
+              - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}

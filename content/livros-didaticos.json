@@ -1,0 +1,30 @@
+{
+  "items": [
+    {
+      "idioma": "pt",
+      "titulo": "Livro didático a inserir",
+      "editora": "Editora",
+      "ano": "2026",
+      "nivel": "Ensino Fundamental",
+      "descricao": "Descrição curta da obra, coleção ou participação autoral.",
+      "link": "#",
+      "imagem": "",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1
+    },
+    {
+      "idioma": "en",
+      "titulo": "Textbook to add",
+      "editora": "Publisher",
+      "ano": "2026",
+      "nivel": "Basic education",
+      "descricao": "Short description of the textbook, collection, or authorial contribution.",
+      "link": "#",
+      "imagem": "",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 2
+    }
+  ]
+}
