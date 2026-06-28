@@ -1,22 +1,23 @@
-# Ronaldo Gomes Jr. Site — V29 Zigzag Diagram
+# Ronaldo Gomes Jr. Site — V30 Dynamic Transparent Diagram
 
-Esta versão incorpora a 3ª proposta de diagrama para a página inicial:
-
-- círculo central visível;
-- linhas em zigue-zague;
-- pontos e arcos mais geométricos;
-- rotação contínua e lenta na Home.
+Esta versão substitui a imagem do diagrama por um SVG animado com fundo transparente.
 
 ## O que mudou
 
-- novo arquivo de imagem: `assets/hero-diagram-zigzag.png`
-- Home em PT e EN atualizadas para usar o novo diagrama
-- CSS atualizado para manter o diagrama girando suavemente
+- diagrama com fundo transparente;
+- círculo central e órbitas continuam visíveis;
+- linhas em zigue-zague são desenhadas progressivamente;
+- algumas linhas expandem para fora do círculo;
+- outras retornam visualmente ao centro;
+- animações feitas em CSS, sem imagem pesada;
+- versões PT e EN atualizadas.
+
+## Arquivos alterados
+
+- `pt/index.html`
+- `en/index.html`
+- `assets/style.css`
 
 ## Publicação
 
-1. Suba todos os arquivos desta versão no GitHub.
-2. Aguarde o deploy da Vercel.
-3. Recarregue a página inicial.
-
-Se quiser, a próxima etapa pode ser transformar esse diagrama em um SVG/CSS ainda mais leve e responsivo, em vez de usar a imagem renderizada.
+Suba todos os arquivos desta versão no GitHub e aguarde o deploy da Vercel.
