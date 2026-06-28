@@ -1,22 +1,14 @@
-# Ronaldo Gomes Jr. Site — V30 Dynamic Transparent Diagram
+# Ronaldo Gomes Jr. Site — V31 Organic Diagram
 
-Esta versão substitui a imagem do diagrama por um SVG animado com fundo transparente.
+Esta versão deixa o diagrama menos linear e mais orgânico.
 
 ## O que mudou
 
-- diagrama com fundo transparente;
-- círculo central e órbitas continuam visíveis;
-- linhas em zigue-zague são desenhadas progressivamente;
-- algumas linhas expandem para fora do círculo;
-- outras retornam visualmente ao centro;
-- animações feitas em CSS, sem imagem pesada;
-- versões PT e EN atualizadas.
-
-## Arquivos alterados
-
-- `pt/index.html`
-- `en/index.html`
-- `assets/style.css`
+- linhas substituídas por trajetórias curvas e imprevisíveis;
+- sensação mais viva, relacional e não-mecânica;
+- pequenas derivações/flutuações nas linhas durante a animação;
+- círculo e órbitas continuam visíveis e girando;
+- versões PT e EN da Home atualizadas.
 
 ## Publicação
 
