@@ -110,3 +110,12 @@ A V25 ajusta o login do `/admin` com um callback híbrido:
 - mostra erros visíveis caso o GitHub retorne erro.
 
 Ela também padroniza as palavras-chave da Home com inicial maiúscula.
+
+
+## Correção V26
+
+A V26 padroniza visualmente:
+- palavras-chave da Home em minúsculas;
+- títulos das páginas internas em minúsculas.
+
+A correção do OAuth/Admin da V25 foi mantida.

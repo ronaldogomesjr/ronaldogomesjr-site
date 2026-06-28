@@ -454,3 +454,10 @@ a { color: inherit; text-decoration: none; }
   border-radius: 18px;
   margin: 0 0 18px;
 }
+
+
+/* V26: padronização visual solicitada */
+.keyword,
+.page-hero h1 {
+  text-transform: lowercase;
+}
