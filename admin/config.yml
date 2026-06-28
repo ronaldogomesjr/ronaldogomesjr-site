@@ -2,10 +2,8 @@ backend:
   name: github
   repo: ronaldogomesjr/ronaldogomesjr-site
   branch: main
-  # Para funcionar na Vercel, será necessário configurar um OAuth provider.
-  # Depois disso, você adiciona aqui:
-  # base_url: https://SEU-OAUTH-PROVIDER.vercel.app
-  # auth_endpoint: auth
+  base_url: /api
+  auth_endpoint: auth
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"

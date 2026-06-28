@@ -1,47 +1,33 @@
-# Ronaldo Gomes Jr. Site — V22 CMS
+# Ronaldo Gomes Jr. Site — V23 CMS com OAuth
 
-Versão estática com painel de conteúdo em `/admin`.
+Versão estática com painel `/admin` e autenticação GitHub via funções Vercel.
 
-## O que esta versão adiciona
+## O que esta versão adiciona em relação à V22
 
-- Painel Decap CMS em `/admin`;
-- Conteúdo editável para:
-  - publicações;
-  - projetos;
-  - livros didáticos;
-  - links;
-- Dados em arquivos JSON dentro da pasta `/content`;
-- Páginas que leem esses dados automaticamente, sem build.
+- `/admin` com Decap CMS;
+- `/api/auth` para iniciar login com GitHub;
+- `/api/callback` para receber o retorno do GitHub;
+- `admin/config.yml` atualizado com `base_url: /api`;
+- `SETUP-ADMIN.md` com passo a passo.
 
-## Importante
+## Fluxo depois de configurado
 
-O painel `/admin` aparece no site, mas o login via GitHub precisa de configuração inicial de OAuth para funcionar na Vercel.
+1. Acesse `/admin`;
+2. Faça login com GitHub;
+3. Edite publicações, projetos, livros didáticos ou links;
+4. Clique em publicar;
+5. O Decap salva no GitHub;
+6. A Vercel publica automaticamente.
 
-Depois de configurar o OAuth uma vez, o fluxo será:
+## Arquivos principais
 
-1. acessar `/admin`;
-2. fazer login com GitHub;
-3. editar ou adicionar conteúdo;
-4. publicar;
-5. o Decap CMS salva no GitHub;
-6. a Vercel atualiza o site automaticamente.
+- `admin/index.html`
+- `admin/config.yml`
+- `api/auth.js`
+- `api/callback.js`
+- `content/publicacoes.json`
+- `content/projetos.json`
+- `content/livros-didaticos.json`
+- `content/links.json`
 
-## Publicação
-
-Suba todos os arquivos desta pasta no GitHub:
-
-- `admin`
-- `assets`
-- `content`
-- `en`
-- `pt`
-- `index.html`
-- `README.md`
-- `vercel.json`
-
-Configuração da Vercel:
-
-- Framework Preset: Other
-- Install Command: `echo skip install`
-- Build Command: `echo no build`
-- Output Directory: `.`
+Leia `SETUP-ADMIN.md` antes de testar o login.
