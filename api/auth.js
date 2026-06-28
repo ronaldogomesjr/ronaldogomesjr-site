@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
   const origin = getOrigin(req);
   const redirectUri = `${origin}/api/callback`;
   const state = req.query.state || "decap-cms";
-  const scope = process.env.GITHUB_SCOPE || "repo";
+  const scope = process.env.GITHUB_SCOPE || "repo user";
 
   const params = new URLSearchParams({
     client_id: clientId,

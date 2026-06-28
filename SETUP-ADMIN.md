@@ -99,3 +99,14 @@ https://ronaldogomesjr.com/api/callback
 Se a janela ficava presa em `Autorizando GitHub...`, esta versão corrige o arquivo `api/callback.js`.
 
 Depois de subir a V24, mantenha o mesmo OAuth App e as mesmas variáveis na Vercel. Não é necessário recriar o Client ID nem o Client Secret.
+
+
+## Correção V25
+
+A V25 ajusta o login do `/admin` com um callback híbrido:
+- usa o handshake padrão `authorizing:github`;
+- devolve `authorization:github:success`;
+- mantém fallback se a janela não responder ao handshake;
+- mostra erros visíveis caso o GitHub retorne erro.
+
+Ela também padroniza as palavras-chave da Home com inicial maiúscula.

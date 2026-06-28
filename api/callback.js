@@ -6,37 +6,69 @@ function getOrigin(req) {
 
 function renderCallback(status, content) {
   const payload = JSON.stringify(content).replace(/</g, "\\u003c");
+  const isSuccess = status === "success";
 
   return `<!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>GitHub authorization</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 40px;
+      line-height: 1.5;
+      color: #222;
+    }
+    code {
+      background: #f2f2f2;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
-  <p>Autorização concluída. Esta janela será fechada automaticamente.</p>
+  <h1>${isSuccess ? "Autorização concluída" : "Erro na autorização"}</h1>
+  <p id="message">${isSuccess ? "Voltando para o painel..." : "Não foi possível concluir o login."}</p>
+  ${isSuccess ? "" : `<pre>${payload}</pre>`}
 
   <script>
     (function () {
-      var message = 'authorization:github:${status}:${payload}';
+      var authMessage = 'authorization:github:${status}:${payload}';
+      var sent = false;
 
-      function sendMessage() {
-        if (window.opener) {
-          window.opener.postMessage(message, '*');
+      function sendToOpener(targetOrigin) {
+        if (!window.opener) {
+          document.getElementById('message').innerHTML = 'Esta janela não foi aberta pelo painel. Feche esta janela e tente entrar novamente pelo <code>/admin</code>.';
+          return;
+        }
+        try {
+          window.opener.postMessage(authMessage, targetOrigin || '*');
+          sent = true;
+        } catch (error) {
+          console.error(error);
         }
       }
 
-      sendMessage();
-      setTimeout(sendMessage, 300);
-      setTimeout(sendMessage, 900);
+      function receiveMessage(event) {
+        sendToOpener(event.origin || '*');
+        window.removeEventListener('message', receiveMessage, false);
+        ${isSuccess ? "setTimeout(function () { window.close(); }, 900);" : ""}
+      }
 
-      setTimeout(function () {
-        window.close();
-      }, 1200);
+      window.addEventListener('message', receiveMessage, false);
 
-      setTimeout(function () {
-        document.body.innerHTML = '<p>Autorização concluída. Se esta janela não fechar automaticamente, volte para a aba do painel.</p>';
-      }, 1600);
+      if (window.opener) {
+        // Standard Decap/Netlify CMS handshake: ask the admin window for its origin first.
+        window.opener.postMessage('authorizing:github', '*');
+
+        // Fallback: some browser contexts do not answer the handshake.
+        // This still posts from the same site origin, which Decap can accept.
+        setTimeout(function () { if (!sent) sendToOpener('*'); }, 800);
+        setTimeout(function () { if (!sent) sendToOpener('*'); }, 1800);
+
+        ${isSuccess ? "setTimeout(function () { window.close(); }, 3500);" : ""}
+      }
     })();
   </script>
 </body>
@@ -79,9 +111,6 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const origin = getOrigin(req);
-    const redirectUri = `${origin}/api/callback`;
-
     const tokenResponse = await fetch("https://github.com/login/oauth/access_token", {
       method: "POST",
       headers: {
@@ -92,8 +121,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         client_id: clientId,
         client_secret: clientSecret,
-        code,
-        redirect_uri: redirectUri
+        code: code
       })
     });
 

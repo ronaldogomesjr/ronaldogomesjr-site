@@ -1,24 +1,23 @@
-# Ronaldo Gomes Jr. Site — V24 CMS OAuth Fix
+# Ronaldo Gomes Jr. Site — V25 CMS OAuth + Keywords Fix
 
-Esta versão corrige o callback do login GitHub no `/admin`.
+Esta versão corrige dois pontos:
 
-## Correção principal
+1. Palavras-chave da Home agora começam com maiúscula:
+   - Design.
+   - Tecnologia digital.
+   - Educação linguística.
+   - Digital technology.
+   - Language education.
 
-Na V23, a janela ficava parada em:
-
-`Autorizando GitHub...`
-
-Na V24, o arquivo `api/callback.js` envia a autorização imediatamente para o painel Decap CMS e fecha a janela.
+2. O callback do GitHub OAuth foi ajustado para usar o handshake padrão do Decap CMS e também um fallback para navegadores que não respondem ao handshake.
 
 ## Depois de subir esta versão
 
 1. Suba todos os arquivos no GitHub.
 2. Aguarde o deploy da Vercel.
-3. Na Vercel, faça Redeploy se necessário.
+3. Faça Redeploy se necessário.
 4. Acesse `/admin`.
 5. Clique em Login with GitHub.
 
-As variáveis da Vercel continuam as mesmas:
-
-- `GITHUB_CLIENT_ID`
-- `GITHUB_CLIENT_SECRET`
+Não precisa recriar o OAuth App.
+Não precisa trocar `GITHUB_CLIENT_ID` nem `GITHUB_CLIENT_SECRET`.
