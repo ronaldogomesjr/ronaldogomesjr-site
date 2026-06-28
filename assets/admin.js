@@ -93,6 +93,13 @@
     el.style.color = isError ? "#7f2f2f" : "";
   }
 
+  function setBusy(isBusy) {
+    ["loadBtn", "addBtn", "saveBtn", "deleteBtn"].forEach(id => {
+      const button = $(id);
+      if (button) button.disabled = isBusy;
+    });
+  }
+
   function getToken() {
     return localStorage.getItem(TOKEN_KEY) || $("tokenInput").value.trim();
   }
@@ -106,6 +113,7 @@
     if (!token) throw new Error("Insira e salve um token GitHub antes de continuar.");
 
     const response = await fetch(url, {
+      cache: "no-store",
       ...options,
       headers: {
         "Accept": "application/vnd.github+json",
@@ -276,25 +284,64 @@
     setStatus("Publicando alteração no GitHub...");
 
     const content = JSON.stringify(currentData, null, 2) + "\n";
-    const result = await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${config.path}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        message,
-        content: encodeBase64Unicode(content),
-        sha: currentSha,
-        branch: BRANCH
-      })
-    });
 
-    currentSha = result.content.sha;
-    setStatus("Alteração publicada. A Vercel deve atualizar o site em instantes.");
+    try {
+      const result = await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${config.path}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          message,
+          content: encodeBase64Unicode(content),
+          sha: currentSha,
+          branch: BRANCH
+        })
+      });
+
+      if (result && result.content && result.content.sha) {
+        currentSha = result.content.sha;
+      }
+
+      setStatus("Alteração publicada. Recarregando a categoria...");
+      await reloadCurrentAfterSave();
+      setStatus("Alteração publicada. Você já pode inserir outro item nesta categoria.");
+    } catch (error) {
+      if (String(error.message || "").toLowerCase().includes("sha") || String(error.message || "").toLowerCase().includes("conflict")) {
+        setStatus("O conteúdo mudou no GitHub. Recarreguei a categoria; tente publicar novamente.", true);
+        await reloadCurrentAfterSave();
+        return;
+      }
+      throw error;
+    }
   }
 
-  function addItem() {
+  async function reloadCurrentAfterSave() {
+    const config = collections[currentCollection];
+    const selectedTitle = currentData && currentData[config.root] && currentData[config.root][currentIndex]
+      ? (currentData[config.root][currentIndex][config.labelField] || "")
+      : "";
+
+    const file = await githubRequest(apiURL(config.path));
+    currentSha = file.sha;
+    currentData = JSON.parse(decodeBase64Unicode(file.content));
+
+    if (!Array.isArray(currentData[config.root])) {
+      currentData[config.root] = [];
+    }
+
+    if (selectedTitle) {
+      const newIndex = currentData[config.root].findIndex(item => item[config.labelField] === selectedTitle);
+      currentIndex = newIndex >= 0 ? newIndex : Math.max(0, currentData[config.root].length - 1);
+    } else {
+      currentIndex = Math.max(0, currentData[config.root].length - 1);
+    }
+
+    renderList();
+    renderEditor();
+  }
+
+  async function addItem() {
     const config = collections[currentCollection];
     if (!currentData) {
-      setStatus("Carregue uma coleção antes de criar item.", true);
-      return;
+      await loadCollection();
     }
     currentData[config.root].push(JSON.parse(JSON.stringify(config.blank)));
     currentIndex = currentData[config.root].length - 1;
@@ -343,16 +390,57 @@
     setStatus("Token apagado deste navegador.");
   });
 
-  $("loadBtn").addEventListener("click", () => loadCollection().catch(err => setStatus(err.message, true)));
-  $("collectionSelect").addEventListener("change", () => loadCollection().catch(err => setStatus(err.message, true)));
-  $("addBtn").addEventListener("click", addItem);
-  $("saveBtn").addEventListener("click", event => {
-    event.preventDefault();
-    saveCurrent().catch(err => setStatus(err.message, true));
+  $("loadBtn").addEventListener("click", async () => {
+    try {
+      setBusy(true);
+      await loadCollection();
+    } catch (err) {
+      setStatus(err.message, true);
+    } finally {
+      setBusy(false);
+    }
   });
-  $("deleteBtn").addEventListener("click", event => {
+  $("collectionSelect").addEventListener("change", async () => {
+    try {
+      setBusy(true);
+      await loadCollection();
+    } catch (err) {
+      setStatus(err.message, true);
+    } finally {
+      setBusy(false);
+    }
+  });
+  $("addBtn").addEventListener("click", async () => {
+    try {
+      setBusy(true);
+      await addItem();
+    } catch (err) {
+      setStatus(err.message, true);
+    } finally {
+      setBusy(false);
+    }
+  });
+  $("saveBtn").addEventListener("click", async event => {
     event.preventDefault();
-    deleteItem().catch(err => setStatus(err.message, true));
+    try {
+      setBusy(true);
+      await saveCurrent();
+    } catch (err) {
+      setStatus(err.message, true);
+    } finally {
+      setBusy(false);
+    }
+  });
+  $("deleteBtn").addEventListener("click", async event => {
+    event.preventDefault();
+    try {
+      setBusy(true);
+      await deleteItem();
+    } catch (err) {
+      setStatus(err.message, true);
+    } finally {
+      setBusy(false);
+    }
   });
 
   const savedToken = localStorage.getItem(TOKEN_KEY);

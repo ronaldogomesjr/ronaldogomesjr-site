@@ -1,34 +1,22 @@
-# Ronaldo Gomes Jr. Site — V34 Simple Admin
+# Ronaldo Gomes Jr. Site — V35 Admin Fix
 
-Esta versão substitui o painel com OAuth por um painel próprio, mais simples.
+Esta versão corrige o painel simples de atualização.
 
-## Como funciona
+## Correção
 
-O painel `/admin` usa a API do GitHub diretamente no navegador.  
-Você entra com um token GitHub fino/restrito ao repositório, edita os campos e publica.
+Depois de publicar um item, o painel agora recarrega automaticamente a categoria atual a partir do GitHub. Isso evita erro de referência antiga do arquivo e permite inserir vários itens seguidos na mesma categoria.
 
-## Vantagens
+## Fluxo recomendado
 
-- não precisa Decap;
-- não precisa Sveltia;
-- não precisa OAuth App;
-- não precisa variáveis na Vercel;
-- funciona de qualquer computador com navegador;
-- interface única para atualizar:
-  - publicações;
-  - projetos;
-  - livros didáticos;
-  - links.
-
-## Importante
-
-O token GitHub é como uma senha de edição.  
-Crie um token fino/restrito apenas para o repositório `ronaldogomesjr-site`, com permissão de leitura e escrita em Contents.
+1. Acesse `/admin`.
+2. Escolha a categoria, por exemplo `publicações`.
+3. Clique em `carregar`.
+4. Clique em `novo item`.
+5. Preencha os campos.
+6. Clique em `publicar alteração`.
+7. Aguarde a mensagem: `Você já pode inserir outro item nesta categoria.`
+8. Clique em `novo item` novamente para adicionar outro.
 
 ## Publicação
 
 Suba todos os arquivos desta versão no GitHub e aguarde o deploy da Vercel.
-
-Depois acesse:
-
-`/admin`

@@ -200,3 +200,9 @@ button.danger {
   .toolbar { align-items: stretch; }
   .toolbar button, .actions button { width: 100%; }
 }
+
+
+button:disabled {
+  opacity: .48;
+  cursor: wait;
+}
