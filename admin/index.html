@@ -4,8 +4,67 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Painel de conteúdo — Ronaldo Gomes Jr.</title>
+  <link rel="stylesheet" href="/assets/admin.css" />
 </head>
 <body>
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="eyebrow">painel de conteúdo</p>
+        <h1>ronaldo gomes jr.</h1>
+      </div>
+      <a href="/pt/" class="back-link">ver site →</a>
+    </header>
+
+    <section class="admin-card" id="tokenPanel">
+      <h2>1. conectar ao GitHub</h2>
+      <p>Insira um token do GitHub com acesso de escrita ao repositório. O token fica salvo apenas neste navegador.</p>
+      <label>
+        Token GitHub
+        <input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off" />
+      </label>
+      <div class="actions">
+        <button id="saveTokenBtn">salvar token neste navegador</button>
+        <button id="forgetTokenBtn" class="secondary">apagar token</button>
+      </div>
+      <p class="hint">Não envie esse token por e-mail, print ou mensagem. Ele funciona como uma senha de edição do site.</p>
+    </section>
+
+    <section class="admin-card">
+      <h2>2. escolher conteúdo</h2>
+      <div class="toolbar">
+        <label>
+          Conteúdo
+          <select id="collectionSelect">
+            <option value="publicacoes">publicações</option>
+            <option value="projetos">projetos</option>
+            <option value="livros-didaticos">livros didáticos</option>
+            <option value="links">links</option>
+          </select>
+        </label>
+        <button id="loadBtn">carregar</button>
+        <button id="addBtn" class="secondary">novo item</button>
+      </div>
+      <p id="status" class="status">Pronto.</p>
+    </section>
+
+    <section class="admin-grid">
+      <aside class="admin-card list-card">
+        <h2>itens</h2>
+        <div id="itemList" class="item-list"></div>
+      </aside>
+
+      <section class="admin-card editor-card">
+        <h2>editar item</h2>
+        <form id="editorForm" class="editor-form"></form>
+        <div class="actions editor-actions">
+          <button id="saveBtn">publicar alteração</button>
+          <button id="deleteBtn" class="danger">excluir item</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/assets/admin.js"></script>
 </body>
 </html>

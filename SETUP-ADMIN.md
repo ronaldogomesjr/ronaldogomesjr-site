@@ -1,80 +1,51 @@
-# Setup V28 — Admin online funcionando na Vercel
+# Como usar o painel simples — V34
 
-## 1. Subir a V28 no GitHub
+## 1. Subir a V34
 
-A raiz do repositório deve conter:
+Suba todos os arquivos da V34 no GitHub.
 
-- `admin`
-- `api`
-- `assets`
-- `content`
-- `en`
-- `pt`
-- `build.js`
-- `package.json`
-- `index.html`
-- `README.md`
-- `SETUP-ADMIN.md`
-- `vercel.json`
+## 2. Criar um token GitHub
 
-## 2. Ajustar Build and Deployment na Vercel
+No GitHub:
 
-Entre no projeto da Vercel:
-
-Settings → Build and Deployment
+Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token
 
 Configure:
 
-Framework Preset:
-Other
+- Repository access: Only select repositories
+- Repository: `ronaldogomesjr-site`
+- Permissions:
+  - Contents: Read and write
+  - Metadata: Read-only
 
-Install Command:
-npm install --no-audit --no-fund
+Copie o token.
 
-Build Command:
-npm run build
+## 3. Usar o painel
 
-Output Directory:
-public
-
-Salve.
-
-## 3. Variáveis de ambiente
-
-Mantenha as variáveis já criadas:
-
-- `GITHUB_CLIENT_ID`
-- `GITHUB_CLIENT_SECRET`
-
-Não precisa recriar o OAuth App.
-
-## 4. Redeploy
-
-Vá em:
-
-Deployments → três pontinhos no último deploy → Redeploy
-
-## 5. Teste das funções
-
-Abra:
-
-https://SEU-SITE.vercel.app/api/ping
-
-Deve aparecer algo como:
-
-{
-  "ok": true,
-  "message": "API functions are working.",
-  "hasClientId": true,
-  "hasClientSecret": true
-}
-
-Se `hasClientId` ou `hasClientSecret` aparecerem como `false`, revise as variáveis na Vercel.
-
-## 6. Teste do admin
-
-Abra:
+Acesse:
 
 https://SEU-SITE.vercel.app/admin
 
-Clique em Login with GitHub.
+Cole o token e clique em:
+
+salvar token neste navegador
+
+Depois clique em:
+
+carregar
+
+Agora você pode editar:
+
+- publicações
+- projetos
+- livros didáticos
+- links
+
+Clique em publicar alteração.
+
+## Segurança
+
+O token fica salvo apenas no navegador em que você clicar em salvar.
+Não envie o token para ninguém.
+Não coloque o token no GitHub ou na Vercel.
+Se perder ou desconfiar de vazamento, apague o token no GitHub e crie outro.
