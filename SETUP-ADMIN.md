@@ -119,3 +119,12 @@ A V26 padroniza visualmente:
 - títulos das páginas internas em minúsculas.
 
 A correção do OAuth/Admin da V25 foi mantida.
+
+
+## V27 — troca para Sveltia CMS
+
+A V27 troca somente o painel:
+- sai Decap CMS;
+- entra Sveltia CMS.
+
+O restante do site permanece igual.

@@ -1,17 +1,28 @@
-# Ronaldo Gomes Jr. Site — V26 Lowercase Titles
+# Ronaldo Gomes Jr. Site — V27 Sveltia Admin
 
-Esta versão padroniza a identidade visual:
+Esta versão mantém o site e troca o painel `/admin` de Decap CMS para Sveltia CMS.
 
-- palavras-chave da Home em minúsculas;
-- títulos das páginas internas em minúsculas;
-- regra CSS de segurança para manter `.keyword` e `.page-hero h1` em minúsculas;
-- mantém as correções de OAuth/Admin da V25.
+## Por quê?
 
-## Depois de subir esta versão
+O Decap CMS estava abrindo o GitHub OAuth, mas não retornava corretamente para o painel. A Sveltia CMS é uma alternativa moderna e compatível com configurações do Netlify/Decap CMS, mas com interface mais atual e suporte melhor a mobile.
 
-1. Suba todos os arquivos no GitHub.
+## O que foi mantido
+
+- Site estático na Vercel;
+- conteúdo em `/content`;
+- páginas lendo JSON;
+- títulos em minúsculas;
+- OAuth em `/api/auth` e `/api/callback`;
+- variáveis da Vercel:
+  - `GITHUB_CLIENT_ID`
+  - `GITHUB_CLIENT_SECRET`
+
+## O que fazer depois de subir
+
+1. Suba a V27 no GitHub.
 2. Aguarde o deploy da Vercel.
-3. Acesse `/admin` e teste o login novamente.
+3. Acesse `/admin`.
+4. Tente entrar com GitHub.
 
 Não é necessário recriar o OAuth App.
-Não é necessário trocar as variáveis da Vercel.
+Não é necessário alterar variáveis na Vercel.

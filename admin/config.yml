@@ -9,6 +9,8 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 locale: "pt"
+site_url: "https://ronaldogomesjr-site.vercel.app"
+display_url: "https://ronaldogomesjr-site.vercel.app"
 
 collections:
   - name: "conteudo"
