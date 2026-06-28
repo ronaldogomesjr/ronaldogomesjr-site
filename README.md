@@ -1,14 +1,22 @@
-# Ronaldo Gomes Jr. Site — V31 Organic Diagram
+# Ronaldo Gomes Jr. Site — V33 Floating Network
 
-Esta versão deixa o diagrama menos linear e mais orgânico.
+Esta versão substitui o diagrama por uma rede dinâmica de pontos.
 
 ## O que mudou
 
-- linhas substituídas por trajetórias curvas e imprevisíveis;
-- sensação mais viva, relacional e não-mecânica;
-- pequenas derivações/flutuações nas linhas durante a animação;
-- círculo e órbitas continuam visíveis e girando;
-- versões PT e EN da Home atualizadas.
+- removido o diagrama circular anterior;
+- adicionada uma rede com pontos coloridos e vazados;
+- os pontos circulam pela área da Home;
+- as conexões se formam e desaparecem dinamicamente;
+- fundo transparente;
+- animação em canvas, sem imagem pesada.
+
+## Arquivos alterados
+
+- `pt/index.html`
+- `en/index.html`
+- `assets/style.css`
+- `assets/network.js`
 
 ## Publicação
 
