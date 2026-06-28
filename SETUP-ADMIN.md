@@ -1,14 +1,6 @@
-# Configuração do /admin online
+# Setup V28 — Admin online funcionando na Vercel
 
-Esta versão inclui:
-
-- `/admin` — painel Decap CMS;
-- `/api/auth` — inicia login com GitHub;
-- `/api/callback` — recebe retorno do GitHub e entrega o token ao painel.
-
-## 1. Subir a V23 no GitHub
-
-Suba todos os arquivos desta pasta para o repositório `ronaldogomesjr-site`.
+## 1. Subir a V28 no GitHub
 
 A raiz do repositório deve conter:
 
@@ -18,113 +10,71 @@ A raiz do repositório deve conter:
 - `content`
 - `en`
 - `pt`
+- `build.js`
+- `package.json`
 - `index.html`
 - `README.md`
+- `SETUP-ADMIN.md`
 - `vercel.json`
 
-## 2. Conferir deploy na Vercel
+## 2. Ajustar Build and Deployment na Vercel
 
-Na Vercel, mantenha:
+Entre no projeto da Vercel:
 
-- Framework Preset: Other
-- Install Command: `echo skip install`
-- Build Command: `echo no build`
-- Output Directory: `.`
+Settings → Build and Deployment
 
-## 3. Criar GitHub OAuth App
+Configure:
 
-No GitHub:
+Framework Preset:
+Other
 
-Settings → Developer settings → OAuth Apps → New OAuth App
+Install Command:
+npm install --no-audit --no-fund
 
-Preencha:
+Build Command:
+npm run build
 
-Application name:
-Ronaldo Gomes Jr. Site CMS
+Output Directory:
+public
 
-Homepage URL:
-https://SEU-SITE.vercel.app
+Salve.
 
-Authorization callback URL:
-https://SEU-SITE.vercel.app/api/callback
+## 3. Variáveis de ambiente
 
-Depois clique em Register application.
+Mantenha as variáveis já criadas:
 
-## 4. Criar Client Secret
+- `GITHUB_CLIENT_ID`
+- `GITHUB_CLIENT_SECRET`
 
-Na página do OAuth App, clique em:
+Não precisa recriar o OAuth App.
 
-Generate a new client secret
+## 4. Redeploy
 
-Copie:
+Vá em:
 
-- Client ID
-- Client Secret
+Deployments → três pontinhos no último deploy → Redeploy
 
-## 5. Colocar variáveis na Vercel
+## 5. Teste das funções
 
-Na Vercel:
+Abra:
 
-Project → Settings → Environment Variables
+https://SEU-SITE.vercel.app/api/ping
 
-Crie:
+Deve aparecer algo como:
 
-GITHUB_CLIENT_ID = cole o Client ID
-GITHUB_CLIENT_SECRET = cole o Client Secret
+{
+  "ok": true,
+  "message": "API functions are working.",
+  "hasClientId": true,
+  "hasClientSecret": true
+}
 
-Opcional:
-GITHUB_SCOPE = repo
+Se `hasClientId` ou `hasClientSecret` aparecerem como `false`, revise as variáveis na Vercel.
 
-Depois faça Redeploy.
+## 6. Teste do admin
 
-## 6. Testar
-
-Acesse:
+Abra:
 
 https://SEU-SITE.vercel.app/admin
 
 Clique em Login with GitHub.
-
-Se você mudar depois para `ronaldogomesjr.com`, será necessário voltar ao GitHub OAuth App e trocar:
-
-Homepage URL:
-https://ronaldogomesjr.com
-
-Authorization callback URL:
-https://ronaldogomesjr.com/api/callback
-
-
-## Correção V24
-
-Se a janela ficava presa em `Autorizando GitHub...`, esta versão corrige o arquivo `api/callback.js`.
-
-Depois de subir a V24, mantenha o mesmo OAuth App e as mesmas variáveis na Vercel. Não é necessário recriar o Client ID nem o Client Secret.
-
-
-## Correção V25
-
-A V25 ajusta o login do `/admin` com um callback híbrido:
-- usa o handshake padrão `authorizing:github`;
-- devolve `authorization:github:success`;
-- mantém fallback se a janela não responder ao handshake;
-- mostra erros visíveis caso o GitHub retorne erro.
-
-Ela também padroniza as palavras-chave da Home com inicial maiúscula.
-
-
-## Correção V26
-
-A V26 padroniza visualmente:
-- palavras-chave da Home em minúsculas;
-- títulos das páginas internas em minúsculas.
-
-A correção do OAuth/Admin da V25 foi mantida.
-
-
-## V27 — troca para Sveltia CMS
-
-A V27 troca somente o painel:
-- sai Decap CMS;
-- entra Sveltia CMS.
-
-O restante do site permanece igual.
