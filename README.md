@@ -1,13 +1,14 @@
-# Ronaldo Gomes Jr. Site — V20 Static
+# Ronaldo Gomes Jr. Site — V21 Static
 
 Versão estática, sem Next.js, sem npm install e sem build.
 
 Correções desta versão:
-- corrige corte lateral no celular;
-- reduz palavras-chave na versão mobile para caberem na tela;
-- aplica `overflow-x: hidden` para evitar rolagem/corte horizontal;
-- ajusta títulos das subpáginas para terem a mesma escala visual das palavras-chave da página inicial;
-- mantém menu mobile com botão.
+- corrige corte lateral do texto no celular com ajustes mais fortes de largura e overflow;
+- desativa autosizing de texto do iOS/Safari com `text-size-adjust: 100%`;
+- reduz e estabiliza a escala do texto no mobile;
+- centraliza e limita o diagrama no mobile;
+- reduz títulos das subpáginas para a mesma escala das palavras-chave da Home;
+- mantém a estrutura estática com 31 arquivos.
 
 Como publicar:
 1. Suba todos os arquivos desta pasta no GitHub.
