@@ -37,18 +37,6 @@
       "ordem": 3
     },
     {
-      "tipo": "artigo",
-      "idioma": "en",
-      "ano": "2026",
-      "titulo": "Journal article to add",
-      "autores": "Ronaldo Gomes Jr.",
-      "veiculo": "Journal name",
-      "link": "#",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 4
-    },
-    {
       "tipo": "capitulo",
       "idioma": "en",
       "ano": "2026",
