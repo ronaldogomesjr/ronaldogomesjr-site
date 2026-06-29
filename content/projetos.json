@@ -2,14 +2,21 @@
   "items": [
     {
       "idioma": "pt",
-      "titulo": "Projeto a inserir",
-      "descricao": "Descrição curta do projeto, com foco, objetivos e/ou parceria principal.",
+      "titulo": "Critical AI Literacies in Language Education: Building with Design Justice",
+      "descricao": "Projeto internacional apoiado pela Worldwide Universities Network (WUN), voltado à investigação dos usos, percepções e impactos da inteligência artificial na educação linguística. A pesquisa analisa como estudantes e professores interagem com ferramentas de IA em diferentes contextos linguísticos, culturais e socioeconômicos, com atenção a questões de acesso, desigualdade, autoria, viés e justiça. Orientado pelos princípios da justiça de design, o projeto compreende a IA como um sistema sociotécnico e busca contribuir para práticas mais críticas, éticas e inclusivas no ensino e na aprendizagem de línguas.",
       "periodo": "2026–",
       "parceiros": "UFMG",
-      "link": "#",
+      "link": "https://wun.ac.uk/wun/research/view/critical-ai-literacies-in-language-education-building-with-design-justice/",
       "visivel": true,
       "destaque": false,
-      "ordem": 1
+      "ordem": 1,
+      "titulo_pt": "Critical AI Literacies in Language Education: Building with Design Justice",
+      "titulo_en": "Critical AI Literacies in Language Education: Building with Design Justice",
+      "descricao_pt": "Projeto internacional apoiado pela Worldwide Universities Network (WUN), voltado à investigação dos usos, percepções e impactos da inteligência artificial na educação linguística. A pesquisa analisa como estudantes e professores interagem com ferramentas de IA em diferentes contextos linguísticos, culturais e socioeconômicos, com atenção a questões de acesso, desigualdade, autoria, viés e justiça. Orientado pelos princípios da justiça de design, o projeto compreende a IA como um sistema sociotécnico e busca contribuir para práticas mais críticas, éticas e inclusivas no ensino e na aprendizagem de línguas.",
+      "descricao_en": "An international project supported by the Worldwide Universities Network (WUN), focused on investigating the uses, perceptions and impacts of artificial intelligence in language education. The research examines how students and teachers engage with AI tools across different linguistic, cultural and socio-economic contexts, addressing issues of access, inequality, authorship, bias and justice. Guided by the principles of Design Justice, the project approaches AI as a socio-technical system and seeks to support more critical, ethical and inclusive practices in language teaching and learning.",
+      "categoria": "pesquisa",
+      "categoria_pt": "Pesquisa",
+      "categoria_en": "Research"
     },
     {
       "idioma": "en",
