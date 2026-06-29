@@ -29,6 +29,15 @@
       "ordem": 4,
       "descricao_pt": "Currículo",
       "descricao_en": "CV"
+    },
+    {
+      "nome": "Google Scholar",
+      "tipo": "Perfil acadêmico",
+      "descricao_pt": "Perfil acadêmico",
+      "descricao_en": "Academic profile",
+      "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
+      "visivel": true,
+      "ordem": 3
     }
   ]
 }
