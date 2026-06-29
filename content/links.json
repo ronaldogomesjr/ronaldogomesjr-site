@@ -16,7 +16,9 @@
       "tipo": "Perfil acadêmico",
       "link": "https://orcid.org/0000-0003-4165-8629",
       "visivel": true,
-      "ordem": 2
+      "ordem": 2,
+      "descricao_pt": "Perfil acadêmico",
+      "descricao_en": "Academic profile"
     },
     {
       "idioma": "pt",
