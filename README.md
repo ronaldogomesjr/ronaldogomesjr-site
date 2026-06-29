@@ -1,40 +1,26 @@
-# Ronaldo Gomes Jr. Site — V39 Clear Full Admin
+# Ronaldo Gomes Jr. Site — V40 Admin SHA Fix
 
-Esta versão deixa o painel `/admin` mais claro e completo.
+Esta versão corrige o erro do GitHub:
 
-## Mudanças principais
+`content/links.json does not match <sha>`
 
-Agora o painel separa:
+## O que foi corrigido
 
-- `identidade e cabeçalho`
-- `menu superior (pt)`
-- `menu superior (en)`
+Antes de publicar qualquer alteração, o painel agora busca o SHA mais recente do arquivo no GitHub.
 
-Em `identidade e cabeçalho`, é possível editar:
+Isso evita erro quando:
+- você publica uma alteração;
+- o GitHub atualiza o arquivo;
+- o painel tenta publicar de novo usando uma versão antiga.
 
-- nome/marca no cabeçalho;
-- nome curto;
-- descrição acessível da marca;
-- link da marca na versão PT;
-- link da marca na versão EN;
-- descrições dos três pontos coloridos.
+## O que fazer
 
-Em `menu superior (pt)` e `menu superior (en)`, é possível editar:
+Suba a V40 no GitHub e aguarde o deploy da Vercel.
 
-- texto de cada item do menu;
-- hiperlink/URL;
-- visibilidade;
-- ordem.
+Depois, no `/admin`:
+1. escolha a categoria;
+2. clique em `carregar`;
+3. edite;
+4. clique em `publicar alteração`.
 
-As demais áreas seguem editáveis:
-
-- página inicial;
-- páginas internas;
-- publicações;
-- projetos;
-- livros didáticos;
-- links/rodapé.
-
-## Publicação
-
-Suba todos os arquivos desta versão no GitHub e aguarde o deploy da Vercel.
+Se o arquivo mudar no meio da edição, o painel recarrega a categoria e pede para tentar novamente.

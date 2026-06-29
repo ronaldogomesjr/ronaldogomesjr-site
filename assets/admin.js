@@ -344,7 +344,7 @@
       currentActualIndex = 0;
       renderList();
       renderEditor();
-      setStatus("Conteúdo carregado.");
+      setStatus("Conteúdo carregado com a versão mais recente do GitHub.");
       return;
     }
 
@@ -361,7 +361,7 @@
 
     renderList();
     renderEditor();
-    setStatus("Conteúdo carregado.");
+    setStatus("Conteúdo carregado com a versão mais recente do GitHub.");
   }
 
   function rebuildVisibleRows() {
@@ -574,22 +574,45 @@
 
   async function saveFile(message, preferLabel = "") {
     const config = collections[currentCollection];
+    setStatus("Conferindo versão mais recente no GitHub...");
+
+    // Antes de publicar, busca sempre o SHA mais recente do arquivo.
+    // Isso evita o erro: "content/...json does not match <sha>".
+    try {
+      const latestFile = await githubRequest(apiURL(config.path));
+      if (latestFile && latestFile.sha) {
+        currentSha = latestFile.sha;
+      }
+    } catch (error) {
+      throw new Error("Não foi possível conferir a versão mais recente do arquivo: " + error.message);
+    }
+
     setStatus("Publicando alteração no GitHub...");
     const content = JSON.stringify(currentData, null, 2) + "\n";
 
-    const result = await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${config.path}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        message,
-        content: encodeBase64Unicode(content),
-        sha: currentSha,
-        branch: BRANCH
-      })
-    });
+    try {
+      const result = await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${config.path}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          message,
+          content: encodeBase64Unicode(content),
+          sha: currentSha,
+          branch: BRANCH
+        })
+      });
 
-    if (result && result.content && result.content.sha) currentSha = result.content.sha;
-    await loadCollection(preferLabel);
-    setStatus("Alteração publicada. A Vercel deve atualizar o site em instantes.");
+      if (result && result.content && result.content.sha) currentSha = result.content.sha;
+      await loadCollection(preferLabel);
+      setStatus("Alteração publicada. A Vercel deve atualizar o site em instantes.");
+    } catch (error) {
+      const msg = String(error.message || "");
+      if (msg.includes("does not match") || msg.toLowerCase().includes("sha")) {
+        setStatus("O arquivo mudou enquanto você editava. Recarreguei a categoria; tente publicar novamente.", true);
+        await loadCollection(preferLabel);
+        return;
+      }
+      throw error;
+    }
   }
 
   async function addItem() {
