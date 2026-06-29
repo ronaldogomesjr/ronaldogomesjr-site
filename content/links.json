@@ -34,14 +34,6 @@
     },
     {
       "idioma": "en",
-      "nome": "Google Scholar",
-      "tipo": "Academic profile",
-      "link": "#",
-      "visivel": true,
-      "ordem": 3
-    },
-    {
-      "idioma": "en",
       "nome": "Lattes",
       "tipo": "CV",
       "link": "#",
