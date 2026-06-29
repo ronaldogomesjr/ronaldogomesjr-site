@@ -48,6 +48,55 @@
     return String(value || "").trim().toLowerCase();
   }
 
+  const projectCategoryLabels = {
+    ensino: { pt: "Ensino", en: "Teaching" },
+    pesquisa: { pt: "Pesquisa", en: "Research" },
+    extensao: { pt: "Extensão", en: "Extension" },
+    internacionalizacao: { pt: "Internacionalização", en: "Internationalization" }
+  };
+
+  function plainTextKey(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function normalizeProjectCategory(value) {
+    const key = plainTextKey(value).replace(/[\s_-]+/g, "");
+    if (["ensino", "teaching", "education"].includes(key)) return "ensino";
+    if (["pesquisa", "research"].includes(key)) return "pesquisa";
+    if (["extensao", "extension", "outreach"].includes(key)) return "extensao";
+    if (["internacionalizacao", "internationalization", "internationalisation", "international"].includes(key)) return "internacionalizacao";
+    return "";
+  }
+
+  function projectCategoryLabel(item, lang) {
+    const value = item.categoria || item.category || item.categoria_pt || item.categoria_en || "";
+    const normalized = normalizeProjectCategory(value);
+    if (normalized) return projectCategoryLabels[normalized][lang] || projectCategoryLabels[normalized].pt;
+    return item[`categoria_${lang}`] || item.categoria || "";
+  }
+
+  function localizedProjectField(item, field, lang) {
+    const localized = item[`${field}_${lang}`];
+    if (localized) return localized;
+
+    if (item.idioma === lang && item[field]) return item[field];
+
+    const fallbackLang = lang === "en" ? "pt" : "en";
+    return item[`${field}_${fallbackLang}`] || item[field] || "";
+  }
+
+  function hasBilingualProjectFields(item) {
+    return Boolean(item.titulo_pt || item.titulo_en || item.descricao_pt || item.descricao_en || item.categoria);
+  }
+
+  function projectVisibleInLanguage(item, lang) {
+    return hasBilingualProjectFields(item) || !item.idioma || item.idioma === lang;
+  }
+
   function nonTranslatablePreference(item) {
     if (!item || !item.idioma) return 0;
     if (item.idioma === "pt") return 1;
@@ -103,12 +152,16 @@
 
   function projectHTML(item, lang) {
     const label = lang === "en" ? "Access →" : "Acessar →";
-    const meta = [item.periodo, item.parceiros].filter(Boolean).join(" · ");
+    const title = localizedProjectField(item, "titulo", lang);
+    const description = localizedProjectField(item, "descricao", lang);
+    const category = projectCategoryLabel(item, lang);
+    const meta = [category, item.periodo, item.parceiros].filter(Boolean).join(" · ");
+
     return `
       <article class="section-row">
-        <h2>${escapeHTML(item.titulo)}</h2>
+        <h2>${escapeHTML(title)}</h2>
         <div>
-          <p>${escapeHTML(lang === "en" ? (item.descricao_en || item.descricao_pt || item.descricao || "") : (item.descricao_pt || item.descricao || ""))}</p>
+          ${description ? `<p>${escapeHTML(description)}</p>` : ""}
           ${meta ? `<p class="item-meta">${escapeHTML(meta)}</p>` : ""}
           ${externalLink(item.link, label)}
         </div>
@@ -197,7 +250,13 @@
 
       if (kind === "projetos") {
         const data = await loadJSON("/content/projetos.json");
-        const items = sortedVisible(data.items, lang);
+
+        // Projetos passam a ser cadastrados uma única vez, com campos PT/EN
+        // para nome, descrição e categoria. Itens antigos com idioma continuam
+        // funcionando até serem atualizados pelo painel.
+        const items = sortedVisible(data.items, null)
+          .filter((item) => projectVisibleInLanguage(item, lang));
+
         element.innerHTML = items.length ? items.map((item) => projectHTML(item, lang)).join("") : emptyMessage(lang);
       }
 

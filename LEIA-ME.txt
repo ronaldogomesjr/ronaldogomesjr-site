@@ -1,15 +1,21 @@
-PATCH: links, contatos e rodapé sem tradução
+Patch: projetos bilíngues com categoria
 
-Arquivos alterados:
+Suba os arquivos mantendo a mesma estrutura de pastas:
 - assets/admin.js
 - assets/cms-render.js
 - assets/footer-links.js
 - admin/config.yml
 
-Não há arquivos content/*.json neste pacote. Assim, o conteúdo já atualizado pelo painel não é sobrescrito.
+Este patch não inclui arquivos content/*.json e, portanto, não sobrescreve o conteúdo já atualizado em outras páginas.
 
-O que muda:
-1. Links, contato e rodapé passam a ser tratados como conteúdo único para PT e EN.
-2. O painel deixa de mostrar o campo "Idioma" na seção "links, contato e rodapé".
-3. Se content/links.json ainda tiver duplicatas antigas com idioma pt/en, o site exibe apenas uma versão.
-4. Ao salvar pelo painel, campos antigos não exibidos no formulário são preservados.
+Depois de subir:
+1. Aguarde a Vercel publicar.
+2. Abra o painel.
+3. Vá em Conteúdo > conteúdo: projetos.
+4. Cada projeto poderá ter nome PT/EN, descrição PT/EN, categoria e link.
+
+Categorias disponíveis:
+- Ensino / Teaching
+- Pesquisa / Research
+- Extensão / Extension
+- Internacionalização / Internationalization

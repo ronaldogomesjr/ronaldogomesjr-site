@@ -45,13 +45,21 @@ collections:
           - label: "Projetos"
             name: "items"
             widget: "list"
-            summary: "{{fields.titulo}}"
+            summary: "{{fields.titulo_pt}}"
             fields:
-              - {label: "Idioma", name: "idioma", widget: "select", options: ["pt", "en"], default: "pt"}
-              - {label: "Título", name: "titulo", widget: "string"}
-              - {label: "Descrição", name: "descricao", widget: "text", required: false}
-              - {label: "Período", name: "periodo", widget: "string", required: false}
-              - {label: "Parceiros", name: "parceiros", widget: "string", required: false}
+              - {label: "Nome do projeto em português", name: "titulo_pt", widget: "string"}
+              - {label: "Project name in English", name: "titulo_en", widget: "string", required: false}
+              - {label: "Descrição em português", name: "descricao_pt", widget: "text", required: false}
+              - {label: "Description in English", name: "descricao_en", widget: "text", required: false}
+              - label: "Categoria / Category"
+                name: "categoria"
+                widget: "select"
+                default: "pesquisa"
+                options:
+                  - {label: "Ensino / Teaching", value: "ensino"}
+                  - {label: "Pesquisa / Research", value: "pesquisa"}
+                  - {label: "Extensão / Extension", value: "extensao"}
+                  - {label: "Internacionalização / Internationalization", value: "internacionalizacao"}
               - {label: "Link externo", name: "link", widget: "string", required: false}
               - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
               - {label: "Destaque", name: "destaque", widget: "boolean", default: false, required: false}

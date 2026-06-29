@@ -22,6 +22,42 @@
     ["ordem", "number", "Ordem automática/manual"]
   ];
 
+  const projectCategoryOptions = [
+    { label: "Ensino / Teaching", value: "ensino" },
+    { label: "Pesquisa / Research", value: "pesquisa" },
+    { label: "Extensão / Extension", value: "extensao" },
+    { label: "Internacionalização / Internationalization", value: "internacionalizacao" }
+  ];
+
+  const projectCategoryLabels = {
+    ensino: { pt: "Ensino", en: "Teaching" },
+    pesquisa: { pt: "Pesquisa", en: "Research" },
+    extensao: { pt: "Extensão", en: "Extension" },
+    internacionalizacao: { pt: "Internacionalização", en: "Internationalization" }
+  };
+
+  function plainTextKey(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function normalizeProjectCategory(value) {
+    const key = plainTextKey(value).replace(/[\s_-]+/g, "");
+    if (["ensino", "teaching", "education"].includes(key)) return "ensino";
+    if (["pesquisa", "research"].includes(key)) return "pesquisa";
+    if (["extensao", "extension", "outreach"].includes(key)) return "extensao";
+    if (["internacionalizacao", "internationalization", "internationalisation", "international"].includes(key)) return "internacionalizacao";
+    return "";
+  }
+
+  function projectCategoryLabel(value, lang = "pt") {
+    const normalized = normalizeProjectCategory(value);
+    return normalized ? projectCategoryLabels[normalized][lang] : "";
+  }
+
   const pageFields = [
     ["id", "text", "ID interno"],
     ["slug_pt", "text", "Slug da página em português"],
@@ -260,20 +296,33 @@
       mode: "list",
       path: "content/projetos.json",
       root: "items",
-      labelField: "titulo",
-      meta: item => [item.periodo, item.idioma].filter(Boolean).join(" · "),
+      labelField: "titulo_pt",
+      meta: item => [projectCategoryLabel(item.categoria || item.categoria_pt || item.categoria_en, "pt"), item.link && item.link !== "#" ? item.link : ""].filter(Boolean).join(" · "),
+      singleAcrossLanguages: true,
       fields: [
-        ["idioma", "select", "Idioma", ["pt", "en"]],
-        ["titulo", "text", "Título"],
-        ["descricao", "textarea", "Descrição"],
-        ["periodo", "text", "Período"],
-        ["parceiros", "text", "Parceiros"],
+        ["titulo_pt", "text", "Nome do projeto em português"],
+        ["titulo_en", "text", "Project name in English"],
+        ["descricao_pt", "textarea", "Descrição em português"],
+        ["descricao_en", "textarea", "Description in English"],
+        ["categoria", "select", "Categoria / Category", projectCategoryOptions],
         ["link", "text", "Hiperlink externo"],
         ["visivel", "checkbox", "Visível no site"],
         ["destaque", "checkbox", "Destaque"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", titulo: "", descricao: "", periodo: "", parceiros: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      blank: {
+        titulo_pt: "",
+        titulo_en: "",
+        descricao_pt: "",
+        descricao_en: "",
+        categoria: "pesquisa",
+        categoria_pt: "Pesquisa",
+        categoria_en: "Research",
+        link: "#",
+        visivel: true,
+        destaque: false,
+        ordem: 999
+      }
     },
     "livros-didaticos": {
       mode: "list",
@@ -578,7 +627,7 @@
     rebuildVisibleRows();
 
     if (preferLabel) {
-      const found = visibleRows.find(row => (row.item[config.labelField] || "") === preferLabel);
+      const found = visibleRows.find(row => rowLabel(row.item, config) === preferLabel);
       currentActualIndex = found ? found.actualIndex : (visibleRows[0] ? visibleRows[0].actualIndex : null);
     } else {
       currentActualIndex = visibleRows[0] ? visibleRows[0].actualIndex : null;
@@ -587,6 +636,14 @@
     renderList();
     renderEditor();
     setStatus("Conteúdo carregado com a versão mais recente do GitHub.");
+  }
+
+  function rowLabel(item, config) {
+    if (currentCollection === "projetos") {
+      return item.titulo_pt || item.titulo || item.titulo_en || "";
+    }
+
+    return item[config.labelField] || "";
   }
 
   function rebuildVisibleRows() {
@@ -610,7 +667,7 @@
         const orderA = Number(a.item.ordem || 9999);
         const orderB = Number(b.item.ordem || 9999);
         if (orderA !== orderB) return orderA - orderB;
-        return String(a.item[config.labelField] || "").localeCompare(String(b.item[config.labelField] || ""));
+        return String(rowLabel(a.item, config)).localeCompare(String(rowLabel(b.item, config)));
       });
   }
 
@@ -652,7 +709,7 @@
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "item-button" + (actualIndex === currentActualIndex ? " active" : "");
-      btn.innerHTML = `<span class="item-title">${escapeHTML(item[config.labelField] || "(sem título)")}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
+      btn.innerHTML = `<span class="item-title">${escapeHTML(rowLabel(item, config) || "(sem título)")}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
       btn.addEventListener("click", () => {
         currentActualIndex = actualIndex;
         renderList();
@@ -675,6 +732,18 @@
 
     const items = getAllItems(config);
     return currentActualIndex !== null ? items[currentActualIndex] : null;
+  }
+
+  function editorValue(item, name) {
+    if (currentCollection === "projetos") {
+      if (name === "titulo_pt") return item.titulo_pt || (item.idioma === "pt" ? item.titulo : "") || "";
+      if (name === "titulo_en") return item.titulo_en || (item.idioma === "en" ? item.titulo : "") || "";
+      if (name === "descricao_pt") return item.descricao_pt || (item.idioma === "pt" ? item.descricao : "") || "";
+      if (name === "descricao_en") return item.descricao_en || (item.idioma === "en" ? item.descricao : "") || "";
+      if (name === "categoria") return normalizeProjectCategory(item.categoria || item.categoria_pt || item.categoria_en) || "pesquisa";
+    }
+
+    return item[name] ?? "";
   }
 
   function renderEditor() {
@@ -701,7 +770,9 @@
     if (config.singleAcrossLanguages) {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Cadastre a coleção uma única vez. Use descrição em português e descrição em inglês para adaptar o texto em cada versão.";
+      p.textContent = currentCollection === "projetos"
+        ? "Cadastre cada projeto uma única vez. Preencha nome e descrição em português e inglês; a categoria será exibida no idioma da página."
+        : "Cadastre a coleção uma única vez. Use descrição em português e descrição em inglês para adaptar o texto em cada versão.";
       form.appendChild(p);
     }
 
@@ -749,22 +820,25 @@
       if (type === "textarea") {
         input = document.createElement("textarea");
         input.name = name;
-        input.value = item[name] || "";
+        input.value = editorValue(item, name);
       } else if (type === "select") {
         input = document.createElement("select");
         input.name = name;
+        const currentValue = editorValue(item, name);
         options.forEach(opt => {
           const option = document.createElement("option");
-          option.value = opt;
-          option.textContent = opt;
-          if (item[name] === opt) option.selected = true;
+          const value = typeof opt === "object" && opt !== null ? opt.value : opt;
+          const text = typeof opt === "object" && opt !== null ? opt.label : opt;
+          option.value = value;
+          option.textContent = text;
+          if (String(currentValue) === String(value)) option.selected = true;
           input.appendChild(option);
         });
       } else {
         input = document.createElement("input");
         input.type = type;
         input.name = name;
-        input.value = item[name] ?? "";
+        input.value = editorValue(item, name);
       }
 
       labelEl.appendChild(input);
@@ -788,6 +862,18 @@
       else if (type === "number") values[name] = input.value === "" ? "" : Number(input.value);
       else values[name] = input.value;
     });
+
+    if (currentCollection === "projetos") {
+      const normalizedCategory = normalizeProjectCategory(values.categoria) || "pesquisa";
+      values.categoria = normalizedCategory;
+      values.categoria_pt = projectCategoryLabel(normalizedCategory, "pt");
+      values.categoria_en = projectCategoryLabel(normalizedCategory, "en");
+
+      // Mantém campos legados preenchidos para compatibilidade com versões antigas
+      // do conteúdo, mas o cadastro passa a ser único e bilíngue.
+      values.titulo = values.titulo_pt || values.titulo_en || "";
+      values.descricao = values.descricao_pt || values.descricao_en || "";
+    }
 
     if (config.sortRecent && !values.ordem) {
       values.ordem = Date.now();
@@ -815,7 +901,7 @@
     const items = getAllItems(config);
     if (currentActualIndex === null || !items[currentActualIndex]) throw new Error("Nenhum item selecionado.");
 
-    const oldLabel = items[currentActualIndex][config.labelField] || "";
+    const oldLabel = rowLabel(items[currentActualIndex], config) || "";
     const values = collectEditorValues();
 
     // Preserva chaves que não aparecem no formulário atual (por exemplo,
