@@ -3,11 +3,11 @@
     {
       "tipo": "artigo",
       "idioma": "pt",
-      "ano": "2024",
-      "titulo": "Affordances de tecnologias digitais para a aprendizagem de Português Língua Adicional. ",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR, Henrique Rodrigues LEROY",
-      "veiculo": "Domínios de Lingu@agem",
-      "link": "https://seer.ufu.br/index.php/dominiosdelinguagem/article/view/73339",
+      "ano": "2026",
+      "titulo": "Artigo a inserir",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Nome do periódico",
+      "link": "#",
       "visivel": true,
       "destaque": false,
       "ordem": 1
@@ -37,6 +37,18 @@
       "ordem": 3
     },
     {
+      "tipo": "artigo",
+      "idioma": "en",
+      "ano": "2026",
+      "titulo": "Journal article to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Journal name",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 4
+    },
+    {
       "tipo": "capitulo",
       "idioma": "en",
       "ano": "2026",
@@ -59,28 +71,6 @@
       "visivel": true,
       "destaque": false,
       "ordem": 6
-    },
-    {
-      "tipo": "artigo",
-      "ano": "2024",
-      "titulo": "\"In the palm of your hand\": the ecological and complex nature of teacher agency",
-      "autores": "Junia de Carvalho Fidélis BRAGA, Ronaldo Corrêa GOMES JUNIOR",
-      "veiculo": "Texto Livre: Linguagem e Tecnologia",
-      "link": "https://www.scielo.br/j/tl/a/KnjbSv6qFrWvn9bF5sG5RbM/?lang=en",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 2
-    },
-    {
-      "tipo": "artigo",
-      "ano": "2022",
-      "titulo": "Tecnologias digitais para aprender e ensinar inglês no Brasil.",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR, Luciana de Oliveira SILVA, Vera Lúcia Menezes de Oliveira e PAIVA",
-      "veiculo": "Texto Livre: Linguagem e Tecnologia",
-      "link": "https://www.scielo.br/j/tl/a/cJ4k7CLPk6yfvgNvSFyW4vF/?format=html&lang=pt",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 3
     }
   ]
 }

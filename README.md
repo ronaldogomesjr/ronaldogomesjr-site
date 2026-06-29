@@ -1,42 +1,29 @@
-# Ronaldo Gomes Jr. Site — V41 Page-by-Page Admin
+# Ronaldo Gomes Jr. Site — V42 Auto Publication Order
 
-Esta versão torna o painel `/admin` mais direto para editar páginas específicas.
+Esta versão corrige a ordenação de publicações.
 
 ## O que mudou
 
-No item `2. escolher conteúdo`, agora aparecem entradas diretas para cada página:
+Para:
 
-- página: pesquisa (pt)
-- página: projetos (pt)
-- página: publicações (pt)
-- página: livros didáticos (pt)
-- página: sobre (pt)
-- página: contato (pt)
-- página: design (pt)
-- página: tecnologia digital (pt)
-- página: educação linguística (pt)
-- page: research (en)
-- page: projects (en)
-- page: publications (en)
-- page: textbooks (en)
-- page: about (en)
-- page: contact (en)
-- page: design (en)
-- page: digital technology (en)
-- page: language education (en)
+- artigos;
+- capítulos;
+- livros acadêmicos;
 
-Assim, não é mais necessário entrar em “páginas internas” e procurar a página na lista lateral.
+o site agora ordena automaticamente por:
 
-## O painel continua editando
+1. ano mais recente primeiro;
+2. dentro do mesmo ano, item mais novo primeiro.
 
-- identidade e cabeçalho;
-- menus PT/EN;
-- página inicial PT/EN;
-- páginas específicas PT/EN;
-- publicações;
-- projetos;
-- livros didáticos;
-- links, contato e rodapé.
+## No painel
+
+Ao clicar em `novo item` dentro de artigos, capítulos ou livros acadêmicos:
+
+- o ano atual já é preenchido automaticamente;
+- a ordem recebe um valor automático;
+- o item novo aparece no topo sem você precisar reorganizar todos os anteriores.
+
+O campo `Ordem automática/manual` continua existindo, mas você não precisa mexer nele para uso normal.
 
 ## Publicação
 

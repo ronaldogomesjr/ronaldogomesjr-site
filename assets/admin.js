@@ -8,10 +8,11 @@
     ["label", "text", "Texto do menu"],
     ["url", "text", "Hiperlink / URL"],
     ["visivel", "checkbox", "Visível no menu"],
-    ["ordem", "number", "Ordem"]
+    ["ordem", "number", "Ordem automática/manual"]
   ];
 
   const publicationFields = [
+    ["idioma", "select", "Idioma", ["pt", "en"]],
     ["ano", "text", "Ano"],
     ["titulo", "text", "Título"],
     ["autores", "text", "Autores"],
@@ -187,9 +188,10 @@
       root: "items",
       fixed: { tipo: "artigo" },
       labelField: "titulo",
-      meta: item => ["artigo", item.ano].filter(Boolean).join(" · "),
+      meta: item => ["artigo", item.ano, item.idioma].filter(Boolean).join(" · "),
       fields: publicationFields,
-      blank: { tipo: "artigo", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      sortRecent: true,
+      blank: { tipo: "artigo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
     },
     "capitulos": {
       mode: "filtered-list",
@@ -197,9 +199,10 @@
       root: "items",
       fixed: { tipo: "capitulo" },
       labelField: "titulo",
-      meta: item => ["capítulo", item.ano].filter(Boolean).join(" · "),
+      meta: item => ["capítulo", item.ano, item.idioma].filter(Boolean).join(" · "),
       fields: publicationFields,
-      blank: { tipo: "capitulo", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      sortRecent: true,
+      blank: { tipo: "capitulo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
     },
     "livros-academicos": {
       mode: "filtered-list",
@@ -207,9 +210,10 @@
       root: "items",
       fixed: { tipo: "livro_academico" },
       labelField: "titulo",
-      meta: item => ["livro acadêmico", item.ano].filter(Boolean).join(" · "),
+      meta: item => ["livro acadêmico", item.ano, item.idioma].filter(Boolean).join(" · "),
       fields: publicationFields,
-      blank: { tipo: "livro_academico", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      sortRecent: true,
+      blank: { tipo: "livro_academico", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
     },
     "projetos": {
       mode: "list",
@@ -420,6 +424,16 @@
       .map((item, actualIndex) => ({ item, actualIndex }))
       .filter(row => matchesConfig(row.item, config))
       .sort((a, b) => {
+        if (config.sortRecent) {
+          const yearA = Number(a.item.ano || 0);
+          const yearB = Number(b.item.ano || 0);
+          if (yearA !== yearB) return yearB - yearA;
+
+          const recentA = Number(a.item.ordem || 0);
+          const recentB = Number(b.item.ordem || 0);
+          if (recentA !== recentB) return recentB - recentA;
+        }
+
         const orderA = Number(a.item.ordem || 9999);
         const orderB = Number(b.item.ordem || 9999);
         if (orderA !== orderB) return orderA - orderB;
@@ -523,7 +537,7 @@
       const fixedLabel = Object.values(config.fixed)[0].replace("_", " ");
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = `Categoria: ${fixedLabel}. Este item aparece automaticamente nas páginas em português e em inglês.`;
+      p.textContent = `Categoria: ${fixedLabel}`;
       form.appendChild(p);
     }
 
@@ -622,6 +636,11 @@
       else if (type === "number") values[name] = input.value === "" ? "" : Number(input.value);
       else values[name] = input.value;
     });
+
+    if (config.sortRecent && !values.ordem) {
+      values.ordem = Date.now();
+    }
+
     return values;
   }
 
@@ -696,6 +715,12 @@
     }
     const items = getAllItems(config);
     const newItem = JSON.parse(JSON.stringify(config.blank));
+
+    if (config.sortRecent) {
+      newItem.ano = String(new Date().getFullYear());
+      newItem.ordem = Date.now();
+    }
+
     items.push(newItem);
     currentActualIndex = items.length - 1;
     renderList();

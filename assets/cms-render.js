@@ -20,32 +20,28 @@
     return cache[path];
   }
 
-  function sortedVisible(items, lang) {
+  function sortedVisible(items, lang, mode) {
     return (items || [])
       .filter((item) => item.visivel !== false)
       .filter((item) => !lang || item.idioma === lang)
       .sort((a, b) => {
+        if (mode === "publicacoes") {
+          const yearA = Number(a.ano || 0);
+          const yearB = Number(b.ano || 0);
+          if (yearA !== yearB) return yearB - yearA;
+
+          const orderA = Number(a.ordem || 0);
+          const orderB = Number(b.ordem || 0);
+          if (orderA !== orderB) return orderB - orderA;
+
+          return String(a.titulo || "").localeCompare(String(b.titulo || ""));
+        }
+
         const orderA = Number(a.ordem || 9999);
         const orderB = Number(b.ordem || 9999);
         if (orderA !== orderB) return orderA - orderB;
         return Number(b.ano || 0) - Number(a.ano || 0);
       });
-  }
-
-  function uniquePublications(items) {
-    const seen = new Set();
-    return (items || []).filter((item) => {
-      const key = [
-        item.tipo || "",
-        item.ano || "",
-        item.titulo || "",
-        item.autores || "",
-        item.veiculo || ""
-      ].join("||").toLowerCase();
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
   }
 
   function externalLink(url, label) {
@@ -128,7 +124,7 @@
     try {
       if (kind === "publicacoes") {
         const data = await loadJSON("/content/publicacoes.json");
-        const items = uniquePublications(sortedVisible(data.items, null).filter((item) => !type || item.tipo === type));
+        const items = sortedVisible(data.items, lang, "publicacoes").filter((item) => !type || item.tipo === type);
         element.innerHTML = items.length ? items.map((item) => publicationHTML(item, lang)).join("") : emptyMessage(lang);
       }
 
