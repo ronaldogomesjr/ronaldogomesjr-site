@@ -57,14 +57,14 @@
     },
     {
       "tipo": "livro_academico",
-      "ano": "2026",
-      "titulo": "Academic book to add",
-      "autores": "Ronaldo Gomes Jr.",
-      "veiculo": "Publisher",
-      "link": "#",
+      "ano": "2024",
+      "titulo": "Tecnologias digitais e aprendizagem de línguas além da sala de aula.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Mercado de Letras",
+      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQC4ocT1ygxWTaKu7xG64EQ0AZo0J_MVh5aKjggleCs2fK8?e=5N5Le9",
       "visivel": true,
       "destaque": false,
-      "ordem": 6
+      "ordem": 1782757248335
     }
   ]
 }
