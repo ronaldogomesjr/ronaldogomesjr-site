@@ -59,6 +59,18 @@
       "visivel": true,
       "destaque": false,
       "ordem": 6
+    },
+    {
+      "tipo": "artigo",
+      "idioma": "pt",
+      "ano": "2012",
+      "titulo": "Metáforas Online: As Conceitualizações de Aprendizes Universitários de Inglês sobre Aprendizagem à Distância. ",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Revista Escrita (PUCRJ. Online)",
+      "link": "https://www.maxwell.vrac.puc-rio.br/20855/20855.PDF",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1782747547590
     }
   ]
 }
