@@ -28,7 +28,7 @@
       "idioma": "pt",
       "nome": "Lattes",
       "tipo": "Currículo",
-      "link": "http://lattes.cnpq.br/6357439967840461",
+      "link": "#",
       "visivel": true,
       "ordem": 4
     },
@@ -52,7 +52,7 @@
       "idioma": "en",
       "nome": "Google Scholar",
       "tipo": "Academic profile",
-      "link": "#",
+      "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
       "visivel": true,
       "ordem": 3
     },
@@ -60,7 +60,7 @@
       "idioma": "en",
       "nome": "Lattes",
       "tipo": "CV",
-      "link": "#",
+      "link": "http://lattes.cnpq.br/6357439967840461",
       "visivel": true,
       "ordem": 4
     }
