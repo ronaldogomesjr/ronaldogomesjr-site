@@ -1,27 +1,14 @@
-Patch — campo de upload da foto na página Sobre/About
-
-Este patch corrige o painel para que a foto da página Sobre/About fique fácil de encontrar e enviar.
+Patch — alinhar foto circular da página Sobre/About
 
 Arquivos alterados:
-- admin/index.html
-- admin/config.yml
-- assets/admin.js
-- assets/admin.css
-- assets/page-content.js
 - assets/style.css
 - pt/sobre/index.html
 - en/about/index.html
 
-Este patch NÃO inclui content/*.json, então não sobrescreve os conteúdos já editados pelo painel.
+O que corrige:
+- mantém a foto circular no lado direito da descrição;
+- alinha a moldura com o bloco de texto à esquerda;
+- ajusta o espaçamento superior da foto para que ela não fique deslocada;
+- adiciona versão no link do CSS para reduzir problema de cache.
 
-Depois de subir no GitHub:
-1. Aguarde a Vercel publicar.
-2. Abra o painel em aba anônima ou recarregue com limpeza de cache.
-3. Em “Conteúdo”, escolha “foto: sobre / about photo”.
-4. Clique em “carregar”.
-5. Use o campo “Foto da página sobre — escolher imagem do computador ou colar URL”.
-6. Clique em “Escolher arquivo” e selecione a foto.
-7. Após o upload, clique em “publicar alteração”.
-
-A imagem será enviada para assets/uploads e o campo será preenchido automaticamente com um caminho como:
-/assets/uploads/20260629163000-minha-foto.jpg
+Não inclui arquivos content/*.json e não altera conteúdo já editado pelo painel.

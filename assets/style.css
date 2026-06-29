@@ -911,20 +911,22 @@ a { color: inherit; text-decoration: none; }
 /* Patch — foto circular na página sobre e página de orientações */
 .about-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
-  gap: clamp(28px, 6vw, 72px);
-  align-items: center;
-  max-width: 1040px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  gap: clamp(36px, 7vw, 92px);
+  align-items: start;
+  max-width: 1120px;
 }
 
 .about-hero-copy {
-  max-width: 800px;
+  max-width: 760px;
 }
 
 .about-portrait {
-  width: clamp(170px, 20vw, 260px);
+  width: clamp(220px, 23vw, 320px);
   aspect-ratio: 1 / 1;
-  margin: 0;
+  justify-self: end;
+  align-self: start;
+  margin: clamp(66px, 7.2vw, 96px) 0 0;
   border-radius: 999px;
   padding: 10px;
   border: 1px solid rgba(36, 95, 107, 0.24);
@@ -979,5 +981,7 @@ a { color: inherit; text-decoration: none; }
 
   .about-portrait {
     width: min(220px, 62vw);
+    justify-self: start;
+    margin-top: 0;
   }
 }
