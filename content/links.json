@@ -34,14 +34,6 @@
     },
     {
       "idioma": "en",
-      "nome": "Email",
-      "tipo": "Contact",
-      "link": "#",
-      "visivel": true,
-      "ordem": 1
-    },
-    {
-      "idioma": "en",
       "nome": "ORCID",
       "tipo": "Academic profile",
       "link": "#",
