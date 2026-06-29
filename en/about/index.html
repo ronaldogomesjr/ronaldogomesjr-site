@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Ronaldo Gomes Jr.</title>
   <meta name="description" content="Ronaldo Gomes Jr." />
-  <link rel="stylesheet" href="/assets/style.css?v=about-photo-align-20260629" />
+  <link rel="stylesheet" href="/assets/style.css?v=sobre-foto-alinhada-forcada-20260629d" />
+
+  <style id="sobre-foto-alinhada-inline">
+    .about-hero { display: grid !important; grid-template-columns: minmax(0, 640px) minmax(220px, 300px) !important; gap: clamp(34px, 7vw, 96px) !important; align-items: start !important; max-width: 1120px !important; }
+    .about-hero-copy { max-width: 640px !important; }
+    .about-portrait { width: clamp(205px, 21vw, 280px) !important; justify-self: end !important; align-self: start !important; margin: clamp(84px, 8.2vw, 108px) 0 0 !important; }
+    @media (max-width: 820px) { .about-hero { grid-template-columns: 1fr !important; } .about-portrait { justify-self: start !important; margin-top: 0 !important; } }
+  </style>
 </head>
 <body>
 
@@ -44,7 +51,7 @@
 <footer class="site-footer" data-site-footer data-lang="en"><a href="#">Email</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/site-content.js?v=supervisions-20260629"></script>
-<script src="/assets/page-content.js?v=supervisions-20260629"></script>
+<script src="/assets/page-content.js?v=sobre-foto-alinhada-forcada-20260629d"></script>
 <script src="/assets/footer-links.js?v=supervisions-20260629"></script>
 </body>
 </html>

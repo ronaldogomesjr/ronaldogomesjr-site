@@ -1,14 +1,15 @@
-Patch — alinhar foto circular da página Sobre/About
+Patch — corrigir posição e atualização da foto na página Sobre/About
+
+Este patch força a moldura circular a ficar à direita da descrição, alinhada visualmente ao início do primeiro parágrafo, e não ao topo do título.
+
+Também atualiza o script da página para evitar cache da imagem: quando você trocar a foto pelo painel, a página deve carregar a nova imagem em vez de manter a versão antiga do navegador.
 
 Arquivos alterados:
 - assets/style.css
+- assets/page-content.js
 - pt/sobre/index.html
 - en/about/index.html
 
-O que corrige:
-- mantém a foto circular no lado direito da descrição;
-- alinha a moldura com o bloco de texto à esquerda;
-- ajusta o espaçamento superior da foto para que ela não fique deslocada;
-- adiciona versão no link do CSS para reduzir problema de cache.
+Não há content/*.json neste patch.
 
-Não inclui arquivos content/*.json e não altera conteúdo já editado pelo painel.
+Depois de subir no GitHub, aguarde a Vercel publicar e teste em aba anônima. Se a foto antiga ainda aparecer, abra diretamente o caminho salvo no painel para confirmar se o upload novo existe em /assets/uploads/.
