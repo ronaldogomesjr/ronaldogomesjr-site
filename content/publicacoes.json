@@ -87,6 +87,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1782757641306
+    },
+    {
+      "tipo": "livro_academico",
+      "ano": "2019",
+      "titulo": "Mão na Massa I",
+      "autores": "",
+      "veiculo": "Parábola Editorial",
+      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQABg_47T9M-S5SDmt2JaPwIAR0TqOS4ybdEkteLf7eI-ls?e=IXkdBh",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1782757786263
     }
   ]
 }
