@@ -89,7 +89,6 @@ collections:
             widget: "list"
             summary: "{{fields.nome}}"
             fields:
-              - {label: "Idioma", name: "idioma", widget: "select", options: ["pt", "en"], default: "pt"}
               - {label: "Nome", name: "nome", widget: "string"}
               - {label: "Tipo", name: "tipo", widget: "string", required: false}
               - {label: "Link", name: "link", widget: "string", required: false}

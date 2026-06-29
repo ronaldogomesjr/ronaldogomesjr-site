@@ -1,0 +1,15 @@
+PATCH: links, contatos e rodapé sem tradução
+
+Arquivos alterados:
+- assets/admin.js
+- assets/cms-render.js
+- assets/footer-links.js
+- admin/config.yml
+
+Não há arquivos content/*.json neste pacote. Assim, o conteúdo já atualizado pelo painel não é sobrescrito.
+
+O que muda:
+1. Links, contato e rodapé passam a ser tratados como conteúdo único para PT e EN.
+2. O painel deixa de mostrar o campo "Idioma" na seção "links, contato e rodapé".
+3. Se content/links.json ainda tiver duplicatas antigas com idioma pt/en, o site exibe apenas uma versão.
+4. Ao salvar pelo painel, campos antigos não exibidos no formulário são preservados.

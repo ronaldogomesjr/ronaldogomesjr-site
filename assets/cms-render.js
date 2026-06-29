@@ -44,6 +44,44 @@
       });
   }
 
+  function normalizeKeyPart(value) {
+    return String(value || "").trim().toLowerCase();
+  }
+
+  function nonTranslatablePreference(item) {
+    if (!item || !item.idioma) return 0;
+    if (item.idioma === "pt") return 1;
+    if (item.idioma === "en") return 2;
+    return 3;
+  }
+
+  function canonicalNonTranslatedItems(items) {
+    const visible = sortedVisible(items, null);
+    const byKey = new Map();
+
+    visible.forEach((item) => {
+      const key = [
+        normalizeKeyPart(item.nome),
+        normalizeKeyPart(item.link),
+        String(Number(item.ordem || 9999))
+      ].join("|");
+      const previous = byKey.get(key);
+
+      // Se houver duplicatas antigas por idioma, usa uma única versão.
+      // Prefere itens novos sem campo idioma; depois PT; depois EN.
+      if (!previous || nonTranslatablePreference(item) < nonTranslatablePreference(previous)) {
+        byKey.set(key, item);
+      }
+    });
+
+    return Array.from(byKey.values()).sort((a, b) => {
+      const orderA = Number(a.ordem || 9999);
+      const orderB = Number(b.ordem || 9999);
+      if (orderA !== orderB) return orderA - orderB;
+      return String(a.nome || "").localeCompare(String(b.nome || ""));
+    });
+  }
+
   function externalLink(url, label) {
     if (!url || url === "#") return "";
     return `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}</a>`;
@@ -187,7 +225,10 @@
 
       if (kind === "links") {
         const data = await loadJSON("/content/links.json");
-        const items = sortedVisible(data.items, lang);
+
+        // Links/contato/rodapé não são traduzidos.
+        // Um único cadastro aparece nas versões PT e EN.
+        const items = canonicalNonTranslatedItems(data.items);
         element.innerHTML = items.length ? items.map((item) => linkHTML(item, lang)).join("") : emptyMessage(lang);
       }
     } catch (error) {

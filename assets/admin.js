@@ -341,16 +341,17 @@
       path: "content/links.json",
       root: "items",
       labelField: "nome",
-      meta: item => [item.tipo, item.idioma].filter(Boolean).join(" · "),
+      meta: item => item.tipo || "conteúdo único para PT e EN",
+      nonTranslatable: true,
+      uniqueNonTranslatable: true,
       fields: [
-        ["idioma", "select", "Idioma", ["pt", "en"]],
         ["nome", "text", "Texto do hiperlink"],
         ["tipo", "text", "Tipo / descrição"],
         ["link", "text", "URL do hiperlink"],
         ["visivel", "checkbox", "Visível no site"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", nome: "", tipo: "", link: "#", visivel: true, ordem: 999 }
+      blank: { nome: "", tipo: "", link: "#", visivel: true, ordem: 999 }
     }
   };
 
@@ -448,6 +449,48 @@
       }
     }
     return true;
+  }
+
+  function normalizeKeyPart(value) {
+    return String(value || "").trim().toLowerCase();
+  }
+
+  function nonTranslatableKey(item, config) {
+    if (currentCollection === "links") {
+      return [
+        normalizeKeyPart(item.nome),
+        normalizeKeyPart(item.link),
+        String(Number(item.ordem || 9999))
+      ].join("|");
+    }
+
+    return [
+      normalizeKeyPart(item[config.labelField]),
+      normalizeKeyPart(item.link),
+      String(Number(item.ordem || 9999))
+    ].join("|");
+  }
+
+  function nonTranslatablePreference(item) {
+    if (!item || !item.idioma) return 0;
+    if (item.idioma === "pt") return 1;
+    if (item.idioma === "en") return 2;
+    return 3;
+  }
+
+  function uniqueNonTranslatableRows(rows, config) {
+    if (!config.uniqueNonTranslatable) return rows;
+
+    const byKey = new Map();
+    rows.forEach((row) => {
+      const key = nonTranslatableKey(row.item, config);
+      const previous = byKey.get(key);
+      if (!previous || nonTranslatablePreference(row.item) < nonTranslatablePreference(previous.item)) {
+        byKey.set(key, row);
+      }
+    });
+
+    return Array.from(byKey.values());
   }
 
   function homeToForm(data) {
@@ -548,10 +591,12 @@
 
   function rebuildVisibleRows() {
     const config = collections[currentCollection];
-    visibleRows = getAllItems(config)
-      .map((item, actualIndex) => ({ item, actualIndex }))
-      .filter(row => matchesConfig(row.item, config))
-      .sort((a, b) => {
+    visibleRows = uniqueNonTranslatableRows(
+      getAllItems(config)
+        .map((item, actualIndex) => ({ item, actualIndex }))
+        .filter(row => matchesConfig(row.item, config)),
+      config
+    ).sort((a, b) => {
         if (config.sortRecent) {
           const yearA = Number(a.item.ano || 0);
           const yearB = Number(b.item.ano || 0);
@@ -660,6 +705,13 @@
       form.appendChild(p);
     }
 
+    if (config.nonTranslatable) {
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = "Esta seção não precisa de tradução. O mesmo cadastro aparece nas versões PT e EN, no contato e no rodapé.";
+      form.appendChild(p);
+    }
+
     if (config.mode === "object-singleton") {
       const p = document.createElement("p");
       p.className = "hint";
@@ -765,7 +817,15 @@
 
     const oldLabel = items[currentActualIndex][config.labelField] || "";
     const values = collectEditorValues();
-    items[currentActualIndex] = values;
+
+    // Preserva chaves que não aparecem no formulário atual (por exemplo,
+    // campos antigos de idioma em links já cadastrados), evitando perda de
+    // dados ao publicar alterações pelo painel.
+    items[currentActualIndex] = {
+      ...items[currentActualIndex],
+      ...values
+    };
+
     await saveFile(`Atualiza ${currentCollection}`, values[config.labelField] || oldLabel);
   }
 
