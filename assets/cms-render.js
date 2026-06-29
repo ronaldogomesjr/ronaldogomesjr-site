@@ -136,21 +136,39 @@
       target.descricao_pt = legacyDescription;
     }
 
+    if ((!target.link || target.link === "#") && item.link && item.link !== "#") {
+      target.link = item.link;
+    }
+
     return target;
+  }
+
+  function translateLegacyLinkDescription(value, lang) {
+    if (lang !== "en") return value || "";
+
+    const normalized = String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    const translations = {
+      "contato": "Contact",
+      "perfil academico": "Academic profile",
+      "curriculo": "CV",
+      "curriculum": "CV"
+    };
+
+    return translations[normalized] || value || "";
   }
 
   function localizedLinkDescription(item, lang) {
     if (lang === "en") {
-      return (
-        item.descricao_en ||
-        item.tipo_en ||
-        (item.idioma === "en" ? (item.descricao || item.tipo || "") : "") ||
-        item.descricao_pt ||
-        item.tipo_pt ||
-        item.descricao ||
-        item.tipo ||
-        ""
-      );
+      const english = item.descricao_en || item.tipo_en || (item.idioma === "en" ? (item.descricao || item.tipo || "") : "");
+      if (english) return english;
+
+      const legacyPt = item.descricao_pt || item.tipo_pt || item.descricao || item.tipo || "";
+      return translateLegacyLinkDescription(legacyPt, lang);
     }
 
     return (
@@ -172,7 +190,6 @@
     visible.forEach((item) => {
       const key = [
         normalizeKeyPart(item.nome),
-        normalizeKeyPart(item.link),
         String(Number(item.ordem || 9999))
       ].join("|");
       const previous = byKey.get(key);

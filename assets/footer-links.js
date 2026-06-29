@@ -19,6 +19,13 @@
     return 3;
   }
 
+  function mergeFooterLink(target, item) {
+    if ((!target.link || target.link === '#') && item.link && item.link !== '#') {
+      target.link = item.link;
+    }
+    return target;
+  }
+
   function canonicalFooterLinks(items) {
     const byKey = new Map();
 
@@ -27,17 +34,23 @@
       .forEach((item) => {
         const key = [
           normalizeKeyPart(item.nome),
-          normalizeKeyPart(item.link),
           String(Number(item.ordem || 9999))
         ].join('|');
         const previous = byKey.get(key);
 
         // Rodapé não precisa de tradução. Se existirem duplicatas antigas por
         // idioma, exibe apenas uma versão, preferindo itens novos sem idioma,
-        // depois PT e, por fim, EN.
-        if (!previous || nonTranslatablePreference(item) < nonTranslatablePreference(previous)) {
-          byKey.set(key, item);
+        // depois PT e, por fim, EN. O link pode ter sido preenchido em apenas
+        // uma das duplicatas, então ele é reaproveitado ao agrupar.
+        if (!previous) {
+          byKey.set(key, mergeFooterLink({ ...item }, item));
+          return;
         }
+
+        const chosen = nonTranslatablePreference(item) < nonTranslatablePreference(previous) ? { ...item } : { ...previous };
+        mergeFooterLink(chosen, previous);
+        mergeFooterLink(chosen, item);
+        byKey.set(key, chosen);
       });
 
     return Array.from(byKey.values()).sort((a,b) => Number(a.ordem || 9999) - Number(b.ordem || 9999));

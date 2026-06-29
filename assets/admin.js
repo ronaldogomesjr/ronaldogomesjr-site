@@ -269,7 +269,6 @@
       blank: {}
     },
 
-    "page-pesquisa": pageCollection("pesquisa", "página: pesquisa / research"),
     "page-projetos": pageCollection("projetos", "página: projetos / projects"),
     "page-publicacoes": pageCollection("publicacoes", "página: publicações / publications"),
     "page-artigos": pageCollection("artigos", "página: artigos / journal articles", {
@@ -579,11 +578,60 @@
     return String(value || "").trim().toLowerCase();
   }
 
+  function plainMenuKey(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function isResearchMenuItem(item) {
+    const label = plainMenuKey(item?.label);
+    const url = String(item?.url || "").trim().toLowerCase();
+    return (
+      label === "pesquisa" ||
+      label === "research" ||
+      url === "/pt/pesquisa/" ||
+      url === "/en/research/"
+    );
+  }
+
+  function mergeLinkDescriptions(target, item) {
+    if (!target || !item) return target;
+
+    ["descricao_pt", "descricao_en", "tipo_pt", "tipo_en"].forEach((field) => {
+      if (item[field] && !target[field]) target[field] = item[field];
+    });
+
+    const legacyDescription = item.descricao || item.tipo || "";
+
+    if (item.idioma === "pt" && legacyDescription && !target.descricao_pt) {
+      target.descricao_pt = legacyDescription;
+    }
+
+    if (item.idioma === "en" && legacyDescription && !target.descricao_en) {
+      target.descricao_en = legacyDescription;
+    }
+
+    if (!item.idioma && legacyDescription && !target.descricao_pt) {
+      target.descricao_pt = legacyDescription;
+    }
+
+    if ((!target.link || target.link === "#") && item.link && item.link !== "#") {
+      target.link = item.link;
+    }
+
+    return target;
+  }
+
   function nonTranslatableKey(item, config) {
     if (currentCollection === "links") {
+      // Agrupa duplicatas antigas PT/EN pelo nome e pela ordem.
+      // O link pode ter sido preenchido em apenas uma das duplicatas, então
+      // ele não deve separar itens que são, na prática, o mesmo contato.
       return [
         normalizeKeyPart(item.nome),
-        normalizeKeyPart(item.link),
         String(Number(item.ordem || 9999))
       ].join("|");
     }
@@ -609,9 +657,18 @@
     rows.forEach((row) => {
       const key = nonTranslatableKey(row.item, config);
       const previous = byKey.get(key);
-      if (!previous || nonTranslatablePreference(row.item) < nonTranslatablePreference(previous.item)) {
-        byKey.set(key, row);
+
+      if (!previous) {
+        byKey.set(key, { ...row, item: mergeLinkDescriptions({ ...row.item }, row.item) });
+        return;
       }
+
+      const shouldReplace = nonTranslatablePreference(row.item) < nonTranslatablePreference(previous.item);
+      const baseRow = shouldReplace ? row : previous;
+      const mergedItem = mergeLinkDescriptions({ ...baseRow.item }, previous.item);
+      mergeLinkDescriptions(mergedItem, row.item);
+
+      byKey.set(key, { ...baseRow, item: mergedItem });
     });
 
     return Array.from(byKey.values());
@@ -726,7 +783,8 @@
     visibleRows = uniqueNonTranslatableRows(
       getAllItems(config)
         .map((item, actualIndex) => ({ item, actualIndex }))
-        .filter(row => matchesConfig(row.item, config)),
+        .filter(row => matchesConfig(row.item, config))
+        .filter(row => config.mode !== "menu" || !isResearchMenuItem(row.item)),
       config
     ).sort((a, b) => {
         if (config.sortRecent) {

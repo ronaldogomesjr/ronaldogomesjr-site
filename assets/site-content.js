@@ -34,10 +34,17 @@
         brand.setAttribute('aria-label', site.brand.aria_label || site.brand.nome || 'Ronaldo Gomes Jr.');
       }
 
+      function isResearchMenuItem(item) {
+        const label = String(item.label || '').trim().toLowerCase();
+        const url = String(item.url || '').trim().toLowerCase();
+        return label === 'pesquisa' || label === 'research' || url === '/pt/pesquisa/' || url === '/en/research/';
+      }
+
       const nav = document.querySelector('.main-nav');
       if (nav && site[lang] && Array.isArray(site[lang].menu)) {
         const links = site[lang].menu
           .filter((item) => item.visivel !== false)
+          .filter((item) => !isResearchMenuItem(item))
           .sort((a, b) => Number(a.ordem || 9999) - Number(b.ordem || 9999));
         nav.innerHTML = links.map((item) => {
           const isLang = ['EN', 'PT'].includes(String(item.label || '').toUpperCase());

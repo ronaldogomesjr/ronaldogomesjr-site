@@ -1,26 +1,30 @@
-PATCH — Descrições bilíngues nos links da página contato
+PATCH — contato com descrições bilíngues + remoção da página Pesquisa/Research do menu
+
+Este patch altera somente código/HTML/configuração. Ele NÃO inclui content/*.json e, portanto, não sobrescreve o conteúdo já atualizado pelo painel.
+
+O que corrige:
+1. Na página contato em inglês, as descrições dos contatos passam a usar descricao_en quando houver.
+2. Duplicatas antigas PT/EN em links.json são agrupadas de forma mais segura, mesmo quando o link foi preenchido apenas em uma das versões.
+3. Termos antigos em português como "Perfil acadêmico" e "Currículo" recebem fallback em inglês como "Academic profile" e "CV".
+4. O painel permite editar as descrições dos contatos em português e inglês.
+5. A página Pesquisa/Research sai do menu superior e do seletor principal do painel.
+6. Os endereços antigos /pt/pesquisa/ e /en/research/ redirecionam para /pt/projetos/ e /en/projects/.
 
 Arquivos alterados:
+- admin/config.yml
+- admin/index.html
 - assets/admin.js
 - assets/cms-render.js
-- admin/config.yml
-
-O que muda:
-- Na seção "links de contato e rodapé", o painel passa a mostrar os campos:
-  - Descrição em português
-  - Description in English
-- A página contato em português usa a descrição em português.
-- A página contato em inglês usa a descrição em inglês.
-- Links, nomes dos contatos e URLs continuam sendo conteúdo único, sem duplicar PT/EN.
-- Itens antigos com campo "tipo" continuam funcionando como fallback.
-- Se houver duplicatas antigas por idioma em content/links.json, a página usa uma única entrada e aproveita as descrições antigas PT/EN quando existirem.
-
-Este patch não inclui nenhum arquivo content/*.json e não sobrescreve conteúdos já editados pelo painel.
+- assets/footer-links.js
+- assets/site-content.js
+- páginas HTML em pt/ e en/ para remover o link estático Pesquisa/Research do cabeçalho
 
 Como aplicar:
 1. Descompacte este ZIP.
-2. No GitHub, envie os arquivos mantendo as mesmas pastas.
-3. Substitua os arquivos existentes.
+2. No GitHub, suba os arquivos mantendo as mesmas pastas.
+3. Substitua os arquivos existentes quando o GitHub perguntar.
 4. Faça commit.
-5. Aguarde a Vercel publicar a nova versão.
-6. Reabra o painel e edite as descrições dos links de contato.
+5. Aguarde a Vercel publicar.
+
+Importante:
+Não é necessário mexer em content/*.json para aplicar este patch. Depois da publicação, edite as descrições em inglês na seção "links, contato e rodapé" do painel.
