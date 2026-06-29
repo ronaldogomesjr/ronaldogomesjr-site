@@ -71,6 +71,18 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1782747547590
+    },
+    {
+      "tipo": "artigo",
+      "idioma": "pt",
+      "ano": "2012",
+      "titulo": "Leitura em inglês na rede: a trajetória do Projeto IngRede.",
+      "autores": "Vera Lúcia Menezes de Oliveira e PAIVA, Junia de Carvalho Fidelis BRAGA, Marisa Mendonça CARNEIRO, Marcos RACILAN, Ronaldo Corrêa GOMES JUNIOR, Luciano Alves LIMA",
+      "veiculo": "Educação & Tecnologia",
+      "link": "https://seer.dppg.cefetmg.br/index.php/revista-et/article/view/478",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1782747720559
     }
   ]
 }
