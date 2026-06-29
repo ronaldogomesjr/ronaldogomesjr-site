@@ -1,17 +1,6 @@
 {
   "items": [
     {
-      "tipo": "artigo",
-      "ano": "2026",
-      "titulo": "Artigo a inserir",
-      "autores": "Ronaldo Gomes Jr.",
-      "veiculo": "Nome do periódico",
-      "link": "#",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1
-    },
-    {
       "tipo": "capitulo",
       "ano": "2026",
       "titulo": "Capítulo a inserir",
