@@ -1,21 +1,38 @@
-# Ronaldo Gomes Jr. Site — V35 Admin Fix
+# Ronaldo Gomes Jr. Site — V38 Full Admin
 
-Esta versão corrige o painel simples de atualização.
+Esta versão amplia o painel `/admin` para editar praticamente todo o conteúdo textual e todos os hiperlinks principais do site.
 
-## Correção
+## Agora o painel edita
 
-Depois de publicar um item, o painel agora recarrega automaticamente a categoria atual a partir do GitHub. Isso evita erro de referência antiga do arquivo e permite inserir vários itens seguidos na mesma categoria.
+- menu e cabeçalho em português;
+- menu e cabeçalho em inglês;
+- palavras-chave e hiperlinks da página inicial;
+- parágrafos da página inicial;
+- textos das páginas internas em PT e EN;
+- hiperlinks dentro das seções das páginas internas;
+- metatítulo e metadescrição das páginas;
+- artigos;
+- capítulos;
+- livros acadêmicos;
+- projetos;
+- livros didáticos;
+- links da página de contato;
+- links do rodapé.
 
-## Fluxo recomendado
+## O que mudou no site
 
-1. Acesse `/admin`.
-2. Escolha a categoria, por exemplo `publicações`.
-3. Clique em `carregar`.
-4. Clique em `novo item`.
-5. Preencha os campos.
-6. Clique em `publicar alteração`.
-7. Aguarde a mensagem: `Você já pode inserir outro item nesta categoria.`
-8. Clique em `novo item` novamente para adicionar outro.
+Foram adicionados arquivos de conteúdo:
+
+- `content/site.json`
+- `content/home.json`
+- `content/pages.json`
+
+E scripts para carregar conteúdo editável:
+
+- `assets/site-content.js`
+- `assets/home-content.js`
+- `assets/page-content.js`
+- `assets/footer-links.js`
 
 ## Publicação
 

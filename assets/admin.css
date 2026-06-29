@@ -206,3 +206,10 @@ button:disabled {
   opacity: .48;
   cursor: wait;
 }
+
+
+.editor-form .hint {
+  margin: 0;
+  color: var(--teal);
+  font-size: .95rem;
+}

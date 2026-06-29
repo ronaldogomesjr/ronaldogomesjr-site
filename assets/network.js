@@ -1,4 +1,3 @@
-
 (function () {
   const canvases = document.querySelectorAll('[data-network-canvas]');
   if (!canvases.length) return;
@@ -13,7 +12,7 @@
 
   function createNode(width, height, index) {
     const color = palette[index % palette.length];
-    const margin = 30;
+    const margin = 44;
     const hollow = index % 4 === 0 || index % 7 === 0;
     const large = index % 9 === 0;
     const radius = large ? 13 + Math.random() * 10 : 2.5 + Math.random() * 6;
@@ -68,12 +67,18 @@
       };
     }
 
+    function edgeFade(x, y) {
+      const fadeZone = Math.min(120, Math.max(68, Math.min(width, height) * 0.18));
+      const minEdgeDistance = Math.min(x, y, width - x, height - y);
+      const raw = Math.max(0, Math.min(1, minEdgeDistance / fadeZone));
+      return raw * raw * (3 - 2 * raw);
+    }
+
     function draw(time) {
       ctx.clearRect(0, 0, width, height);
 
-      // very soft orbital traces
       ctx.save();
-      ctx.globalAlpha = 0.15;
+      ctx.globalAlpha = 0.12;
       ctx.strokeStyle = 'rgba(33, 34, 36, 0.22)';
       ctx.setLineDash([1.2, 7]);
       const cx = width * 0.54;
@@ -95,14 +100,13 @@
         n.x += n.vx + Math.sin(n.phase) * 0.12;
         n.y += n.vy + Math.cos(n.phase * 1.12) * 0.12;
 
-        const pad = 18;
+        const pad = 34;
         if (n.x < -pad) n.x = width + pad;
         if (n.x > width + pad) n.x = -pad;
         if (n.y < -pad) n.y = height + pad;
         if (n.y > height + pad) n.y = -pad;
       }
 
-      // connections
       const maxDistance = width < 520 ? 145 : 190;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -113,7 +117,9 @@
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < maxDistance && Math.abs(i - j) % 3 !== 1) {
-            const alpha = (1 - distance / maxDistance) * 0.34;
+            const fade = Math.min(edgeFade(a.x, a.y), edgeFade(b.x, b.y));
+            const alpha = (1 - distance / maxDistance) * 0.34 * fade;
+            if (alpha < 0.01) continue;
             const c = curveBetween(a, b, 28 + Math.sin(time * 0.0007 + i) * 18);
 
             ctx.save();
@@ -131,12 +137,14 @@
         }
       }
 
-      // nodes
       for (const n of nodes) {
+        const fade = edgeFade(n.x, n.y);
+        if (fade < 0.02) continue;
         const pulse = 1 + Math.sin(time * 0.002 + n.phase) * 0.08;
         const r = n.radius * pulse;
 
         ctx.save();
+        ctx.globalAlpha = fade;
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
         if (n.hollow) {
@@ -147,12 +155,12 @@
           ctx.stroke();
         } else {
           ctx.fillStyle = n.color.fill;
-          ctx.globalAlpha = n.large ? 0.78 : 0.86;
+          ctx.globalAlpha = (n.large ? 0.78 : 0.86) * fade;
           ctx.fill();
         }
 
         if (n.large) {
-          ctx.globalAlpha = 0.12;
+          ctx.globalAlpha = 0.12 * fade;
           ctx.beginPath();
           ctx.arc(n.x, n.y, r * 1.85, 0, Math.PI * 2);
           ctx.strokeStyle = n.color.stroke;

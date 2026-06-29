@@ -1,31 +1,165 @@
-
 (function () {
   const OWNER = "ronaldogomesjr";
   const REPO = "ronaldogomesjr-site";
   const BRANCH = "main";
   const TOKEN_KEY = "rgjr_site_github_token";
 
+  const menuFields = [
+    ["label", "text", "Texto do menu"],
+    ["url", "text", "Hiperlink / URL"],
+    ["visivel", "checkbox", "Visível no menu"],
+    ["ordem", "number", "Ordem"]
+  ];
+
+  const publicationFields = [
+    ["idioma", "select", "Idioma", ["pt", "en"]],
+    ["ano", "text", "Ano"],
+    ["titulo", "text", "Título"],
+    ["autores", "text", "Autores"],
+    ["veiculo", "text", "Veículo / periódico / livro / editora"],
+    ["link", "text", "Hiperlink externo"],
+    ["visivel", "checkbox", "Visível no site"],
+    ["destaque", "checkbox", "Destaque"],
+    ["ordem", "number", "Ordem"]
+  ];
+
+  const pageFields = [
+    ["slug", "text", "Slug da página"],
+    ["idioma", "select", "Idioma", ["pt", "en"]],
+    ["title", "text", "Título exibido"],
+    ["intro", "textarea", "Texto de abertura"],
+    ["meta_title", "text", "Título SEO / navegador"],
+    ["meta_description", "textarea", "Descrição SEO"],
+    ["section1_title", "text", "Seção 1 — título"],
+    ["section1_text", "textarea", "Seção 1 — texto"],
+    ["section1_link_label", "text", "Seção 1 — texto do hiperlink"],
+    ["section1_link_url", "text", "Seção 1 — URL do hiperlink"],
+    ["section2_title", "text", "Seção 2 — título"],
+    ["section2_text", "textarea", "Seção 2 — texto"],
+    ["section2_link_label", "text", "Seção 2 — texto do hiperlink"],
+    ["section2_link_url", "text", "Seção 2 — URL do hiperlink"],
+    ["section3_title", "text", "Seção 3 — título"],
+    ["section3_text", "textarea", "Seção 3 — texto"],
+    ["section3_link_label", "text", "Seção 3 — texto do hiperlink"],
+    ["section3_link_url", "text", "Seção 3 — URL do hiperlink"],
+    ["section4_title", "text", "Seção 4 — título"],
+    ["section4_text", "textarea", "Seção 4 — texto"],
+    ["section4_link_label", "text", "Seção 4 — texto do hiperlink"],
+    ["section4_link_url", "text", "Seção 4 — URL do hiperlink"],
+    ["ordem", "number", "Ordem"]
+  ];
+
   const collections = {
-    "publicacoes": {
+    "config-pt": {
+      mode: "menu",
+      path: "content/site.json",
+      key: "pt",
+      root: "menu",
+      labelField: "label",
+      meta: item => item.url || "",
+      fields: menuFields,
+      blank: { label: "NOVO LINK", url: "#", visivel: true, ordem: 999 }
+    },
+    "config-en": {
+      mode: "menu",
+      path: "content/site.json",
+      key: "en",
+      root: "menu",
+      labelField: "label",
+      meta: item => item.url || "",
+      fields: menuFields,
+      blank: { label: "NEW LINK", url: "#", visivel: true, ordem: 999 }
+    },
+    "home-pt": {
+      mode: "singleton",
+      path: "content/home.json",
+      key: "pt",
+      label: "página inicial (pt)",
+      fields: [
+        ["keyword1", "text", "Palavra-chave 1"],
+        ["keyword1_url", "text", "Hiperlink da palavra-chave 1"],
+        ["keyword2", "text", "Palavra-chave 2"],
+        ["keyword2_url", "text", "Hiperlink da palavra-chave 2"],
+        ["keyword3", "text", "Palavra-chave 3"],
+        ["keyword3_url", "text", "Hiperlink da palavra-chave 3"],
+        ["intro1", "textarea", "Parágrafo 1"],
+        ["intro2", "textarea", "Parágrafo 2"],
+        ["intro3", "textarea", "Parágrafo 3"]
+      ],
+      blank: { keyword1: "design.", keyword1_url: "design", keyword2: "tecnologia digital.", keyword2_url: "tecnologia-digital", keyword3: "educação linguística.", keyword3_url: "educacao-linguistica", intro1: "", intro2: "", intro3: "" }
+    },
+    "home-en": {
+      mode: "singleton",
+      path: "content/home.json",
+      key: "en",
+      label: "home page (en)",
+      fields: [
+        ["keyword1", "text", "Keyword 1"],
+        ["keyword1_url", "text", "Keyword 1 link"],
+        ["keyword2", "text", "Keyword 2"],
+        ["keyword2_url", "text", "Keyword 2 link"],
+        ["keyword3", "text", "Keyword 3"],
+        ["keyword3_url", "text", "Keyword 3 link"],
+        ["intro1", "textarea", "Paragraph 1"],
+        ["intro2", "textarea", "Paragraph 2"],
+        ["intro3", "textarea", "Paragraph 3"]
+      ],
+      blank: { keyword1: "design.", keyword1_url: "design", keyword2: "digital technology.", keyword2_url: "digital-technology", keyword3: "language education.", keyword3_url: "language-education", intro1: "", intro2: "", intro3: "" }
+    },
+    "paginas-pt": {
+      mode: "filtered-list",
+      path: "content/pages.json",
+      root: "items",
+      filterField: "idioma",
+      filterValue: "pt",
+      labelField: "title",
+      meta: item => item.slug || "",
+      fields: pageFields,
+      blank: { slug: "nova-pagina", idioma: "pt", title: "nova página", intro: "", meta_title: "", meta_description: "", section1_title: "", section1_text: "", section1_link_label: "", section1_link_url: "", section2_title: "", section2_text: "", section2_link_label: "", section2_link_url: "", section3_title: "", section3_text: "", section3_link_label: "", section3_link_url: "", section4_title: "", section4_text: "", section4_link_label: "", section4_link_url: "", ordem: 999 }
+    },
+    "paginas-en": {
+      mode: "filtered-list",
+      path: "content/pages.json",
+      root: "items",
+      filterField: "idioma",
+      filterValue: "en",
+      labelField: "title",
+      meta: item => item.slug || "",
+      fields: pageFields,
+      blank: { slug: "new-page", idioma: "en", title: "new page", intro: "", meta_title: "", meta_description: "", section1_title: "", section1_text: "", section1_link_label: "", section1_link_url: "", section2_title: "", section2_text: "", section2_link_label: "", section2_link_url: "", section3_title: "", section3_text: "", section3_link_label: "", section3_link_url: "", section4_title: "", section4_text: "", section4_link_label: "", section4_link_url: "", ordem: 999 }
+    },
+    "artigos": {
+      mode: "filtered-list",
       path: "content/publicacoes.json",
       root: "items",
+      fixed: { tipo: "artigo" },
       labelField: "titulo",
-      meta: item => [item.tipo, item.ano, item.idioma].filter(Boolean).join(" · "),
-      fields: [
-        ["tipo", "select", "Tipo", ["artigo", "capitulo", "livro_academico"]],
-        ["idioma", "select", "Idioma", ["pt", "en"]],
-        ["ano", "text", "Ano"],
-        ["titulo", "text", "Título"],
-        ["autores", "text", "Autores"],
-        ["veiculo", "text", "Veículo / periódico / livro / editora"],
-        ["link", "text", "Link externo"],
-        ["visivel", "checkbox", "Visível no site"],
-        ["destaque", "checkbox", "Destaque"],
-        ["ordem", "number", "Ordem"]
-      ],
-      blank: { tipo: "artigo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "", visivel: true, destaque: false, ordem: 999 }
+      meta: item => ["artigo", item.ano, item.idioma].filter(Boolean).join(" · "),
+      fields: publicationFields,
+      blank: { tipo: "artigo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+    },
+    "capitulos": {
+      mode: "filtered-list",
+      path: "content/publicacoes.json",
+      root: "items",
+      fixed: { tipo: "capitulo" },
+      labelField: "titulo",
+      meta: item => ["capítulo", item.ano, item.idioma].filter(Boolean).join(" · "),
+      fields: publicationFields,
+      blank: { tipo: "capitulo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+    },
+    "livros-academicos": {
+      mode: "filtered-list",
+      path: "content/publicacoes.json",
+      root: "items",
+      fixed: { tipo: "livro_academico" },
+      labelField: "titulo",
+      meta: item => ["livro acadêmico", item.ano, item.idioma].filter(Boolean).join(" · "),
+      fields: publicationFields,
+      blank: { tipo: "livro_academico", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
     },
     "projetos": {
+      mode: "list",
       path: "content/projetos.json",
       root: "items",
       labelField: "titulo",
@@ -36,14 +170,15 @@
         ["descricao", "textarea", "Descrição"],
         ["periodo", "text", "Período"],
         ["parceiros", "text", "Parceiros"],
-        ["link", "text", "Link externo"],
+        ["link", "text", "Hiperlink externo"],
         ["visivel", "checkbox", "Visível no site"],
         ["destaque", "checkbox", "Destaque"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", titulo: "", descricao: "", periodo: "", parceiros: "", link: "", visivel: true, destaque: false, ordem: 999 }
+      blank: { idioma: "pt", titulo: "", descricao: "", periodo: "", parceiros: "", link: "#", visivel: true, destaque: false, ordem: 999 }
     },
     "livros-didaticos": {
+      mode: "list",
       path: "content/livros-didaticos.json",
       root: "items",
       labelField: "titulo",
@@ -55,35 +190,37 @@
         ["ano", "text", "Ano"],
         ["nivel", "text", "Nível"],
         ["descricao", "textarea", "Descrição"],
-        ["link", "text", "Link externo"],
+        ["link", "text", "Hiperlink externo"],
         ["imagem", "text", "URL da imagem"],
         ["visivel", "checkbox", "Visível no site"],
         ["destaque", "checkbox", "Destaque"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", titulo: "", editora: "", ano: "", nivel: "", descricao: "", link: "", imagem: "", visivel: true, destaque: false, ordem: 999 }
+      blank: { idioma: "pt", titulo: "", editora: "", ano: "", nivel: "", descricao: "", link: "#", imagem: "", visivel: true, destaque: false, ordem: 999 }
     },
     "links": {
+      mode: "list",
       path: "content/links.json",
       root: "items",
       labelField: "nome",
       meta: item => [item.tipo, item.idioma].filter(Boolean).join(" · "),
       fields: [
         ["idioma", "select", "Idioma", ["pt", "en"]],
-        ["nome", "text", "Nome"],
-        ["tipo", "text", "Tipo"],
-        ["link", "text", "Link"],
+        ["nome", "text", "Texto do hiperlink"],
+        ["tipo", "text", "Tipo / descrição"],
+        ["link", "text", "URL do hiperlink"],
         ["visivel", "checkbox", "Visível no site"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", nome: "", tipo: "", link: "", visivel: true, ordem: 999 }
+      blank: { idioma: "pt", nome: "", tipo: "", link: "#", visivel: true, ordem: 999 }
     }
   };
 
-  let currentCollection = "publicacoes";
+  let currentCollection = "config-pt";
   let currentData = null;
   let currentSha = null;
-  let currentIndex = 0;
+  let currentActualIndex = null;
+  let visibleRows = [];
 
   const $ = id => document.getElementById(id);
 
@@ -105,7 +242,7 @@
   }
 
   function apiURL(path) {
-    return `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`;
+    return `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}&_=${Date.now()}`;
   }
 
   async function githubRequest(url, options = {}) {
@@ -125,7 +262,7 @@
 
     const text = await response.text();
     let data = null;
-    try { data = text ? JSON.parse(text) : null; } catch (e) { data = text; }
+    try { data = text ? JSON.parse(text) : null; } catch { data = text; }
 
     if (!response.ok) {
       const message = data && data.message ? data.message : `Erro HTTP ${response.status}`;
@@ -148,7 +285,35 @@
     return btoa(binary);
   }
 
-  async function loadCollection() {
+  function escapeHTML(value) {
+    return String(value || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function getAllItems(config) {
+    if (config.mode === "menu") {
+      if (!currentData[config.key]) currentData[config.key] = { menu: [] };
+      if (!Array.isArray(currentData[config.key][config.root])) currentData[config.key][config.root] = [];
+      return currentData[config.key][config.root];
+    }
+    return currentData && Array.isArray(currentData[config.root]) ? currentData[config.root] : [];
+  }
+
+  function matchesConfig(item, config) {
+    if (config.filterField && item[config.filterField] !== config.filterValue) return false;
+    if (config.fixed) {
+      for (const [key, value] of Object.entries(config.fixed)) {
+        if (item[key] !== value) return false;
+      }
+    }
+    return true;
+  }
+
+  async function loadCollection(preferLabel = "") {
     currentCollection = $("collectionSelect").value;
     const config = collections[currentCollection];
     setStatus("Carregando conteúdo do GitHub...");
@@ -157,38 +322,75 @@
     currentSha = file.sha;
     currentData = JSON.parse(decodeBase64Unicode(file.content));
 
-    if (!Array.isArray(currentData[config.root])) {
-      currentData[config.root] = [];
+    if (config.mode === "singleton") {
+      if (!currentData[config.key]) currentData[config.key] = { ...config.blank };
+      currentActualIndex = 0;
+      renderList();
+      renderEditor();
+      setStatus("Conteúdo carregado.");
+      return;
     }
 
-    currentIndex = 0;
+    if (config.mode !== "menu" && !Array.isArray(currentData[config.root])) currentData[config.root] = [];
+
+    rebuildVisibleRows();
+
+    if (preferLabel) {
+      const found = visibleRows.find(row => (row.item[config.labelField] || "") === preferLabel);
+      currentActualIndex = found ? found.actualIndex : (visibleRows[0] ? visibleRows[0].actualIndex : null);
+    } else {
+      currentActualIndex = visibleRows[0] ? visibleRows[0].actualIndex : null;
+    }
+
     renderList();
     renderEditor();
     setStatus("Conteúdo carregado.");
   }
 
+  function rebuildVisibleRows() {
+    const config = collections[currentCollection];
+    visibleRows = getAllItems(config)
+      .map((item, actualIndex) => ({ item, actualIndex }))
+      .filter(row => matchesConfig(row.item, config))
+      .sort((a, b) => {
+        const orderA = Number(a.item.ordem || 9999);
+        const orderB = Number(b.item.ordem || 9999);
+        if (orderA !== orderB) return orderA - orderB;
+        return String(a.item[config.labelField] || "").localeCompare(String(b.item[config.labelField] || ""));
+      });
+  }
+
   function renderList() {
     const list = $("itemList");
     const config = collections[currentCollection];
-    const items = currentData ? currentData[config.root] : [];
-
     list.innerHTML = "";
 
-    if (!items.length) {
-      list.innerHTML = "<p class='hint'>Nenhum item cadastrado.</p>";
+    if (config.mode === "singleton") {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "item-button active";
+      btn.innerHTML = `<span class="item-title">${escapeHTML(config.label)}</span><span class="item-meta">conteúdo único</span>`;
+      list.appendChild(btn);
       return;
     }
 
-    items.forEach((item, index) => {
+    rebuildVisibleRows();
+    if (!visibleRows.length) {
+      list.innerHTML = "<p class='hint'>Nenhum item cadastrado nesta categoria.</p>";
+      return;
+    }
+
+    if (currentActualIndex === null || !visibleRows.some(row => row.actualIndex === currentActualIndex)) {
+      currentActualIndex = visibleRows[0].actualIndex;
+    }
+
+    visibleRows.forEach(({ item, actualIndex }) => {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "item-button" + (index === currentIndex ? " active" : "");
-      btn.innerHTML = `
-        <span class="item-title">${escapeHTML(item[config.labelField] || "(sem título)")}</span>
-        <span class="item-meta">${escapeHTML(config.meta(item))}</span>
-      `;
+      btn.className = "item-button" + (actualIndex === currentActualIndex ? " active" : "");
+      btn.innerHTML = `<span class="item-title">${escapeHTML(item[config.labelField] || "(sem título)")}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
       btn.addEventListener("click", () => {
-        currentIndex = index;
+        currentActualIndex = actualIndex;
         renderList();
         renderEditor();
       });
@@ -196,17 +398,54 @@
     });
   }
 
+  function getCurrentItem() {
+    const config = collections[currentCollection];
+    if (!currentData) return null;
+
+    if (config.mode === "singleton") {
+      const source = currentData[config.key] || config.blank;
+      const keywords = source.keywords || [];
+      return {
+        keyword1: keywords[0]?.label || config.blank.keyword1,
+        keyword1_url: keywords[0]?.slug || config.blank.keyword1_url,
+        keyword2: keywords[1]?.label || config.blank.keyword2,
+        keyword2_url: keywords[1]?.slug || config.blank.keyword2_url,
+        keyword3: keywords[2]?.label || config.blank.keyword3,
+        keyword3_url: keywords[2]?.slug || config.blank.keyword3_url,
+        intro1: source.intro?.[0] || "",
+        intro2: source.intro?.[1] || "",
+        intro3: source.intro?.[2] || ""
+      };
+    }
+
+    const items = getAllItems(config);
+    return currentActualIndex !== null ? items[currentActualIndex] : null;
+  }
+
   function renderEditor() {
     const form = $("editorForm");
     const config = collections[currentCollection];
-    const items = currentData ? currentData[config.root] : [];
-    const item = items[currentIndex];
-
+    const item = getCurrentItem();
     form.innerHTML = "";
 
     if (!item) {
       form.innerHTML = "<p class='hint'>Selecione ou crie um item.</p>";
       return;
+    }
+
+    if (config.fixed) {
+      const fixedLabel = Object.values(config.fixed)[0].replace("_", " ");
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = `Categoria: ${fixedLabel}`;
+      form.appendChild(p);
+    }
+
+    if (config.mode === "menu") {
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = "Aqui você edita os textos e hiperlinks do menu superior.";
+      form.appendChild(p);
     }
 
     config.fields.forEach(([name, type, label, options]) => {
@@ -220,8 +459,8 @@
 
       const labelEl = document.createElement("label");
       labelEl.textContent = label;
-
       let input;
+
       if (type === "textarea") {
         input = document.createElement("textarea");
         input.name = name;
@@ -251,100 +490,79 @@
   function collectEditorValues() {
     const config = collections[currentCollection];
     const form = $("editorForm");
-    const values = {};
 
+    if (config.mode === "singleton") {
+      return {
+        keywords: [
+          { slug: form.elements["keyword1_url"].value, label: form.elements["keyword1"].value },
+          { slug: form.elements["keyword2_url"].value, label: form.elements["keyword2"].value },
+          { slug: form.elements["keyword3_url"].value, label: form.elements["keyword3"].value }
+        ],
+        intro: [form.elements["intro1"].value, form.elements["intro2"].value, form.elements["intro3"].value].filter(Boolean)
+      };
+    }
+
+    const values = config.fixed ? { ...config.fixed } : {};
     config.fields.forEach(([name, type]) => {
       const input = form.elements[name];
       if (!input) return;
-
       if (type === "checkbox") values[name] = Boolean(input.checked);
       else if (type === "number") values[name] = input.value === "" ? "" : Number(input.value);
       else values[name] = input.value;
     });
-
     return values;
   }
 
   async function saveCurrent() {
+    const config = collections[currentCollection];
     if (!currentData) await loadCollection();
 
-    const config = collections[currentCollection];
-    const items = currentData[config.root];
-    if (!items[currentIndex]) throw new Error("Nenhum item selecionado.");
+    if (config.mode === "singleton") {
+      currentData[config.key] = collectEditorValues();
+      await saveFile(`Atualiza ${currentCollection}`, config.label);
+      return;
+    }
 
-    items[currentIndex] = collectEditorValues();
+    const items = getAllItems(config);
+    if (currentActualIndex === null || !items[currentActualIndex]) throw new Error("Nenhum item selecionado.");
 
-    await saveFile(`Atualiza ${currentCollection}`);
-    renderList();
-    renderEditor();
+    const oldLabel = items[currentActualIndex][config.labelField] || "";
+    const values = collectEditorValues();
+    items[currentActualIndex] = values;
+    await saveFile(`Atualiza ${currentCollection}`, values[config.labelField] || oldLabel);
   }
 
-  async function saveFile(message) {
+  async function saveFile(message, preferLabel = "") {
     const config = collections[currentCollection];
     setStatus("Publicando alteração no GitHub...");
-
     const content = JSON.stringify(currentData, null, 2) + "\n";
 
-    try {
-      const result = await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${config.path}`, {
-        method: "PUT",
-        body: JSON.stringify({
-          message,
-          content: encodeBase64Unicode(content),
-          sha: currentSha,
-          branch: BRANCH
-        })
-      });
+    const result = await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${config.path}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        message,
+        content: encodeBase64Unicode(content),
+        sha: currentSha,
+        branch: BRANCH
+      })
+    });
 
-      if (result && result.content && result.content.sha) {
-        currentSha = result.content.sha;
-      }
-
-      setStatus("Alteração publicada. Recarregando a categoria...");
-      await reloadCurrentAfterSave();
-      setStatus("Alteração publicada. Você já pode inserir outro item nesta categoria.");
-    } catch (error) {
-      if (String(error.message || "").toLowerCase().includes("sha") || String(error.message || "").toLowerCase().includes("conflict")) {
-        setStatus("O conteúdo mudou no GitHub. Recarreguei a categoria; tente publicar novamente.", true);
-        await reloadCurrentAfterSave();
-        return;
-      }
-      throw error;
-    }
-  }
-
-  async function reloadCurrentAfterSave() {
-    const config = collections[currentCollection];
-    const selectedTitle = currentData && currentData[config.root] && currentData[config.root][currentIndex]
-      ? (currentData[config.root][currentIndex][config.labelField] || "")
-      : "";
-
-    const file = await githubRequest(apiURL(config.path));
-    currentSha = file.sha;
-    currentData = JSON.parse(decodeBase64Unicode(file.content));
-
-    if (!Array.isArray(currentData[config.root])) {
-      currentData[config.root] = [];
-    }
-
-    if (selectedTitle) {
-      const newIndex = currentData[config.root].findIndex(item => item[config.labelField] === selectedTitle);
-      currentIndex = newIndex >= 0 ? newIndex : Math.max(0, currentData[config.root].length - 1);
-    } else {
-      currentIndex = Math.max(0, currentData[config.root].length - 1);
-    }
-
-    renderList();
-    renderEditor();
+    if (result && result.content && result.content.sha) currentSha = result.content.sha;
+    await loadCollection(preferLabel);
+    setStatus("Alteração publicada. A Vercel deve atualizar o site em instantes.");
   }
 
   async function addItem() {
     const config = collections[currentCollection];
-    if (!currentData) {
-      await loadCollection();
+    if (!currentData) await loadCollection();
+    if (config.mode === "singleton") {
+      setStatus("Este é um conteúdo único. Edite os campos e clique em publicar alteração.");
+      return;
     }
-    currentData[config.root].push(JSON.parse(JSON.stringify(config.blank)));
-    currentIndex = currentData[config.root].length - 1;
+    const items = getAllItems(config);
+    const newItem = JSON.parse(JSON.stringify(config.blank));
+    items.push(newItem);
+    currentActualIndex = items.length - 1;
     renderList();
     renderEditor();
     setStatus("Novo item criado. Preencha os campos e clique em publicar alteração.");
@@ -352,26 +570,16 @@
 
   async function deleteItem() {
     const config = collections[currentCollection];
-    if (!currentData || !currentData[config.root][currentIndex]) return;
-
-    const ok = confirm("Tem certeza que deseja excluir este item?");
-    if (!ok) return;
-
-    currentData[config.root].splice(currentIndex, 1);
-    currentIndex = Math.max(0, currentIndex - 1);
-
+    if (config.mode === "singleton") {
+      setStatus("Este conteúdo não pode ser excluído.", true);
+      return;
+    }
+    const items = getAllItems(config);
+    if (currentActualIndex === null || !items[currentActualIndex]) return;
+    if (!confirm("Tem certeza que deseja excluir este item?")) return;
+    items.splice(currentActualIndex, 1);
+    currentActualIndex = null;
     await saveFile(`Remove item de ${currentCollection}`);
-    renderList();
-    renderEditor();
-  }
-
-  function escapeHTML(value) {
-    return String(value || "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
   }
 
   $("saveTokenBtn").addEventListener("click", () => {
@@ -391,61 +599,30 @@
   });
 
   $("loadBtn").addEventListener("click", async () => {
-    try {
-      setBusy(true);
-      await loadCollection();
-    } catch (err) {
-      setStatus(err.message, true);
-    } finally {
-      setBusy(false);
-    }
+    try { setBusy(true); await loadCollection(); } catch (err) { setStatus(err.message, true); } finally { setBusy(false); }
   });
+
   $("collectionSelect").addEventListener("change", async () => {
-    try {
-      setBusy(true);
-      await loadCollection();
-    } catch (err) {
-      setStatus(err.message, true);
-    } finally {
-      setBusy(false);
-    }
+    try { setBusy(true); await loadCollection(); } catch (err) { setStatus(err.message, true); } finally { setBusy(false); }
   });
+
   $("addBtn").addEventListener("click", async () => {
-    try {
-      setBusy(true);
-      await addItem();
-    } catch (err) {
-      setStatus(err.message, true);
-    } finally {
-      setBusy(false);
-    }
+    try { setBusy(true); await addItem(); } catch (err) { setStatus(err.message, true); } finally { setBusy(false); }
   });
+
   $("saveBtn").addEventListener("click", async event => {
     event.preventDefault();
-    try {
-      setBusy(true);
-      await saveCurrent();
-    } catch (err) {
-      setStatus(err.message, true);
-    } finally {
-      setBusy(false);
-    }
+    try { setBusy(true); await saveCurrent(); } catch (err) { setStatus(err.message, true); } finally { setBusy(false); }
   });
+
   $("deleteBtn").addEventListener("click", async event => {
     event.preventDefault();
-    try {
-      setBusy(true);
-      await deleteItem();
-    } catch (err) {
-      setStatus(err.message, true);
-    } finally {
-      setBusy(false);
-    }
+    try { setBusy(true); await deleteItem(); } catch (err) { setStatus(err.message, true); } finally { setBusy(false); }
   });
 
   const savedToken = localStorage.getItem(TOKEN_KEY);
   if (savedToken) {
     $("tokenInput").value = savedToken;
-    setStatus("Token já salvo neste navegador. Clique em carregar.");
+    setStatus("Token já salvo neste navegador. Escolha um conteúdo e clique em carregar.");
   }
 })();

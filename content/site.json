@@ -1,0 +1,99 @@
+{
+  "brand": {
+    "nome": "RONALDO GOMES JR.",
+    "url_pt": "/pt/",
+    "url_en": "/en/"
+  },
+  "pt": {
+    "menu": [
+      {
+        "label": "PESQUISA",
+        "url": "/pt/pesquisa/",
+        "visivel": true,
+        "ordem": 1
+      },
+      {
+        "label": "PROJETOS",
+        "url": "/pt/projetos/",
+        "visivel": true,
+        "ordem": 2
+      },
+      {
+        "label": "PUBLICAÇÕES",
+        "url": "/pt/publicacoes/",
+        "visivel": true,
+        "ordem": 3
+      },
+      {
+        "label": "LIVROS DIDÁTICOS",
+        "url": "/pt/livros-didaticos/",
+        "visivel": true,
+        "ordem": 4
+      },
+      {
+        "label": "SOBRE",
+        "url": "/pt/sobre/",
+        "visivel": true,
+        "ordem": 5
+      },
+      {
+        "label": "CONTATO",
+        "url": "/pt/contato/",
+        "visivel": true,
+        "ordem": 6
+      },
+      {
+        "label": "EN",
+        "url": "/en/",
+        "visivel": true,
+        "ordem": 7
+      }
+    ]
+  },
+  "en": {
+    "menu": [
+      {
+        "label": "RESEARCH",
+        "url": "/en/research/",
+        "visivel": true,
+        "ordem": 1
+      },
+      {
+        "label": "PROJECTS",
+        "url": "/en/projects/",
+        "visivel": true,
+        "ordem": 2
+      },
+      {
+        "label": "PUBLICATIONS",
+        "url": "/en/publications/",
+        "visivel": true,
+        "ordem": 3
+      },
+      {
+        "label": "TEXTBOOKS",
+        "url": "/en/textbooks/",
+        "visivel": true,
+        "ordem": 4
+      },
+      {
+        "label": "ABOUT",
+        "url": "/en/about/",
+        "visivel": true,
+        "ordem": 5
+      },
+      {
+        "label": "CONTACT",
+        "url": "/en/contact/",
+        "visivel": true,
+        "ordem": 6
+      },
+      {
+        "label": "PT",
+        "url": "/pt/",
+        "visivel": true,
+        "ordem": 7
+      }
+    ]
+  }
+}

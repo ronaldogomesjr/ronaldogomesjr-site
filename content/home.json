@@ -1,0 +1,44 @@
+{
+  "pt": {
+    "keywords": [
+      {
+        "slug": "design",
+        "label": "design."
+      },
+      {
+        "slug": "tecnologia-digital",
+        "label": "tecnologia digital."
+      },
+      {
+        "slug": "educacao-linguistica",
+        "label": "educação linguística."
+      }
+    ],
+    "intro": [
+      "Desenvolvo pesquisa interdisciplinar na interseção entre design, tecnologia digital e educação linguística, com atenção às práticas de ensino, aprendizagem e comunicação mediadas por artefatos digitais e experiências de design.",
+      "Atuo na docência em cursos de graduação e pós-graduação, orientando projetos que articulam teoria, método e criação para investigar problemas complexos da linguagem em contextos educacionais contemporâneos.",
+      "Publico em periódicos nacionais e internacionais e organizo livros e materiais didáticos voltados à formação de professores e ao letramento crítico em ambientes digitais."
+    ]
+  },
+  "en": {
+    "keywords": [
+      {
+        "slug": "design",
+        "label": "design."
+      },
+      {
+        "slug": "digital-technology",
+        "label": "digital technology."
+      },
+      {
+        "slug": "language-education",
+        "label": "language education."
+      }
+    ],
+    "intro": [
+      "I conduct interdisciplinary research at the intersection of design, digital technology, and language education, with particular attention to teaching, learning, and communication practices mediated by digital artefacts and designed experiences.",
+      "I teach in undergraduate and graduate programmes, supervising projects that connect theory, method, and creative practice to investigate complex language-related issues in contemporary educational contexts.",
+      "I publish in national and international journals and also organize books and teaching materials focused on teacher education and critical literacy in digital environments."
+    ]
+  }
+}
