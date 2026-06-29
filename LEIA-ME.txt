@@ -1,28 +1,38 @@
-PATCH — Projetos bilíngues com categorias e anos editáveis
+PATCH — títulos e subtítulos editáveis para páginas de publicações
 
-Este patch ajusta a seção Projetos para permitir editar:
-- nome do projeto em português e inglês;
-- descrição em português e inglês;
-- categoria com exibição bilíngue;
-- ano de início;
-- ano de fim;
-- link externo.
+Objetivo:
+Permitir editar pelo painel os títulos e subtítulos das páginas:
+- publicações / publications
+- artigos / journal articles
+- capítulos / book chapters
+- livros acadêmicos / academic books
 
 Arquivos alterados:
 - assets/admin.js
-- assets/cms-render.js
-- assets/footer-links.js
-- admin/config.yml
+- assets/page-content.js
+- admin/index.html
+- pt/publicacoes/index.html
+- pt/publicacoes/artigos/index.html
+- pt/publicacoes/capitulos/index.html
+- pt/publicacoes/livros-academicos/index.html
+- en/publications/index.html
+- en/publications/journal-articles/index.html
+- en/publications/book-chapters/index.html
+- en/publications/academic-books/index.html
 
-Importante:
-Este pacote NÃO inclui arquivos content/*.json. Portanto, não sobrescreve conteúdo já atualizado em outras páginas.
+O patch NÃO inclui content/*.json.
+Isso evita sobrescrever conteúdo já atualizado no painel.
 
-Como usar:
-1. Descompacte este ZIP.
-2. No GitHub, suba os arquivos da pasta assets/ para a pasta assets/ do repositório.
-3. Suba o arquivo admin/config.yml para a pasta admin/ do repositório.
-4. Faça commit.
-5. Aguarde a Vercel publicar.
+Como usar no painel depois de subir o patch:
+1. Entre no painel admin.
+2. Em "Escolher conteúdo", selecione uma das opções:
+   - página: publicações / publications
+   - página: artigos / journal articles
+   - página: capítulos / book chapters
+   - página: livros acadêmicos / academic books
+3. Clique em carregar.
+4. Edite os campos "Título" e "Texto de abertura" em português e inglês.
+5. Clique em publicar alteração.
 
 Observação:
-Se o ano de fim ficar vazio, o site exibirá "Desde YYYY" em português e "Since YYYY" em inglês. Se os dois anos forem preenchidos, exibirá "YYYY–YYYY".
+Ao abrir uma das novas páginas pela primeira vez no painel, se ela ainda não existir em content/pages.json, o painel cria uma entrada nova apenas para aquela página. Ele não apaga as outras páginas.

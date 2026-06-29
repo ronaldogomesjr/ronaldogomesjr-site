@@ -28,12 +28,14 @@
     const shell = document.querySelector('[data-page-shell]');
     if (!shell) return;
 
+    const pageId = shell.getAttribute('data-page-id');
     const slug = shell.getAttribute('data-page-slug');
     const lang = shell.getAttribute('data-lang') || 'pt';
 
     try {
       const items = await loadPages();
       const page = items.find((item) => {
+        if (pageId && item.id === pageId) return true;
         if (lang === 'en') return item.slug_en === slug || item.slug === slug;
         return item.slug_pt === slug || item.slug === slug;
       });
