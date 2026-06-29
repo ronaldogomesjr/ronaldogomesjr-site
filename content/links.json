@@ -4,7 +4,7 @@
       "idioma": "pt",
       "nome": "Email",
       "tipo": "Contato",
-      "link": "mailto:ronaldocgomes@ufmg.br",
+      "link": "#",
       "visivel": true,
       "ordem": 1
     },
@@ -36,7 +36,7 @@
       "idioma": "en",
       "nome": "Email",
       "tipo": "Contact",
-      "link": "#",
+      "link": "mailto:ronaldocgomes@ufmg.br",
       "visivel": true,
       "ordem": 1
     },
