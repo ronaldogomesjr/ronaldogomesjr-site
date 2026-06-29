@@ -60,6 +60,8 @@ collections:
                   - {label: "Pesquisa / Research", value: "pesquisa"}
                   - {label: "Extensão / Extension", value: "extensao"}
                   - {label: "Internacionalização / Internationalization", value: "internacionalizacao"}
+              - {label: "Ano de início", name: "ano_inicio", widget: "number", value_type: "int", required: false}
+              - {label: "Ano de fim", name: "ano_fim", widget: "number", value_type: "int", required: false}
               - {label: "Link externo", name: "link", widget: "string", required: false}
               - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
               - {label: "Destaque", name: "destaque", widget: "boolean", default: false, required: false}

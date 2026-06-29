@@ -89,6 +89,17 @@
     return item[`${field}_${fallbackLang}`] || item[field] || "";
   }
 
+  function projectPeriodLabel(item, lang) {
+    const start = String(item.ano_inicio || item.inicio || "").trim();
+    const end = String(item.ano_fim || item.fim || "").trim();
+
+    if (start && end) return `${start}–${end}`;
+    if (start) return lang === "en" ? `Since ${start}` : `Desde ${start}`;
+    if (end) return lang === "en" ? `Until ${end}` : `Até ${end}`;
+
+    return item.periodo || "";
+  }
+
   function hasBilingualProjectFields(item) {
     return Boolean(item.titulo_pt || item.titulo_en || item.descricao_pt || item.descricao_en || item.categoria);
   }
@@ -155,7 +166,8 @@
     const title = localizedProjectField(item, "titulo", lang);
     const description = localizedProjectField(item, "descricao", lang);
     const category = projectCategoryLabel(item, lang);
-    const meta = [category, item.periodo, item.parceiros].filter(Boolean).join(" · ");
+    const period = projectPeriodLabel(item, lang);
+    const meta = [category, period, item.parceiros].filter(Boolean).join(" · ");
 
     return `
       <article class="section-row">

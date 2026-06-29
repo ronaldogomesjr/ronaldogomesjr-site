@@ -1,21 +1,28 @@
-Patch: projetos bilíngues com categoria
+PATCH — Projetos bilíngues com categorias e anos editáveis
 
-Suba os arquivos mantendo a mesma estrutura de pastas:
+Este patch ajusta a seção Projetos para permitir editar:
+- nome do projeto em português e inglês;
+- descrição em português e inglês;
+- categoria com exibição bilíngue;
+- ano de início;
+- ano de fim;
+- link externo.
+
+Arquivos alterados:
 - assets/admin.js
 - assets/cms-render.js
 - assets/footer-links.js
 - admin/config.yml
 
-Este patch não inclui arquivos content/*.json e, portanto, não sobrescreve o conteúdo já atualizado em outras páginas.
+Importante:
+Este pacote NÃO inclui arquivos content/*.json. Portanto, não sobrescreve conteúdo já atualizado em outras páginas.
 
-Depois de subir:
-1. Aguarde a Vercel publicar.
-2. Abra o painel.
-3. Vá em Conteúdo > conteúdo: projetos.
-4. Cada projeto poderá ter nome PT/EN, descrição PT/EN, categoria e link.
+Como usar:
+1. Descompacte este ZIP.
+2. No GitHub, suba os arquivos da pasta assets/ para a pasta assets/ do repositório.
+3. Suba o arquivo admin/config.yml para a pasta admin/ do repositório.
+4. Faça commit.
+5. Aguarde a Vercel publicar.
 
-Categorias disponíveis:
-- Ensino / Teaching
-- Pesquisa / Research
-- Extensão / Extension
-- Internacionalização / Internationalization
+Observação:
+Se o ano de fim ficar vazio, o site exibirá "Desde YYYY" em português e "Since YYYY" em inglês. Se os dois anos forem preenchidos, exibirá "YYYY–YYYY".

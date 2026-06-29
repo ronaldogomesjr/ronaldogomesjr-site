@@ -58,6 +58,17 @@
     return normalized ? projectCategoryLabels[normalized][lang] : "";
   }
 
+  function projectPeriodLabel(item, lang = "pt") {
+    const start = String(item.ano_inicio || item.inicio || "").trim();
+    const end = String(item.ano_fim || item.fim || "").trim();
+
+    if (start && end) return `${start}–${end}`;
+    if (start) return lang === "en" ? `Since ${start}` : `Desde ${start}`;
+    if (end) return lang === "en" ? `Until ${end}` : `Até ${end}`;
+
+    return item.periodo || "";
+  }
+
   const pageFields = [
     ["id", "text", "ID interno"],
     ["slug_pt", "text", "Slug da página em português"],
@@ -297,7 +308,7 @@
       path: "content/projetos.json",
       root: "items",
       labelField: "titulo_pt",
-      meta: item => [projectCategoryLabel(item.categoria || item.categoria_pt || item.categoria_en, "pt"), item.link && item.link !== "#" ? item.link : ""].filter(Boolean).join(" · "),
+      meta: item => [projectCategoryLabel(item.categoria || item.categoria_pt || item.categoria_en, "pt"), projectPeriodLabel(item, "pt"), item.link && item.link !== "#" ? item.link : ""].filter(Boolean).join(" · "),
       singleAcrossLanguages: true,
       fields: [
         ["titulo_pt", "text", "Nome do projeto em português"],
@@ -305,6 +316,8 @@
         ["descricao_pt", "textarea", "Descrição em português"],
         ["descricao_en", "textarea", "Description in English"],
         ["categoria", "select", "Categoria / Category", projectCategoryOptions],
+        ["ano_inicio", "number", "Ano de início"],
+        ["ano_fim", "number", "Ano de fim"],
         ["link", "text", "Hiperlink externo"],
         ["visivel", "checkbox", "Visível no site"],
         ["destaque", "checkbox", "Destaque"],
@@ -318,6 +331,8 @@
         categoria: "pesquisa",
         categoria_pt: "Pesquisa",
         categoria_en: "Research",
+        ano_inicio: "",
+        ano_fim: "",
         link: "#",
         visivel: true,
         destaque: false,
