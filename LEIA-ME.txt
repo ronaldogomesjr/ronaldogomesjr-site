@@ -1,35 +1,17 @@
-PATCH — Página contato editável
+PATCH — Corrigir rótulo dos links na página contato em inglês
 
-Este patch torna a edição da página Contato mais clara e robusta no painel.
-
-Arquivos alterados:
-- assets/admin.js
-- admin/index.html
-- admin/config.yml
-- pt/contato/index.html
-- en/contact/index.html
+Arquivo alterado:
+- assets/cms-render.js
 
 O que muda:
-1. No seletor do painel, a opção aparece como:
-   "página: contato — título e texto / contact page"
+- Na página contato em português, os links continuam aparecendo como "Abrir →".
+- Na página contato em inglês, os links passam a aparecer como "Open →".
 
-2. A opção de links aparece como:
-   "links de contato e rodapé"
+Este patch não inclui nenhum arquivo content/*.json e não sobrescreve conteúdos já editados pelo painel.
 
-3. A página contato passa a ser carregada pelo ID interno "contato", e não apenas pelo slug.
-   Isso evita falha caso o slug ou o texto de abertura sejam editados.
-
-4. No painel, a edição de contato fica focada em:
-   - título em português
-   - título em inglês
-   - subtítulo/texto de abertura em português
-   - subtítulo/texto de abertura em inglês
-   - metadados SEO
-
-5. Os links/e-mail/perfis que aparecem na página contato continuam sendo editados em:
-   "links de contato e rodapé"
-
-Importante:
-- Este patch NÃO inclui nenhum arquivo content/*.json.
-- Portanto, ele NÃO sobrescreve conteúdos já atualizados pelo painel.
-- Suba os arquivos mantendo exatamente as mesmas pastas.
+Como aplicar:
+1. Descompacte este ZIP.
+2. No GitHub, abra a pasta assets.
+3. Envie o arquivo cms-render.js, substituindo o existente.
+4. Faça commit.
+5. Aguarde a Vercel publicar a nova versão.

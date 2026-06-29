@@ -209,13 +209,15 @@
     `;
   }
 
-  function linkHTML(item) {
+  function linkHTML(item, lang) {
+    const label = lang === "en" ? "Open →" : "Abrir →";
+
     return `
       <article class="section-row">
         <h2>${escapeHTML(item.nome)}</h2>
         <div>
           <p>${escapeHTML(item.tipo)}</p>
-          ${externalLink(item.link, item.link && item.link !== "#" ? "Abrir →" : "")}
+          ${externalLink(item.link, item.link && item.link !== "#" ? label : "")}
         </div>
       </article>
     `;
