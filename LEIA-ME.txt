@@ -1,41 +1,27 @@
-PATCH — foto circular na página Sobre + página Orientações/Supervisions
+Patch — campo de upload da foto na página Sobre/About
 
-Arquivos incluídos:
-- assets/admin.js
-- assets/cms-render.js
-- assets/page-content.js
-- assets/site-content.js
-- assets/style.css
+Este patch corrige o painel para que a foto da página Sobre/About fique fácil de encontrar e enviar.
+
+Arquivos alterados:
 - admin/index.html
 - admin/config.yml
-- content/orientacoes.json (novo arquivo; não substitui conteúdos já editados em outras páginas)
-- pt/orientacoes/index.html
-- en/supervisions/index.html
-- páginas HTML em /pt e /en com menu estático atualizado
-- pt/pesquisa/index.html e en/research/index.html com redirecionamento
-- vercel.json com redirecionamento de Pesquisa/Research para Projetos/Projects
+- assets/admin.js
+- assets/admin.css
+- assets/page-content.js
+- assets/style.css
+- pt/sobre/index.html
+- en/about/index.html
 
-O patch NÃO inclui:
-- content/pages.json
-- content/site.json
-- content/home.json
-- content/projetos.json
-- content/publicacoes.json
-- content/livros-didaticos.json
-- content/links.json
+Este patch NÃO inclui content/*.json, então não sobrescreve os conteúdos já editados pelo painel.
 
-Isso preserva o conteúdo já atualizado pelo painel.
-
-Depois de aplicar:
+Depois de subir no GitHub:
 1. Aguarde a Vercel publicar.
-2. No painel, use “página: sobre / about” para preencher “Foto da página sobre — URL da imagem”.
-   Exemplo: /assets/uploads/minha-foto.jpg
-3. Use “página: orientações / supervisions” para editar título e subtítulo da página.
-4. Use “conteúdo: orientações / supervisions” para cadastrar orientandos.
-5. A página em português fica em /pt/orientacoes/.
-6. A página em inglês fica em /en/supervisions/.
+2. Abra o painel em aba anônima ou recarregue com limpeza de cache.
+3. Em “Conteúdo”, escolha “foto: sobre / about photo”.
+4. Clique em “carregar”.
+5. Use o campo “Foto da página sobre — escolher imagem do computador ou colar URL”.
+6. Clique em “Escolher arquivo” e selecione a foto.
+7. Após o upload, clique em “publicar alteração”.
 
-Observação sobre excluir Pesquisa/Research:
-Subir arquivos pelo GitHub cria/substitui arquivos, mas não apaga arquivos antigos automaticamente. Este patch remove Pesquisa/Research do menu, remove do editor de menu ao carregar, e redireciona essas URLs. Se quiser apagar do repositório de fato, delete manualmente:
-- pt/pesquisa/index.html
-- en/research/index.html
+A imagem será enviada para assets/uploads e o campo será preenchido automaticamente com um caminho como:
+/assets/uploads/20260629163000-minha-foto.jpg

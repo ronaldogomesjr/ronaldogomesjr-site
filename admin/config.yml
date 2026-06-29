@@ -33,13 +33,13 @@ collections:
               - {label: "Título em inglês", name: "title_en", widget: "string", required: false}
               - {label: "Subtítulo/texto de abertura em português", name: "intro_pt", widget: "text", required: false}
               - {label: "Subtitle/opening text in English", name: "intro_en", widget: "text", required: false}
+              - {label: "Foto da página sobre", name: "portrait_image", widget: "image", required: false}
+              - {label: "Texto alternativo da foto em português", name: "portrait_alt_pt", widget: "string", required: false}
+              - {label: "Alt text for the photo in English", name: "portrait_alt_en", widget: "string", required: false}
               - {label: "Título SEO em português", name: "meta_title_pt", widget: "string", required: false}
               - {label: "Título SEO em inglês", name: "meta_title_en", widget: "string", required: false}
               - {label: "Descrição SEO em português", name: "meta_description_pt", widget: "text", required: false}
               - {label: "SEO description in English", name: "meta_description_en", widget: "text", required: false}
-              - {label: "Foto da página sobre", name: "portrait_image", widget: "image", required: false}
-              - {label: "Texto alternativo da foto em português", name: "portrait_alt_pt", widget: "string", required: false}
-              - {label: "Alt text for the photo in English", name: "portrait_alt_en", widget: "string", required: false}
               - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
 
       - label: "Publicações"

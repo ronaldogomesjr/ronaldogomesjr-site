@@ -213,3 +213,36 @@ button:disabled {
   color: var(--teal);
   font-size: .95rem;
 }
+
+
+/* Patch — upload de imagem no painel */
+.image-field {
+  display: grid;
+  gap: 10px;
+}
+
+.image-upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.image-upload-row input[type="file"] {
+  padding: 11px 12px;
+  background: rgba(255,255,255,.5);
+}
+
+.image-preview {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 1px solid rgba(36,95,107,.24);
+  padding: 6px;
+  background: rgba(251, 250, 246, .78);
+}
+
+.image-preview[hidden] {
+  display: none;
+}

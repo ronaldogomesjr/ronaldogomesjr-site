@@ -171,11 +171,24 @@
     ["section4_link_url_pt", "text", "Seção 4 — URL do hiperlink em português"],
     ["section4_link_url_en", "text", "Seção 4 — URL do hiperlink em inglês"],
 
-    ["portrait_image", "text", "Foto da página sobre — URL da imagem"],
+    ["portrait_image", "image", "Foto da página sobre — enviar imagem ou colar URL"],
     ["portrait_alt_pt", "text", "Texto alternativo da foto em português"],
     ["portrait_alt_en", "text", "Alt text for the photo in English"],
 
     ["ordem", "number", "Ordem"]
+  ];
+
+  const aboutPhotoFields = [
+    ["portrait_image", "image", "Foto da página sobre — escolher imagem do computador ou colar URL"],
+    ["portrait_alt_pt", "text", "Texto alternativo da foto em português"],
+    ["portrait_alt_en", "text", "Alt text for the photo in English"]
+  ];
+
+  const portraitFieldNames = new Set(["portrait_image", "portrait_alt_pt", "portrait_alt_en"]);
+  const aboutPageFields = [
+    ...pageFields.slice(0, 7),
+    ...aboutPhotoFields,
+    ...pageFields.slice(7).filter(([name]) => !portraitFieldNames.has(name))
   ];
 
   const contactPageFields = [
@@ -360,7 +373,24 @@
       intro_en: "Current and completed Masters and PhD supervisions.",
       ordem: 5
     }),
-    "page-sobre": pageCollection("sobre", "página: sobre / about"),
+    "page-sobre": pageCollection(
+      "sobre",
+      "página: sobre / about",
+      {},
+      {
+        fields: aboutPageFields,
+        hint: "Aqui você edita o título, o texto e a foto da página Sobre/About. A foto aparece em moldura circular à direita do texto."
+      }
+    ),
+    "page-sobre-foto": pageCollection(
+      "sobre",
+      "foto: sobre / about photo",
+      {},
+      {
+        fields: aboutPhotoFields,
+        hint: "Use esta opção apenas para enviar ou trocar a foto circular da página Sobre/About. Depois de escolher a imagem, clique em publicar alteração."
+      }
+    ),
     "page-contato": pageCollection(
       "contato",
       "página: contato — título e texto / contact page",
@@ -616,6 +646,69 @@
     }
 
     return data;
+  }
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = String(reader.result || "");
+        resolve(result.includes(",") ? result.split(",").pop() : result);
+      };
+      reader.onerror = () => reject(new Error("Não foi possível ler o arquivo selecionado."));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function safeFileName(name) {
+    const clean = String(name || "imagem")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9._-]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    return clean || "imagem.jpg";
+  }
+
+  function timestampSlug() {
+    return new Date().toISOString().replace(/[-:.TZ]/g, "").slice(0, 14);
+  }
+
+  async function uploadMediaFile(file) {
+    if (!file) throw new Error("Selecione uma imagem.");
+    if (file.type && !file.type.startsWith("image/")) {
+      throw new Error("Envie apenas arquivos de imagem.");
+    }
+
+    const filename = `${timestampSlug()}-${safeFileName(file.name)}`;
+    const path = `assets/uploads/${filename}`;
+    const content = await fileToBase64(file);
+
+    await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        message: `Upload imagem ${filename}`,
+        content,
+        branch: BRANCH
+      })
+    });
+
+    return `/${path}`;
+  }
+
+  function updateImagePreview(preview, value) {
+    if (!preview) return;
+    const url = String(value || "").trim();
+    if (!url) {
+      preview.hidden = true;
+      preview.removeAttribute("src");
+      return;
+    }
+    preview.src = url;
+    preview.hidden = false;
   }
 
   function decodeBase64Unicode(base64) {
@@ -1078,6 +1171,65 @@
         const wrapper = document.createElement("label");
         wrapper.className = "checkbox-row";
         wrapper.innerHTML = `<input type="checkbox" name="${name}" ${item[name] ? "checked" : ""}> ${escapeHTML(label)}`;
+        form.appendChild(wrapper);
+        return;
+      }
+
+      if (type === "image") {
+        const wrapper = document.createElement("label");
+        wrapper.className = "image-field";
+
+        const title = document.createElement("span");
+        title.textContent = label;
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = name;
+        input.placeholder = "/assets/uploads/minha-foto.jpg";
+        input.value = editorValue(item, name);
+
+        const preview = document.createElement("img");
+        preview.className = "image-preview";
+        preview.alt = "Pré-visualização da imagem";
+        updateImagePreview(preview, input.value);
+
+        const uploadRow = document.createElement("div");
+        uploadRow.className = "image-upload-row";
+
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+
+        const hint = document.createElement("p");
+        hint.className = "hint";
+        hint.textContent = "Clique em ‘Escolher arquivo’ para enviar uma imagem do computador. O painel fará o upload para assets/uploads e preencherá a URL automaticamente. Depois, clique em ‘publicar alteração’.";
+
+        input.addEventListener("input", () => updateImagePreview(preview, input.value));
+
+        fileInput.addEventListener("change", async () => {
+          const file = fileInput.files && fileInput.files[0];
+          if (!file) return;
+
+          try {
+            setBusy(true);
+            setStatus("Enviando imagem para assets/uploads...");
+            const publicPath = await uploadMediaFile(file);
+            input.value = publicPath;
+            updateImagePreview(preview, publicPath);
+            setStatus("Imagem enviada e caminho preenchido. Clique em publicar alteração para salvar a página com esta imagem.");
+          } catch (error) {
+            setStatus(error.message, true);
+          } finally {
+            setBusy(false);
+          }
+        });
+
+        uploadRow.appendChild(fileInput);
+        wrapper.appendChild(title);
+        wrapper.appendChild(input);
+        wrapper.appendChild(uploadRow);
+        wrapper.appendChild(preview);
+        wrapper.appendChild(hint);
         form.appendChild(wrapper);
         return;
       }
