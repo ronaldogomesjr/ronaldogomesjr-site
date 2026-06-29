@@ -24,31 +24,6 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1
-    },
-    {
-      "idioma": "en",
-      "titulo": "Textbook to add",
-      "editora": "Publisher",
-      "ano": "2026",
-      "nivel": "Basic education",
-      "descricao": "Short description of the textbook, collection, or authorial contribution.",
-      "link": "#",
-      "imagem": "",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 2,
-      "botao1_label": "",
-      "botao1_url": "",
-      "botao2_label": "",
-      "botao2_url": "",
-      "botao3_label": "",
-      "botao3_url": "",
-      "botao4_label": "",
-      "botao4_url": "",
-      "botao5_label": "",
-      "botao5_url": "",
-      "botao6_label": "",
-      "botao6_url": ""
     }
   ]
 }
