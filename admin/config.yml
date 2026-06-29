@@ -16,6 +16,29 @@ collections:
   - name: "conteudo"
     label: "Conteúdo do site"
     files:
+      - label: "Páginas internas"
+        name: "pages"
+        file: "content/pages.json"
+        format: "json"
+        fields:
+          - label: "Páginas"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title_pt}} / {{fields.title_en}}"
+            fields:
+              - {label: "ID interno", name: "id", widget: "string"}
+              - {label: "Slug em português", name: "slug_pt", widget: "string", required: false}
+              - {label: "Slug em inglês", name: "slug_en", widget: "string", required: false}
+              - {label: "Título em português", name: "title_pt", widget: "string", required: false}
+              - {label: "Título em inglês", name: "title_en", widget: "string", required: false}
+              - {label: "Subtítulo/texto de abertura em português", name: "intro_pt", widget: "text", required: false}
+              - {label: "Subtitle/opening text in English", name: "intro_en", widget: "text", required: false}
+              - {label: "Título SEO em português", name: "meta_title_pt", widget: "string", required: false}
+              - {label: "Título SEO em inglês", name: "meta_title_en", widget: "string", required: false}
+              - {label: "Descrição SEO em português", name: "meta_description_pt", widget: "text", required: false}
+              - {label: "SEO description in English", name: "meta_description_en", widget: "text", required: false}
+              - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
+
       - label: "Publicações"
         name: "publicacoes"
         file: "content/publicacoes.json"
@@ -89,12 +112,12 @@ collections:
               - {label: "Destaque", name: "destaque", widget: "boolean", default: false, required: false}
               - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
 
-      - label: "Links"
+      - label: "Links de contato e rodapé"
         name: "links"
         file: "content/links.json"
         format: "json"
         fields:
-          - label: "Links"
+          - label: "Links de contato e rodapé"
             name: "items"
             widget: "list"
             summary: "{{fields.nome}}"

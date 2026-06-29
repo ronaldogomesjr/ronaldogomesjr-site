@@ -123,7 +123,22 @@
     ["ordem", "number", "Ordem"]
   ];
 
-  function pageCollection(pageId, label, overrides = {}) {
+  const contactPageFields = [
+    ["id", "text", "ID interno"],
+    ["slug_pt", "text", "Slug da página em português"],
+    ["slug_en", "text", "Slug da página em inglês"],
+    ["title_pt", "text", "Título em português"],
+    ["title_en", "text", "Título em inglês"],
+    ["intro_pt", "textarea", "Subtítulo/texto de abertura em português"],
+    ["intro_en", "textarea", "Subtitle/opening text in English"],
+    ["meta_title_pt", "text", "Título SEO em português"],
+    ["meta_title_en", "text", "Título SEO em inglês"],
+    ["meta_description_pt", "textarea", "Descrição SEO em português"],
+    ["meta_description_en", "textarea", "SEO description in English"],
+    ["ordem", "number", "Ordem"]
+  ];
+
+  function pageCollection(pageId, label, overrides = {}, options = {}) {
     const blank = {
       id: pageId,
       slug_pt: pageId,
@@ -180,7 +195,8 @@
       label,
       labelField: "title_pt",
       meta: item => `${item.slug_pt || ""} / ${item.slug_en || ""}`,
-      fields: pageFields,
+      fields: options.fields || pageFields,
+      hint: options.hint || "",
       blank
     };
   }
@@ -282,7 +298,22 @@
     }),
     "page-livros-didaticos": pageCollection("livros-didaticos", "página: livros didáticos / textbooks"),
     "page-sobre": pageCollection("sobre", "página: sobre / about"),
-    "page-contato": pageCollection("contato", "página: contato / contact"),
+    "page-contato": pageCollection(
+      "contato",
+      "página: contato — título e texto / contact page",
+      {
+        slug_pt: "contato",
+        slug_en: "contact",
+        title_pt: "contato",
+        title_en: "contact",
+        intro_pt: "Entre em contato por e-mail ou acesse meus perfis acadêmicos e institucionais.",
+        intro_en: "Get in touch by email or access my academic and institutional profiles."
+      },
+      {
+        fields: contactPageFields,
+        hint: "Aqui você edita o título e o texto de abertura da página contato. Os links/e-mail exibidos nessa página ficam na opção ‘links de contato e rodapé’."
+      }
+    ),
     "page-design": pageCollection("design", "página: design / design"),
     "page-tecnologia-digital": pageCollection("tecnologia-digital", "página: tecnologia digital / digital technology"),
     "page-educacao-linguistica": pageCollection("educacao-linguistica", "página: educação linguística / language education"),
@@ -430,6 +461,7 @@
     "links": {
       mode: "list",
       path: "content/links.json",
+      label: "links de contato e rodapé",
       root: "items",
       labelField: "nome",
       meta: item => item.tipo || "conteúdo único para PT e EN",
@@ -821,7 +853,7 @@
     if (config.nonTranslatable) {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Esta seção não precisa de tradução. O mesmo cadastro aparece nas versões PT e EN, no contato e no rodapé.";
+      p.textContent = "Esta seção não precisa de tradução. Use-a para editar e-mail, perfis e demais links que aparecem na página contato e no rodapé das versões PT e EN.";
       form.appendChild(p);
     }
 
@@ -842,7 +874,7 @@
     if (config.mode === "page-singleton" || config.mode === "home-bilingual") {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Esta é uma entrada única com campos em português e inglês.";
+      p.textContent = config.hint || "Esta é uma entrada única com campos em português e inglês.";
       form.appendChild(p);
     }
 

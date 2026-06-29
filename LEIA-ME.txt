@@ -1,38 +1,35 @@
-PATCH — títulos e subtítulos editáveis para páginas de publicações
+PATCH — Página contato editável
 
-Objetivo:
-Permitir editar pelo painel os títulos e subtítulos das páginas:
-- publicações / publications
-- artigos / journal articles
-- capítulos / book chapters
-- livros acadêmicos / academic books
+Este patch torna a edição da página Contato mais clara e robusta no painel.
 
 Arquivos alterados:
 - assets/admin.js
-- assets/page-content.js
 - admin/index.html
-- pt/publicacoes/index.html
-- pt/publicacoes/artigos/index.html
-- pt/publicacoes/capitulos/index.html
-- pt/publicacoes/livros-academicos/index.html
-- en/publications/index.html
-- en/publications/journal-articles/index.html
-- en/publications/book-chapters/index.html
-- en/publications/academic-books/index.html
+- admin/config.yml
+- pt/contato/index.html
+- en/contact/index.html
 
-O patch NÃO inclui content/*.json.
-Isso evita sobrescrever conteúdo já atualizado no painel.
+O que muda:
+1. No seletor do painel, a opção aparece como:
+   "página: contato — título e texto / contact page"
 
-Como usar no painel depois de subir o patch:
-1. Entre no painel admin.
-2. Em "Escolher conteúdo", selecione uma das opções:
-   - página: publicações / publications
-   - página: artigos / journal articles
-   - página: capítulos / book chapters
-   - página: livros acadêmicos / academic books
-3. Clique em carregar.
-4. Edite os campos "Título" e "Texto de abertura" em português e inglês.
-5. Clique em publicar alteração.
+2. A opção de links aparece como:
+   "links de contato e rodapé"
 
-Observação:
-Ao abrir uma das novas páginas pela primeira vez no painel, se ela ainda não existir em content/pages.json, o painel cria uma entrada nova apenas para aquela página. Ele não apaga as outras páginas.
+3. A página contato passa a ser carregada pelo ID interno "contato", e não apenas pelo slug.
+   Isso evita falha caso o slug ou o texto de abertura sejam editados.
+
+4. No painel, a edição de contato fica focada em:
+   - título em português
+   - título em inglês
+   - subtítulo/texto de abertura em português
+   - subtítulo/texto de abertura em inglês
+   - metadados SEO
+
+5. Os links/e-mail/perfis que aparecem na página contato continuam sendo editados em:
+   "links de contato e rodapé"
+
+Importante:
+- Este patch NÃO inclui nenhum arquivo content/*.json.
+- Portanto, ele NÃO sobrescreve conteúdos já atualizados pelo painel.
+- Suba os arquivos mantendo exatamente as mesmas pastas.
