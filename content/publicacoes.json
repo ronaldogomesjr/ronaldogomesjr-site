@@ -70,6 +70,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 2
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2022",
+      "titulo": "Tecnologias digitais para aprender e ensinar inglês no Brasil.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR, Luciana de Oliveira SILVA, Vera Lúcia Menezes de Oliveira e PAIVA",
+      "veiculo": "Texto Livre: Linguagem e Tecnologia",
+      "link": "https://www.scielo.br/j/tl/a/cJ4k7CLPk6yfvgNvSFyW4vF/?format=html&lang=pt",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 3
     }
   ]
 }
