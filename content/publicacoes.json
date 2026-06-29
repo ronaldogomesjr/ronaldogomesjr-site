@@ -98,6 +98,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1782757786263
+    },
+    {
+      "tipo": "livro_academico",
+      "ano": "2020",
+      "titulo": "Mão na Massa II",
+      "autores": "",
+      "veiculo": "Parábola Editorial",
+      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQCKEiqiUXSUTq1d5h61RBuXAVennfFOu6DoPzAK_mkPKEs?e=hPtaj8",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1782757869352
     }
   ]
 }
