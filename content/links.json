@@ -34,14 +34,6 @@
     },
     {
       "idioma": "en",
-      "nome": "ORCID",
-      "tipo": "Academic profile",
-      "link": "#",
-      "visivel": true,
-      "ordem": 2
-    },
-    {
-      "idioma": "en",
       "nome": "Google Scholar",
       "tipo": "Academic profile",
       "link": "#",
