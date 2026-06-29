@@ -143,14 +143,32 @@
     return target;
   }
 
-  function translateLegacyLinkDescription(value, lang) {
-    if (lang !== "en") return value || "";
+  const defaultContactDescriptions = {
+    email: { pt: "Contato", en: "Contact" },
+    "e-mail": { pt: "Contato", en: "Contact" },
+    orcid: { pt: "Perfil acadêmico", en: "Academic profile" },
+    "google scholar": { pt: "Perfil acadêmico", en: "Academic profile" },
+    scholar: { pt: "Perfil acadêmico", en: "Academic profile" },
+    lattes: { pt: "Currículo", en: "CV" }
+  };
 
-    const normalized = String(value || "")
+  function linkNameKey(value) {
+    return String(value || "")
       .trim()
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function defaultContactDescription(item, lang) {
+    const byName = defaultContactDescriptions[linkNameKey(item && item.nome)];
+    return byName ? (byName[lang] || byName.pt || "") : "";
+  }
+
+  function translateLegacyLinkDescription(value, lang) {
+    if (lang !== "en") return value || "";
+
+    const normalized = linkNameKey(value);
 
     const translations = {
       "contato": "Contact",
@@ -162,25 +180,45 @@
     return translations[normalized] || value || "";
   }
 
+  function firstFilled(values) {
+    return (values || []).find((value) => String(value || "").trim()) || "";
+  }
+
   function localizedLinkDescription(item, lang) {
     if (lang === "en") {
-      const english = item.descricao_en || item.tipo_en || (item.idioma === "en" ? (item.descricao || item.tipo || "") : "");
+      const english = firstFilled([
+        item.descricao_en,
+        item.description_en,
+        item.tipo_en,
+        item.idioma === "en" ? item.descricao : "",
+        item.idioma === "en" ? item.tipo : ""
+      ]);
       if (english) return english;
 
-      const legacyPt = item.descricao_pt || item.tipo_pt || item.descricao || item.tipo || "";
-      return translateLegacyLinkDescription(legacyPt, lang);
+      const legacyPt = firstFilled([
+        item.descricao_pt,
+        item.description_pt,
+        item.tipo_pt,
+        item.descricao,
+        item.tipo,
+        defaultContactDescription(item, "pt")
+      ]);
+      return translateLegacyLinkDescription(legacyPt, lang) || defaultContactDescription(item, lang);
     }
 
-    return (
-      item.descricao_pt ||
-      item.tipo_pt ||
-      (item.idioma === "pt" ? (item.descricao || item.tipo || "") : "") ||
-      item.descricao ||
-      item.tipo ||
-      item.descricao_en ||
-      item.tipo_en ||
-      ""
-    );
+    return firstFilled([
+      item.descricao_pt,
+      item.description_pt,
+      item.tipo_pt,
+      item.idioma === "pt" ? item.descricao : "",
+      item.idioma === "pt" ? item.tipo : "",
+      item.descricao,
+      item.tipo,
+      defaultContactDescription(item, lang),
+      item.descricao_en,
+      item.description_en,
+      item.tipo_en
+    ]);
   }
 
   function canonicalNonTranslatedItems(items) {
@@ -188,10 +226,7 @@
     const byKey = new Map();
 
     visible.forEach((item) => {
-      const key = [
-        normalizeKeyPart(item.nome),
-        String(Number(item.ordem || 9999))
-      ].join("|");
+      const key = normalizeKeyPart(item.nome) || normalizeKeyPart(item.link);
       const previous = byKey.get(key);
 
       if (!previous) {

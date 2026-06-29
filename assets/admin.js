@@ -69,6 +69,40 @@
     return item.periodo || "";
   }
 
+  const defaultContactDescriptions = {
+    email: { pt: "Contato", en: "Contact" },
+    "e-mail": { pt: "Contato", en: "Contact" },
+    orcid: { pt: "Perfil acadêmico", en: "Academic profile" },
+    "google scholar": { pt: "Perfil acadêmico", en: "Academic profile" },
+    scholar: { pt: "Perfil acadêmico", en: "Academic profile" },
+    lattes: { pt: "Currículo", en: "CV" }
+  };
+
+  function linkNameKey(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "");
+  }
+
+  function defaultContactDescription(item, lang = "pt") {
+    const byName = defaultContactDescriptions[linkNameKey(item && item.nome)];
+    return byName ? (byName[lang] || byName.pt || "") : "";
+  }
+
+  function translateLegacyLinkDescription(value, lang = "en") {
+    if (lang !== "en") return value || "";
+    const translations = {
+      "contato": "Contact",
+      "perfil academico": "Academic profile",
+      "curriculo": "CV",
+      "curriculum": "CV"
+    };
+    return translations[linkNameKey(value)] || value || "";
+  }
+
+
   const pageFields = [
     ["id", "text", "ID interno"],
     ["slug_pt", "text", "Slug da página em português"],
@@ -630,10 +664,7 @@
       // Agrupa duplicatas antigas PT/EN pelo nome e pela ordem.
       // O link pode ter sido preenchido em apenas uma das duplicatas, então
       // ele não deve separar itens que são, na prática, o mesmo contato.
-      return [
-        normalizeKeyPart(item.nome),
-        String(Number(item.ordem || 9999))
-      ].join("|");
+      return normalizeKeyPart(item.nome) || normalizeKeyPart(item.link);
     }
 
     return [
@@ -878,11 +909,14 @@
 
     if (currentCollection === "links") {
       if (name === "descricao_pt") {
-        return item.descricao_pt || item.tipo_pt || (item.idioma === "pt" ? (item.descricao || item.tipo || "") : "") || "";
+        return item.descricao_pt || item.tipo_pt || (item.idioma === "pt" ? (item.descricao || item.tipo || "") : "") || item.descricao || item.tipo || defaultContactDescription(item, "pt") || "";
       }
 
       if (name === "descricao_en") {
-        return item.descricao_en || item.tipo_en || (item.idioma === "en" ? (item.descricao || item.tipo || "") : "") || "";
+        const english = item.descricao_en || item.tipo_en || (item.idioma === "en" ? (item.descricao || item.tipo || "") : "");
+        if (english) return english;
+        const legacyPt = item.descricao_pt || item.tipo_pt || item.descricao || item.tipo || defaultContactDescription(item, "pt") || "";
+        return translateLegacyLinkDescription(legacyPt, "en") || defaultContactDescription(item, "en") || "";
       }
     }
 
@@ -922,7 +956,7 @@
     if (config.nonTranslatable) {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Esta seção não precisa de tradução. Use-a para editar e-mail, perfis e demais links que aparecem na página contato e no rodapé das versões PT e EN.";
+      p.textContent = "Links e URLs são únicos para PT e EN, mas as descrições dos contatos podem ser editadas em português e em inglês.";
       form.appendChild(p);
     }
 
