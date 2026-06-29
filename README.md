@@ -1,26 +1,41 @@
-# Ronaldo Gomes Jr. Site — V45 Single Textbooks
+# Ronaldo Gomes Jr. Site — V47 Bilingual Page Entries
 
-Esta versão corrige a exibição de livros didáticos na versão em inglês.
+Esta versão muda a lógica das páginas internas.
 
 ## O que mudou
 
-Livros didáticos agora são cadastrados uma única vez no painel.
+Cada página agora tem uma única entrada no painel, com campos separados para português e inglês.
 
-Eles aparecem automaticamente em:
+Exemplos:
 
-- `/pt/livros-didaticos/`
-- `/en/textbooks/`
+- página: sobre / about
+- página: contato / contact
+- página: pesquisa / research
+- página: livros didáticos / textbooks
 
-## No painel
+Dentro de cada entrada, há campos como:
 
-Na categoria:
+- Título em português
+- Título em inglês
+- Texto de abertura em português
+- Texto de abertura em inglês
+- Seção 1 — título/texto/link em português
+- Seção 1 — título/texto/link em inglês
 
-- conteúdo: livros didáticos
+## Página inicial
 
-o campo `Idioma` foi removido.
+A página inicial também foi unificada em:
 
-Assim, você não precisa duplicar a mesma coleção em PT e EN.
+- página inicial / home
+
+com campos em PT e EN na mesma entrada.
 
 ## Mantido
 
-A versão mantém os botões de download dos volumes adicionados na V43.
+Esta versão mantém:
+
+- publicações cadastradas uma única vez;
+- livros didáticos cadastrados uma única vez com descrição PT/EN;
+- botões de download dos livros didáticos;
+- ordenação automática de publicações;
+- correção de sincronização SHA do GitHub.

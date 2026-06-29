@@ -8,7 +8,7 @@
     ["label", "text", "Texto do menu"],
     ["url", "text", "Hiperlink / URL"],
     ["visivel", "checkbox", "Visível no menu"],
-    ["ordem", "number", "Ordem automática/manual"]
+    ["ordem", "number", "Ordem"]
   ];
 
   const publicationFields = [
@@ -19,48 +19,119 @@
     ["link", "text", "Hiperlink externo"],
     ["visivel", "checkbox", "Visível no site"],
     ["destaque", "checkbox", "Destaque"],
-    ["ordem", "number", "Ordem"]
+    ["ordem", "number", "Ordem automática/manual"]
   ];
 
   const pageFields = [
-    ["slug", "text", "Slug da página"],
-    ["idioma", "select", "Idioma", ["pt", "en"]],
-    ["title", "text", "Título exibido"],
-    ["intro", "textarea", "Texto de abertura"],
-    ["meta_title", "text", "Título SEO / navegador"],
-    ["meta_description", "textarea", "Descrição SEO"],
-    ["section1_title", "text", "Seção 1 — título"],
-    ["section1_text", "textarea", "Seção 1 — texto"],
-    ["section1_link_label", "text", "Seção 1 — texto do hiperlink"],
-    ["section1_link_url", "text", "Seção 1 — URL do hiperlink"],
-    ["section2_title", "text", "Seção 2 — título"],
-    ["section2_text", "textarea", "Seção 2 — texto"],
-    ["section2_link_label", "text", "Seção 2 — texto do hiperlink"],
-    ["section2_link_url", "text", "Seção 2 — URL do hiperlink"],
-    ["section3_title", "text", "Seção 3 — título"],
-    ["section3_text", "textarea", "Seção 3 — texto"],
-    ["section3_link_label", "text", "Seção 3 — texto do hiperlink"],
-    ["section3_link_url", "text", "Seção 3 — URL do hiperlink"],
-    ["section4_title", "text", "Seção 4 — título"],
-    ["section4_text", "textarea", "Seção 4 — texto"],
-    ["section4_link_label", "text", "Seção 4 — texto do hiperlink"],
-    ["section4_link_url", "text", "Seção 4 — URL do hiperlink"],
+    ["id", "text", "ID interno"],
+    ["slug_pt", "text", "Slug da página em português"],
+    ["slug_en", "text", "Slug da página em inglês"],
+
+    ["title_pt", "text", "Título em português"],
+    ["title_en", "text", "Título em inglês"],
+    ["intro_pt", "textarea", "Texto de abertura em português"],
+    ["intro_en", "textarea", "Texto de abertura em inglês"],
+
+    ["meta_title_pt", "text", "Título SEO em português"],
+    ["meta_title_en", "text", "Título SEO em inglês"],
+    ["meta_description_pt", "textarea", "Descrição SEO em português"],
+    ["meta_description_en", "textarea", "Descrição SEO em inglês"],
+
+    ["section1_title_pt", "text", "Seção 1 — título em português"],
+    ["section1_title_en", "text", "Seção 1 — título em inglês"],
+    ["section1_text_pt", "textarea", "Seção 1 — texto em português"],
+    ["section1_text_en", "textarea", "Seção 1 — texto em inglês"],
+    ["section1_link_label_pt", "text", "Seção 1 — texto do hiperlink em português"],
+    ["section1_link_label_en", "text", "Seção 1 — texto do hiperlink em inglês"],
+    ["section1_link_url_pt", "text", "Seção 1 — URL do hiperlink em português"],
+    ["section1_link_url_en", "text", "Seção 1 — URL do hiperlink em inglês"],
+
+    ["section2_title_pt", "text", "Seção 2 — título em português"],
+    ["section2_title_en", "text", "Seção 2 — título em inglês"],
+    ["section2_text_pt", "textarea", "Seção 2 — texto em português"],
+    ["section2_text_en", "textarea", "Seção 2 — texto em inglês"],
+    ["section2_link_label_pt", "text", "Seção 2 — texto do hiperlink em português"],
+    ["section2_link_label_en", "text", "Seção 2 — texto do hiperlink em inglês"],
+    ["section2_link_url_pt", "text", "Seção 2 — URL do hiperlink em português"],
+    ["section2_link_url_en", "text", "Seção 2 — URL do hiperlink em inglês"],
+
+    ["section3_title_pt", "text", "Seção 3 — título em português"],
+    ["section3_title_en", "text", "Seção 3 — título em inglês"],
+    ["section3_text_pt", "textarea", "Seção 3 — texto em português"],
+    ["section3_text_en", "textarea", "Seção 3 — texto em inglês"],
+    ["section3_link_label_pt", "text", "Seção 3 — texto do hiperlink em português"],
+    ["section3_link_label_en", "text", "Seção 3 — texto do hiperlink em inglês"],
+    ["section3_link_url_pt", "text", "Seção 3 — URL do hiperlink em português"],
+    ["section3_link_url_en", "text", "Seção 3 — URL do hiperlink em inglês"],
+
+    ["section4_title_pt", "text", "Seção 4 — título em português"],
+    ["section4_title_en", "text", "Seção 4 — título em inglês"],
+    ["section4_text_pt", "textarea", "Seção 4 — texto em português"],
+    ["section4_text_en", "textarea", "Seção 4 — texto em inglês"],
+    ["section4_link_label_pt", "text", "Seção 4 — texto do hiperlink em português"],
+    ["section4_link_label_en", "text", "Seção 4 — texto do hiperlink em inglês"],
+    ["section4_link_url_pt", "text", "Seção 4 — URL do hiperlink em português"],
+    ["section4_link_url_en", "text", "Seção 4 — URL do hiperlink em inglês"],
+
     ["ordem", "number", "Ordem"]
   ];
 
-
-  function pageCollection(idioma, slug, label) {
+  function pageCollection(pageId, label) {
     return {
       mode: "page-singleton",
       path: "content/pages.json",
       root: "items",
-      pageLang: idioma,
-      pageSlug: slug,
+      pageId,
       label,
-      labelField: "title",
-      meta: item => item.slug || "",
+      labelField: "title_pt",
+      meta: item => `${item.slug_pt || ""} / ${item.slug_en || ""}`,
       fields: pageFields,
-      blank: { slug, idioma, title: slug, intro: "", meta_title: "", meta_description: "", section1_title: "", section1_text: "", section1_link_label: "", section1_link_url: "", section2_title: "", section2_text: "", section2_link_label: "", section2_link_url: "", section3_title: "", section3_text: "", section3_link_label: "", section3_link_url: "", section4_title: "", section4_text: "", section4_link_label: "", section4_link_url: "", ordem: 999 }
+      blank: {
+        id: pageId,
+        slug_pt: pageId,
+        slug_en: pageId,
+        title_pt: pageId,
+        title_en: pageId,
+        intro_pt: "",
+        intro_en: "",
+        meta_title_pt: "",
+        meta_title_en: "",
+        meta_description_pt: "",
+        meta_description_en: "",
+        section1_title_pt: "",
+        section1_title_en: "",
+        section1_text_pt: "",
+        section1_text_en: "",
+        section1_link_label_pt: "",
+        section1_link_label_en: "",
+        section1_link_url_pt: "",
+        section1_link_url_en: "",
+        section2_title_pt: "",
+        section2_title_en: "",
+        section2_text_pt: "",
+        section2_text_en: "",
+        section2_link_label_pt: "",
+        section2_link_label_en: "",
+        section2_link_url_pt: "",
+        section2_link_url_en: "",
+        section3_title_pt: "",
+        section3_title_en: "",
+        section3_text_pt: "",
+        section3_text_en: "",
+        section3_link_label_pt: "",
+        section3_link_label_en: "",
+        section3_link_url_pt: "",
+        section3_link_url_en: "",
+        section4_title_pt: "",
+        section4_title_en: "",
+        section4_text_pt: "",
+        section4_text_en: "",
+        section4_link_label_pt: "",
+        section4_link_label_en: "",
+        section4_link_url_pt: "",
+        section4_link_url_en: "",
+        ordem: 999
+      }
     };
   }
 
@@ -102,85 +173,56 @@
       fields: menuFields,
       blank: { label: "NEW LINK", url: "#", visivel: true, ordem: 999 }
     },
-    "home-pt": {
-      mode: "singleton",
+    "home": {
+      mode: "home-bilingual",
       path: "content/home.json",
-      key: "pt",
-      label: "página inicial (pt)",
+      label: "página inicial / home",
       fields: [
-        ["keyword1", "text", "Palavra-chave 1"],
-        ["keyword1_url", "text", "Hiperlink da palavra-chave 1"],
-        ["keyword2", "text", "Palavra-chave 2"],
-        ["keyword2_url", "text", "Hiperlink da palavra-chave 2"],
-        ["keyword3", "text", "Palavra-chave 3"],
-        ["keyword3_url", "text", "Hiperlink da palavra-chave 3"],
-        ["intro1", "textarea", "Parágrafo 1"],
-        ["intro2", "textarea", "Parágrafo 2"],
-        ["intro3", "textarea", "Parágrafo 3"]
+        ["keyword1_pt", "text", "Palavra-chave 1 em português"],
+        ["keyword1_en", "text", "Keyword 1 in English"],
+        ["keyword1_url_pt", "text", "Link da palavra-chave 1 em português"],
+        ["keyword1_url_en", "text", "Keyword 1 link in English"],
+
+        ["keyword2_pt", "text", "Palavra-chave 2 em português"],
+        ["keyword2_en", "text", "Keyword 2 in English"],
+        ["keyword2_url_pt", "text", "Link da palavra-chave 2 em português"],
+        ["keyword2_url_en", "text", "Keyword 2 link in English"],
+
+        ["keyword3_pt", "text", "Palavra-chave 3 em português"],
+        ["keyword3_en", "text", "Keyword 3 in English"],
+        ["keyword3_url_pt", "text", "Link da palavra-chave 3 em português"],
+        ["keyword3_url_en", "text", "Keyword 3 link in English"],
+
+        ["intro1_pt", "textarea", "Parágrafo 1 em português"],
+        ["intro1_en", "textarea", "Paragraph 1 in English"],
+        ["intro2_pt", "textarea", "Parágrafo 2 em português"],
+        ["intro2_en", "textarea", "Paragraph 2 in English"],
+        ["intro3_pt", "textarea", "Parágrafo 3 em português"],
+        ["intro3_en", "textarea", "Paragraph 3 in English"]
       ],
-      blank: { keyword1: "design.", keyword1_url: "design", keyword2: "tecnologia digital.", keyword2_url: "tecnologia-digital", keyword3: "educação linguística.", keyword3_url: "educacao-linguistica", intro1: "", intro2: "", intro3: "" }
-    },
-    "home-en": {
-      mode: "singleton",
-      path: "content/home.json",
-      key: "en",
-      label: "home page (en)",
-      fields: [
-        ["keyword1", "text", "Keyword 1"],
-        ["keyword1_url", "text", "Keyword 1 link"],
-        ["keyword2", "text", "Keyword 2"],
-        ["keyword2_url", "text", "Keyword 2 link"],
-        ["keyword3", "text", "Keyword 3"],
-        ["keyword3_url", "text", "Keyword 3 link"],
-        ["intro1", "textarea", "Paragraph 1"],
-        ["intro2", "textarea", "Paragraph 2"],
-        ["intro3", "textarea", "Paragraph 3"]
-      ],
-      blank: { keyword1: "design.", keyword1_url: "design", keyword2: "digital technology.", keyword2_url: "digital-technology", keyword3: "language education.", keyword3_url: "language-education", intro1: "", intro2: "", intro3: "" }
+      blank: {}
     },
 
-    "page-pt-pesquisa": pageCollection("pt", "pesquisa", "página: pesquisa (pt)"),
-    "page-pt-projetos": pageCollection("pt", "projetos", "página: projetos (pt)"),
-    "page-pt-publicacoes": pageCollection("pt", "publicacoes", "página: publicações (pt)"),
-    "page-pt-livros-didaticos": pageCollection("pt", "livros-didaticos", "página: livros didáticos (pt)"),
-    "page-pt-sobre": pageCollection("pt", "sobre", "página: sobre (pt)"),
-    "page-pt-contato": pageCollection("pt", "contato", "página: contato (pt)"),
-    "page-pt-design": pageCollection("pt", "design", "página: design (pt)"),
-    "page-pt-tecnologia-digital": pageCollection("pt", "tecnologia-digital", "página: tecnologia digital (pt)"),
-    "page-pt-educacao-linguistica": pageCollection("pt", "educacao-linguistica", "página: educação linguística (pt)"),
+    "page-pesquisa": pageCollection("pesquisa", "página: pesquisa / research"),
+    "page-projetos": pageCollection("projetos", "página: projetos / projects"),
+    "page-publicacoes": pageCollection("publicacoes", "página: publicações / publications"),
+    "page-livros-didaticos": pageCollection("livros-didaticos", "página: livros didáticos / textbooks"),
+    "page-sobre": pageCollection("sobre", "página: sobre / about"),
+    "page-contato": pageCollection("contato", "página: contato / contact"),
+    "page-design": pageCollection("design", "página: design / design"),
+    "page-tecnologia-digital": pageCollection("tecnologia-digital", "página: tecnologia digital / digital technology"),
+    "page-educacao-linguistica": pageCollection("educacao-linguistica", "página: educação linguística / language education"),
 
-    "page-en-research": pageCollection("en", "research", "page: research (en)"),
-    "page-en-projects": pageCollection("en", "projects", "page: projects (en)"),
-    "page-en-publications": pageCollection("en", "publications", "page: publications (en)"),
-    "page-en-textbooks": pageCollection("en", "textbooks", "page: textbooks (en)"),
-    "page-en-about": pageCollection("en", "about", "page: about (en)"),
-    "page-en-contact": pageCollection("en", "contact", "page: contact (en)"),
-    "page-en-design": pageCollection("en", "design", "page: design (en)"),
-    "page-en-digital-technology": pageCollection("en", "digital-technology", "page: digital technology (en)"),
-    "page-en-language-education": pageCollection("en", "language-education", "page: language education (en)"),
-
-    "paginas-pt": {
-      mode: "filtered-list",
+    "paginas": {
+      mode: "list",
       path: "content/pages.json",
       root: "items",
-      filterField: "idioma",
-      filterValue: "pt",
-      labelField: "title",
-      meta: item => item.slug || "",
+      labelField: "title_pt",
+      meta: item => `${item.slug_pt || ""} / ${item.slug_en || ""}`,
       fields: pageFields,
-      blank: { slug: "nova-pagina", idioma: "pt", title: "nova página", intro: "", meta_title: "", meta_description: "", section1_title: "", section1_text: "", section1_link_label: "", section1_link_url: "", section2_title: "", section2_text: "", section2_link_label: "", section2_link_url: "", section3_title: "", section3_text: "", section3_link_label: "", section3_link_url: "", section4_title: "", section4_text: "", section4_link_label: "", section4_link_url: "", ordem: 999 }
+      blank: pageCollection("nova-pagina", "nova página / new page").blank
     },
-    "paginas-en": {
-      mode: "filtered-list",
-      path: "content/pages.json",
-      root: "items",
-      filterField: "idioma",
-      filterValue: "en",
-      labelField: "title",
-      meta: item => item.slug || "",
-      fields: pageFields,
-      blank: { slug: "new-page", idioma: "en", title: "new page", intro: "", meta_title: "", meta_description: "", section1_title: "", section1_text: "", section1_link_label: "", section1_link_url: "", section2_title: "", section2_text: "", section2_link_label: "", section2_link_url: "", section3_title: "", section3_text: "", section3_link_label: "", section3_link_url: "", section4_title: "", section4_text: "", section4_link_label: "", section4_link_url: "", ordem: 999 }
-    },
+
     "artigos": {
       mode: "filtered-list",
       path: "content/publicacoes.json",
@@ -245,7 +287,8 @@
         ["editora", "text", "Editora"],
         ["ano", "text", "Ano"],
         ["nivel", "text", "Nível"],
-        ["descricao", "textarea", "Descrição"],
+        ["descricao_pt", "textarea", "Descrição em português"],
+        ["descricao_en", "textarea", "Descrição em inglês"],
         ["link", "text", "Hiperlink externo"],
         ["imagem", "text", "URL da imagem"],
 
@@ -272,6 +315,8 @@
         ano: "",
         nivel: "",
         descricao: "",
+        descricao_pt: "",
+        descricao_en: "",
         link: "#",
         imagem: "",
         botao1_label: "",
@@ -397,13 +442,60 @@
   }
 
   function matchesConfig(item, config) {
-    if (config.filterField && item[config.filterField] !== config.filterValue) return false;
     if (config.fixed) {
       for (const [key, value] of Object.entries(config.fixed)) {
         if (item[key] !== value) return false;
       }
     }
     return true;
+  }
+
+  function homeToForm(data) {
+    const pt = data.pt || {};
+    const en = data.en || {};
+    const kpt = pt.keywords || [];
+    const ken = en.keywords || [];
+    return {
+      keyword1_pt: kpt[0]?.label || "design.",
+      keyword1_en: ken[0]?.label || "design.",
+      keyword1_url_pt: kpt[0]?.slug || "design",
+      keyword1_url_en: ken[0]?.slug || "design",
+      keyword2_pt: kpt[1]?.label || "tecnologia digital.",
+      keyword2_en: ken[1]?.label || "digital technology.",
+      keyword2_url_pt: kpt[1]?.slug || "tecnologia-digital",
+      keyword2_url_en: ken[1]?.slug || "digital-technology",
+      keyword3_pt: kpt[2]?.label || "educação linguística.",
+      keyword3_en: ken[2]?.label || "language education.",
+      keyword3_url_pt: kpt[2]?.slug || "educacao-linguistica",
+      keyword3_url_en: ken[2]?.slug || "language-education",
+      intro1_pt: pt.intro?.[0] || "",
+      intro1_en: en.intro?.[0] || "",
+      intro2_pt: pt.intro?.[1] || "",
+      intro2_en: en.intro?.[1] || "",
+      intro3_pt: pt.intro?.[2] || "",
+      intro3_en: en.intro?.[2] || ""
+    };
+  }
+
+  function formToHome(form) {
+    return {
+      pt: {
+        keywords: [
+          { slug: form.elements["keyword1_url_pt"].value, label: form.elements["keyword1_pt"].value },
+          { slug: form.elements["keyword2_url_pt"].value, label: form.elements["keyword2_pt"].value },
+          { slug: form.elements["keyword3_url_pt"].value, label: form.elements["keyword3_pt"].value }
+        ],
+        intro: [form.elements["intro1_pt"].value, form.elements["intro2_pt"].value, form.elements["intro3_pt"].value].filter(Boolean)
+      },
+      en: {
+        keywords: [
+          { slug: form.elements["keyword1_url_en"].value, label: form.elements["keyword1_en"].value },
+          { slug: form.elements["keyword2_url_en"].value, label: form.elements["keyword2_en"].value },
+          { slug: form.elements["keyword3_url_en"].value, label: form.elements["keyword3_en"].value }
+        ],
+        intro: [form.elements["intro1_en"].value, form.elements["intro2_en"].value, form.elements["intro3_en"].value].filter(Boolean)
+      }
+    };
   }
 
   async function loadCollection(preferLabel = "") {
@@ -415,8 +507,8 @@
     currentSha = file.sha;
     currentData = JSON.parse(decodeBase64Unicode(file.content));
 
-    if (config.mode === "singleton" || config.mode === "object-singleton") {
-      if (!currentData[config.key]) currentData[config.key] = { ...config.blank };
+    if (["object-singleton", "home-bilingual"].includes(config.mode)) {
+      if (config.mode === "object-singleton" && !currentData[config.key]) currentData[config.key] = { ...config.blank };
       currentActualIndex = 0;
       renderList();
       renderEditor();
@@ -426,7 +518,7 @@
 
     if (config.mode === "page-singleton") {
       if (!Array.isArray(currentData[config.root])) currentData[config.root] = [];
-      let index = currentData[config.root].findIndex((item) => item.idioma === config.pageLang && item.slug === config.pageSlug);
+      let index = currentData[config.root].findIndex((item) => item.id === config.pageId);
       if (index < 0) {
         currentData[config.root].push({ ...config.blank });
         index = currentData[config.root].length - 1;
@@ -482,11 +574,11 @@
     const config = collections[currentCollection];
     list.innerHTML = "";
 
-    if (config.mode === "singleton" || config.mode === "object-singleton") {
+    if (["object-singleton", "home-bilingual"].includes(config.mode)) {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "item-button active";
-      btn.innerHTML = `<span class="item-title">${escapeHTML(config.label)}</span><span class="item-meta">conteúdo único</span>`;
+      btn.innerHTML = `<span class="item-title">${escapeHTML(config.label)}</span><span class="item-meta">conteúdo único bilíngue</span>`;
       list.appendChild(btn);
       return;
     }
@@ -496,7 +588,7 @@
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "item-button active";
-      btn.innerHTML = `<span class="item-title">${escapeHTML(item?.title || config.label)}</span><span class="item-meta">${escapeHTML(config.pageLang)} · ${escapeHTML(config.pageSlug)}</span>`;
+      btn.innerHTML = `<span class="item-title">${escapeHTML(config.label)}</span><span class="item-meta">${escapeHTML(item?.slug_pt || "")} / ${escapeHTML(item?.slug_en || "")}</span>`;
       list.appendChild(btn);
       return;
     }
@@ -529,26 +621,8 @@
     const config = collections[currentCollection];
     if (!currentData) return null;
 
-    if (config.mode === "object-singleton") {
-      return currentData[config.key] || config.blank;
-    }
-
-    if (config.mode === "singleton") {
-      const source = currentData[config.key] || config.blank;
-      const keywords = source.keywords || [];
-      return {
-        keyword1: keywords[0]?.label || config.blank.keyword1,
-        keyword1_url: keywords[0]?.slug || config.blank.keyword1_url,
-        keyword2: keywords[1]?.label || config.blank.keyword2,
-        keyword2_url: keywords[1]?.slug || config.blank.keyword2_url,
-        keyword3: keywords[2]?.label || config.blank.keyword3,
-        keyword3_url: keywords[2]?.slug || config.blank.keyword3_url,
-        intro1: source.intro?.[0] || "",
-        intro2: source.intro?.[1] || "",
-        intro3: source.intro?.[2] || ""
-      };
-    }
-
+    if (config.mode === "object-singleton") return currentData[config.key] || config.blank;
+    if (config.mode === "home-bilingual") return homeToForm(currentData);
     if (config.mode === "page-singleton") {
       const items = getAllItems(config);
       return currentActualIndex !== null ? items[currentActualIndex] : null;
@@ -582,7 +656,7 @@
     if (config.singleAcrossLanguages) {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Cadastre apenas uma vez; este item aparecerá nas versões PT e EN.";
+      p.textContent = "Cadastre a coleção uma única vez. Use descrição em português e descrição em inglês para adaptar o texto em cada versão.";
       form.appendChild(p);
     }
 
@@ -600,10 +674,10 @@
       form.appendChild(p);
     }
 
-    if (config.mode === "page-singleton") {
+    if (config.mode === "page-singleton" || config.mode === "home-bilingual") {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Aqui você edita o texto e os hiperlinks desta página específica.";
+      p.textContent = "Esta é uma entrada única com campos em português e inglês.";
       form.appendChild(p);
     }
 
@@ -650,27 +724,8 @@
     const config = collections[currentCollection];
     const form = $("editorForm");
 
-    if (config.mode === "object-singleton") {
-      const values = {};
-      config.fields.forEach(([name, type]) => {
-        const input = form.elements[name];
-        if (!input) return;
-        if (type === "checkbox") values[name] = Boolean(input.checked);
-        else if (type === "number") values[name] = input.value === "" ? "" : Number(input.value);
-        else values[name] = input.value;
-      });
-      return values;
-    }
-
-    if (config.mode === "singleton") {
-      return {
-        keywords: [
-          { slug: form.elements["keyword1_url"].value, label: form.elements["keyword1"].value },
-          { slug: form.elements["keyword2_url"].value, label: form.elements["keyword2"].value },
-          { slug: form.elements["keyword3_url"].value, label: form.elements["keyword3"].value }
-        ],
-        intro: [form.elements["intro1"].value, form.elements["intro2"].value, form.elements["intro3"].value].filter(Boolean)
-      };
+    if (config.mode === "home-bilingual") {
+      return formToHome(form);
     }
 
     const values = config.fixed ? { ...config.fixed } : {};
@@ -693,7 +748,13 @@
     const config = collections[currentCollection];
     if (!currentData) await loadCollection();
 
-    if (config.mode === "singleton" || config.mode === "object-singleton") {
+    if (config.mode === "home-bilingual") {
+      currentData = collectEditorValues();
+      await saveFile(`Atualiza ${currentCollection}`, config.label);
+      return;
+    }
+
+    if (config.mode === "object-singleton") {
       currentData[config.key] = collectEditorValues();
       await saveFile(`Atualiza ${currentCollection}`, config.label);
       return;
@@ -712,13 +773,9 @@
     const config = collections[currentCollection];
     setStatus("Conferindo versão mais recente no GitHub...");
 
-    // Antes de publicar, busca sempre o SHA mais recente do arquivo.
-    // Isso evita o erro: "content/...json does not match <sha>".
     try {
       const latestFile = await githubRequest(apiURL(config.path));
-      if (latestFile && latestFile.sha) {
-        currentSha = latestFile.sha;
-      }
+      if (latestFile && latestFile.sha) currentSha = latestFile.sha;
     } catch (error) {
       throw new Error("Não foi possível conferir a versão mais recente do arquivo: " + error.message);
     }
@@ -754,7 +811,7 @@
   async function addItem() {
     const config = collections[currentCollection];
     if (!currentData) await loadCollection();
-    if (config.mode === "singleton" || config.mode === "object-singleton" || config.mode === "page-singleton") {
+    if (["object-singleton", "home-bilingual", "page-singleton"].includes(config.mode)) {
       setStatus("Este é um conteúdo único. Edite os campos e clique em publicar alteração.");
       return;
     }
@@ -775,7 +832,7 @@
 
   async function deleteItem() {
     const config = collections[currentCollection];
-    if (config.mode === "singleton" || config.mode === "object-singleton" || config.mode === "page-singleton") {
+    if (["object-singleton", "home-bilingual", "page-singleton"].includes(config.mode)) {
       setStatus("Este conteúdo não pode ser excluído.", true);
       return;
     }

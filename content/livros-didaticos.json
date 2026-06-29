@@ -22,7 +22,9 @@
       "botao5_label": "",
       "botao5_url": "",
       "botao6_label": "",
-      "botao6_url": ""
+      "botao6_url": "",
+      "descricao_pt": "Descrição curta da obra, coleção ou participação autoral.",
+      "descricao_en": ""
     },
     {
       "titulo": "Textbook to add",
@@ -46,7 +48,9 @@
       "botao5_label": "",
       "botao5_url": "",
       "botao6_label": "",
-      "botao6_url": ""
+      "botao6_url": "",
+      "descricao_pt": "Short description of the textbook, collection, or authorial contribution.",
+      "descricao_en": ""
     }
   ]
 }

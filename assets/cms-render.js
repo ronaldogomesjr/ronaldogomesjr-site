@@ -70,7 +70,7 @@
       <article class="section-row">
         <h2>${escapeHTML(item.titulo)}</h2>
         <div>
-          <p>${escapeHTML(item.descricao)}</p>
+          <p>${escapeHTML(lang === "en" ? (item.descricao_en || item.descricao_pt || item.descricao || "") : (item.descricao_pt || item.descricao || ""))}</p>
           ${meta ? `<p class="item-meta">${escapeHTML(meta)}</p>` : ""}
           ${externalLink(item.link, label)}
         </div>
@@ -97,7 +97,7 @@
         <h2>${escapeHTML(item.titulo)}</h2>
         <div>
           ${image}
-          <p>${escapeHTML(item.descricao)}</p>
+          <p>${escapeHTML(lang === "en" ? (item.descricao_en || item.descricao_pt || item.descricao || "") : (item.descricao_pt || item.descricao || ""))}</p>
           ${meta ? `<p class="item-meta">${escapeHTML(meta)}</p>` : ""}
           ${externalLink(item.link, label)}
           ${downloadButtons}

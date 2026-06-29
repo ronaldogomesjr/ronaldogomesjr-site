@@ -15,6 +15,10 @@
     return data.items || [];
   }
 
+  function field(page, name, lang) {
+    return page[`${name}_${lang}`] || page[name] || '';
+  }
+
   function linkHTML(label, url) {
     if (!label || !url) return '';
     return `<a href="${escapeHTML(url)}" ${String(url).startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${escapeHTML(label)}</a>`;
@@ -29,27 +33,35 @@
 
     try {
       const items = await loadPages();
-      const page = items.find((item) => item.slug === slug && item.idioma === lang);
+      const page = items.find((item) => {
+        if (lang === 'en') return item.slug_en === slug || item.slug === slug;
+        return item.slug_pt === slug || item.slug === slug;
+      });
       if (!page) return;
+
+      const title = field(page, 'title', lang);
+      const intro = field(page, 'intro', lang);
+      const metaTitle = field(page, 'meta_title', lang);
+      const metaDescription = field(page, 'meta_description', lang);
 
       const titleEl = shell.querySelector('[data-page-title]');
       const introEl = shell.querySelector('[data-page-intro]');
-      if (titleEl) titleEl.textContent = page.title || titleEl.textContent;
-      if (introEl) introEl.textContent = page.intro || introEl.textContent;
-      document.title = `${page.meta_title || page.title || document.title} — Ronaldo Gomes Jr.`;
+      if (titleEl && title) titleEl.textContent = title;
+      if (introEl && intro) introEl.textContent = intro;
+      document.title = `${metaTitle || title || document.title} — Ronaldo Gomes Jr.`;
 
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription && page.meta_description) {
-        metaDescription.setAttribute('content', page.meta_description);
+      const metaDescriptionEl = document.querySelector('meta[name="description"]');
+      if (metaDescriptionEl && metaDescription) {
+        metaDescriptionEl.setAttribute('content', metaDescription);
       }
 
       const sectionsEl = shell.querySelector('[data-page-sections]');
       if (sectionsEl) {
         const sections = [1,2,3,4].map((n) => ({
-          title: page[`section${n}_title`],
-          text: page[`section${n}_text`],
-          linkLabel: page[`section${n}_link_label`],
-          linkUrl: page[`section${n}_link_url`]
+          title: field(page, `section${n}_title`, lang),
+          text: field(page, `section${n}_text`, lang),
+          linkLabel: field(page, `section${n}_link_label`, lang),
+          linkUrl: field(page, `section${n}_link_url`, lang)
         })).filter((section) => section.title || section.text || section.linkLabel || section.linkUrl);
 
         sectionsEl.innerHTML = sections.map((section) => `
