@@ -26,15 +26,15 @@
     },
     {
       "tipo": "artigo",
-      "idioma": "en",
-      "ano": "2026",
-      "titulo": "Journal article to add",
-      "autores": "Ronaldo Gomes Jr.",
-      "veiculo": "Journal name",
+      "idioma": "pt",
+      "ano": "2007",
+      "titulo": "Narrativas e crenças de alunos universitários sobre ensino e aprendizagem de inglês",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR, Ana Maria Ferreira BARCELOS",
+      "veiculo": "Glauks (UFV)",
       "link": "#",
       "visivel": true,
       "destaque": false,
-      "ordem": 4
+      "ordem": 1782747494799
     },
     {
       "tipo": "capitulo",
