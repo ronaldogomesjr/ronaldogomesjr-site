@@ -1,8 +1,18 @@
 {
   "items": [
     {
+      "tipo": "artigo",
+      "ano": "2026",
+      "titulo": "Artigo a inserir",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Nome do periódico",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1
+    },
+    {
       "tipo": "capitulo",
-      "idioma": "pt",
       "ano": "2026",
       "titulo": "Capítulo a inserir",
       "autores": "Ronaldo Gomes Jr.",
@@ -14,7 +24,6 @@
     },
     {
       "tipo": "livro_academico",
-      "idioma": "pt",
       "ano": "2026",
       "titulo": "Livro acadêmico a inserir",
       "autores": "Ronaldo Gomes Jr.",
@@ -26,19 +35,17 @@
     },
     {
       "tipo": "artigo",
-      "idioma": "pt",
-      "ano": "2007",
-      "titulo": "Narrativas e crenças de alunos universitários sobre ensino e aprendizagem de inglês",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR, Ana Maria Ferreira BARCELOS",
-      "veiculo": "Glauks (UFV)",
+      "ano": "2026",
+      "titulo": "Journal article to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Journal name",
       "link": "#",
       "visivel": true,
       "destaque": false,
-      "ordem": 1782747494799
+      "ordem": 4
     },
     {
       "tipo": "capitulo",
-      "idioma": "en",
       "ano": "2026",
       "titulo": "Book chapter to add",
       "autores": "Ronaldo Gomes Jr.",
@@ -50,7 +57,6 @@
     },
     {
       "tipo": "livro_academico",
-      "idioma": "en",
       "ano": "2026",
       "titulo": "Academic book to add",
       "autores": "Ronaldo Gomes Jr.",
@@ -59,30 +65,6 @@
       "visivel": true,
       "destaque": false,
       "ordem": 6
-    },
-    {
-      "tipo": "artigo",
-      "idioma": "pt",
-      "ano": "2012",
-      "titulo": "Metáforas Online: As Conceitualizações de Aprendizes Universitários de Inglês sobre Aprendizagem à Distância. ",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR",
-      "veiculo": "Revista Escrita (PUCRJ. Online)",
-      "link": "https://www.maxwell.vrac.puc-rio.br/20855/20855.PDF",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1782747547590
-    },
-    {
-      "tipo": "artigo",
-      "idioma": "pt",
-      "ano": "2012",
-      "titulo": "Leitura em inglês na rede: a trajetória do Projeto IngRede.",
-      "autores": "Vera Lúcia Menezes de Oliveira e PAIVA, Junia de Carvalho Fidelis BRAGA, Marisa Mendonça CARNEIRO, Marcos RACILAN, Ronaldo Corrêa GOMES JUNIOR, Luciano Alves LIMA",
-      "veiculo": "Educação & Tecnologia",
-      "link": "https://seer.dppg.cefetmg.br/index.php/revista-et/article/view/478",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1782747752026
     }
   ]
 }

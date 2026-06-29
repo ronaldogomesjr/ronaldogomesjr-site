@@ -11,7 +11,19 @@
       "imagem": "",
       "visivel": true,
       "destaque": false,
-      "ordem": 1
+      "ordem": 1,
+      "botao1_label": "",
+      "botao1_url": "",
+      "botao2_label": "",
+      "botao2_url": "",
+      "botao3_label": "",
+      "botao3_url": "",
+      "botao4_label": "",
+      "botao4_url": "",
+      "botao5_label": "",
+      "botao5_url": "",
+      "botao6_label": "",
+      "botao6_url": ""
     },
     {
       "idioma": "en",
@@ -24,7 +36,19 @@
       "imagem": "",
       "visivel": true,
       "destaque": false,
-      "ordem": 2
+      "ordem": 2,
+      "botao1_label": "",
+      "botao1_url": "",
+      "botao2_label": "",
+      "botao2_url": "",
+      "botao3_label": "",
+      "botao3_url": "",
+      "botao4_label": "",
+      "botao4_url": "",
+      "botao5_label": "",
+      "botao5_url": "",
+      "botao6_label": "",
+      "botao6_url": ""
     }
   ]
 }

@@ -12,7 +12,6 @@
   ];
 
   const publicationFields = [
-    ["idioma", "select", "Idioma", ["pt", "en"]],
     ["ano", "text", "Ano"],
     ["titulo", "text", "Título"],
     ["autores", "text", "Autores"],
@@ -188,10 +187,10 @@
       root: "items",
       fixed: { tipo: "artigo" },
       labelField: "titulo",
-      meta: item => ["artigo", item.ano, item.idioma].filter(Boolean).join(" · "),
+      meta: item => ["artigo", item.ano].filter(Boolean).join(" · "),
       fields: publicationFields,
       sortRecent: true,
-      blank: { tipo: "artigo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
+      blank: { tipo: "artigo", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
     },
     "capitulos": {
       mode: "filtered-list",
@@ -199,10 +198,10 @@
       root: "items",
       fixed: { tipo: "capitulo" },
       labelField: "titulo",
-      meta: item => ["capítulo", item.ano, item.idioma].filter(Boolean).join(" · "),
+      meta: item => ["capítulo", item.ano].filter(Boolean).join(" · "),
       fields: publicationFields,
       sortRecent: true,
-      blank: { tipo: "capitulo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
+      blank: { tipo: "capitulo", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
     },
     "livros-academicos": {
       mode: "filtered-list",
@@ -210,10 +209,10 @@
       root: "items",
       fixed: { tipo: "livro_academico" },
       labelField: "titulo",
-      meta: item => ["livro acadêmico", item.ano, item.idioma].filter(Boolean).join(" · "),
+      meta: item => ["livro acadêmico", item.ano].filter(Boolean).join(" · "),
       fields: publicationFields,
       sortRecent: true,
-      blank: { tipo: "livro_academico", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
+      blank: { tipo: "livro_academico", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
     },
     "projetos": {
       mode: "list",
@@ -249,11 +248,49 @@
         ["descricao", "textarea", "Descrição"],
         ["link", "text", "Hiperlink externo"],
         ["imagem", "text", "URL da imagem"],
+
+        ["botao1_label", "text", "Botão 1 — texto"],
+        ["botao1_url", "text", "Botão 1 — link de download"],
+        ["botao2_label", "text", "Botão 2 — texto"],
+        ["botao2_url", "text", "Botão 2 — link de download"],
+        ["botao3_label", "text", "Botão 3 — texto"],
+        ["botao3_url", "text", "Botão 3 — link de download"],
+        ["botao4_label", "text", "Botão 4 — texto"],
+        ["botao4_url", "text", "Botão 4 — link de download"],
+        ["botao5_label", "text", "Botão 5 — texto"],
+        ["botao5_url", "text", "Botão 5 — link de download"],
+        ["botao6_label", "text", "Botão 6 — texto"],
+        ["botao6_url", "text", "Botão 6 — link de download"],
+
         ["visivel", "checkbox", "Visível no site"],
         ["destaque", "checkbox", "Destaque"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", titulo: "", editora: "", ano: "", nivel: "", descricao: "", link: "#", imagem: "", visivel: true, destaque: false, ordem: 999 }
+      blank: {
+        idioma: "pt",
+        titulo: "",
+        editora: "",
+        ano: "",
+        nivel: "",
+        descricao: "",
+        link: "#",
+        imagem: "",
+        botao1_label: "",
+        botao1_url: "",
+        botao2_label: "",
+        botao2_url: "",
+        botao3_label: "",
+        botao3_url: "",
+        botao4_label: "",
+        botao4_url: "",
+        botao5_label: "",
+        botao5_url: "",
+        botao6_label: "",
+        botao6_url: "",
+        visivel: true,
+        destaque: false,
+        ordem: 999
+      }
     },
     "links": {
       mode: "list",
@@ -537,7 +574,9 @@
       const fixedLabel = Object.values(config.fixed)[0].replace("_", " ");
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = `Categoria: ${fixedLabel}`;
+      p.textContent = config.sortRecent
+        ? `Categoria: ${fixedLabel}. Cadastre apenas uma vez; aparecerá em PT e EN.`
+        : `Categoria: ${fixedLabel}`;
       form.appendChild(p);
     }
 

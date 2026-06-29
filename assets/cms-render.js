@@ -82,6 +82,16 @@
     const label = lang === "en" ? "Access →" : "Acessar →";
     const meta = [item.editora, item.ano, item.nivel].filter(Boolean).join(" · ");
     const image = item.imagem ? `<img class="content-thumb" src="${escapeHTML(item.imagem)}" alt="">` : "";
+    const buttons = [1, 2, 3, 4, 5, 6]
+      .map((n) => ({ label: item[`botao${n}_label`], url: item[`botao${n}_url`] }))
+      .filter((button) => button.label && button.url);
+
+    const downloadButtons = buttons.length
+      ? `<div class="download-buttons">${buttons.map((button) => `
+          <a class="download-button" href="${escapeHTML(button.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(button.label)}</a>
+        `).join("")}</div>`
+      : "";
+
     return `
       <article class="section-row">
         <h2>${escapeHTML(item.titulo)}</h2>
@@ -90,6 +100,7 @@
           <p>${escapeHTML(item.descricao)}</p>
           ${meta ? `<p class="item-meta">${escapeHTML(meta)}</p>` : ""}
           ${externalLink(item.link, label)}
+          ${downloadButtons}
         </div>
       </article>
     `;
@@ -124,7 +135,25 @@
     try {
       if (kind === "publicacoes") {
         const data = await loadJSON("/content/publicacoes.json");
-        const items = sortedVisible(data.items, lang, "publicacoes").filter((item) => !type || item.tipo === type);
+
+        // Publicações acadêmicas não são traduzidas.
+        // Um único cadastro aparece nas versões PT e EN.
+        const seen = new Set();
+        const items = sortedVisible(data.items, null, "publicacoes")
+          .filter((item) => !type || item.tipo === type)
+          .filter((item) => {
+            const key = [
+              item.tipo || "",
+              item.ano || "",
+              String(item.titulo || "").trim().toLowerCase(),
+              String(item.link || "").trim().toLowerCase()
+            ].join("|");
+
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
+
         element.innerHTML = items.length ? items.map((item) => publicationHTML(item, lang)).join("") : emptyMessage(lang);
       }
 

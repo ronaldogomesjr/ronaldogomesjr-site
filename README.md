@@ -1,30 +1,35 @@
-# Ronaldo Gomes Jr. Site — V42 Auto Publication Order
+# Ronaldo Gomes Jr. Site — V44 Single Publications
 
-Esta versão corrige a ordenação de publicações.
+Esta versão corrige a lógica bilíngue de publicações.
 
 ## O que mudou
 
-Para:
+Artigos, capítulos e livros acadêmicos agora são cadastrados uma única vez no painel.
 
-- artigos;
-- capítulos;
-- livros acadêmicos;
+Eles aparecem automaticamente em:
 
-o site agora ordena automaticamente por:
+- `/pt/publicacoes/artigos/`
+- `/en/publications/journal-articles/`
+- `/pt/publicacoes/capitulos/`
+- `/en/publications/book-chapters/`
+- `/pt/publicacoes/livros-academicos/`
+- `/en/publications/academic-books/`
 
-1. ano mais recente primeiro;
-2. dentro do mesmo ano, item mais novo primeiro.
+## Por quê?
+
+Títulos de publicações, nomes de periódicos, livros, editoras, autores e DOI/link normalmente não são traduzidos.  
+Por isso, não é necessário cadastrar o mesmo item em português e inglês.
 
 ## No painel
 
-Ao clicar em `novo item` dentro de artigos, capítulos ou livros acadêmicos:
+Nas categorias:
 
-- o ano atual já é preenchido automaticamente;
-- a ordem recebe um valor automático;
-- o item novo aparece no topo sem você precisar reorganizar todos os anteriores.
+- artigos
+- capítulos
+- livros acadêmicos
 
-O campo `Ordem automática/manual` continua existindo, mas você não precisa mexer nele para uso normal.
+o campo `Idioma` foi removido.
 
-## Publicação
+## Observação
 
-Suba todos os arquivos desta versão no GitHub e aguarde o deploy da Vercel.
+Se existirem duplicatas antigas cadastradas em PT e EN, o site tenta ocultar duplicatas automaticamente quando título, ano, tipo e link forem iguais.

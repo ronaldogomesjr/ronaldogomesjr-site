@@ -874,3 +874,35 @@ a { color: inherit; text-decoration: none; }
     min-height: 360px;
   }
 }
+
+
+/* V43 — botões de download dos livros didáticos */
+.download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(36, 95, 107, 0.28);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: lowercase;
+  color: var(--teal);
+  background: rgba(251, 250, 246, .58);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.download-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(36, 95, 107, 0.58);
+  background: rgba(36, 95, 107, 0.055);
+}
