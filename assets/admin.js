@@ -22,6 +22,23 @@
     ["ordem", "number", "Ordem automática/manual"]
   ];
 
+
+  const supervisionDegreeOptions = [
+    { label: "Mestrado / Masters", value: "mestrado" },
+    { label: "Doutorado / PhD", value: "doutorado" }
+  ];
+
+  const supervisionFields = [
+    ["grau", "select", "Nível / Level", supervisionDegreeOptions],
+    ["orientando", "text", "Nome do orientando"],
+    ["trabalho_pt", "textarea", "Nome do trabalho em português"],
+    ["trabalho_en", "textarea", "Work title in English"],
+    ["ano_inicio", "number", "Ano de início"],
+    ["ano_fim", "number", "Ano de fim"],
+    ["visivel", "checkbox", "Visível no site"],
+    ["ordem", "number", "Ordem"]
+  ];
+
   const projectCategoryOptions = [
     { label: "Ensino / Teaching", value: "ensino" },
     { label: "Pesquisa / Research", value: "pesquisa" },
@@ -153,6 +170,10 @@
     ["section4_link_label_en", "text", "Seção 4 — texto do hiperlink em inglês"],
     ["section4_link_url_pt", "text", "Seção 4 — URL do hiperlink em português"],
     ["section4_link_url_en", "text", "Seção 4 — URL do hiperlink em inglês"],
+
+    ["portrait_image", "text", "Foto da página sobre — URL da imagem"],
+    ["portrait_alt_pt", "text", "Texto alternativo da foto em português"],
+    ["portrait_alt_en", "text", "Alt text for the photo in English"],
 
     ["ordem", "number", "Ordem"]
   ];
@@ -330,6 +351,15 @@
       intro_en: "Initial list for academic books and edited volumes."
     }),
     "page-livros-didaticos": pageCollection("livros-didaticos", "página: livros didáticos / textbooks"),
+    "page-orientacoes": pageCollection("orientacoes", "página: orientações / supervisions", {
+      slug_pt: "orientacoes",
+      slug_en: "supervisions",
+      title_pt: "orientações",
+      title_en: "supervisions",
+      intro_pt: "Orientações de mestrado e doutorado em andamento e concluídas.",
+      intro_en: "Current and completed Masters and PhD supervisions.",
+      ordem: 5
+    }),
     "page-sobre": pageCollection("sobre", "página: sobre / about"),
     "page-contato": pageCollection(
       "contato",
@@ -430,6 +460,26 @@
         ordem: 999
       }
     },
+    "orientacoes": {
+      mode: "list",
+      path: "content/orientacoes.json",
+      root: "items",
+      label: "orientações / supervisions",
+      labelField: "orientando",
+      meta: item => [item.grau === "doutorado" ? "Doutorado / PhD" : "Mestrado / Masters", [item.ano_inicio, item.ano_fim].filter(Boolean).join("–")].filter(Boolean).join(" · "),
+      fields: supervisionFields,
+      blank: {
+        grau: "mestrado",
+        orientando: "",
+        trabalho_pt: "",
+        trabalho_en: "",
+        ano_inicio: "",
+        ano_fim: "",
+        visivel: true,
+        ordem: 999
+      }
+    },
+
     "livros-didaticos": {
       mode: "list",
       path: "content/livros-didaticos.json",
@@ -631,6 +681,47 @@
     );
   }
 
+
+  function isSupervisionsMenuItem(item) {
+    const label = plainMenuKey(item?.label);
+    const url = String(item?.url || "").trim().toLowerCase();
+    return (
+      label === "orientacoes" ||
+      label === "orientações" ||
+      label === "supervisions" ||
+      url === "/pt/orientacoes/" ||
+      url === "/en/supervisions/"
+    );
+  }
+
+  function defaultSupervisionsMenuItem(config) {
+    return config.key === "en"
+      ? { label: "SUPERVISIONS", url: "/en/supervisions/", visivel: true, ordem: 4.5 }
+      : { label: "ORIENTAÇÕES", url: "/pt/orientacoes/", visivel: true, ordem: 4.5 };
+  }
+
+  function normalizeMenuContent(config) {
+    if (!config || config.mode !== "menu") return;
+    const items = getAllItems(config);
+
+    // Remove a página antiga Pesquisa/Research do editor de menu e garante
+    // que Orientações/Supervisions esteja disponível para edição.
+    for (let index = items.length - 1; index >= 0; index -= 1) {
+      if (isResearchMenuItem(items[index])) items.splice(index, 1);
+    }
+
+    if (!items.some(isSupervisionsMenuItem)) {
+      const newItem = defaultSupervisionsMenuItem(config);
+      const aboutIndex = items.findIndex((item) => {
+        const label = plainMenuKey(item?.label);
+        const url = String(item?.url || "").trim().toLowerCase();
+        return label === "sobre" || label === "about" || url === "/pt/sobre/" || url === "/en/about/";
+      });
+      const insertIndex = aboutIndex >= 0 ? aboutIndex : items.length;
+      items.splice(insertIndex, 0, newItem);
+    }
+  }
+
   function mergeLinkDescriptions(target, item) {
     if (!target || !item) return target;
 
@@ -761,6 +852,7 @@
     const file = await githubRequest(apiURL(config.path));
     currentSha = file.sha;
     currentData = JSON.parse(decodeBase64Unicode(file.content));
+    normalizeMenuContent(config);
 
     if (["object-singleton", "home-bilingual"].includes(config.mode)) {
       if (config.mode === "object-singleton" && !currentData[config.key]) currentData[config.key] = { ...config.blank };

@@ -24,6 +24,24 @@
     return `<a href="${escapeHTML(url)}" ${String(url).startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${escapeHTML(label)}</a>`;
   }
 
+  function updatePortrait(shell, page, lang) {
+    const portrait = shell.querySelector('[data-page-portrait]');
+    if (!portrait) return;
+
+    const imageUrl = page.portrait_image || page.photo || page.foto || page.imagem || '';
+    const alt = field(page, 'portrait_alt', lang) || field(page, 'photo_alt', lang) || 'Ronaldo Gomes Jr.';
+    const img = portrait.querySelector('[data-page-portrait-img]');
+
+    if (!imageUrl || !img) {
+      portrait.hidden = true;
+      return;
+    }
+
+    img.src = imageUrl;
+    img.alt = alt;
+    portrait.hidden = false;
+  }
+
   document.addEventListener('DOMContentLoaded', async function () {
     const shell = document.querySelector('[data-page-shell]');
     if (!shell) return;
@@ -50,12 +68,14 @@
       const introEl = shell.querySelector('[data-page-intro]');
       if (titleEl && title) titleEl.textContent = title;
       if (introEl && intro) introEl.textContent = intro;
-      document.title = `${metaTitle || title || document.title} — Ronaldo Gomes Jr.`;
+      if (metaTitle || title) document.title = `${metaTitle || title} — Ronaldo Gomes Jr.`;
 
       const metaDescriptionEl = document.querySelector('meta[name="description"]');
       if (metaDescriptionEl && metaDescription) {
         metaDescriptionEl.setAttribute('content', metaDescription);
       }
+
+      updatePortrait(shell, page, lang);
 
       const sectionsEl = shell.querySelector('[data-page-sections]');
       if (sectionsEl) {

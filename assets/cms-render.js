@@ -100,6 +100,21 @@
     return item.periodo || "";
   }
 
+
+  function supervisionPeriodLabel(item, lang) {
+    const start = String(item.ano_inicio || item.inicio || "").trim();
+    const end = String(item.ano_fim || item.fim || "").trim();
+
+    if (start && end) return `${start}–${end}`;
+    if (start) return lang === "en" ? `Since ${start}` : `Desde ${start}`;
+    if (end) return lang === "en" ? `Until ${end}` : `Até ${end}`;
+    return "";
+  }
+
+  function localizedSupervisionField(item, field, lang) {
+    return item[`${field}_${lang}`] || item[field] || item[`${field}_${lang === "en" ? "pt" : "en"}`] || "";
+  }
+
   function hasBilingualProjectFields(item) {
     return Boolean(item.titulo_pt || item.titulo_en || item.descricao_pt || item.descricao_en || item.categoria);
   }
@@ -319,6 +334,23 @@
     `;
   }
 
+  function supervisionHTML(item, lang) {
+    const name = item.orientando || item.nome || "";
+    const work = localizedSupervisionField(item, "trabalho", lang) || localizedSupervisionField(item, "titulo", lang);
+    const period = supervisionPeriodLabel(item, lang);
+    const meta = period ? `<p class="item-meta">${escapeHTML(period)}</p>` : "";
+
+    return `
+      <article class="section-row supervision-row">
+        <h2>${escapeHTML(name)}</h2>
+        <div>
+          ${work ? `<p>${escapeHTML(work)}</p>` : ""}
+          ${meta}
+        </div>
+      </article>
+    `;
+  }
+
   function linkHTML(item, lang) {
     const label = lang === "en" ? "Open →" : "Abrir →";
     const description = localizedLinkDescription(item, lang);
@@ -405,6 +437,15 @@
           });
 
         element.innerHTML = items.length ? items.map((item) => textbookHTML(item, lang)).join("") : emptyMessage(lang);
+      }
+
+      if (kind === "orientacoes") {
+        const data = await loadJSON("/content/orientacoes.json");
+        const degree = element.dataset.degree;
+        const items = sortedVisible(data.items, null)
+          .filter((item) => !degree || item.grau === degree || item.degree === degree);
+
+        element.innerHTML = items.length ? items.map((item) => supervisionHTML(item, lang)).join("") : emptyMessage(lang);
       }
 
       if (kind === "links") {

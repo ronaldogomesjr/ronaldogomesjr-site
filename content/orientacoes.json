@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "grau": "mestrado",
+      "orientando": "",
+      "trabalho_pt": "",
+      "trabalho_en": "",
+      "ano_inicio": "",
+      "ano_fim": "",
+      "visivel": true,
+      "ordem": 999
+    }
+  ]
+}

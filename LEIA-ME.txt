@@ -1,39 +1,41 @@
-PATCH — contato bilíngue corrigido + remoção efetiva de Pesquisa/Research
+PATCH — foto circular na página Sobre + página Orientações/Supervisions
 
-Arquivos incluídos neste patch:
+Arquivos incluídos:
 - assets/admin.js
 - assets/cms-render.js
-- assets/footer-links.js
+- assets/page-content.js
 - assets/site-content.js
-- admin/config.yml
+- assets/style.css
 - admin/index.html
-- vercel.json
-- páginas HTML em /pt e /en com o menu estático atualizado e cache-busting nos scripts
+- admin/config.yml
+- content/orientacoes.json (novo arquivo; não substitui conteúdos já editados em outras páginas)
+- pt/orientacoes/index.html
+- en/supervisions/index.html
+- páginas HTML em /pt e /en com menu estático atualizado
+- pt/pesquisa/index.html e en/research/index.html com redirecionamento
+- vercel.json com redirecionamento de Pesquisa/Research para Projetos/Projects
 
-O patch NÃO inclui arquivos content/*.json, para não sobrescrever conteúdo já atualizado no painel.
+O patch NÃO inclui:
+- content/pages.json
+- content/site.json
+- content/home.json
+- content/projetos.json
+- content/publicacoes.json
+- content/livros-didaticos.json
+- content/links.json
 
-O que este patch corrige:
-1. A página /en/contact/ passa a usar descricao_en quando existir.
-2. Os contatos antigos que ainda usam o campo legado tipo recebem fallback correto em inglês:
-   - Perfil acadêmico → Academic profile
-   - Currículo → CV
-   - Contato → Contact
-3. O painel continua permitindo editar:
-   - descrição em português
-   - description in English
-4. A chave de agrupamento dos contatos passa a ser o nome do contato, não nome + ordem. Isso evita que duplicatas antigas PT/EN fiquem desencontradas.
-5. Pesquisa/Research é removida do menu estático e do menu carregado por JavaScript.
-6. /pt/pesquisa/ e /en/research/ passam a redirecionar pela Vercel para /pt/projetos/ e /en/projects/.
-
-Importante sobre excluir a página Pesquisa/Research:
-Subir arquivos pelo GitHub substitui ou cria arquivos, mas não apaga arquivos antigos automaticamente.
-Este patch faz o site redirecionar essas URLs. Para apagar do repositório também, delete manualmente no GitHub:
-- pt/pesquisa/index.html
-- en/research/index.html
+Isso preserva o conteúdo já atualizado pelo painel.
 
 Depois de aplicar:
 1. Aguarde a Vercel publicar.
-2. Abra em aba anônima.
-3. Teste /en/contact/.
-4. Teste /en/research/; ela deve redirecionar para /en/projects/.
-5. Teste /pt/pesquisa/; ela deve redirecionar para /pt/projetos/.
+2. No painel, use “página: sobre / about” para preencher “Foto da página sobre — URL da imagem”.
+   Exemplo: /assets/uploads/minha-foto.jpg
+3. Use “página: orientações / supervisions” para editar título e subtítulo da página.
+4. Use “conteúdo: orientações / supervisions” para cadastrar orientandos.
+5. A página em português fica em /pt/orientacoes/.
+6. A página em inglês fica em /en/supervisions/.
+
+Observação sobre excluir Pesquisa/Research:
+Subir arquivos pelo GitHub cria/substitui arquivos, mas não apaga arquivos antigos automaticamente. Este patch remove Pesquisa/Research do menu, remove do editor de menu ao carregar, e redireciona essas URLs. Se quiser apagar do repositório de fato, delete manualmente:
+- pt/pesquisa/index.html
+- en/research/index.html

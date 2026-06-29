@@ -37,6 +37,9 @@ collections:
               - {label: "Título SEO em inglês", name: "meta_title_en", widget: "string", required: false}
               - {label: "Descrição SEO em português", name: "meta_description_pt", widget: "text", required: false}
               - {label: "SEO description in English", name: "meta_description_en", widget: "text", required: false}
+              - {label: "Foto da página sobre", name: "portrait_image", widget: "image", required: false}
+              - {label: "Texto alternativo da foto em português", name: "portrait_alt_pt", widget: "string", required: false}
+              - {label: "Alt text for the photo in English", name: "portrait_alt_en", widget: "string", required: false}
               - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
 
       - label: "Publicações"
@@ -88,6 +91,30 @@ collections:
               - {label: "Link externo", name: "link", widget: "string", required: false}
               - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
               - {label: "Destaque", name: "destaque", widget: "boolean", default: false, required: false}
+              - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
+
+      - label: "Orientações / Supervisions"
+        name: "orientacoes"
+        file: "content/orientacoes.json"
+        format: "json"
+        fields:
+          - label: "Orientações"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.orientando}} — {{fields.ano_inicio}}"
+            fields:
+              - label: "Nível / Level"
+                name: "grau"
+                widget: "select"
+                options:
+                  - {label: "Mestrado / Masters", value: "mestrado"}
+                  - {label: "Doutorado / PhD", value: "doutorado"}
+              - {label: "Nome do orientando", name: "orientando", widget: "string"}
+              - {label: "Nome do trabalho em português", name: "trabalho_pt", widget: "text", required: false}
+              - {label: "Work title in English", name: "trabalho_en", widget: "text", required: false}
+              - {label: "Ano de início", name: "ano_inicio", widget: "number", value_type: "int", required: false}
+              - {label: "Ano de fim", name: "ano_fim", widget: "number", value_type: "int", required: false}
+              - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
               - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
 
       - label: "Livros didáticos"
