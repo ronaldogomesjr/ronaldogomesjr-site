@@ -1,38 +1,39 @@
-# Ronaldo Gomes Jr. Site — V38 Full Admin
+# Ronaldo Gomes Jr. Site — V39 Clear Full Admin
 
-Esta versão amplia o painel `/admin` para editar praticamente todo o conteúdo textual e todos os hiperlinks principais do site.
+Esta versão deixa o painel `/admin` mais claro e completo.
 
-## Agora o painel edita
+## Mudanças principais
 
-- menu e cabeçalho em português;
-- menu e cabeçalho em inglês;
-- palavras-chave e hiperlinks da página inicial;
-- parágrafos da página inicial;
-- textos das páginas internas em PT e EN;
-- hiperlinks dentro das seções das páginas internas;
-- metatítulo e metadescrição das páginas;
-- artigos;
-- capítulos;
-- livros acadêmicos;
+Agora o painel separa:
+
+- `identidade e cabeçalho`
+- `menu superior (pt)`
+- `menu superior (en)`
+
+Em `identidade e cabeçalho`, é possível editar:
+
+- nome/marca no cabeçalho;
+- nome curto;
+- descrição acessível da marca;
+- link da marca na versão PT;
+- link da marca na versão EN;
+- descrições dos três pontos coloridos.
+
+Em `menu superior (pt)` e `menu superior (en)`, é possível editar:
+
+- texto de cada item do menu;
+- hiperlink/URL;
+- visibilidade;
+- ordem.
+
+As demais áreas seguem editáveis:
+
+- página inicial;
+- páginas internas;
+- publicações;
 - projetos;
 - livros didáticos;
-- links da página de contato;
-- links do rodapé.
-
-## O que mudou no site
-
-Foram adicionados arquivos de conteúdo:
-
-- `content/site.json`
-- `content/home.json`
-- `content/pages.json`
-
-E scripts para carregar conteúdo editável:
-
-- `assets/site-content.js`
-- `assets/home-content.js`
-- `assets/page-content.js`
-- `assets/footer-links.js`
+- links/rodapé.
 
 ## Publicação
 

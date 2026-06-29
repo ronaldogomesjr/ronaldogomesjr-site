@@ -50,7 +50,24 @@
   ];
 
   const collections = {
-    "config-pt": {
+    "identidade": {
+      mode: "object-singleton",
+      path: "content/site.json",
+      key: "brand",
+      label: "identidade e cabeçalho",
+      fields: [
+        ["nome", "text", "Nome/marca no cabeçalho"],
+        ["nome_curto", "text", "Nome curto"],
+        ["aria_label", "text", "Descrição acessível da marca"],
+        ["url_pt", "text", "Link da marca na versão PT"],
+        ["url_en", "text", "Link da marca na versão EN"],
+        ["dot1_label", "text", "Descrição do ponto 1"],
+        ["dot2_label", "text", "Descrição do ponto 2"],
+        ["dot3_label", "text", "Descrição do ponto 3"]
+      ],
+      blank: { nome: "RONALDO GOMES JR.", nome_curto: "ronaldo gomes jr.", aria_label: "Ronaldo Gomes Jr.", url_pt: "/pt/", url_en: "/en/", dot1_label: "design", dot2_label: "tecnologia digital", dot3_label: "educação linguística" }
+    },
+    "menu-pt": {
       mode: "menu",
       path: "content/site.json",
       key: "pt",
@@ -60,7 +77,7 @@
       fields: menuFields,
       blank: { label: "NOVO LINK", url: "#", visivel: true, ordem: 999 }
     },
-    "config-en": {
+    "menu-en": {
       mode: "menu",
       path: "content/site.json",
       key: "en",
@@ -216,7 +233,7 @@
     }
   };
 
-  let currentCollection = "config-pt";
+  let currentCollection = "identidade";
   let currentData = null;
   let currentSha = null;
   let currentActualIndex = null;
@@ -322,7 +339,7 @@
     currentSha = file.sha;
     currentData = JSON.parse(decodeBase64Unicode(file.content));
 
-    if (config.mode === "singleton") {
+    if (config.mode === "singleton" || config.mode === "object-singleton") {
       if (!currentData[config.key]) currentData[config.key] = { ...config.blank };
       currentActualIndex = 0;
       renderList();
@@ -365,7 +382,7 @@
     const config = collections[currentCollection];
     list.innerHTML = "";
 
-    if (config.mode === "singleton") {
+    if (config.mode === "singleton" || config.mode === "object-singleton") {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "item-button active";
@@ -401,6 +418,10 @@
   function getCurrentItem() {
     const config = collections[currentCollection];
     if (!currentData) return null;
+
+    if (config.mode === "object-singleton") {
+      return currentData[config.key] || config.blank;
+    }
 
     if (config.mode === "singleton") {
       const source = currentData[config.key] || config.blank;
@@ -438,6 +459,13 @@
       const p = document.createElement("p");
       p.className = "hint";
       p.textContent = `Categoria: ${fixedLabel}`;
+      form.appendChild(p);
+    }
+
+    if (config.mode === "object-singleton") {
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = "Aqui você edita o nome/marca e os links do cabeçalho.";
       form.appendChild(p);
     }
 
@@ -491,6 +519,18 @@
     const config = collections[currentCollection];
     const form = $("editorForm");
 
+    if (config.mode === "object-singleton") {
+      const values = {};
+      config.fields.forEach(([name, type]) => {
+        const input = form.elements[name];
+        if (!input) return;
+        if (type === "checkbox") values[name] = Boolean(input.checked);
+        else if (type === "number") values[name] = input.value === "" ? "" : Number(input.value);
+        else values[name] = input.value;
+      });
+      return values;
+    }
+
     if (config.mode === "singleton") {
       return {
         keywords: [
@@ -517,7 +557,7 @@
     const config = collections[currentCollection];
     if (!currentData) await loadCollection();
 
-    if (config.mode === "singleton") {
+    if (config.mode === "singleton" || config.mode === "object-singleton") {
       currentData[config.key] = collectEditorValues();
       await saveFile(`Atualiza ${currentCollection}`, config.label);
       return;
@@ -555,7 +595,7 @@
   async function addItem() {
     const config = collections[currentCollection];
     if (!currentData) await loadCollection();
-    if (config.mode === "singleton") {
+    if (config.mode === "singleton" || config.mode === "object-singleton") {
       setStatus("Este é um conteúdo único. Edite os campos e clique em publicar alteração.");
       return;
     }
@@ -570,7 +610,7 @@
 
   async function deleteItem() {
     const config = collections[currentCollection];
-    if (config.mode === "singleton") {
+    if (config.mode === "singleton" || config.mode === "object-singleton") {
       setStatus("Este conteúdo não pode ser excluído.", true);
       return;
     }

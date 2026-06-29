@@ -31,6 +31,7 @@
       const brand = document.querySelector('.brand');
       if (brand && site.brand) {
         brand.setAttribute('href', lang === 'en' ? (site.brand.url_en || '/en/') : (site.brand.url_pt || '/pt/'));
+        brand.setAttribute('aria-label', site.brand.aria_label || site.brand.nome || 'Ronaldo Gomes Jr.');
       }
 
       const nav = document.querySelector('.main-nav');

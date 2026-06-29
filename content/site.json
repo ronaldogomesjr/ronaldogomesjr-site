@@ -2,7 +2,12 @@
   "brand": {
     "nome": "RONALDO GOMES JR.",
     "url_pt": "/pt/",
-    "url_en": "/en/"
+    "url_en": "/en/",
+    "nome_curto": "ronaldo gomes jr.",
+    "aria_label": "Ronaldo Gomes Jr.",
+    "dot1_label": "design",
+    "dot2_label": "tecnologia digital",
+    "dot3_label": "educação linguística"
   },
   "pt": {
     "menu": [
