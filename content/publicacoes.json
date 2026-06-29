@@ -23,17 +23,6 @@
       "ordem": 2
     },
     {
-      "tipo": "livro_academico",
-      "ano": "2026",
-      "titulo": "Livro acadêmico a inserir",
-      "autores": "Ronaldo Gomes Jr.",
-      "veiculo": "Editora",
-      "link": "#",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 3
-    },
-    {
       "tipo": "artigo",
       "ano": "2026",
       "titulo": "Journal article to add",
