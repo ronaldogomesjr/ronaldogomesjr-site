@@ -22,16 +22,6 @@
     },
     {
       "idioma": "pt",
-      "nome": "Google Scholar",
-      "tipo": "Perfil acadêmico",
-      "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
-      "visivel": true,
-      "ordem": 3,
-      "descricao_pt": "Perfil acadêmico",
-      "descricao_en": "Academic profile"
-    },
-    {
-      "idioma": "pt",
       "nome": "Lattes",
       "tipo": "Currículo",
       "link": "http://lattes.cnpq.br/6357439967840461",
