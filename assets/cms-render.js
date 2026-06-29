@@ -32,6 +32,22 @@
       });
   }
 
+  function uniquePublications(items) {
+    const seen = new Set();
+    return (items || []).filter((item) => {
+      const key = [
+        item.tipo || "",
+        item.ano || "",
+        item.titulo || "",
+        item.autores || "",
+        item.veiculo || ""
+      ].join("||").toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
   function externalLink(url, label) {
     if (!url || url === "#") return "";
     return `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}</a>`;
@@ -112,7 +128,7 @@
     try {
       if (kind === "publicacoes") {
         const data = await loadJSON("/content/publicacoes.json");
-        const items = sortedVisible(data.items, lang).filter((item) => !type || item.tipo === type);
+        const items = uniquePublications(sortedVisible(data.items, null).filter((item) => !type || item.tipo === type));
         element.innerHTML = items.length ? items.map((item) => publicationHTML(item, lang)).join("") : emptyMessage(lang);
       }
 

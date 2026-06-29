@@ -12,7 +12,6 @@
   ];
 
   const publicationFields = [
-    ["idioma", "select", "Idioma", ["pt", "en"]],
     ["ano", "text", "Ano"],
     ["titulo", "text", "Título"],
     ["autores", "text", "Autores"],
@@ -188,9 +187,9 @@
       root: "items",
       fixed: { tipo: "artigo" },
       labelField: "titulo",
-      meta: item => ["artigo", item.ano, item.idioma].filter(Boolean).join(" · "),
+      meta: item => ["artigo", item.ano].filter(Boolean).join(" · "),
       fields: publicationFields,
-      blank: { tipo: "artigo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      blank: { tipo: "artigo", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
     },
     "capitulos": {
       mode: "filtered-list",
@@ -198,9 +197,9 @@
       root: "items",
       fixed: { tipo: "capitulo" },
       labelField: "titulo",
-      meta: item => ["capítulo", item.ano, item.idioma].filter(Boolean).join(" · "),
+      meta: item => ["capítulo", item.ano].filter(Boolean).join(" · "),
       fields: publicationFields,
-      blank: { tipo: "capitulo", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      blank: { tipo: "capitulo", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
     },
     "livros-academicos": {
       mode: "filtered-list",
@@ -208,9 +207,9 @@
       root: "items",
       fixed: { tipo: "livro_academico" },
       labelField: "titulo",
-      meta: item => ["livro acadêmico", item.ano, item.idioma].filter(Boolean).join(" · "),
+      meta: item => ["livro acadêmico", item.ano].filter(Boolean).join(" · "),
       fields: publicationFields,
-      blank: { tipo: "livro_academico", idioma: "pt", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      blank: { tipo: "livro_academico", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 999 }
     },
     "projetos": {
       mode: "list",
@@ -524,7 +523,7 @@
       const fixedLabel = Object.values(config.fixed)[0].replace("_", " ");
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = `Categoria: ${fixedLabel}`;
+      p.textContent = `Categoria: ${fixedLabel}. Este item aparece automaticamente nas páginas em português e em inglês.`;
       form.appendChild(p);
     }
 
