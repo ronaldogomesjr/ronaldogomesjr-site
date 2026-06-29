@@ -5,7 +5,7 @@
       "idioma": "pt",
       "ano": "2024",
       "titulo": "Affordances de tecnologias digitais para a aprendizagem de Português Língua Adicional. ",
-      "autores": "Ronaldo Gomes Jr.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR, Henrique Rodrigues LEROY",
       "veiculo": "Domínios de Lingu@agem",
       "link": "https://seer.ufu.br/index.php/dominiosdelinguagem/article/view/73339",
       "visivel": true,
@@ -35,6 +35,18 @@
       "visivel": true,
       "destaque": false,
       "ordem": 3
+    },
+    {
+      "tipo": "artigo",
+      "idioma": "en",
+      "ano": "2026",
+      "titulo": "Journal article to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Journal name",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 4
     },
     {
       "tipo": "capitulo",
