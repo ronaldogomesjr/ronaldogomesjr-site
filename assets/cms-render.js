@@ -165,7 +165,23 @@
 
       if (kind === "livros-didaticos") {
         const data = await loadJSON("/content/livros-didaticos.json");
-        const items = sortedVisible(data.items, lang);
+
+        // Livros didáticos/coleções são cadastrados uma única vez
+        // e aparecem nas versões PT e EN.
+        const seen = new Set();
+        const items = sortedVisible(data.items, null)
+          .filter((item) => {
+            const key = [
+              String(item.titulo || "").trim().toLowerCase(),
+              String(item.editora || "").trim().toLowerCase(),
+              String(item.ano || "").trim()
+            ].join("|");
+
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
+
         element.innerHTML = items.length ? items.map((item) => textbookHTML(item, lang)).join("") : emptyMessage(lang);
       }
 

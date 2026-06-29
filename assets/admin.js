@@ -238,9 +238,9 @@
       path: "content/livros-didaticos.json",
       root: "items",
       labelField: "titulo",
-      meta: item => [item.editora, item.ano, item.idioma].filter(Boolean).join(" · "),
+      meta: item => [item.editora, item.ano].filter(Boolean).join(" · "),
+      singleAcrossLanguages: true,
       fields: [
-        ["idioma", "select", "Idioma", ["pt", "en"]],
         ["titulo", "text", "Título"],
         ["editora", "text", "Editora"],
         ["ano", "text", "Ano"],
@@ -267,7 +267,6 @@
         ["ordem", "number", "Ordem"]
       ],
       blank: {
-        idioma: "pt",
         titulo: "",
         editora: "",
         ano: "",
@@ -577,6 +576,13 @@
       p.textContent = config.sortRecent
         ? `Categoria: ${fixedLabel}. Cadastre apenas uma vez; aparecerá em PT e EN.`
         : `Categoria: ${fixedLabel}`;
+      form.appendChild(p);
+    }
+
+    if (config.singleAcrossLanguages) {
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = "Cadastre apenas uma vez; este item aparecerá nas versões PT e EN.";
       form.appendChild(p);
     }
 

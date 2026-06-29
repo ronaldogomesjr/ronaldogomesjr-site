@@ -1,35 +1,26 @@
-# Ronaldo Gomes Jr. Site — V44 Single Publications
+# Ronaldo Gomes Jr. Site — V45 Single Textbooks
 
-Esta versão corrige a lógica bilíngue de publicações.
+Esta versão corrige a exibição de livros didáticos na versão em inglês.
 
 ## O que mudou
 
-Artigos, capítulos e livros acadêmicos agora são cadastrados uma única vez no painel.
+Livros didáticos agora são cadastrados uma única vez no painel.
 
 Eles aparecem automaticamente em:
 
-- `/pt/publicacoes/artigos/`
-- `/en/publications/journal-articles/`
-- `/pt/publicacoes/capitulos/`
-- `/en/publications/book-chapters/`
-- `/pt/publicacoes/livros-academicos/`
-- `/en/publications/academic-books/`
-
-## Por quê?
-
-Títulos de publicações, nomes de periódicos, livros, editoras, autores e DOI/link normalmente não são traduzidos.  
-Por isso, não é necessário cadastrar o mesmo item em português e inglês.
+- `/pt/livros-didaticos/`
+- `/en/textbooks/`
 
 ## No painel
 
-Nas categorias:
+Na categoria:
 
-- artigos
-- capítulos
-- livros acadêmicos
+- conteúdo: livros didáticos
 
 o campo `Idioma` foi removido.
 
-## Observação
+Assim, você não precisa duplicar a mesma coleção em PT e EN.
 
-Se existirem duplicatas antigas cadastradas em PT e EN, o site tenta ocultar duplicatas automaticamente quando título, ano, tipo e link forem iguais.
+## Mantido
+
+A versão mantém os botões de download dos volumes adicionados na V43.

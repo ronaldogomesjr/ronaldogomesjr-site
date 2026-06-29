@@ -1,6 +1,17 @@
 {
   "items": [
     {
+      "tipo": "artigo",
+      "ano": "2026",
+      "titulo": "Artigo a inserir",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Nome do periódico",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1
+    },
+    {
       "tipo": "capitulo",
       "ano": "2026",
       "titulo": "Capítulo a inserir",
@@ -24,10 +35,10 @@
     },
     {
       "tipo": "artigo",
-      "ano": "2007",
-      "titulo": "Narrativas e crenças de alunos universitários sobre ensino e aprendizagem de inglês",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR, Ana Maria Ferreira BARCELOS",
-      "veiculo": "Gláuks (UFV)",
+      "ano": "2026",
+      "titulo": "Journal article to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Journal name",
       "link": "#",
       "visivel": true,
       "destaque": false,
