@@ -36,6 +36,23 @@
       "ordem": 999,
       "titulo": "Tecnologias e Design na Educação de Línguas",
       "descricao": "Este projeto investiga as relações entre tecnologias digitais, design e educação de línguas, considerando como ambientes, ferramentas e práticas digitais ampliam as possibilidades de criação, participação e construção de sentidos. A pesquisa parte da compreensão do design como processo pedagógico e social, capaz de favorecer práticas mais críticas, autorais e multimodais de uso da linguagem. Por meio de abordagem qualitativa e interpretativista, o estudo analisa ferramentas, modelos de integração tecnológica, materiais didáticos, propostas curriculares e experiências de professores e aprendizes em atividades de design no ensino e na aprendizagem de línguas."
+    },
+    {
+      "titulo_pt": "sabIA - Saberes sobre Inteligência Artificial para a Aprendizagem de Línguas",
+      "titulo_en": "sabIA: AI Curation for Language Education",
+      "descricao_pt": "O sabIA é uma plataforma de curadoria e exploração de ferramentas de inteligência artificial voltadas ao ensino e à aprendizagem de línguas. Desenvolvido no contexto da Área de Linguagem e Tecnologia e do DELTA Lab/FALE-UFMG, o projeto reúne, organiza e analisa recursos digitais que podem apoiar práticas de leitura, escrita, fala, escuta, vocabulário, tradução, planejamento textual e aprendizagem autônoma. Mais do que um catálogo de ferramentas, o sabIÁ propõe uma aproximação crítica, educativa e colaborativa da IA, incentivando estudantes, professores e pesquisadores a refletirem sobre usos, limites, possibilidades e implicações éticas das tecnologias na educação linguística.",
+      "descricao_en": "sabIA is a platform for curating and exploring artificial intelligence tools for language teaching and learning. Developed within the Language and Technology area and DELTA Lab at FALE-UFMG, the project gathers, organizes and analyzes digital resources that can support reading, writing, speaking, listening, vocabulary development, translation, text planning and autonomous learning. More than a catalogue of tools, sabIÁ promotes a critical, educational and collaborative approach to AI, encouraging students, teachers and researchers to reflect on the uses, limitations, possibilities and ethical implications of technology in language education.",
+      "categoria": "extensao",
+      "categoria_pt": "Extensão",
+      "categoria_en": "Extension",
+      "ano_inicio": 2024,
+      "ano_fim": "",
+      "link": "https://sabia-ufmg.vercel.app/",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 999,
+      "titulo": "sabIA - Saberes sobre Inteligência Artificial para a Aprendizagem de Línguas",
+      "descricao": "O sabIA é uma plataforma de curadoria e exploração de ferramentas de inteligência artificial voltadas ao ensino e à aprendizagem de línguas. Desenvolvido no contexto da Área de Linguagem e Tecnologia e do DELTA Lab/FALE-UFMG, o projeto reúne, organiza e analisa recursos digitais que podem apoiar práticas de leitura, escrita, fala, escuta, vocabulário, tradução, planejamento textual e aprendizagem autônoma. Mais do que um catálogo de ferramentas, o sabIÁ propõe uma aproximação crítica, educativa e colaborativa da IA, incentivando estudantes, professores e pesquisadores a refletirem sobre usos, limites, possibilidades e implicações éticas das tecnologias na educação linguística."
     }
   ]
 }
