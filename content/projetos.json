@@ -16,7 +16,9 @@
       "descricao_en": "An international project supported by the Worldwide Universities Network (WUN), focused on investigating the uses, perceptions and impacts of artificial intelligence in language education. The research examines how students and teachers engage with AI tools across different linguistic, cultural and socio-economic contexts, addressing issues of access, inequality, authorship, bias and justice. Guided by the principles of Design Justice, the project approaches AI as a socio-technical system and seeks to support more critical, ethical and inclusive practices in language teaching and learning.",
       "categoria": "pesquisa",
       "categoria_pt": "Pesquisa",
-      "categoria_en": "Research"
+      "categoria_en": "Research",
+      "ano_inicio": 2026,
+      "ano_fim": ""
     }
   ]
 }
