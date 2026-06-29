@@ -1,17 +1,26 @@
-PATCH — Corrigir rótulo dos links na página contato em inglês
+PATCH — Descrições bilíngues nos links da página contato
 
-Arquivo alterado:
+Arquivos alterados:
+- assets/admin.js
 - assets/cms-render.js
+- admin/config.yml
 
 O que muda:
-- Na página contato em português, os links continuam aparecendo como "Abrir →".
-- Na página contato em inglês, os links passam a aparecer como "Open →".
+- Na seção "links de contato e rodapé", o painel passa a mostrar os campos:
+  - Descrição em português
+  - Description in English
+- A página contato em português usa a descrição em português.
+- A página contato em inglês usa a descrição em inglês.
+- Links, nomes dos contatos e URLs continuam sendo conteúdo único, sem duplicar PT/EN.
+- Itens antigos com campo "tipo" continuam funcionando como fallback.
+- Se houver duplicatas antigas por idioma em content/links.json, a página usa uma única entrada e aproveita as descrições antigas PT/EN quando existirem.
 
 Este patch não inclui nenhum arquivo content/*.json e não sobrescreve conteúdos já editados pelo painel.
 
 Como aplicar:
 1. Descompacte este ZIP.
-2. No GitHub, abra a pasta assets.
-3. Envie o arquivo cms-render.js, substituindo o existente.
+2. No GitHub, envie os arquivos mantendo as mesmas pastas.
+3. Substitua os arquivos existentes.
 4. Faça commit.
 5. Aguarde a Vercel publicar a nova versão.
+6. Reabra o painel e edite as descrições dos links de contato.

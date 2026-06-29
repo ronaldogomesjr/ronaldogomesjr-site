@@ -123,7 +123,8 @@ collections:
             summary: "{{fields.nome}}"
             fields:
               - {label: "Nome", name: "nome", widget: "string"}
-              - {label: "Tipo", name: "tipo", widget: "string", required: false}
+              - {label: "Descrição em português", name: "descricao_pt", widget: "text", required: false}
+              - {label: "Description in English", name: "descricao_en", widget: "text", required: false}
               - {label: "Link", name: "link", widget: "string", required: false}
               - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
               - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}

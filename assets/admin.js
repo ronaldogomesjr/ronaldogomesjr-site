@@ -464,17 +464,18 @@
       label: "links de contato e rodapé",
       root: "items",
       labelField: "nome",
-      meta: item => item.tipo || "conteúdo único para PT e EN",
+      meta: item => item.descricao_pt || item.descricao_en || item.tipo || "conteúdo único para PT e EN",
       nonTranslatable: true,
       uniqueNonTranslatable: true,
       fields: [
         ["nome", "text", "Texto do hiperlink"],
-        ["tipo", "text", "Tipo / descrição"],
+        ["descricao_pt", "textarea", "Descrição em português"],
+        ["descricao_en", "textarea", "Description in English"],
         ["link", "text", "URL do hiperlink"],
         ["visivel", "checkbox", "Visível no site"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { nome: "", tipo: "", link: "#", visivel: true, ordem: 999 }
+      blank: { nome: "", tipo: "", descricao_pt: "", descricao_en: "", link: "#", visivel: true, ordem: 999 }
     }
   };
 
@@ -817,6 +818,16 @@
       if (name === "categoria") return normalizeProjectCategory(item.categoria || item.categoria_pt || item.categoria_en) || "pesquisa";
     }
 
+    if (currentCollection === "links") {
+      if (name === "descricao_pt") {
+        return item.descricao_pt || item.tipo_pt || (item.idioma === "pt" ? (item.descricao || item.tipo || "") : "") || "";
+      }
+
+      if (name === "descricao_en") {
+        return item.descricao_en || item.tipo_en || (item.idioma === "en" ? (item.descricao || item.tipo || "") : "") || "";
+      }
+    }
+
     return item[name] ?? "";
   }
 
@@ -947,6 +958,12 @@
       // do conteúdo, mas o cadastro passa a ser único e bilíngue.
       values.titulo = values.titulo_pt || values.titulo_en || "";
       values.descricao = values.descricao_pt || values.descricao_en || "";
+    }
+
+    if (currentCollection === "links") {
+      // Mantém o campo legado "tipo" como fallback, mas a página contato
+      // passa a usar descricao_pt/descricao_en conforme o idioma da página.
+      values.tipo = values.descricao_pt || values.descricao_en || "";
     }
 
     if (config.sortRecent && !values.ordem) {

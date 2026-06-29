@@ -115,6 +115,56 @@
     return 3;
   }
 
+  function mergeLinkDescriptions(target, item) {
+    if (!target || !item) return target;
+
+    ["descricao_pt", "descricao_en", "tipo_pt", "tipo_en"].forEach((field) => {
+      if (item[field] && !target[field]) target[field] = item[field];
+    });
+
+    const legacyDescription = item.descricao || item.tipo || "";
+
+    if (item.idioma === "pt" && legacyDescription && !target.descricao_pt) {
+      target.descricao_pt = legacyDescription;
+    }
+
+    if (item.idioma === "en" && legacyDescription && !target.descricao_en) {
+      target.descricao_en = legacyDescription;
+    }
+
+    if (!item.idioma && legacyDescription && !target.descricao_pt) {
+      target.descricao_pt = legacyDescription;
+    }
+
+    return target;
+  }
+
+  function localizedLinkDescription(item, lang) {
+    if (lang === "en") {
+      return (
+        item.descricao_en ||
+        item.tipo_en ||
+        (item.idioma === "en" ? (item.descricao || item.tipo || "") : "") ||
+        item.descricao_pt ||
+        item.tipo_pt ||
+        item.descricao ||
+        item.tipo ||
+        ""
+      );
+    }
+
+    return (
+      item.descricao_pt ||
+      item.tipo_pt ||
+      (item.idioma === "pt" ? (item.descricao || item.tipo || "") : "") ||
+      item.descricao ||
+      item.tipo ||
+      item.descricao_en ||
+      item.tipo_en ||
+      ""
+    );
+  }
+
   function canonicalNonTranslatedItems(items) {
     const visible = sortedVisible(items, null);
     const byKey = new Map();
@@ -127,11 +177,19 @@
       ].join("|");
       const previous = byKey.get(key);
 
-      // Se houver duplicatas antigas por idioma, usa uma única versão.
-      // Prefere itens novos sem campo idioma; depois PT; depois EN.
-      if (!previous || nonTranslatablePreference(item) < nonTranslatablePreference(previous)) {
-        byKey.set(key, item);
+      if (!previous) {
+        const copy = mergeLinkDescriptions({ ...item }, item);
+        byKey.set(key, copy);
+        return;
       }
+
+      // Se houver duplicatas antigas por idioma, mantém uma única entrada,
+      // mas aproveita descrições PT/EN já existentes nos itens duplicados.
+      const shouldReplace = nonTranslatablePreference(item) < nonTranslatablePreference(previous);
+      const merged = shouldReplace ? { ...item } : { ...previous };
+      mergeLinkDescriptions(merged, previous);
+      mergeLinkDescriptions(merged, item);
+      byKey.set(key, merged);
     });
 
     return Array.from(byKey.values()).sort((a, b) => {
@@ -211,12 +269,13 @@
 
   function linkHTML(item, lang) {
     const label = lang === "en" ? "Open →" : "Abrir →";
+    const description = localizedLinkDescription(item, lang);
 
     return `
       <article class="section-row">
         <h2>${escapeHTML(item.nome)}</h2>
         <div>
-          <p>${escapeHTML(item.tipo)}</p>
+          ${description ? `<p>${escapeHTML(description)}</p>` : ""}
           ${externalLink(item.link, item.link && item.link !== "#" ? label : "")}
         </div>
       </article>
