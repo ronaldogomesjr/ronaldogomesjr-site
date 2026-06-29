@@ -17,17 +17,6 @@
       "categoria": "pesquisa",
       "categoria_pt": "Pesquisa",
       "categoria_en": "Research"
-    },
-    {
-      "idioma": "en",
-      "titulo": "Project to add",
-      "descricao": "Short project description, including focus, aims, and/or main partnership.",
-      "periodo": "2026–",
-      "parceiros": "UFMG",
-      "link": "#",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 2
     }
   ]
 }
