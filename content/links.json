@@ -6,7 +6,9 @@
       "tipo": "ronaldocgomes@ufmg.br",
       "link": "mailto:ronaldocgomes@ufmg.br",
       "visivel": true,
-      "ordem": 1
+      "ordem": 1,
+      "descricao_pt": "ronaldocgomes@ufmg.br",
+      "descricao_en": "ronaldocgomes@ufmg.br"
     },
     {
       "idioma": "pt",
