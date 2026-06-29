@@ -50,6 +50,32 @@
       "visivel": true,
       "destaque": false,
       "ordem": ""
+    },
+    {
+      "titulo": "New Alive High",
+      "editora": "",
+      "ano": "",
+      "nivel": "",
+      "descricao": "",
+      "descricao_pt": "",
+      "descricao_en": "",
+      "link": "#",
+      "imagem": "",
+      "botao1_label": "",
+      "botao1_url": "",
+      "botao2_label": "",
+      "botao2_url": "",
+      "botao3_label": "",
+      "botao3_url": "",
+      "botao4_label": "",
+      "botao4_url": "",
+      "botao5_label": "",
+      "botao5_url": "",
+      "botao6_label": "",
+      "botao6_url": "",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 3
     }
   ]
 }
