@@ -26,7 +26,9 @@
       "tipo": "Perfil acadêmico",
       "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
       "visivel": true,
-      "ordem": 3
+      "ordem": 3,
+      "descricao_pt": "Perfil acadêmico",
+      "descricao_en": "Academic profile"
     },
     {
       "idioma": "pt",
