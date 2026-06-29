@@ -1,26 +1,43 @@
-# Ronaldo Gomes Jr. Site — V40 Admin SHA Fix
+# Ronaldo Gomes Jr. Site — V41 Page-by-Page Admin
 
-Esta versão corrige o erro do GitHub:
+Esta versão torna o painel `/admin` mais direto para editar páginas específicas.
 
-`content/links.json does not match <sha>`
+## O que mudou
 
-## O que foi corrigido
+No item `2. escolher conteúdo`, agora aparecem entradas diretas para cada página:
 
-Antes de publicar qualquer alteração, o painel agora busca o SHA mais recente do arquivo no GitHub.
+- página: pesquisa (pt)
+- página: projetos (pt)
+- página: publicações (pt)
+- página: livros didáticos (pt)
+- página: sobre (pt)
+- página: contato (pt)
+- página: design (pt)
+- página: tecnologia digital (pt)
+- página: educação linguística (pt)
+- page: research (en)
+- page: projects (en)
+- page: publications (en)
+- page: textbooks (en)
+- page: about (en)
+- page: contact (en)
+- page: design (en)
+- page: digital technology (en)
+- page: language education (en)
 
-Isso evita erro quando:
-- você publica uma alteração;
-- o GitHub atualiza o arquivo;
-- o painel tenta publicar de novo usando uma versão antiga.
+Assim, não é mais necessário entrar em “páginas internas” e procurar a página na lista lateral.
 
-## O que fazer
+## O painel continua editando
 
-Suba a V40 no GitHub e aguarde o deploy da Vercel.
+- identidade e cabeçalho;
+- menus PT/EN;
+- página inicial PT/EN;
+- páginas específicas PT/EN;
+- publicações;
+- projetos;
+- livros didáticos;
+- links, contato e rodapé.
 
-Depois, no `/admin`:
-1. escolha a categoria;
-2. clique em `carregar`;
-3. edite;
-4. clique em `publicar alteração`.
+## Publicação
 
-Se o arquivo mudar no meio da edição, o painel recarrega a categoria e pede para tentar novamente.
+Suba todos os arquivos desta versão no GitHub e aguarde o deploy da Vercel.

@@ -49,6 +49,22 @@
     ["ordem", "number", "Ordem"]
   ];
 
+
+  function pageCollection(idioma, slug, label) {
+    return {
+      mode: "page-singleton",
+      path: "content/pages.json",
+      root: "items",
+      pageLang: idioma,
+      pageSlug: slug,
+      label,
+      labelField: "title",
+      meta: item => item.slug || "",
+      fields: pageFields,
+      blank: { slug, idioma, title: slug, intro: "", meta_title: "", meta_description: "", section1_title: "", section1_text: "", section1_link_label: "", section1_link_url: "", section2_title: "", section2_text: "", section2_link_label: "", section2_link_url: "", section3_title: "", section3_text: "", section3_link_label: "", section3_link_url: "", section4_title: "", section4_text: "", section4_link_label: "", section4_link_url: "", ordem: 999 }
+    };
+  }
+
   const collections = {
     "identidade": {
       mode: "object-singleton",
@@ -123,6 +139,27 @@
       ],
       blank: { keyword1: "design.", keyword1_url: "design", keyword2: "digital technology.", keyword2_url: "digital-technology", keyword3: "language education.", keyword3_url: "language-education", intro1: "", intro2: "", intro3: "" }
     },
+
+    "page-pt-pesquisa": pageCollection("pt", "pesquisa", "página: pesquisa (pt)"),
+    "page-pt-projetos": pageCollection("pt", "projetos", "página: projetos (pt)"),
+    "page-pt-publicacoes": pageCollection("pt", "publicacoes", "página: publicações (pt)"),
+    "page-pt-livros-didaticos": pageCollection("pt", "livros-didaticos", "página: livros didáticos (pt)"),
+    "page-pt-sobre": pageCollection("pt", "sobre", "página: sobre (pt)"),
+    "page-pt-contato": pageCollection("pt", "contato", "página: contato (pt)"),
+    "page-pt-design": pageCollection("pt", "design", "página: design (pt)"),
+    "page-pt-tecnologia-digital": pageCollection("pt", "tecnologia-digital", "página: tecnologia digital (pt)"),
+    "page-pt-educacao-linguistica": pageCollection("pt", "educacao-linguistica", "página: educação linguística (pt)"),
+
+    "page-en-research": pageCollection("en", "research", "page: research (en)"),
+    "page-en-projects": pageCollection("en", "projects", "page: projects (en)"),
+    "page-en-publications": pageCollection("en", "publications", "page: publications (en)"),
+    "page-en-textbooks": pageCollection("en", "textbooks", "page: textbooks (en)"),
+    "page-en-about": pageCollection("en", "about", "page: about (en)"),
+    "page-en-contact": pageCollection("en", "contact", "page: contact (en)"),
+    "page-en-design": pageCollection("en", "design", "page: design (en)"),
+    "page-en-digital-technology": pageCollection("en", "digital-technology", "page: digital technology (en)"),
+    "page-en-language-education": pageCollection("en", "language-education", "page: language education (en)"),
+
     "paginas-pt": {
       mode: "filtered-list",
       path: "content/pages.json",
@@ -348,6 +385,20 @@
       return;
     }
 
+    if (config.mode === "page-singleton") {
+      if (!Array.isArray(currentData[config.root])) currentData[config.root] = [];
+      let index = currentData[config.root].findIndex((item) => item.idioma === config.pageLang && item.slug === config.pageSlug);
+      if (index < 0) {
+        currentData[config.root].push({ ...config.blank });
+        index = currentData[config.root].length - 1;
+      }
+      currentActualIndex = index;
+      renderList();
+      renderEditor();
+      setStatus("Página carregada com a versão mais recente do GitHub.");
+      return;
+    }
+
     if (config.mode !== "menu" && !Array.isArray(currentData[config.root])) currentData[config.root] = [];
 
     rebuildVisibleRows();
@@ -387,6 +438,16 @@
       btn.type = "button";
       btn.className = "item-button active";
       btn.innerHTML = `<span class="item-title">${escapeHTML(config.label)}</span><span class="item-meta">conteúdo único</span>`;
+      list.appendChild(btn);
+      return;
+    }
+
+    if (config.mode === "page-singleton") {
+      const item = getCurrentItem();
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "item-button active";
+      btn.innerHTML = `<span class="item-title">${escapeHTML(item?.title || config.label)}</span><span class="item-meta">${escapeHTML(config.pageLang)} · ${escapeHTML(config.pageSlug)}</span>`;
       list.appendChild(btn);
       return;
     }
@@ -439,6 +500,11 @@
       };
     }
 
+    if (config.mode === "page-singleton") {
+      const items = getAllItems(config);
+      return currentActualIndex !== null ? items[currentActualIndex] : null;
+    }
+
     const items = getAllItems(config);
     return currentActualIndex !== null ? items[currentActualIndex] : null;
   }
@@ -473,6 +539,13 @@
       const p = document.createElement("p");
       p.className = "hint";
       p.textContent = "Aqui você edita os textos e hiperlinks do menu superior.";
+      form.appendChild(p);
+    }
+
+    if (config.mode === "page-singleton") {
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = "Aqui você edita o texto e os hiperlinks desta página específica.";
       form.appendChild(p);
     }
 
@@ -618,7 +691,7 @@
   async function addItem() {
     const config = collections[currentCollection];
     if (!currentData) await loadCollection();
-    if (config.mode === "singleton" || config.mode === "object-singleton") {
+    if (config.mode === "singleton" || config.mode === "object-singleton" || config.mode === "page-singleton") {
       setStatus("Este é um conteúdo único. Edite os campos e clique em publicar alteração.");
       return;
     }
@@ -633,7 +706,7 @@
 
   async function deleteItem() {
     const config = collections[currentCollection];
-    if (config.mode === "singleton" || config.mode === "object-singleton") {
+    if (config.mode === "singleton" || config.mode === "object-singleton" || config.mode === "page-singleton") {
       setStatus("Este conteúdo não pode ser excluído.", true);
       return;
     }
