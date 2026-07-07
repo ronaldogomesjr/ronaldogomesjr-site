@@ -1,24 +1,15 @@
-ATUALIZAÇÃO V54 — ARQUIVOS PARA O GITHUB
+ATUALIZAÇÃO V55 — CONTATO / CONTACT
 
-Este pacote foi preparado para ser sobreposto ao seu repositório atual.
-
-COMO USAR
-
-1. Extraia o arquivo ZIP no computador.
-2. Abra o repositório ronaldogomesjr-site no GitHub.
+1. Extraia este ZIP no computador.
+2. No GitHub, abra o repositório.
 3. Clique em Add file > Upload files.
-4. Arraste TODAS as pastas e arquivos extraídos:
-   - admin
-   - assets
-   - pt
-   - en
+4. Envie as pastas assets, pt e en.
 5. Confirme o commit.
 
-IMPORTANTE
+Este pacote não contém a pasta content.
+Seus textos e dados cadastrados serão preservados.
 
-Este pacote NÃO contém a pasta content.
-Assim, seus textos e dados já cadastrados não serão substituídos.
-
-NÃO envie o arquivo ZIP diretamente para a raiz do site.
-O GitHub não extrai automaticamente arquivos ZIP.
-Você precisa extrair o ZIP antes e enviar as pastas.
+Resultado:
+- a página contato usa os mesmos links do rodapé;
+- o título não é clicável;
+- a descrição é o hiperlink.

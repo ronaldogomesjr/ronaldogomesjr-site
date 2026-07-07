@@ -113,18 +113,20 @@
     const description = lang === "en"
       ? (item.tipo_en || item.tipo_pt || item.tipo || "")
       : (item.tipo_pt || item.tipo_en || item.tipo || "");
-    const openLabel = lang === "en" ? "Open →" : "Abrir →";
+
+    const descriptionHTML = description
+      ? (
+          item.link && item.link !== "#"
+            ? `<p><a class="contact-description-link" href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(description)}</a></p>`
+            : `<p>${escapeHTML(description)}</p>`
+        )
+      : "";
 
     return `
       <article class="section-row contact-link-row">
-        <h2>
-          <a class="contact-title-link" href="${escapeHTML(item.link || "#")}" ${item.link && item.link !== "#" ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-            ${escapeHTML(name)}
-          </a>
-        </h2>
+        <h2>${escapeHTML(name)}</h2>
         <div>
-          ${description ? `<p>${escapeHTML(description)}</p>` : ""}
-          ${externalLink(item.link, item.link && item.link !== "#" ? openLabel : "")}
+          ${descriptionHTML}
         </div>
       </article>
     `;

@@ -1,43 +1,26 @@
-# V54 — links, contato e rodapé bilíngues
+# V55 — página Contato com links do rodapé
 
-Este pacote é um PATCH e não contém a pasta `content`.
+Este pacote não contém a pasta `content`.
 
-## Nova estrutura no painel
+## O que mudou
 
-Na categoria:
+A página:
 
-- `links, contato e rodapé — bilíngue`
+- `/pt/contato/`
+- `/en/contact/`
 
-cada link possui:
+é preenchida automaticamente com os mesmos links cadastrados no rodapé.
 
-- Texto do hiperlink em português
-- Texto do hiperlink em inglês
-- Descrição em português
-- Descrição em inglês
-- Uma única URL compartilhada
-- Visibilidade no contato e no rodapé
-- Ordem
+Na página de contato:
 
-## Migração dos links já existentes
+- o título aparece como texto normal;
+- a descrição aparece como hiperlink;
+- não há botão adicional `Abrir →` / `Open →`;
+- a URL é a mesma usada no rodapé.
 
-Ao carregar a categoria, o painel combina automaticamente as antigas entradas PT e EN que tenham a mesma URL.
+## Arquivos alterados
 
-A migração só é gravada quando você clicar em `publicar alteração`.
-
-## Página Contato / Contact
-
-A página de contato usa exatamente os mesmos links do rodapé.
-
-- O título de cada contato é um hiperlink.
-- O botão `Abrir →` / `Open →` também usa a mesma URL.
-- Os textos e descrições mudam conforme o idioma.
-
-## Arquivos a substituir
-
-- `admin/index.html`
-- `assets/admin.js`
 - `assets/cms-render.js`
-- `assets/footer-links.js`
 - `assets/style.css`
 - `pt/contato/index.html`
 - `en/contact/index.html`

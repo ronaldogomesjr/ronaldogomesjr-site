@@ -1103,14 +1103,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 
-/* V54 — links bilíngues no contato e no rodapé */
-.contact-title-link {
+/* V55 — hiperlinks nas descrições da página contato */
+.contact-description-link {
   color: inherit;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
-.contact-title-link:hover {
+.contact-description-link:hover {
   opacity: .66;
 }
