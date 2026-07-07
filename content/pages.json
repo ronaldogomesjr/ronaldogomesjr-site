@@ -196,7 +196,6 @@
       "meta_title_en": "",
       "meta_description_pt": "",
       "meta_description_en": "",
-      "ordem": 5,
       "section1_title_pt": "Trajetória",
       "section1_title_en": "Trajectory",
       "section1_text_pt": "Atuação em ensino, pesquisa, extensão, produção editorial e formação de professores.",
@@ -228,7 +227,9 @@
       "section4_link_label_pt": "",
       "section4_link_label_en": "",
       "section4_link_url_pt": "",
-      "section4_link_url_en": ""
+      "section4_link_url_en": "",
+      "ordem": 5,
+      "foto": "/assets/uploads/sobre/1783447232723-fotosobre_.png"
     },
     {
       "id": "contato",
