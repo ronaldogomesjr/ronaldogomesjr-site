@@ -36,7 +36,7 @@
   ];
 
   const aboutPhotoFields = [
-    ["foto", "image-upload", "Foto da página sobre / about"]
+    ["foto", "image-upload", "Foto da página sobre / about — enviar ou substituir"]
   ];
 
   const pageFields = [
@@ -818,26 +818,26 @@
         const preview = document.createElement("div");
         preview.className = "image-upload-preview";
         if (item[name]) {
-          preview.innerHTML = `<img src="${escapeHTML(item[name])}" alt="Capa atual"><span>Capa atual</span>`;
+          preview.innerHTML = `<img src="${escapeHTML(item[name])}" alt="${name === "foto" ? "Foto atual" : "Capa atual"}"><span>${name === "foto" ? "Foto atual" : "Capa atual"}</span>`;
         } else {
-          preview.innerHTML = `<span>Nenhuma capa enviada.</span>`;
+          preview.innerHTML = `<span>${name === "foto" ? "Nenhuma foto enviada." : "Nenhuma capa enviada."}</span>`;
         }
 
         fileInput.addEventListener("change", () => {
           const file = fileInput.files && fileInput.files[0];
           if (!file) return;
           const localURL = URL.createObjectURL(file);
-          preview.innerHTML = `<img src="${localURL}" alt="Pré-visualização da capa"><span>Nova capa selecionada</span>`;
+          preview.innerHTML = `<img src="${localURL}" alt="${name === "foto" ? "Pré-visualização da foto" : "Pré-visualização da capa"}"><span>${name === "foto" ? "Nova foto selecionada" : "Nova capa selecionada"}</span>`;
         });
 
         const removeButton = document.createElement("button");
         removeButton.type = "button";
         removeButton.className = "secondary small-button";
-        removeButton.textContent = "remover capa";
+        removeButton.textContent = name === "foto" ? "remover foto" : "remover capa";
         removeButton.addEventListener("click", () => {
           currentInput.value = "";
           fileInput.value = "";
-          preview.innerHTML = `<span>Capa removida. Publique a alteração para confirmar.</span>`;
+          preview.innerHTML = `<span>${name === "foto" ? "Foto removida" : "Capa removida"}. Publique a alteração para confirmar.</span>`;
         });
 
         wrapper.appendChild(fileInput);

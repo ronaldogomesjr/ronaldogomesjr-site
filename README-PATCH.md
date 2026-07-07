@@ -1,34 +1,30 @@
-# V51 — patch para recuperar a foto da página Sobre
+# V53 — correção do upload da foto no painel
 
-Este pacote é um PATCH e não contém a pasta `content`.
+Este patch não contém a pasta `content`.
 
-## O que ele recupera
+## O que muda
 
-- moldura circular para a foto na página `/pt/sobre/`;
-- moldura circular para a foto na página `/en/about/`;
-- foto alinhada à direita do texto em telas maiores;
-- disposição responsiva no celular;
-- campo de upload na entrada `página: sobre / about` do painel;
-- envio da foto para `assets/uploads/sobre/`;
-- pré-visualização e opção de remover a foto.
+No painel `/admin`:
+
+1. selecione `página: sobre / about — texto e foto`;
+2. clique em `carregar`;
+3. localize o campo `Foto da página sobre / about — enviar ou substituir`;
+4. selecione uma imagem;
+5. confira a pré-visualização;
+6. clique em `publicar alteração`.
+
+O mesmo campo permite:
+
+- enviar a primeira foto;
+- substituir a foto atual;
+- remover a foto.
 
 ## Arquivos a substituir
 
+- `admin/index.html`
 - `assets/admin.js`
-- `assets/cms-render.js`
-- `assets/page-content.js`
 - `assets/style.css`
-- `pt/sobre/index.html`
-- `en/about/index.html`
 
 ## Importante
 
 Não substitua nem apague a pasta `content`.
-
-Depois de instalar o patch:
-
-1. abra `/admin`;
-2. escolha `página: sobre / about`;
-3. clique em `carregar`;
-4. selecione a foto;
-5. clique em `publicar alteração`.
