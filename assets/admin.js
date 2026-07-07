@@ -22,104 +22,6 @@
     ["ordem", "number", "Ordem automática/manual"]
   ];
 
-
-  const supervisionDegreeOptions = [
-    { label: "Mestrado / Masters", value: "mestrado" },
-    { label: "Doutorado / PhD", value: "doutorado" }
-  ];
-
-  const supervisionFields = [
-    ["grau", "select", "Nível / Level", supervisionDegreeOptions],
-    ["orientando", "text", "Nome do orientando"],
-    ["trabalho_pt", "textarea", "Nome do trabalho em português"],
-    ["trabalho_en", "textarea", "Work title in English"],
-    ["ano_inicio", "number", "Ano de início"],
-    ["ano_fim", "number", "Ano de fim"],
-    ["visivel", "checkbox", "Visível no site"],
-    ["ordem", "number", "Ordem"]
-  ];
-
-  const projectCategoryOptions = [
-    { label: "Ensino / Teaching", value: "ensino" },
-    { label: "Pesquisa / Research", value: "pesquisa" },
-    { label: "Extensão / Extension", value: "extensao" },
-    { label: "Internacionalização / Internationalization", value: "internacionalizacao" }
-  ];
-
-  const projectCategoryLabels = {
-    ensino: { pt: "Ensino", en: "Teaching" },
-    pesquisa: { pt: "Pesquisa", en: "Research" },
-    extensao: { pt: "Extensão", en: "Extension" },
-    internacionalizacao: { pt: "Internacionalização", en: "Internationalization" }
-  };
-
-  function plainTextKey(value) {
-    return String(value || "")
-      .trim()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-  }
-
-  function normalizeProjectCategory(value) {
-    const key = plainTextKey(value).replace(/[\s_-]+/g, "");
-    if (["ensino", "teaching", "education"].includes(key)) return "ensino";
-    if (["pesquisa", "research"].includes(key)) return "pesquisa";
-    if (["extensao", "extension", "outreach"].includes(key)) return "extensao";
-    if (["internacionalizacao", "internationalization", "internationalisation", "international"].includes(key)) return "internacionalizacao";
-    return "";
-  }
-
-  function projectCategoryLabel(value, lang = "pt") {
-    const normalized = normalizeProjectCategory(value);
-    return normalized ? projectCategoryLabels[normalized][lang] : "";
-  }
-
-  function projectPeriodLabel(item, lang = "pt") {
-    const start = String(item.ano_inicio || item.inicio || "").trim();
-    const end = String(item.ano_fim || item.fim || "").trim();
-
-    if (start && end) return `${start}–${end}`;
-    if (start) return lang === "en" ? `Since ${start}` : `Desde ${start}`;
-    if (end) return lang === "en" ? `Until ${end}` : `Até ${end}`;
-
-    return item.periodo || "";
-  }
-
-  const defaultContactDescriptions = {
-    email: { pt: "Contato", en: "Contact" },
-    "e-mail": { pt: "Contato", en: "Contact" },
-    orcid: { pt: "Perfil acadêmico", en: "Academic profile" },
-    "google scholar": { pt: "Perfil acadêmico", en: "Academic profile" },
-    scholar: { pt: "Perfil acadêmico", en: "Academic profile" },
-    lattes: { pt: "Currículo", en: "CV" }
-  };
-
-  function linkNameKey(value) {
-    return String(value || "")
-      .trim()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[̀-ͯ]/g, "");
-  }
-
-  function defaultContactDescription(item, lang = "pt") {
-    const byName = defaultContactDescriptions[linkNameKey(item && item.nome)];
-    return byName ? (byName[lang] || byName.pt || "") : "";
-  }
-
-  function translateLegacyLinkDescription(value, lang = "en") {
-    if (lang !== "en") return value || "";
-    const translations = {
-      "contato": "Contact",
-      "perfil academico": "Academic profile",
-      "curriculo": "CV",
-      "curriculum": "CV"
-    };
-    return translations[linkNameKey(value)] || value || "";
-  }
-
-
   const pageFields = [
     ["id", "text", "ID interno"],
     ["slug_pt", "text", "Slug da página em português"],
@@ -171,90 +73,10 @@
     ["section4_link_url_pt", "text", "Seção 4 — URL do hiperlink em português"],
     ["section4_link_url_en", "text", "Seção 4 — URL do hiperlink em inglês"],
 
-    ["portrait_image", "image", "Foto da página sobre — enviar imagem ou colar URL"],
-    ["portrait_alt_pt", "text", "Texto alternativo da foto em português"],
-    ["portrait_alt_en", "text", "Alt text for the photo in English"],
-
     ["ordem", "number", "Ordem"]
   ];
 
-  const aboutPhotoFields = [
-    ["portrait_image", "image", "Foto da página sobre — escolher imagem do computador ou colar URL"],
-    ["portrait_alt_pt", "text", "Texto alternativo da foto em português"],
-    ["portrait_alt_en", "text", "Alt text for the photo in English"]
-  ];
-
-  const portraitFieldNames = new Set(["portrait_image", "portrait_alt_pt", "portrait_alt_en"]);
-  const aboutPageFields = [
-    ...pageFields.slice(0, 7),
-    ...aboutPhotoFields,
-    ...pageFields.slice(7).filter(([name]) => !portraitFieldNames.has(name))
-  ];
-
-  const contactPageFields = [
-    ["id", "text", "ID interno"],
-    ["slug_pt", "text", "Slug da página em português"],
-    ["slug_en", "text", "Slug da página em inglês"],
-    ["title_pt", "text", "Título em português"],
-    ["title_en", "text", "Título em inglês"],
-    ["intro_pt", "textarea", "Subtítulo/texto de abertura em português"],
-    ["intro_en", "textarea", "Subtitle/opening text in English"],
-    ["meta_title_pt", "text", "Título SEO em português"],
-    ["meta_title_en", "text", "Título SEO em inglês"],
-    ["meta_description_pt", "textarea", "Descrição SEO em português"],
-    ["meta_description_en", "textarea", "SEO description in English"],
-    ["ordem", "number", "Ordem"]
-  ];
-
-  function pageCollection(pageId, label, overrides = {}, options = {}) {
-    const blank = {
-      id: pageId,
-      slug_pt: pageId,
-      slug_en: pageId,
-      title_pt: pageId,
-      title_en: pageId,
-      intro_pt: "",
-      intro_en: "",
-      meta_title_pt: "",
-      meta_title_en: "",
-      meta_description_pt: "",
-      meta_description_en: "",
-      section1_title_pt: "",
-      section1_title_en: "",
-      section1_text_pt: "",
-      section1_text_en: "",
-      section1_link_label_pt: "",
-      section1_link_label_en: "",
-      section1_link_url_pt: "",
-      section1_link_url_en: "",
-      section2_title_pt: "",
-      section2_title_en: "",
-      section2_text_pt: "",
-      section2_text_en: "",
-      section2_link_label_pt: "",
-      section2_link_label_en: "",
-      section2_link_url_pt: "",
-      section2_link_url_en: "",
-      section3_title_pt: "",
-      section3_title_en: "",
-      section3_text_pt: "",
-      section3_text_en: "",
-      section3_link_label_pt: "",
-      section3_link_label_en: "",
-      section3_link_url_pt: "",
-      section3_link_url_en: "",
-      section4_title_pt: "",
-      section4_title_en: "",
-      section4_text_pt: "",
-      section4_text_en: "",
-      section4_link_label_pt: "",
-      section4_link_label_en: "",
-      section4_link_url_pt: "",
-      section4_link_url_en: "",
-      ordem: 999,
-      ...overrides
-    };
-
+  function pageCollection(pageId, label) {
     return {
       mode: "page-singleton",
       path: "content/pages.json",
@@ -263,9 +85,53 @@
       label,
       labelField: "title_pt",
       meta: item => `${item.slug_pt || ""} / ${item.slug_en || ""}`,
-      fields: options.fields || pageFields,
-      hint: options.hint || "",
-      blank
+      fields: pageFields,
+      blank: {
+        id: pageId,
+        slug_pt: pageId,
+        slug_en: pageId,
+        title_pt: pageId,
+        title_en: pageId,
+        intro_pt: "",
+        intro_en: "",
+        meta_title_pt: "",
+        meta_title_en: "",
+        meta_description_pt: "",
+        meta_description_en: "",
+        section1_title_pt: "",
+        section1_title_en: "",
+        section1_text_pt: "",
+        section1_text_en: "",
+        section1_link_label_pt: "",
+        section1_link_label_en: "",
+        section1_link_url_pt: "",
+        section1_link_url_en: "",
+        section2_title_pt: "",
+        section2_title_en: "",
+        section2_text_pt: "",
+        section2_text_en: "",
+        section2_link_label_pt: "",
+        section2_link_label_en: "",
+        section2_link_url_pt: "",
+        section2_link_url_en: "",
+        section3_title_pt: "",
+        section3_title_en: "",
+        section3_text_pt: "",
+        section3_text_en: "",
+        section3_link_label_pt: "",
+        section3_link_label_en: "",
+        section3_link_url_pt: "",
+        section3_link_url_en: "",
+        section4_title_pt: "",
+        section4_title_en: "",
+        section4_text_pt: "",
+        section4_text_en: "",
+        section4_link_label_pt: "",
+        section4_link_label_en: "",
+        section4_link_url_pt: "",
+        section4_link_url_en: "",
+        ordem: 999
+      }
     };
   }
 
@@ -337,79 +203,16 @@
       blank: {}
     },
 
+    "page-pesquisa": pageCollection("pesquisa", "página: pesquisa / research"),
     "page-projetos": pageCollection("projetos", "página: projetos / projects"),
     "page-publicacoes": pageCollection("publicacoes", "página: publicações / publications"),
-    "page-artigos": pageCollection("artigos", "página: artigos / journal articles", {
-      slug_pt: "artigos",
-      slug_en: "journal-articles",
-      title_pt: "artigos",
-      title_en: "journal articles",
-      intro_pt: "Lista inicial para artigos publicados em periódicos.",
-      intro_en: "Initial list for journal articles."
-    }),
-    "page-capitulos": pageCollection("capitulos", "página: capítulos / book chapters", {
-      slug_pt: "capitulos",
-      slug_en: "book-chapters",
-      title_pt: "capítulos",
-      title_en: "book chapters",
-      intro_pt: "Lista inicial para capítulos de livros acadêmicos.",
-      intro_en: "Initial list for academic book chapters."
-    }),
-    "page-livros-academicos": pageCollection("livros-academicos", "página: livros acadêmicos / academic books", {
-      slug_pt: "livros-academicos",
-      slug_en: "academic-books",
-      title_pt: "livros acadêmicos",
-      title_en: "academic books",
-      intro_pt: "Lista inicial para livros acadêmicos e obras organizadas.",
-      intro_en: "Initial list for academic books and edited volumes."
-    }),
     "page-livros-didaticos": pageCollection("livros-didaticos", "página: livros didáticos / textbooks"),
-    "page-orientacoes": pageCollection("orientacoes", "página: orientações / supervisions", {
-      slug_pt: "orientacoes",
-      slug_en: "supervisions",
-      title_pt: "orientações",
-      title_en: "supervisions",
-      intro_pt: "Orientações de mestrado e doutorado em andamento e concluídas.",
-      intro_en: "Current and completed Masters and PhD supervisions.",
-      ordem: 5
-    }),
-    "page-sobre": pageCollection(
-      "sobre",
-      "página: sobre / about",
-      {},
-      {
-        fields: aboutPageFields,
-        hint: "Aqui você edita o título, o texto e a foto da página Sobre/About. A foto aparece em moldura circular à direita do texto."
-      }
-    ),
-    "page-sobre-foto": pageCollection(
-      "sobre",
-      "foto: sobre / about photo",
-      {},
-      {
-        fields: aboutPhotoFields,
-        hint: "Use esta opção apenas para enviar ou trocar a foto circular da página Sobre/About. Depois de escolher a imagem, clique em publicar alteração."
-      }
-    ),
-    "page-contato": pageCollection(
-      "contato",
-      "página: contato — título e texto / contact page",
-      {
-        slug_pt: "contato",
-        slug_en: "contact",
-        title_pt: "contato",
-        title_en: "contact",
-        intro_pt: "Entre em contato por e-mail ou acesse meus perfis acadêmicos e institucionais.",
-        intro_en: "Get in touch by email or access my academic and institutional profiles."
-      },
-      {
-        fields: contactPageFields,
-        hint: "Aqui você edita o título e o texto de abertura da página contato. Os links/e-mail exibidos nessa página ficam na opção ‘links de contato e rodapé’."
-      }
-    ),
+    "page-sobre": pageCollection("sobre", "página: sobre / about"),
+    "page-contato": pageCollection("contato", "página: contato / contact"),
     "page-design": pageCollection("design", "página: design / design"),
     "page-tecnologia-digital": pageCollection("tecnologia-digital", "página: tecnologia digital / digital technology"),
     "page-educacao-linguistica": pageCollection("educacao-linguistica", "página: educação linguística / language education"),
+    "page-orientacoes": pageCollection("orientacoes", "página: orientações / supervisions"),
 
     "paginas": {
       mode: "list",
@@ -419,6 +222,39 @@
       meta: item => `${item.slug_pt || ""} / ${item.slug_en || ""}`,
       fields: pageFields,
       blank: pageCollection("nova-pagina", "nova página / new page").blank
+    },
+
+
+    "orientacoes": {
+      mode: "list",
+      path: "content/orientacoes.json",
+      root: "items",
+      labelField: "orientando",
+      meta: item => [item.nivel, item.ano_inicio, item.ano_fim].filter(Boolean).join(" · "),
+      fields: [
+        ["nivel", "select", "Nível", ["mestrado", "doutorado"]],
+        ["orientando", "text", "Nome do orientando"],
+        ["titulo_pt", "text", "Título em português"],
+        ["link_pt", "text", "Hiperlink do título em português"],
+        ["titulo_en", "text", "Título em inglês"],
+        ["link_en", "text", "Hiperlink do título em inglês"],
+        ["ano_inicio", "text", "Ano de início"],
+        ["ano_fim", "text", "Ano de conclusão"],
+        ["visivel", "checkbox", "Visível no site"],
+        ["ordem", "number", "Ordem"]
+      ],
+      blank: {
+        nivel: "mestrado",
+        orientando: "",
+        titulo_pt: "",
+        link_pt: "",
+        titulo_en: "",
+        link_en: "",
+        ano_inicio: "",
+        ano_fim: "",
+        visivel: true,
+        ordem: 999
+      }
     },
 
     "artigos": {
@@ -458,58 +294,21 @@
       mode: "list",
       path: "content/projetos.json",
       root: "items",
-      labelField: "titulo_pt",
-      meta: item => [projectCategoryLabel(item.categoria || item.categoria_pt || item.categoria_en, "pt"), projectPeriodLabel(item, "pt"), item.link && item.link !== "#" ? item.link : ""].filter(Boolean).join(" · "),
-      singleAcrossLanguages: true,
+      labelField: "titulo",
+      meta: item => [item.periodo, item.idioma].filter(Boolean).join(" · "),
       fields: [
-        ["titulo_pt", "text", "Nome do projeto em português"],
-        ["titulo_en", "text", "Project name in English"],
-        ["descricao_pt", "textarea", "Descrição em português"],
-        ["descricao_en", "textarea", "Description in English"],
-        ["categoria", "select", "Categoria / Category", projectCategoryOptions],
-        ["ano_inicio", "number", "Ano de início"],
-        ["ano_fim", "number", "Ano de fim"],
+        ["idioma", "select", "Idioma", ["pt", "en"]],
+        ["titulo", "text", "Título"],
+        ["descricao", "textarea", "Descrição"],
+        ["periodo", "text", "Período"],
+        ["parceiros", "text", "Parceiros"],
         ["link", "text", "Hiperlink externo"],
         ["visivel", "checkbox", "Visível no site"],
         ["destaque", "checkbox", "Destaque"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: {
-        titulo_pt: "",
-        titulo_en: "",
-        descricao_pt: "",
-        descricao_en: "",
-        categoria: "pesquisa",
-        categoria_pt: "Pesquisa",
-        categoria_en: "Research",
-        ano_inicio: "",
-        ano_fim: "",
-        link: "#",
-        visivel: true,
-        destaque: false,
-        ordem: 999
-      }
+      blank: { idioma: "pt", titulo: "", descricao: "", periodo: "", parceiros: "", link: "#", visivel: true, destaque: false, ordem: 999 }
     },
-    "orientacoes": {
-      mode: "list",
-      path: "content/orientacoes.json",
-      root: "items",
-      label: "orientações / supervisions",
-      labelField: "orientando",
-      meta: item => [item.grau === "doutorado" ? "Doutorado / PhD" : "Mestrado / Masters", [item.ano_inicio, item.ano_fim].filter(Boolean).join("–")].filter(Boolean).join(" · "),
-      fields: supervisionFields,
-      blank: {
-        grau: "mestrado",
-        orientando: "",
-        trabalho_pt: "",
-        trabalho_en: "",
-        ano_inicio: "",
-        ano_fim: "",
-        visivel: true,
-        ordem: 999
-      }
-    },
-
     "livros-didaticos": {
       mode: "list",
       path: "content/livros-didaticos.json",
@@ -574,21 +373,18 @@
     "links": {
       mode: "list",
       path: "content/links.json",
-      label: "links de contato e rodapé",
       root: "items",
       labelField: "nome",
-      meta: item => item.descricao_pt || item.descricao_en || item.tipo || "conteúdo único para PT e EN",
-      nonTranslatable: true,
-      uniqueNonTranslatable: true,
+      meta: item => [item.tipo, item.idioma].filter(Boolean).join(" · "),
       fields: [
+        ["idioma", "select", "Idioma", ["pt", "en"]],
         ["nome", "text", "Texto do hiperlink"],
-        ["descricao_pt", "textarea", "Descrição em português"],
-        ["descricao_en", "textarea", "Description in English"],
+        ["tipo", "text", "Tipo / descrição"],
         ["link", "text", "URL do hiperlink"],
         ["visivel", "checkbox", "Visível no site"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { nome: "", tipo: "", descricao_pt: "", descricao_en: "", link: "#", visivel: true, ordem: 999 }
+      blank: { idioma: "pt", nome: "", tipo: "", link: "#", visivel: true, ordem: 999 }
     }
   };
 
@@ -648,69 +444,6 @@
     return data;
   }
 
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const result = String(reader.result || "");
-        resolve(result.includes(",") ? result.split(",").pop() : result);
-      };
-      reader.onerror = () => reject(new Error("Não foi possível ler o arquivo selecionado."));
-      reader.readAsDataURL(file);
-    });
-  }
-
-  function safeFileName(name) {
-    const clean = String(name || "imagem")
-      .trim()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9._-]+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, "");
-
-    return clean || "imagem.jpg";
-  }
-
-  function timestampSlug() {
-    return new Date().toISOString().replace(/[-:.TZ]/g, "").slice(0, 14);
-  }
-
-  async function uploadMediaFile(file) {
-    if (!file) throw new Error("Selecione uma imagem.");
-    if (file.type && !file.type.startsWith("image/")) {
-      throw new Error("Envie apenas arquivos de imagem.");
-    }
-
-    const filename = `${timestampSlug()}-${safeFileName(file.name)}`;
-    const path = `assets/uploads/${filename}`;
-    const content = await fileToBase64(file);
-
-    await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        message: `Upload imagem ${filename}`,
-        content,
-        branch: BRANCH
-      })
-    });
-
-    return `/${path}`;
-  }
-
-  function updateImagePreview(preview, value) {
-    if (!preview) return;
-    const url = String(value || "").trim();
-    if (!url) {
-      preview.hidden = true;
-      preview.removeAttribute("src");
-      return;
-    }
-    preview.src = url;
-    preview.hidden = false;
-  }
-
   function decodeBase64Unicode(base64) {
     const binary = atob(base64.replace(/\n/g, ""));
     const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
@@ -749,144 +482,6 @@
       }
     }
     return true;
-  }
-
-  function normalizeKeyPart(value) {
-    return String(value || "").trim().toLowerCase();
-  }
-
-  function plainMenuKey(value) {
-    return String(value || "")
-      .trim()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-  }
-
-  function isResearchMenuItem(item) {
-    const label = plainMenuKey(item?.label);
-    const url = String(item?.url || "").trim().toLowerCase();
-    return (
-      label === "pesquisa" ||
-      label === "research" ||
-      url === "/pt/pesquisa/" ||
-      url === "/en/research/"
-    );
-  }
-
-
-  function isSupervisionsMenuItem(item) {
-    const label = plainMenuKey(item?.label);
-    const url = String(item?.url || "").trim().toLowerCase();
-    return (
-      label === "orientacoes" ||
-      label === "orientações" ||
-      label === "supervisions" ||
-      url === "/pt/orientacoes/" ||
-      url === "/en/supervisions/"
-    );
-  }
-
-  function defaultSupervisionsMenuItem(config) {
-    return config.key === "en"
-      ? { label: "SUPERVISIONS", url: "/en/supervisions/", visivel: true, ordem: 4.5 }
-      : { label: "ORIENTAÇÕES", url: "/pt/orientacoes/", visivel: true, ordem: 4.5 };
-  }
-
-  function normalizeMenuContent(config) {
-    if (!config || config.mode !== "menu") return;
-    const items = getAllItems(config);
-
-    // Remove a página antiga Pesquisa/Research do editor de menu e garante
-    // que Orientações/Supervisions esteja disponível para edição.
-    for (let index = items.length - 1; index >= 0; index -= 1) {
-      if (isResearchMenuItem(items[index])) items.splice(index, 1);
-    }
-
-    if (!items.some(isSupervisionsMenuItem)) {
-      const newItem = defaultSupervisionsMenuItem(config);
-      const aboutIndex = items.findIndex((item) => {
-        const label = plainMenuKey(item?.label);
-        const url = String(item?.url || "").trim().toLowerCase();
-        return label === "sobre" || label === "about" || url === "/pt/sobre/" || url === "/en/about/";
-      });
-      const insertIndex = aboutIndex >= 0 ? aboutIndex : items.length;
-      items.splice(insertIndex, 0, newItem);
-    }
-  }
-
-  function mergeLinkDescriptions(target, item) {
-    if (!target || !item) return target;
-
-    ["descricao_pt", "descricao_en", "tipo_pt", "tipo_en"].forEach((field) => {
-      if (item[field] && !target[field]) target[field] = item[field];
-    });
-
-    const legacyDescription = item.descricao || item.tipo || "";
-
-    if (item.idioma === "pt" && legacyDescription && !target.descricao_pt) {
-      target.descricao_pt = legacyDescription;
-    }
-
-    if (item.idioma === "en" && legacyDescription && !target.descricao_en) {
-      target.descricao_en = legacyDescription;
-    }
-
-    if (!item.idioma && legacyDescription && !target.descricao_pt) {
-      target.descricao_pt = legacyDescription;
-    }
-
-    if ((!target.link || target.link === "#") && item.link && item.link !== "#") {
-      target.link = item.link;
-    }
-
-    return target;
-  }
-
-  function nonTranslatableKey(item, config) {
-    if (currentCollection === "links") {
-      // Agrupa duplicatas antigas PT/EN pelo nome e pela ordem.
-      // O link pode ter sido preenchido em apenas uma das duplicatas, então
-      // ele não deve separar itens que são, na prática, o mesmo contato.
-      return normalizeKeyPart(item.nome) || normalizeKeyPart(item.link);
-    }
-
-    return [
-      normalizeKeyPart(item[config.labelField]),
-      normalizeKeyPart(item.link),
-      String(Number(item.ordem || 9999))
-    ].join("|");
-  }
-
-  function nonTranslatablePreference(item) {
-    if (!item || !item.idioma) return 0;
-    if (item.idioma === "pt") return 1;
-    if (item.idioma === "en") return 2;
-    return 3;
-  }
-
-  function uniqueNonTranslatableRows(rows, config) {
-    if (!config.uniqueNonTranslatable) return rows;
-
-    const byKey = new Map();
-    rows.forEach((row) => {
-      const key = nonTranslatableKey(row.item, config);
-      const previous = byKey.get(key);
-
-      if (!previous) {
-        byKey.set(key, { ...row, item: mergeLinkDescriptions({ ...row.item }, row.item) });
-        return;
-      }
-
-      const shouldReplace = nonTranslatablePreference(row.item) < nonTranslatablePreference(previous.item);
-      const baseRow = shouldReplace ? row : previous;
-      const mergedItem = mergeLinkDescriptions({ ...baseRow.item }, previous.item);
-      mergeLinkDescriptions(mergedItem, row.item);
-
-      byKey.set(key, { ...baseRow, item: mergedItem });
-    });
-
-    return Array.from(byKey.values());
   }
 
   function homeToForm(data) {
@@ -945,7 +540,6 @@
     const file = await githubRequest(apiURL(config.path));
     currentSha = file.sha;
     currentData = JSON.parse(decodeBase64Unicode(file.content));
-    normalizeMenuContent(config);
 
     if (["object-singleton", "home-bilingual"].includes(config.mode)) {
       if (config.mode === "object-singleton" && !currentData[config.key]) currentData[config.key] = { ...config.blank };
@@ -975,7 +569,7 @@
     rebuildVisibleRows();
 
     if (preferLabel) {
-      const found = visibleRows.find(row => rowLabel(row.item, config) === preferLabel);
+      const found = visibleRows.find(row => (row.item[config.labelField] || "") === preferLabel);
       currentActualIndex = found ? found.actualIndex : (visibleRows[0] ? visibleRows[0].actualIndex : null);
     } else {
       currentActualIndex = visibleRows[0] ? visibleRows[0].actualIndex : null;
@@ -986,23 +580,12 @@
     setStatus("Conteúdo carregado com a versão mais recente do GitHub.");
   }
 
-  function rowLabel(item, config) {
-    if (currentCollection === "projetos") {
-      return item.titulo_pt || item.titulo || item.titulo_en || "";
-    }
-
-    return item[config.labelField] || "";
-  }
-
   function rebuildVisibleRows() {
     const config = collections[currentCollection];
-    visibleRows = uniqueNonTranslatableRows(
-      getAllItems(config)
-        .map((item, actualIndex) => ({ item, actualIndex }))
-        .filter(row => matchesConfig(row.item, config))
-        .filter(row => config.mode !== "menu" || !isResearchMenuItem(row.item)),
-      config
-    ).sort((a, b) => {
+    visibleRows = getAllItems(config)
+      .map((item, actualIndex) => ({ item, actualIndex }))
+      .filter(row => matchesConfig(row.item, config))
+      .sort((a, b) => {
         if (config.sortRecent) {
           const yearA = Number(a.item.ano || 0);
           const yearB = Number(b.item.ano || 0);
@@ -1016,7 +599,7 @@
         const orderA = Number(a.item.ordem || 9999);
         const orderB = Number(b.item.ordem || 9999);
         if (orderA !== orderB) return orderA - orderB;
-        return String(rowLabel(a.item, config)).localeCompare(String(rowLabel(b.item, config)));
+        return String(a.item[config.labelField] || "").localeCompare(String(b.item[config.labelField] || ""));
       });
   }
 
@@ -1058,7 +641,7 @@
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "item-button" + (actualIndex === currentActualIndex ? " active" : "");
-      btn.innerHTML = `<span class="item-title">${escapeHTML(rowLabel(item, config) || "(sem título)")}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
+      btn.innerHTML = `<span class="item-title">${escapeHTML(item[config.labelField] || "(sem título)")}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
       btn.addEventListener("click", () => {
         currentActualIndex = actualIndex;
         renderList();
@@ -1081,31 +664,6 @@
 
     const items = getAllItems(config);
     return currentActualIndex !== null ? items[currentActualIndex] : null;
-  }
-
-  function editorValue(item, name) {
-    if (currentCollection === "projetos") {
-      if (name === "titulo_pt") return item.titulo_pt || (item.idioma === "pt" ? item.titulo : "") || "";
-      if (name === "titulo_en") return item.titulo_en || (item.idioma === "en" ? item.titulo : "") || "";
-      if (name === "descricao_pt") return item.descricao_pt || (item.idioma === "pt" ? item.descricao : "") || "";
-      if (name === "descricao_en") return item.descricao_en || (item.idioma === "en" ? item.descricao : "") || "";
-      if (name === "categoria") return normalizeProjectCategory(item.categoria || item.categoria_pt || item.categoria_en) || "pesquisa";
-    }
-
-    if (currentCollection === "links") {
-      if (name === "descricao_pt") {
-        return item.descricao_pt || item.tipo_pt || (item.idioma === "pt" ? (item.descricao || item.tipo || "") : "") || item.descricao || item.tipo || defaultContactDescription(item, "pt") || "";
-      }
-
-      if (name === "descricao_en") {
-        const english = item.descricao_en || item.tipo_en || (item.idioma === "en" ? (item.descricao || item.tipo || "") : "");
-        if (english) return english;
-        const legacyPt = item.descricao_pt || item.tipo_pt || item.descricao || item.tipo || defaultContactDescription(item, "pt") || "";
-        return translateLegacyLinkDescription(legacyPt, "en") || defaultContactDescription(item, "en") || "";
-      }
-    }
-
-    return item[name] ?? "";
   }
 
   function renderEditor() {
@@ -1132,16 +690,7 @@
     if (config.singleAcrossLanguages) {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = currentCollection === "projetos"
-        ? "Cadastre cada projeto uma única vez. Preencha nome e descrição em português e inglês; a categoria será exibida no idioma da página."
-        : "Cadastre a coleção uma única vez. Use descrição em português e descrição em inglês para adaptar o texto em cada versão.";
-      form.appendChild(p);
-    }
-
-    if (config.nonTranslatable) {
-      const p = document.createElement("p");
-      p.className = "hint";
-      p.textContent = "Links e URLs são únicos para PT e EN, mas as descrições dos contatos podem ser editadas em português e em inglês.";
+      p.textContent = "Cadastre a coleção uma única vez. Use descrição em português e descrição em inglês para adaptar o texto em cada versão.";
       form.appendChild(p);
     }
 
@@ -1162,7 +711,7 @@
     if (config.mode === "page-singleton" || config.mode === "home-bilingual") {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = config.hint || "Esta é uma entrada única com campos em português e inglês.";
+      p.textContent = "Esta é uma entrada única com campos em português e inglês.";
       form.appendChild(p);
     }
 
@@ -1175,65 +724,6 @@
         return;
       }
 
-      if (type === "image") {
-        const wrapper = document.createElement("label");
-        wrapper.className = "image-field";
-
-        const title = document.createElement("span");
-        title.textContent = label;
-
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = name;
-        input.placeholder = "/assets/uploads/minha-foto.jpg";
-        input.value = editorValue(item, name);
-
-        const preview = document.createElement("img");
-        preview.className = "image-preview";
-        preview.alt = "Pré-visualização da imagem";
-        updateImagePreview(preview, input.value);
-
-        const uploadRow = document.createElement("div");
-        uploadRow.className = "image-upload-row";
-
-        const fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*";
-
-        const hint = document.createElement("p");
-        hint.className = "hint";
-        hint.textContent = "Clique em ‘Escolher arquivo’ para enviar uma imagem do computador. O painel fará o upload para assets/uploads e preencherá a URL automaticamente. Depois, clique em ‘publicar alteração’.";
-
-        input.addEventListener("input", () => updateImagePreview(preview, input.value));
-
-        fileInput.addEventListener("change", async () => {
-          const file = fileInput.files && fileInput.files[0];
-          if (!file) return;
-
-          try {
-            setBusy(true);
-            setStatus("Enviando imagem para assets/uploads...");
-            const publicPath = await uploadMediaFile(file);
-            input.value = publicPath;
-            updateImagePreview(preview, publicPath);
-            setStatus("Imagem enviada e caminho preenchido. Clique em publicar alteração para salvar a página com esta imagem.");
-          } catch (error) {
-            setStatus(error.message, true);
-          } finally {
-            setBusy(false);
-          }
-        });
-
-        uploadRow.appendChild(fileInput);
-        wrapper.appendChild(title);
-        wrapper.appendChild(input);
-        wrapper.appendChild(uploadRow);
-        wrapper.appendChild(preview);
-        wrapper.appendChild(hint);
-        form.appendChild(wrapper);
-        return;
-      }
-
       const labelEl = document.createElement("label");
       labelEl.textContent = label;
       let input;
@@ -1241,25 +731,22 @@
       if (type === "textarea") {
         input = document.createElement("textarea");
         input.name = name;
-        input.value = editorValue(item, name);
+        input.value = item[name] || "";
       } else if (type === "select") {
         input = document.createElement("select");
         input.name = name;
-        const currentValue = editorValue(item, name);
         options.forEach(opt => {
           const option = document.createElement("option");
-          const value = typeof opt === "object" && opt !== null ? opt.value : opt;
-          const text = typeof opt === "object" && opt !== null ? opt.label : opt;
-          option.value = value;
-          option.textContent = text;
-          if (String(currentValue) === String(value)) option.selected = true;
+          option.value = opt;
+          option.textContent = opt;
+          if (item[name] === opt) option.selected = true;
           input.appendChild(option);
         });
       } else {
         input = document.createElement("input");
         input.type = type;
         input.name = name;
-        input.value = editorValue(item, name);
+        input.value = item[name] ?? "";
       }
 
       labelEl.appendChild(input);
@@ -1283,24 +770,6 @@
       else if (type === "number") values[name] = input.value === "" ? "" : Number(input.value);
       else values[name] = input.value;
     });
-
-    if (currentCollection === "projetos") {
-      const normalizedCategory = normalizeProjectCategory(values.categoria) || "pesquisa";
-      values.categoria = normalizedCategory;
-      values.categoria_pt = projectCategoryLabel(normalizedCategory, "pt");
-      values.categoria_en = projectCategoryLabel(normalizedCategory, "en");
-
-      // Mantém campos legados preenchidos para compatibilidade com versões antigas
-      // do conteúdo, mas o cadastro passa a ser único e bilíngue.
-      values.titulo = values.titulo_pt || values.titulo_en || "";
-      values.descricao = values.descricao_pt || values.descricao_en || "";
-    }
-
-    if (currentCollection === "links") {
-      // Mantém o campo legado "tipo" como fallback, mas a página contato
-      // passa a usar descricao_pt/descricao_en conforme o idioma da página.
-      values.tipo = values.descricao_pt || values.descricao_en || "";
-    }
 
     if (config.sortRecent && !values.ordem) {
       values.ordem = Date.now();
@@ -1328,17 +797,9 @@
     const items = getAllItems(config);
     if (currentActualIndex === null || !items[currentActualIndex]) throw new Error("Nenhum item selecionado.");
 
-    const oldLabel = rowLabel(items[currentActualIndex], config) || "";
+    const oldLabel = items[currentActualIndex][config.labelField] || "";
     const values = collectEditorValues();
-
-    // Preserva chaves que não aparecem no formulário atual (por exemplo,
-    // campos antigos de idioma em links já cadastrados), evitando perda de
-    // dados ao publicar alterações pelo painel.
-    items[currentActualIndex] = {
-      ...items[currentActualIndex],
-      ...values
-    };
-
+    items[currentActualIndex] = values;
     await saveFile(`Atualiza ${currentCollection}`, values[config.labelField] || oldLabel);
   }
 

@@ -3,38 +3,64 @@
     {
       "idioma": "pt",
       "nome": "Email",
-      "tipo": "ronaldocgomes@ufmg.br",
-      "link": "mailto:ronaldocgomes@ufmg.br",
+      "tipo": "Contato",
+      "link": "#",
       "visivel": true,
-      "ordem": 1,
-      "descricao_pt": "ronaldocgomes@ufmg.br",
-      "descricao_en": "ronaldocgomes@ufmg.br"
+      "ordem": 1
     },
     {
       "idioma": "pt",
       "nome": "ORCID",
       "tipo": "Perfil acadêmico",
-      "link": "https://orcid.org/0000-0003-4165-8629",
+      "link": "#",
       "visivel": true,
-      "ordem": 2,
-      "descricao_pt": "Perfil acadêmico",
-      "descricao_en": "Academic profile"
+      "ordem": 2
     },
     {
+      "idioma": "pt",
       "nome": "Google Scholar",
       "tipo": "Perfil acadêmico",
-      "descricao_pt": "Perfil acadêmico",
-      "descricao_en": "Academic profile",
-      "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
+      "link": "#",
       "visivel": true,
       "ordem": 3
     },
     {
+      "idioma": "pt",
       "nome": "Lattes",
       "tipo": "Currículo",
-      "descricao_pt": "Currículo",
-      "descricao_en": "CV",
-      "link": "http://lattes.cnpq.br/6357439967840461",
+      "link": "#",
+      "visivel": true,
+      "ordem": 4
+    },
+    {
+      "idioma": "en",
+      "nome": "Email",
+      "tipo": "Contact",
+      "link": "#",
+      "visivel": true,
+      "ordem": 1
+    },
+    {
+      "idioma": "en",
+      "nome": "ORCID",
+      "tipo": "Academic profile",
+      "link": "#",
+      "visivel": true,
+      "ordem": 2
+    },
+    {
+      "idioma": "en",
+      "nome": "Google Scholar",
+      "tipo": "Academic profile",
+      "link": "#",
+      "visivel": true,
+      "ordem": 3
+    },
+    {
+      "idioma": "en",
+      "nome": "Lattes",
+      "tipo": "CV",
+      "link": "#",
       "visivel": true,
       "ordem": 4
     }

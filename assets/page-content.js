@@ -24,45 +24,16 @@
     return `<a href="${escapeHTML(url)}" ${String(url).startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${escapeHTML(label)}</a>`;
   }
 
-  function cacheBustImageUrl(url) {
-    const value = String(url || '').trim();
-    if (!value || value.startsWith('data:')) return value;
-    const separator = value.includes('?') ? '&' : '?';
-    return `${value}${separator}v=${Date.now()}`;
-  }
-
-  function updatePortrait(shell, page, lang) {
-    const portrait = shell.querySelector('[data-page-portrait]');
-    if (!portrait) return;
-
-    // Campo principal do painel: portrait_image. Os demais nomes ficam como
-    // fallback para compatibilidade com versões antigas do conteúdo.
-    const imageUrl = page.portrait_image || field(page, 'portrait_image', lang) || page.photo || page.foto || page.imagem || '';
-    const alt = field(page, 'portrait_alt', lang) || field(page, 'photo_alt', lang) || 'Ronaldo Gomes Jr.';
-    const img = portrait.querySelector('[data-page-portrait-img]');
-
-    if (!imageUrl || !img) {
-      portrait.hidden = true;
-      return;
-    }
-
-    img.src = cacheBustImageUrl(imageUrl);
-    img.alt = alt;
-    portrait.hidden = false;
-  }
-
   document.addEventListener('DOMContentLoaded', async function () {
     const shell = document.querySelector('[data-page-shell]');
     if (!shell) return;
 
-    const pageId = shell.getAttribute('data-page-id');
     const slug = shell.getAttribute('data-page-slug');
     const lang = shell.getAttribute('data-lang') || 'pt';
 
     try {
       const items = await loadPages();
       const page = items.find((item) => {
-        if (pageId && item.id === pageId) return true;
         if (lang === 'en') return item.slug_en === slug || item.slug === slug;
         return item.slug_pt === slug || item.slug === slug;
       });
@@ -77,14 +48,12 @@
       const introEl = shell.querySelector('[data-page-intro]');
       if (titleEl && title) titleEl.textContent = title;
       if (introEl && intro) introEl.textContent = intro;
-      if (metaTitle || title) document.title = `${metaTitle || title} — Ronaldo Gomes Jr.`;
+      document.title = `${metaTitle || title || document.title} — Ronaldo Gomes Jr.`;
 
       const metaDescriptionEl = document.querySelector('meta[name="description"]');
       if (metaDescriptionEl && metaDescription) {
         metaDescriptionEl.setAttribute('content', metaDescription);
       }
-
-      updatePortrait(shell, page, lang);
 
       const sectionsEl = shell.querySelector('[data-page-sections]');
       if (sectionsEl) {

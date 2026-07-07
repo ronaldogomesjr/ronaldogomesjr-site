@@ -2,57 +2,25 @@
   "items": [
     {
       "idioma": "pt",
-      "titulo": "Critical AI Literacies in Language Education: Building with Design Justice",
-      "descricao": "Projeto internacional apoiado pela Worldwide Universities Network (WUN), voltado à investigação dos usos, percepções e impactos da inteligência artificial na educação linguística. A pesquisa analisa como estudantes e professores interagem com ferramentas de IA em diferentes contextos linguísticos, culturais e socioeconômicos, com atenção a questões de acesso, desigualdade, autoria, viés e justiça. Orientado pelos princípios da justiça de design, o projeto compreende a IA como um sistema sociotécnico e busca contribuir para práticas mais críticas, éticas e inclusivas no ensino e na aprendizagem de línguas.",
+      "titulo": "Projeto a inserir",
+      "descricao": "Descrição curta do projeto, com foco, objetivos e/ou parceria principal.",
       "periodo": "2026–",
       "parceiros": "UFMG",
-      "link": "https://wun.ac.uk/wun/research/view/critical-ai-literacies-in-language-education-building-with-design-justice/",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1,
-      "titulo_pt": "Critical AI Literacies in Language Education: Building with Design Justice",
-      "titulo_en": "Critical AI Literacies in Language Education: Building with Design Justice",
-      "descricao_pt": "Projeto internacional apoiado pela Worldwide Universities Network (WUN), voltado à investigação dos usos, percepções e impactos da inteligência artificial na educação linguística. A pesquisa analisa como estudantes e professores interagem com ferramentas de IA em diferentes contextos linguísticos, culturais e socioeconômicos, com atenção a questões de acesso, desigualdade, autoria, viés e justiça. Orientado pelos princípios da justiça de design, o projeto compreende a IA como um sistema sociotécnico e busca contribuir para práticas mais críticas, éticas e inclusivas no ensino e na aprendizagem de línguas.",
-      "descricao_en": "An international project supported by the Worldwide Universities Network (WUN), focused on investigating the uses, perceptions and impacts of artificial intelligence in language education. The research examines how students and teachers engage with AI tools across different linguistic, cultural and socio-economic contexts, addressing issues of access, inequality, authorship, bias and justice. Guided by the principles of Design Justice, the project approaches AI as a socio-technical system and seeks to support more critical, ethical and inclusive practices in language teaching and learning.",
-      "categoria": "pesquisa",
-      "categoria_pt": "Pesquisa",
-      "categoria_en": "Research",
-      "ano_inicio": 2026,
-      "ano_fim": ""
-    },
-    {
-      "titulo_pt": "Tecnologias e Design na Educação de Línguas",
-      "titulo_en": "Technologies and Design in Language Education",
-      "descricao_pt": "Este projeto investiga as relações entre tecnologias digitais, design e educação de línguas, considerando como ambientes, ferramentas e práticas digitais ampliam as possibilidades de criação, participação e construção de sentidos. A pesquisa parte da compreensão do design como processo pedagógico e social, capaz de favorecer práticas mais críticas, autorais e multimodais de uso da linguagem. Por meio de abordagem qualitativa e interpretativista, o estudo analisa ferramentas, modelos de integração tecnológica, materiais didáticos, propostas curriculares e experiências de professores e aprendizes em atividades de design no ensino e na aprendizagem de línguas.",
-      "descricao_en": "This project investigates the relationship between digital technologies, design and language education, examining how digital environments, tools and practices expand possibilities for creation, participation and meaning-making. The research understands design as a pedagogical and social process that can foster more critical, agentive and multimodal language practices. Through a qualitative and interpretive approach, the study analyzes digital tools, technology integration models, teaching materials, curriculum proposals and the experiences of teachers and learners in design-oriented activities for language teaching and learning.",
-      "categoria": "pesquisa",
-      "categoria_pt": "Pesquisa",
-      "categoria_en": "Research",
-      "ano_inicio": 2023,
-      "ano_fim": "",
       "link": "#",
       "visivel": true,
       "destaque": false,
-      "ordem": 3,
-      "titulo": "Tecnologias e Design na Educação de Línguas",
-      "descricao": "Este projeto investiga as relações entre tecnologias digitais, design e educação de línguas, considerando como ambientes, ferramentas e práticas digitais ampliam as possibilidades de criação, participação e construção de sentidos. A pesquisa parte da compreensão do design como processo pedagógico e social, capaz de favorecer práticas mais críticas, autorais e multimodais de uso da linguagem. Por meio de abordagem qualitativa e interpretativista, o estudo analisa ferramentas, modelos de integração tecnológica, materiais didáticos, propostas curriculares e experiências de professores e aprendizes em atividades de design no ensino e na aprendizagem de línguas."
+      "ordem": 1
     },
     {
-      "titulo_pt": "sabIA - Saberes sobre Inteligência Artificial para a Aprendizagem de Línguas",
-      "titulo_en": "sabIA: AI Curation for Language Education",
-      "descricao_pt": "O sabIA é uma plataforma de curadoria e exploração de ferramentas de inteligência artificial voltadas ao ensino e à aprendizagem de línguas. Desenvolvido no contexto da Área de Linguagem e Tecnologia e do DELTA Lab/FALE-UFMG, o projeto reúne, organiza e analisa recursos digitais que podem apoiar práticas de leitura, escrita, fala, escuta, vocabulário, tradução, planejamento textual e aprendizagem autônoma. Mais do que um catálogo de ferramentas, o sabIÁ propõe uma aproximação crítica, educativa e colaborativa da IA, incentivando estudantes, professores e pesquisadores a refletirem sobre usos, limites, possibilidades e implicações éticas das tecnologias na educação linguística.",
-      "descricao_en": "sabIA is a platform for curating and exploring artificial intelligence tools for language teaching and learning. Developed within the Language and Technology area and DELTA Lab at FALE-UFMG, the project gathers, organizes and analyzes digital resources that can support reading, writing, speaking, listening, vocabulary development, translation, text planning and autonomous learning. More than a catalogue of tools, sabIÁ promotes a critical, educational and collaborative approach to AI, encouraging students, teachers and researchers to reflect on the uses, limitations, possibilities and ethical implications of technology in language education.",
-      "categoria": "extensao",
-      "categoria_pt": "Extensão",
-      "categoria_en": "Extension",
-      "ano_inicio": 2024,
-      "ano_fim": "",
-      "link": "https://sabia-ufmg.vercel.app/",
+      "idioma": "en",
+      "titulo": "Project to add",
+      "descricao": "Short project description, including focus, aims, and/or main partnership.",
+      "periodo": "2026–",
+      "parceiros": "UFMG",
+      "link": "#",
       "visivel": true,
       "destaque": false,
-      "ordem": 2,
-      "titulo": "sabIA - Saberes sobre Inteligência Artificial para a Aprendizagem de Línguas",
-      "descricao": "O sabIA é uma plataforma de curadoria e exploração de ferramentas de inteligência artificial voltadas ao ensino e à aprendizagem de línguas. Desenvolvido no contexto da Área de Linguagem e Tecnologia e do DELTA Lab/FALE-UFMG, o projeto reúne, organiza e analisa recursos digitais que podem apoiar práticas de leitura, escrita, fala, escuta, vocabulário, tradução, planejamento textual e aprendizagem autônoma. Mais do que um catálogo de ferramentas, o sabIÁ propõe uma aproximação crítica, educativa e colaborativa da IA, incentivando estudantes, professores e pesquisadores a refletirem sobre usos, limites, possibilidades e implicações éticas das tecnologias na educação linguística."
+      "ordem": 2
     }
   ]
 }

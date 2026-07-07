@@ -1,14 +1,16 @@
 {
   "items": [
     {
-      "grau": "mestrado",
-      "orientando": "",
-      "trabalho_pt": "",
-      "trabalho_en": "",
+      "nivel": "mestrado",
+      "orientando": "Nome do orientando",
+      "titulo_pt": "Título do trabalho em português",
+      "titulo_en": "Title of the work in English",
+      "link_pt": "",
+      "link_en": "",
       "ano_inicio": "",
       "ano_fim": "",
       "visivel": true,
-      "ordem": 999
+      "ordem": 1
     }
   ]
 }

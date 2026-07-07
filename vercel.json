@@ -6,26 +6,6 @@
   "outputDirectory": "public",
   "redirects": [
     {
-      "source": "/pt/pesquisa",
-      "destination": "/pt/projetos/",
-      "permanent": true
-    },
-    {
-      "source": "/pt/pesquisa/",
-      "destination": "/pt/projetos/",
-      "permanent": true
-    },
-    {
-      "source": "/en/research",
-      "destination": "/en/projects/",
-      "permanent": true
-    },
-    {
-      "source": "/en/research/",
-      "destination": "/en/projects/",
-      "permanent": true
-    },
-    {
       "source": "/",
       "destination": "/pt/",
       "permanent": false

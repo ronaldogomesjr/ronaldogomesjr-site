@@ -1,41 +1,32 @@
-# Ronaldo Gomes Jr. Site — V47 Bilingual Page Entries
+# Ronaldo Gomes Jr. Site — V48 Supervision Links
 
-Esta versão muda a lógica das páginas internas.
+Esta versão adiciona/ajusta a página `orientações / supervisions`.
 
-## O que mudou
+## No painel
 
-Cada página agora tem uma única entrada no painel, com campos separados para português e inglês.
+Há uma entrada para a página:
 
-Exemplos:
+- `página: orientações / supervisions`
 
-- página: sobre / about
-- página: contato / contact
-- página: pesquisa / research
-- página: livros didáticos / textbooks
+e uma coleção de conteúdo:
 
-Dentro de cada entrada, há campos como:
+- `conteúdo: orientações / supervisions`
 
-- Título em português
-- Título em inglês
-- Texto de abertura em português
-- Texto de abertura em inglês
-- Seção 1 — título/texto/link em português
-- Seção 1 — título/texto/link em inglês
+Cada orientação contém:
 
-## Página inicial
+- nível: mestrado ou doutorado;
+- nome do orientando;
+- título em português;
+- hiperlink do título em português;
+- título em inglês;
+- hiperlink do título em inglês;
+- ano de início;
+- ano de conclusão.
 
-A página inicial também foi unificada em:
+## Exibição
 
-- página inicial / home
+Na página em português, o título em português é exibido como hiperlink.
 
-com campos em PT e EN na mesma entrada.
+Na página em inglês, o título em inglês é exibido como hiperlink.
 
-## Mantido
-
-Esta versão mantém:
-
-- publicações cadastradas uma única vez;
-- livros didáticos cadastrados uma única vez com descrição PT/EN;
-- botões de download dos livros didáticos;
-- ordenação automática de publicações;
-- correção de sincronização SHA do GitHub.
+Se apenas um dos links for preenchido, ele será usado como alternativa na outra versão.

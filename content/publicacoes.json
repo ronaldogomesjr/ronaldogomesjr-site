@@ -23,6 +23,17 @@
       "ordem": 2
     },
     {
+      "tipo": "livro_academico",
+      "ano": "2026",
+      "titulo": "Livro acadêmico a inserir",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Editora",
+      "link": "#",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 3
+    },
+    {
       "tipo": "artigo",
       "ano": "2026",
       "titulo": "Journal article to add",
@@ -46,69 +57,14 @@
     },
     {
       "tipo": "livro_academico",
-      "ano": "2024",
-      "titulo": "Tecnologias digitais e aprendizagem de línguas além da sala de aula.",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR",
-      "veiculo": "Mercado de Letras",
-      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQC4ocT1ygxWTaKu7xG64EQ0AZo0J_MVh5aKjggleCs2fK8?e=5N5Le9",
+      "ano": "2026",
+      "titulo": "Academic book to add",
+      "autores": "Ronaldo Gomes Jr.",
+      "veiculo": "Publisher",
+      "link": "#",
       "visivel": true,
       "destaque": false,
-      "ordem": 1782757549275
-    },
-    {
-      "tipo": "livro_academico",
-      "ano": "2021",
-      "titulo": "Keywords: termos e conceitos de linguagem e tecnologia na linguística aplicada.",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR",
-      "veiculo": "Faculdade de Letras da UFMG",
-      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQCcbA7r5yVVIICZF2UAAAAAAXaqo_dvRtrp9Is7tsfqZas?e=d9wT9U",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 2
-    },
-    {
-      "tipo": "livro_academico",
-      "ano": "2021",
-      "titulo": "Identidades Metaforizadas.",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR",
-      "veiculo": "Pontes Editores",
-      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQDAthx8VEknSalnxQBzFpHbAZRQoyVcLJQ6ZGqSjVbCoSc?e=JpYBsr",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1782757545221
-    },
-    {
-      "tipo": "livro_academico",
-      "ano": "2020",
-      "titulo": "Pesquisa Narrativa: histórias sobre ensinar e aprender línguas",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR",
-      "veiculo": "Pimenta Cultural",
-      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQBDzwDYhihGT6rraUeB7lxUAVdaSWMjofUcTjaL2GsN0a4?e=Ei8bru",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1782757641306
-    },
-    {
-      "tipo": "livro_academico",
-      "ano": "2019",
-      "titulo": "Mão na Massa I",
-      "autores": "",
-      "veiculo": "Parábola Editorial",
-      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQABg_47T9M-S5SDmt2JaPwIAR0TqOS4ybdEkteLf7eI-ls?e=IXkdBh",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1782757786263
-    },
-    {
-      "tipo": "livro_academico",
-      "ano": "2020",
-      "titulo": "Mão na Massa II",
-      "autores": "",
-      "veiculo": "Parábola Editorial",
-      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQCKEiqiUXSUTq1d5h61RBuXAVennfFOu6DoPzAK_mkPKEs?e=hPtaj8",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 1782757869352
+      "ordem": 6
     }
   ]
 }
