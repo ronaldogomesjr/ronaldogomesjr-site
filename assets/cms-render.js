@@ -52,19 +52,12 @@
   function publicationHTML(item, lang) {
     const label = lang === "en" ? "Access →" : "Acessar →";
     const meta = [item.autores, item.veiculo, item.ano].filter(Boolean).join(". ");
-    const cover = item.tipo === "livro_academico" && item.imagem
-      ? `<img class="academic-book-cover" src="${escapeHTML(item.imagem)}" alt="${escapeHTML(item.titulo || "")}">`
-      : "";
-
     return `
-      <article class="section-row ${item.tipo === "livro_academico" ? "academic-book-row" : ""}">
+      <article class="section-row">
         <h2>${escapeHTML(item.ano || "")}</h2>
-        <div class="publication-content">
-          ${cover}
-          <div>
-            <p><strong>${escapeHTML(item.titulo)}</strong>${meta ? "<br>" + escapeHTML(meta) : ""}</p>
-            ${externalLink(item.link, label)}
-          </div>
+        <div>
+          <p><strong>${escapeHTML(item.titulo)}</strong>${meta ? "<br>" + escapeHTML(meta) : ""}</p>
+          ${externalLink(item.link, label)}
         </div>
       </article>
     `;
@@ -113,13 +106,25 @@
     `;
   }
 
-  function linkHTML(item) {
+  function linkHTML(item, lang) {
+    const name = lang === "en"
+      ? (item.nome_en || item.nome_pt || item.nome || "")
+      : (item.nome_pt || item.nome_en || item.nome || "");
+    const description = lang === "en"
+      ? (item.tipo_en || item.tipo_pt || item.tipo || "")
+      : (item.tipo_pt || item.tipo_en || item.tipo || "");
+    const openLabel = lang === "en" ? "Open →" : "Abrir →";
+
     return `
-      <article class="section-row">
-        <h2>${escapeHTML(item.nome)}</h2>
+      <article class="section-row contact-link-row">
+        <h2>
+          <a class="contact-title-link" href="${escapeHTML(item.link || "#")}" ${item.link && item.link !== "#" ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+            ${escapeHTML(name)}
+          </a>
+        </h2>
         <div>
-          <p>${escapeHTML(item.tipo)}</p>
-          ${externalLink(item.link, item.link && item.link !== "#" ? "Abrir →" : "")}
+          ${description ? `<p>${escapeHTML(description)}</p>` : ""}
+          ${externalLink(item.link, item.link && item.link !== "#" ? openLabel : "")}
         </div>
       </article>
     `;
@@ -194,7 +199,41 @@
 
       if (kind === "links") {
         const data = await loadJSON("/content/links.json");
-        const items = sortedVisible(data.items, lang);
+        const merged = new Map();
+
+        (data.items || []).forEach((item, index) => {
+          const key = String(item.link || `__${index}`).trim().toLowerCase();
+          const current = merged.get(key) || {
+            nome_pt: "",
+            nome_en: "",
+            tipo_pt: "",
+            tipo_en: "",
+            link: item.link || "#",
+            visivel: item.visivel !== false,
+            ordem: Number(item.ordem || 999)
+          };
+
+          if ("nome_pt" in item || "nome_en" in item || "tipo_pt" in item || "tipo_en" in item) {
+            current.nome_pt = item.nome_pt || current.nome_pt;
+            current.nome_en = item.nome_en || current.nome_en;
+            current.tipo_pt = item.tipo_pt || current.tipo_pt;
+            current.tipo_en = item.tipo_en || current.tipo_en;
+          } else {
+            const itemLang = item.idioma === "en" ? "en" : "pt";
+            current[`nome_${itemLang}`] = item.nome || current[`nome_${itemLang}`];
+            current[`tipo_${itemLang}`] = item.tipo || current[`tipo_${itemLang}`];
+          }
+
+          current.link = item.link || current.link;
+          current.visivel = current.visivel && item.visivel !== false;
+          current.ordem = Math.min(Number(current.ordem || 999), Number(item.ordem || 999));
+          merged.set(key, current);
+        });
+
+        const items = Array.from(merged.values())
+          .filter(item => item.visivel !== false)
+          .sort((a, b) => Number(a.ordem || 9999) - Number(b.ordem || 9999));
+
         element.innerHTML = items.length ? items.map((item) => linkHTML(item, lang)).join("") : emptyMessage(lang);
       }
     } catch (error) {

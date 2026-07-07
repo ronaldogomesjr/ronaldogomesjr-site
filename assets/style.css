@@ -1101,3 +1101,16 @@ a { color: inherit; text-decoration: none; }
   font-size: .9rem;
   line-height: 1.5;
 }
+
+
+/* V54 — links bilíngues no contato e no rodapé */
+.contact-title-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.contact-title-link:hover {
+  opacity: .66;
+}

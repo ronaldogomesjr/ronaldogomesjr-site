@@ -392,17 +392,27 @@
       mode: "list",
       path: "content/links.json",
       root: "items",
-      labelField: "nome",
-      meta: item => [item.tipo, item.idioma].filter(Boolean).join(" · "),
+      labelField: "nome_pt",
+      meta: item => item.link || "",
+      bilingualLinks: true,
       fields: [
-        ["idioma", "select", "Idioma", ["pt", "en"]],
-        ["nome", "text", "Texto do hiperlink"],
-        ["tipo", "text", "Tipo / descrição"],
-        ["link", "text", "URL do hiperlink"],
-        ["visivel", "checkbox", "Visível no site"],
+        ["nome_pt", "text", "Texto do hiperlink em português"],
+        ["nome_en", "text", "Texto do hiperlink em inglês"],
+        ["tipo_pt", "text", "Descrição em português"],
+        ["tipo_en", "text", "Descrição em inglês"],
+        ["link", "text", "URL do hiperlink — compartilhada entre PT e EN"],
+        ["visivel", "checkbox", "Visível no contato e no rodapé"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", nome: "", tipo: "", link: "#", visivel: true, ordem: 999 }
+      blank: {
+        nome_pt: "",
+        nome_en: "",
+        tipo_pt: "",
+        tipo_en: "",
+        link: "#",
+        visivel: true,
+        ordem: 999
+      }
     }
   };
 
@@ -550,6 +560,65 @@
     };
   }
 
+
+  function normalizeBilingualLinks(data) {
+    const source = Array.isArray(data && data.items) ? data.items : [];
+    const merged = new Map();
+
+    source.forEach((item, index) => {
+      // Entries already in the bilingual format are kept as they are.
+      if (
+        Object.prototype.hasOwnProperty.call(item, "nome_pt") ||
+        Object.prototype.hasOwnProperty.call(item, "nome_en") ||
+        Object.prototype.hasOwnProperty.call(item, "tipo_pt") ||
+        Object.prototype.hasOwnProperty.call(item, "tipo_en")
+      ) {
+        const key = String(item.link || `__item_${index}`).trim().toLowerCase();
+        const existing = merged.get(key) || {
+          nome_pt: "",
+          nome_en: "",
+          tipo_pt: "",
+          tipo_en: "",
+          link: item.link || "#",
+          visivel: item.visivel !== false,
+          ordem: Number(item.ordem || 999)
+        };
+
+        existing.nome_pt = item.nome_pt || existing.nome_pt;
+        existing.nome_en = item.nome_en || existing.nome_en;
+        existing.tipo_pt = item.tipo_pt || existing.tipo_pt;
+        existing.tipo_en = item.tipo_en || existing.tipo_en;
+        existing.link = item.link || existing.link;
+        existing.visivel = item.visivel !== false;
+        existing.ordem = Math.min(Number(existing.ordem || 999), Number(item.ordem || 999));
+        merged.set(key, existing);
+        return;
+      }
+
+      // Legacy entries, formerly separated by idioma, are paired by URL.
+      const key = String(item.link || `__legacy_${index}`).trim().toLowerCase();
+      const existing = merged.get(key) || {
+        nome_pt: "",
+        nome_en: "",
+        tipo_pt: "",
+        tipo_en: "",
+        link: item.link || "#",
+        visivel: item.visivel !== false,
+        ordem: Number(item.ordem || 999)
+      };
+
+      const lang = item.idioma === "en" ? "en" : "pt";
+      existing[`nome_${lang}`] = item.nome || existing[`nome_${lang}`];
+      existing[`tipo_${lang}`] = item.tipo || existing[`tipo_${lang}`];
+      existing.link = item.link || existing.link;
+      existing.visivel = existing.visivel && item.visivel !== false;
+      existing.ordem = Math.min(Number(existing.ordem || 999), Number(item.ordem || 999));
+      merged.set(key, existing);
+    });
+
+    return { items: Array.from(merged.values()) };
+  }
+
   async function loadCollection(preferLabel = "") {
     currentCollection = $("collectionSelect").value;
     const config = collections[currentCollection];
@@ -558,6 +627,10 @@
     const file = await githubRequest(apiURL(config.path));
     currentSha = file.sha;
     currentData = JSON.parse(decodeBase64Unicode(file.content));
+
+    if (config.bilingualLinks) {
+      currentData = normalizeBilingualLinks(currentData);
+    }
 
     if (["object-singleton", "home-bilingual"].includes(config.mode)) {
       if (config.mode === "object-singleton" && !currentData[config.key]) currentData[config.key] = { ...config.blank };
@@ -764,6 +837,13 @@
       const p = document.createElement("p");
       p.className = "hint";
       p.textContent = "Cadastre a coleção uma única vez. Use descrição em português e descrição em inglês para adaptar o texto em cada versão.";
+      form.appendChild(p);
+    }
+
+    if (config.bilingualLinks) {
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = "Cadastre cada link uma única vez. O mesmo endereço aparecerá no contato e no rodapé, com textos em português e inglês.";
       form.appendChild(p);
     }
 
