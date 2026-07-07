@@ -1,41 +1,26 @@
-# Ronaldo Gomes Jr. Site — V47 Bilingual Page Entries
+# Ronaldo Gomes Jr. Site — V49 Supervisions Style and Order
 
-Esta versão muda a lógica das páginas internas.
+Esta versão ajusta a página `orientações / supervisions`.
 
-## O que mudou
+## Estilo
 
-Cada página agora tem uma única entrada no painel, com campos separados para português e inglês.
+Os subtítulos:
 
-Exemplos:
+- mestrado
+- doutorado
+- master’s
+- PhD
 
-- página: sobre / about
-- página: contato / contact
-- página: pesquisa / research
-- página: livros didáticos / textbooks
+agora usam a mesma família tipográfica do título principal da página, mas em tamanho menor e proporcional.
 
-Dentro de cada entrada, há campos como:
+## Ordenação
 
-- Título em português
-- Título em inglês
-- Texto de abertura em português
-- Texto de abertura em inglês
-- Seção 1 — título/texto/link em português
-- Seção 1 — título/texto/link em inglês
+Os trabalhos são exibidos automaticamente do mais recente para o mais antigo.
 
-## Página inicial
+A ordenação considera:
 
-A página inicial também foi unificada em:
+1. ano de conclusão, do mais recente para o mais antigo;
+2. trabalhos em andamento, sem ano de conclusão, aparecem primeiro;
+3. em caso de empate, considera o ano de início mais recente.
 
-- página inicial / home
-
-com campos em PT e EN na mesma entrada.
-
-## Mantido
-
-Esta versão mantém:
-
-- publicações cadastradas uma única vez;
-- livros didáticos cadastrados uma única vez com descrição PT/EN;
-- botões de download dos livros didáticos;
-- ordenação automática de publicações;
-- correção de sincronização SHA do GitHub.
+Não é necessário reorganizar manualmente os trabalhos pelo campo `ordem`.
