@@ -71,6 +71,18 @@
       "ano_fim": "2023",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Carlos Henrique Rodrigues Valadares",
+      "titulo_pt": "Tomando o controle: affordances de jogos digitais para aprender e ensinar línguas adicionais",
+      "link_pt": "https://repositorio.ufmg.br/items/579ca22c-f605-4420-97c3-ef79f250e8c1",
+      "titulo_en": "Taking (the) Control(ler): affordances of digital games for learning and teaching additional languages",
+      "link_en": "https://repositorio.ufmg.br/items/579ca22c-f605-4420-97c3-ef79f250e8c1",
+      "ano_inicio": "2021",
+      "ano_fim": "2023",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
