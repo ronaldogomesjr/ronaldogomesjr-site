@@ -59,6 +59,18 @@
       "ano_fim": "2022",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Carolina Duarte Garcia",
+      "titulo_pt": "Gêneros digitais e docência: uma experiência colaborativa de formação de professoras de Língua Portuguesa com foco no letramento digital",
+      "link_pt": "https://repositorio.ufmg.br/items/68b15861-bd69-4dfc-ba48-881437384640",
+      "titulo_en": "Digital genres and teaching: a collaborative teacher education experience focused on digital literacy for Portuguese language teachers",
+      "link_en": "https://repositorio.ufmg.br/items/68b15861-bd69-4dfc-ba48-881437384640",
+      "ano_inicio": "2021",
+      "ano_fim": "2023",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
