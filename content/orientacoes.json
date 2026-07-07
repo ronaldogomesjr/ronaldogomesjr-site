@@ -11,6 +11,18 @@
       "ano_fim": "2020",
       "visivel": true,
       "ordem": 1
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Fernanda Silva Costa",
+      "titulo_pt": "Metáforas tecnobiográficas: um estudo sobre as conceitualizações de futuros professores de línguas sobre linguagem e tecnologia",
+      "link_pt": "https://repositorio.ufmg.br/items/29b48fe9-60fa-4162-bec3-a995f6461a3d",
+      "titulo_en": "Technobiographical metaphors: a study of future language teachers’ conceptualizations of language and technology",
+      "link_en": "https://repositorio.ufmg.br/items/29b48fe9-60fa-4162-bec3-a995f6461a3d",
+      "ano_inicio": "2019",
+      "ano_fim": "2021",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
