@@ -212,7 +212,6 @@
     "page-design": pageCollection("design", "página: design / design"),
     "page-tecnologia-digital": pageCollection("tecnologia-digital", "página: tecnologia digital / digital technology"),
     "page-educacao-linguistica": pageCollection("educacao-linguistica", "página: educação linguística / language education"),
-    "page-orientacoes": pageCollection("orientacoes", "página: orientações / supervisions"),
 
     "paginas": {
       mode: "list",
@@ -222,39 +221,6 @@
       meta: item => `${item.slug_pt || ""} / ${item.slug_en || ""}`,
       fields: pageFields,
       blank: pageCollection("nova-pagina", "nova página / new page").blank
-    },
-
-
-    "orientacoes": {
-      mode: "list",
-      path: "content/orientacoes.json",
-      root: "items",
-      labelField: "orientando",
-      meta: item => [item.nivel, item.ano_inicio, item.ano_fim].filter(Boolean).join(" · "),
-      fields: [
-        ["nivel", "select", "Nível", ["mestrado", "doutorado"]],
-        ["orientando", "text", "Nome do orientando"],
-        ["titulo_pt", "text", "Título em português"],
-        ["link_pt", "text", "Hiperlink do título em português"],
-        ["titulo_en", "text", "Título em inglês"],
-        ["link_en", "text", "Hiperlink do título em inglês"],
-        ["ano_inicio", "text", "Ano de início"],
-        ["ano_fim", "text", "Ano de conclusão"],
-        ["visivel", "checkbox", "Visível no site"],
-        ["ordem", "number", "Ordem"]
-      ],
-      blank: {
-        nivel: "mestrado",
-        orientando: "",
-        titulo_pt: "",
-        link_pt: "",
-        titulo_en: "",
-        link_en: "",
-        ano_inicio: "",
-        ano_fim: "",
-        visivel: true,
-        ordem: 999
-      }
     },
 
     "artigos": {

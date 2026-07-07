@@ -51,12 +51,6 @@
         "label": "EN",
         "url": "/en/",
         "visivel": true,
-        "ordem": 8
-      },
-      {
-        "label": "ORIENTAÇÕES",
-        "url": "/pt/orientacoes/",
-        "visivel": true,
         "ordem": 7
       }
     ]
@@ -102,12 +96,6 @@
       {
         "label": "PT",
         "url": "/pt/",
-        "visivel": true,
-        "ordem": 8
-      },
-      {
-        "label": "SUPERVISIONS",
-        "url": "/en/supervisions/",
         "visivel": true,
         "ordem": 7
       }
