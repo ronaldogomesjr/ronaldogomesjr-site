@@ -1,32 +1,26 @@
-# Ronaldo Gomes Jr. Site — V48 Supervision Links
+# Ronaldo Gomes Jr. Site — V49 Supervisions Style and Order
 
-Esta versão adiciona/ajusta a página `orientações / supervisions`.
+Esta versão ajusta a página `orientações / supervisions`.
 
-## No painel
+## Estilo
 
-Há uma entrada para a página:
+Os subtítulos:
 
-- `página: orientações / supervisions`
+- mestrado
+- doutorado
+- master’s
+- PhD
 
-e uma coleção de conteúdo:
+agora usam a mesma família tipográfica do título principal da página, mas em tamanho menor e proporcional.
 
-- `conteúdo: orientações / supervisions`
+## Ordenação
 
-Cada orientação contém:
+Os trabalhos são exibidos automaticamente do mais recente para o mais antigo.
 
-- nível: mestrado ou doutorado;
-- nome do orientando;
-- título em português;
-- hiperlink do título em português;
-- título em inglês;
-- hiperlink do título em inglês;
-- ano de início;
-- ano de conclusão.
+A ordenação considera:
 
-## Exibição
+1. ano de conclusão, do mais recente para o mais antigo;
+2. trabalhos em andamento, sem ano de conclusão, aparecem primeiro;
+3. em caso de empate, considera o ano de início mais recente.
 
-Na página em português, o título em português é exibido como hiperlink.
-
-Na página em inglês, o título em inglês é exibido como hiperlink.
-
-Se apenas um dos links for preenchido, ele será usado como alternativa na outra versão.
+Não é necessário reorganizar manualmente os trabalhos pelo campo `ordem`.

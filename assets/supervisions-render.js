@@ -23,7 +23,18 @@
 
       const items = (data.items || [])
         .filter(item => item.visivel !== false)
-        .sort((a, b) => Number(a.ordem || 9999) - Number(b.ordem || 9999));
+        .sort((a, b) => {
+          // Trabalhos em andamento (sem ano de conclusão) aparecem primeiro.
+          const endA = a.ano_fim ? Number(a.ano_fim) : 9999;
+          const endB = b.ano_fim ? Number(b.ano_fim) : 9999;
+          if (endA !== endB) return endB - endA;
+
+          const startA = Number(a.ano_inicio || 0);
+          const startB = Number(b.ano_inicio || 0);
+          if (startA !== startB) return startB - startA;
+
+          return Number(a.ordem || 9999) - Number(b.ordem || 9999);
+        });
 
       const levels = [
         { key: 'mestrado', pt: 'mestrado', en: 'master’s' },

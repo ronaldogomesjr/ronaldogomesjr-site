@@ -914,10 +914,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 .supervision-group-title {
-  margin: 0 0 18px;
+  margin: 0 0 22px;
   font-family: var(--sans);
-  font-size: .88rem;
-  letter-spacing: .12em;
+  font-size: clamp(1.45rem, 2.8vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   text-transform: lowercase;
 }
 
