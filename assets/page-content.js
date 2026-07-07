@@ -48,6 +48,19 @@
       const introEl = shell.querySelector('[data-page-intro]');
       if (titleEl && title) titleEl.textContent = title;
       if (introEl && intro) introEl.textContent = intro;
+
+      const aboutPhoto = shell.querySelector('[data-about-photo]');
+      if (aboutPhoto) {
+        const photoURL = page.foto || page.photo || "";
+        if (photoURL) {
+          aboutPhoto.innerHTML = `<img src="${escapeHTML(photoURL)}" alt="${lang === "en" ? "Photo of Ronaldo Gomes Jr." : "Foto de Ronaldo Gomes Jr."}">`;
+          aboutPhoto.classList.add("has-photo");
+        } else {
+          aboutPhoto.innerHTML = `<span class="about-photo-placeholder" aria-hidden="true"></span>`;
+          aboutPhoto.classList.remove("has-photo");
+        }
+      }
+
       document.title = `${metaTitle || title || document.title} — Ronaldo Gomes Jr.`;
 
       const metaDescriptionEl = document.querySelector('meta[name="description"]');

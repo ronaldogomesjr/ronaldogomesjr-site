@@ -52,12 +52,19 @@
   function publicationHTML(item, lang) {
     const label = lang === "en" ? "Access →" : "Acessar →";
     const meta = [item.autores, item.veiculo, item.ano].filter(Boolean).join(". ");
+    const cover = item.tipo === "livro_academico" && item.imagem
+      ? `<img class="academic-book-cover" src="${escapeHTML(item.imagem)}" alt="${escapeHTML(item.titulo || "")}">`
+      : "";
+
     return `
-      <article class="section-row">
+      <article class="section-row ${item.tipo === "livro_academico" ? "academic-book-row" : ""}">
         <h2>${escapeHTML(item.ano || "")}</h2>
-        <div>
-          <p><strong>${escapeHTML(item.titulo)}</strong>${meta ? "<br>" + escapeHTML(meta) : ""}</p>
-          ${externalLink(item.link, label)}
+        <div class="publication-content">
+          ${cover}
+          <div>
+            <p><strong>${escapeHTML(item.titulo)}</strong>${meta ? "<br>" + escapeHTML(meta) : ""}</p>
+            ${externalLink(item.link, label)}
+          </div>
         </div>
       </article>
     `;

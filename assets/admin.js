@@ -22,6 +22,23 @@
     ["ordem", "number", "Ordem automática/manual"]
   ];
 
+
+  const academicBookFields = [
+    ["ano", "text", "Ano"],
+    ["titulo", "text", "Título"],
+    ["autores", "text", "Autores"],
+    ["veiculo", "text", "Editora / informações editoriais"],
+    ["link", "text", "Hiperlink externo"],
+    ["imagem", "image-upload", "Capa do livro"],
+    ["visivel", "checkbox", "Visível no site"],
+    ["destaque", "checkbox", "Destaque"],
+    ["ordem", "number", "Ordem automática/manual"]
+  ];
+
+  const aboutPhotoFields = [
+    ["foto", "image-upload", "Foto da página sobre / about"]
+  ];
+
   const pageFields = [
     ["id", "text", "ID interno"],
     ["slug_pt", "text", "Slug da página em português"],
@@ -76,7 +93,7 @@
     ["ordem", "number", "Ordem"]
   ];
 
-  function pageCollection(pageId, label) {
+  function pageCollection(pageId, label, extraFields = []) {
     return {
       mode: "page-singleton",
       path: "content/pages.json",
@@ -85,7 +102,7 @@
       label,
       labelField: "title_pt",
       meta: item => `${item.slug_pt || ""} / ${item.slug_en || ""}`,
-      fields: pageFields,
+      fields: [...pageFields, ...extraFields],
       blank: {
         id: pageId,
         slug_pt: pageId,
@@ -98,6 +115,7 @@
         meta_title_en: "",
         meta_description_pt: "",
         meta_description_en: "",
+        foto: "",
         section1_title_pt: "",
         section1_title_en: "",
         section1_text_pt: "",
@@ -207,7 +225,7 @@
     "page-projetos": pageCollection("projetos", "página: projetos / projects"),
     "page-publicacoes": pageCollection("publicacoes", "página: publicações / publications"),
     "page-livros-didaticos": pageCollection("livros-didaticos", "página: livros didáticos / textbooks"),
-    "page-sobre": pageCollection("sobre", "página: sobre / about"),
+    "page-sobre": pageCollection("sobre", "página: sobre / about", aboutPhotoFields),
     "page-contato": pageCollection("contato", "página: contato / contact"),
     "page-design": pageCollection("design", "página: design / design"),
     "page-tecnologia-digital": pageCollection("tecnologia-digital", "página: tecnologia digital / digital technology"),
@@ -286,9 +304,9 @@
       fixed: { tipo: "livro_academico" },
       labelField: "titulo",
       meta: item => ["livro acadêmico", item.ano].filter(Boolean).join(" · "),
-      fields: publicationFields,
+      fields: academicBookFields,
       sortRecent: true,
-      blank: { tipo: "livro_academico", ano: "", titulo: "", autores: "", veiculo: "", link: "#", visivel: true, destaque: false, ordem: 0 }
+      blank: { tipo: "livro_academico", ano: "", titulo: "", autores: "", veiculo: "", link: "#", imagem: "", visivel: true, destaque: false, ordem: 0 }
     },
     "projetos": {
       mode: "list",
@@ -666,6 +684,61 @@
     return currentActualIndex !== null ? items[currentActualIndex] : null;
   }
 
+
+  function safeFileName(name) {
+    return String(name || "capa")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9._-]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = String(reader.result || "");
+        resolve(result.includes(",") ? result.split(",")[1] : result);
+      };
+      reader.onerror = () => reject(new Error("Não foi possível ler a imagem selecionada."));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function uploadImageToGitHub(file, folder = "livros-academicos") {
+    if (!file) return "";
+
+    if (!file.type.startsWith("image/")) {
+      throw new Error("Selecione um arquivo de imagem.");
+    }
+
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      throw new Error("A imagem deve ter no máximo 5 MB.");
+    }
+
+    const extension = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const baseName = safeFileName(file.name.replace(/\.[^.]+$/, "")) || "capa";
+    const fileName = `${Date.now()}-${baseName}.${extension}`;
+    const repoPath = `assets/uploads/${folder}/${fileName}`;
+    const content = await fileToBase64(file);
+
+    setStatus("Enviando a capa para o GitHub...");
+
+    await githubRequest(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${repoPath}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        message: `Adiciona capa de livro acadêmico: ${fileName}`,
+        content,
+        branch: BRANCH
+      })
+    });
+
+    return `/${repoPath}`;
+  }
+
   function renderEditor() {
     const form = $("editorForm");
     const config = collections[currentCollection];
@@ -728,7 +801,53 @@
       labelEl.textContent = label;
       let input;
 
-      if (type === "textarea") {
+      if (type === "image-upload") {
+        const wrapper = document.createElement("div");
+        wrapper.className = "image-upload-field";
+
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.name = `${name}_file`;
+        fileInput.accept = "image/png,image/jpeg,image/webp";
+
+        const currentInput = document.createElement("input");
+        currentInput.type = "hidden";
+        currentInput.name = name;
+        currentInput.value = item[name] || "";
+
+        const preview = document.createElement("div");
+        preview.className = "image-upload-preview";
+        if (item[name]) {
+          preview.innerHTML = `<img src="${escapeHTML(item[name])}" alt="Capa atual"><span>Capa atual</span>`;
+        } else {
+          preview.innerHTML = `<span>Nenhuma capa enviada.</span>`;
+        }
+
+        fileInput.addEventListener("change", () => {
+          const file = fileInput.files && fileInput.files[0];
+          if (!file) return;
+          const localURL = URL.createObjectURL(file);
+          preview.innerHTML = `<img src="${localURL}" alt="Pré-visualização da capa"><span>Nova capa selecionada</span>`;
+        });
+
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className = "secondary small-button";
+        removeButton.textContent = "remover capa";
+        removeButton.addEventListener("click", () => {
+          currentInput.value = "";
+          fileInput.value = "";
+          preview.innerHTML = `<span>Capa removida. Publique a alteração para confirmar.</span>`;
+        });
+
+        wrapper.appendChild(fileInput);
+        wrapper.appendChild(currentInput);
+        wrapper.appendChild(preview);
+        wrapper.appendChild(removeButton);
+        labelEl.appendChild(wrapper);
+        form.appendChild(labelEl);
+        return;
+      } else if (type === "textarea") {
         input = document.createElement("textarea");
         input.name = name;
         input.value = item[name] || "";
@@ -768,6 +887,7 @@
       if (!input) return;
       if (type === "checkbox") values[name] = Boolean(input.checked);
       else if (type === "number") values[name] = input.value === "" ? "" : Number(input.value);
+      else if (type === "image-upload") values[name] = input.value || "";
       else values[name] = input.value;
     });
 
@@ -799,6 +919,23 @@
 
     const oldLabel = items[currentActualIndex][config.labelField] || "";
     const values = collectEditorValues();
+
+    if (currentCollection === "livros-academicos") {
+      const fileInput = $("editorForm").elements["imagem_file"];
+      const selectedFile = fileInput && fileInput.files ? fileInput.files[0] : null;
+      if (selectedFile) {
+        values.imagem = await uploadImageToGitHub(selectedFile, "livros-academicos");
+      }
+    }
+
+    if (currentCollection === "page-sobre") {
+      const photoInput = $("editorForm").elements["foto_file"];
+      const selectedPhoto = photoInput && photoInput.files ? photoInput.files[0] : null;
+      if (selectedPhoto) {
+        values.foto = await uploadImageToGitHub(selectedPhoto, "sobre");
+      }
+    }
+
     items[currentActualIndex] = values;
     await saveFile(`Atualiza ${currentCollection}`, values[config.labelField] || oldLabel);
   }
