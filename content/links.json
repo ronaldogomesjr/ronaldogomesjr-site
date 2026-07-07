@@ -1,68 +1,13 @@
 {
   "items": [
     {
-      "idioma": "pt",
-      "nome": "Email",
-      "tipo": "Contato",
-      "link": "#",
+      "nome_pt": "Lattes",
+      "nome_en": "Lattes",
+      "tipo_pt": "Currículo",
+      "tipo_en": "CV",
+      "link": "http://lattes.cnpq.br/6357439967840461",
       "visivel": true,
       "ordem": 1
-    },
-    {
-      "idioma": "pt",
-      "nome": "ORCID",
-      "tipo": "Perfil acadêmico",
-      "link": "#",
-      "visivel": true,
-      "ordem": 2
-    },
-    {
-      "idioma": "pt",
-      "nome": "Google Scholar",
-      "tipo": "Perfil acadêmico",
-      "link": "#",
-      "visivel": true,
-      "ordem": 3
-    },
-    {
-      "idioma": "pt",
-      "nome": "Lattes",
-      "tipo": "Currículo",
-      "link": "#",
-      "visivel": true,
-      "ordem": 4
-    },
-    {
-      "idioma": "en",
-      "nome": "Email",
-      "tipo": "Contact",
-      "link": "#",
-      "visivel": true,
-      "ordem": 1
-    },
-    {
-      "idioma": "en",
-      "nome": "ORCID",
-      "tipo": "Academic profile",
-      "link": "#",
-      "visivel": true,
-      "ordem": 2
-    },
-    {
-      "idioma": "en",
-      "nome": "Google Scholar",
-      "tipo": "Academic profile",
-      "link": "#",
-      "visivel": true,
-      "ordem": 3
-    },
-    {
-      "idioma": "en",
-      "nome": "Lattes",
-      "tipo": "CV",
-      "link": "#",
-      "visivel": true,
-      "ordem": 4
     }
   ]
 }
