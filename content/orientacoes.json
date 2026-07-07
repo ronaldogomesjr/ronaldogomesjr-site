@@ -35,6 +35,18 @@
       "ano_fim": "2021",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Fernanda Tavares Paiva",
+      "titulo_pt": "Fanfiction: a influência das experiências multimodais nas práticas de leitura e escrita de adolescentes",
+      "link_pt": "https://repositorio.ufmg.br/items/f59c75fe-c316-476f-ac41-3bf4c28dffee",
+      "titulo_en": "Fanfiction: the influence of multimodal experiences on adolescents’ reading and writing practices",
+      "link_en": "https://repositorio.ufmg.br/items/f59c75fe-c316-476f-ac41-3bf4c28dffee",
+      "ano_inicio": "2020",
+      "ano_fim": "2022",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
