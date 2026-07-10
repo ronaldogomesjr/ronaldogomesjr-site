@@ -125,12 +125,23 @@
       "tipo": "artigo",
       "ano": "2018",
       "titulo": " Affordances de tecnologias digitais para o desenvolvimento de habilidades orais em inglês.",
-      "autores": "Ronaldo Corrêa GOMES JUNIOR, Gabriela Santos TEIXEIRA, Mayra Garcia da SILVA, Cynthia Maria Aguilar Paulino",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
       "veiculo": "Revista Brasileira de Linguística Aplicada (UFMG)",
       "link": "https://www.scielo.br/j/rbla/a/WFWh7H5pykw367XDvgVkhMs/abstract/?lang=pt",
       "visivel": true,
       "destaque": false,
       "ordem": 1783723633349
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2019",
+      "titulo": "TECH2TALK: o desenvolvimento de habilidades orais por meio de tecnologias digitais.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR, Giovana Garcia Gonçalves GUTIERREZ",
+      "veiculo": "Caminhos em Linguística Aplicada (Unitau)",
+      "link": "https://periodicos.unitau.br/caminhoslinguistica/article/view/2810",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783723754347
     }
   ]
 }
