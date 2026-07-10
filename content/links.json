@@ -7,7 +7,9 @@
       "tipo_en": "View",
       "link": "http://lattes.cnpq.br/6357439967840461",
       "visivel": true,
-      "ordem": 2
+      "ordem": 2,
+      "descricao_pt": "Currículo",
+      "descricao_en": "CV"
     },
     {
       "nome_pt": "Google Acadêmico",
@@ -34,9 +36,7 @@
       "tipo_en": "Send an email",
       "link": "mailto:ronaldocgomes@ufmg.br",
       "visivel": true,
-      "ordem": 1,
-      "descricao_pt": "ronaldocgomes@ufmg.br",
-      "descricao_en": "ronaldocgomes@ufmg.br"
+      "ordem": 1
     }
   ]
 }
