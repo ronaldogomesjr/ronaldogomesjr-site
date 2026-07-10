@@ -175,6 +175,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783724081182
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2021",
+      "titulo": "Metáforas visuais e multimodais na conceptualização da COVID-19.",
+      "autores": "Sandra CAVALCANTE, Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Calidoscópio (Unisinos)",
+      "link": "https://revistas.unisinos.br/index.php/calidoscopio/article/view/22415",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783724137410
     }
   ]
 }
