@@ -76,6 +76,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783723119479
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2016",
+      "titulo": "Os aprendizes são viajantes: identidades metaforizadas de estudantes de inglês de Hong Kong e Belo Horizonte.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Scripta (PUC-MG)",
+      "link": "https://periodicos.pucminas.br/scripta/article/view/P.2358-3428.2016v20n40p193",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783723249134
     }
   ]
 }
