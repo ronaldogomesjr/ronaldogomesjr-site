@@ -460,6 +460,20 @@
       "section4_link_url_pt": "",
       "section4_link_url_en": "",
       "ordem": 10
+    },
+    {
+      "id": "artigos",
+      "slug_pt": "artigos",
+      "slug_en": "journal-articles",
+      "title_pt": "artigos",
+      "title_en": "journal articles",
+      "intro_pt": "Artigos publicados em periódicos acadêmicos.",
+      "intro_en": "Articles published in academic journals.",
+      "meta_title_pt": "",
+      "meta_title_en": "",
+      "meta_description_pt": "",
+      "meta_description_en": "",
+      "ordem": 21
     }
   ]
 }
