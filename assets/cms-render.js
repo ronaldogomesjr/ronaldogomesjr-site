@@ -64,17 +64,12 @@
   }
 
   function projectPeriod(item) {
-    const start = String(item.ano_inicio || "").trim();
-    const end = String(item.ano_fim || "").trim();
-
-    if (start || end) {
-      if (start && end) return `${start}–${end}`;
-      if (start) return `${start}–`;
-      return `–${end}`;
-    }
-
-    // Compatibilidade com projetos cadastrados antes deste patch.
-    return String(item.periodo || "").trim();
+    const start = String(item && item.ano_inicio || "").trim();
+    const end = String(item && item.ano_fim || "").trim();
+    if (start && end) return `${start}–${end}`;
+    if (start) return `${start}–`;
+    if (end) return end;
+    return String(item && item.periodo || "").trim();
   }
 
   function projectHTML(item, lang) {
@@ -187,7 +182,8 @@
 
       if (kind === "projetos") {
         const data = await loadJSON("/content/projetos.json");
-        const items = sortedVisible(data.items, lang);
+        const items = sortedVisible(data.items, lang)
+          .filter((item) => String(item.titulo || "").trim());
         element.innerHTML = items.length ? items.map((item) => projectHTML(item, lang)).join("") : emptyMessage(lang);
       }
 

@@ -35,20 +35,6 @@
     ["ordem", "number", "Ordem automática/manual"]
   ];
 
-  function projectPeriod(item) {
-    const start = String(item?.ano_inicio || "").trim();
-    const end = String(item?.ano_fim || "").trim();
-
-    if (start || end) {
-      if (start && end) return `${start}–${end}`;
-      if (start) return `${start}–`;
-      return `–${end}`;
-    }
-
-    // Compatibilidade com projetos cadastrados antes deste patch.
-    return String(item?.periodo || "").trim();
-  }
-
   const aboutPhotoFields = [
     ["foto", "image-upload", "Foto da página sobre / about — enviar ou substituir"]
   ];
@@ -327,8 +313,9 @@
       path: "content/projetos.json",
       root: "items",
       labelField: "titulo",
+      minItems: 10,
+      emptyLabel: "seção disponível",
       meta: item => [projectPeriod(item), item.idioma].filter(Boolean).join(" · "),
-      minimumItems: 10,
       fields: [
         ["idioma", "select", "Idioma", ["pt", "en"]],
         ["titulo", "text", "Título"],
@@ -341,7 +328,7 @@
         ["destaque", "checkbox", "Destaque"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", titulo: "", descricao: "", ano_inicio: "", ano_fim: "", parceiros: "", link: "#", visivel: false, destaque: false, ordem: 999 }
+      blank: { idioma: "pt", titulo: "", descricao: "", ano_inicio: "", ano_fim: "", periodo: "", parceiros: "", link: "#", visivel: true, destaque: false, ordem: 999 }
     },
     "livros-didaticos": {
       mode: "list",
@@ -520,13 +507,6 @@
   }
 
   function matchesConfig(item, config) {
-    if (config.minimumItems) {
-      const p = document.createElement("p");
-      p.className = "hint";
-      p.textContent = `O painel mantém no mínimo ${config.minimumItems} seções de projeto. As seções adicionais ficam ocultas até você preenchê-las e marcar “Visível no site”.`;
-      form.appendChild(p);
-    }
-
     if (config.fixed) {
       for (const [key, value] of Object.entries(config.fixed)) {
         if (item[key] !== value) return false;
@@ -642,19 +622,23 @@
     return { items: Array.from(merged.values()) };
   }
 
-  function ensureMinimumItems(config) {
-    const minimum = Number(config.minimumItems || 0);
-    if (!minimum) return;
+  function projectPeriod(item) {
+    const start = String(item && item.ano_inicio || "").trim();
+    const end = String(item && item.ano_fim || "").trim();
+    if (start && end) return `${start}–${end}`;
+    if (start) return `${start}–`;
+    if (end) return end;
+    return String(item && item.periodo || "").trim();
+  }
 
+  function ensureMinimumItems(config) {
+    const minimum = Number(config.minItems || 0);
+    if (!minimum) return;
     const items = getAllItems(config);
     while (items.length < minimum) {
-      const slotNumber = items.length + 1;
-      items.push({
-        ...JSON.parse(JSON.stringify(config.blank)),
-        titulo: `Seção disponível ${String(slotNumber).padStart(2, "0")}`,
-        ordem: slotNumber * 10,
-        visivel: false
-      });
+      const item = JSON.parse(JSON.stringify(config.blank));
+      item.ordem = items.length + 1;
+      items.push(item);
     }
   }
 
@@ -768,11 +752,12 @@
       currentActualIndex = visibleRows[0].actualIndex;
     }
 
-    visibleRows.forEach(({ item, actualIndex }) => {
+    visibleRows.forEach(({ item, actualIndex }, visibleIndex) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "item-button" + (actualIndex === currentActualIndex ? " active" : "");
-      btn.innerHTML = `<span class="item-title">${escapeHTML(item[config.labelField] || "(sem título)")}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
+      const fallbackLabel = config.emptyLabel ? `${config.emptyLabel} ${visibleIndex + 1}` : "(sem título)";
+      btn.innerHTML = `<span class="item-title">${escapeHTML(item[config.labelField] || fallbackLabel)}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
       btn.addEventListener("click", () => {
         currentActualIndex = actualIndex;
         renderList();
@@ -884,6 +869,13 @@
       const p = document.createElement("p");
       p.className = "hint";
       p.textContent = "Cadastre cada link uma única vez. O mesmo endereço aparecerá no contato e no rodapé, com textos em português e inglês.";
+      form.appendChild(p);
+    }
+
+    if (currentCollection === "projetos") {
+      const p = document.createElement("p");
+      p.className = "hint";
+      p.textContent = "Há 10 seções disponíveis. Preencha o título, escolha o idioma e informe os anos. Se o projeto estiver em andamento, deixe o ano de término vazio.";
       form.appendChild(p);
     }
 
@@ -1056,10 +1048,12 @@
       }
     }
 
-    items[currentActualIndex] = currentCollection === "projetos"
-      ? { ...items[currentActualIndex], ...values }
-      : values;
-    await saveFile(`Atualiza ${currentCollection}`, values[config.labelField] || oldLabel);
+    const mergedValues = { ...items[currentActualIndex], ...values };
+    if (currentCollection === "projetos") {
+      mergedValues.periodo = projectPeriod(mergedValues);
+    }
+    items[currentActualIndex] = mergedValues;
+    await saveFile(`Atualiza ${currentCollection}`, mergedValues[config.labelField] || oldLabel);
   }
 
   async function saveFile(message, preferLabel = "") {
