@@ -98,6 +98,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783723292249
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2017",
+      "titulo": "Reflexões sobre ensino e aprendizagem de línguas na formação de professores via dispositivos móveis. ",
+      "autores": "Junia de Carvalho Fidelis BRAGA, Ronaldo Corrêa GOMES JUNIOR, Marcos RACILAN",
+      "veiculo": "Hipertextus (UFPE)",
+      "link": "https://periodicos.ufpe.br/revistas/hipertextus/article/view/247920",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783723403134
     }
   ]
 }
