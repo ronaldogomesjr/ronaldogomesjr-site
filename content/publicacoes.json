@@ -36,7 +36,7 @@
     {
       "tipo": "artigo",
       "ano": "2007",
-      "titulo": "Narrativas e crenças de alunos universitários sobre ensino e aprendizagem de inglês.",
+      "titulo": "Narrativas e crenças de alunos universitários sobre ensino e aprendizagem de inglês",
       "autores": "Ronaldo Corrêa GOMES JUNIOR, Ana Maria Ferreira BARCELOS",
       "veiculo": "Gláuks",
       "link": "#",
@@ -65,6 +65,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 6
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2012",
+      "titulo": " Leitura em inglês na rede: a trajetória do Projeto IngRede.",
+      "autores": "Vera Lúcia Menezes de Oliveira e PAIVA, Junia de Carvalho Fidelis BRAGA, Marisa Mendonça CARNEIRO, Marcos RACILAN, Ronaldo Corrêa GOMES JUNIOR, Luciano Lima ALVES",
+      "veiculo": "Educação & Tecnologia",
+      "link": "https://seer.dppg.cefetmg.br/index.php/revista-et/article/view/478",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783723119479
     }
   ]
 }
