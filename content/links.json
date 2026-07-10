@@ -16,9 +16,7 @@
       "tipo_en": "View",
       "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
       "visivel": true,
-      "ordem": 3,
-      "descricao_pt": "Perfil acadêmico",
-      "descricao_en": "Academic profile"
+      "ordem": 3
     },
     {
       "nome_pt": "ORCID",
@@ -36,7 +34,9 @@
       "tipo_en": "Send an email",
       "link": "mailto:ronaldocgomes@ufmg.br",
       "visivel": true,
-      "ordem": 1
+      "ordem": 1,
+      "descricao_pt": "ronaldocgomes@ufmg.br",
+      "descricao_en": "ronaldocgomes@ufmg.br"
     }
   ]
 }
