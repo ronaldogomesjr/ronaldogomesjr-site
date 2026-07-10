@@ -2,11 +2,11 @@
   "items": [
     {
       "tipo": "artigo",
-      "ano": "2026",
-      "titulo": "Artigo a inserir",
-      "autores": "Ronaldo Gomes Jr.",
-      "veiculo": "Nome do periódico",
-      "link": "#",
+      "ano": "2012",
+      "titulo": "Artigo a Metáforas Online: As Conceitualizações de Aprendizes Universitários de Inglês sobre Aprendizagem à Distância. ",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Revista Escrita (PUC-RJ)",
+      "link": "https://www.maxwell.vrac.puc-rio.br/rev_escrita.php?strSecao=fasciculo&fas=28939&NrSecao=X3&secao=ARTIGOS&nrseqcon=20855",
       "visivel": true,
       "destaque": false,
       "ordem": 1
