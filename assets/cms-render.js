@@ -51,6 +51,23 @@
 
   function publicationHTML(item, lang) {
     const label = lang === "en" ? "Access →" : "Acessar →";
+
+    if (item.tipo === "artigo") {
+      const authors = String(item.autores || "").trim();
+      const source = [item.veiculo, item.ano].filter(Boolean).join(" · ");
+      return `
+        <article class="section-row">
+          <h2>${escapeHTML(item.ano || "")}</h2>
+          <div class="publication-details">
+            <p class="publication-title"><strong>${escapeHTML(item.titulo)}</strong></p>
+            ${authors ? `<p class="publication-authors">${escapeHTML(authors)}</p>` : ""}
+            ${source ? `<p class="publication-source">${escapeHTML(source)}</p>` : ""}
+            ${externalLink(item.link, label)}
+          </div>
+        </article>
+      `;
+    }
+
     const meta = [item.autores, item.veiculo, item.ano].filter(Boolean).join(". ");
     return `
       <article class="section-row">
@@ -173,37 +190,27 @@
     `;
   }
 
-  function contactLinkLabel(item, lang) {
-    const raw = lang === "en"
-      ? (item.tipo_en || item.tipo_pt || item.link_label_en || item.link_label_pt || "Access")
-      : (item.tipo_pt || item.tipo_en || item.link_label_pt || item.link_label_en || "Acessar");
-    const clean = String(raw || "").trim().replace(/[→›»]+\s*$/, "").trim();
-    return `${clean || (lang === "en" ? "Access" : "Acessar")} →`;
-  }
-
-  function contactLinkHTML(url, label) {
-    const cleanURL = String(url || "").trim();
-    if (!cleanURL || cleanURL === "#") return "";
-    const external = /^(mailto:|tel:)/i.test(cleanURL)
-      ? ""
-      : ' target="_blank" rel="noopener noreferrer"';
-    return `<a class="contact-action-link" href="${escapeHTML(cleanURL)}"${external}>${escapeHTML(label)}</a>`;
-  }
-
   function linkHTML(item, lang) {
     const name = lang === "en"
       ? (item.nome_en || item.nome_pt || item.nome || "")
       : (item.nome_pt || item.nome_en || item.nome || "");
     const description = lang === "en"
-      ? (item.descricao_en || item.descricao_pt || item.descricao || "")
-      : (item.descricao_pt || item.descricao_en || item.descricao || "");
+      ? (item.tipo_en || item.tipo_pt || item.tipo || "")
+      : (item.tipo_pt || item.tipo_en || item.tipo || "");
+
+    const descriptionHTML = description
+      ? (
+          item.link && item.link !== "#"
+            ? `<p><a class="contact-description-link" href="${escapeHTML(item.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(description)}</a></p>`
+            : `<p>${escapeHTML(description)}</p>`
+        )
+      : "";
 
     return `
       <article class="section-row contact-link-row">
         <h2>${escapeHTML(name)}</h2>
         <div>
-          ${description ? `<p>${escapeHTML(description)}</p>` : ""}
-          ${contactLinkHTML(item.link, contactLinkLabel(item, lang))}
+          ${descriptionHTML}
         </div>
       </article>
     `;
@@ -285,35 +292,21 @@
           const current = merged.get(key) || {
             nome_pt: "",
             nome_en: "",
-            descricao_pt: "",
-            descricao_en: "",
             tipo_pt: "",
             tipo_en: "",
-            link_label_pt: "",
-            link_label_en: "",
             link: item.link || "#",
             visivel: item.visivel !== false,
             ordem: Number(item.ordem || 999)
           };
 
-          if (
-            "nome_pt" in item || "nome_en" in item ||
-            "descricao_pt" in item || "descricao_en" in item ||
-            "tipo_pt" in item || "tipo_en" in item ||
-            "link_label_pt" in item || "link_label_en" in item
-          ) {
+          if ("nome_pt" in item || "nome_en" in item || "tipo_pt" in item || "tipo_en" in item) {
             current.nome_pt = item.nome_pt || current.nome_pt;
             current.nome_en = item.nome_en || current.nome_en;
-            current.descricao_pt = item.descricao_pt || current.descricao_pt;
-            current.descricao_en = item.descricao_en || current.descricao_en;
             current.tipo_pt = item.tipo_pt || current.tipo_pt;
             current.tipo_en = item.tipo_en || current.tipo_en;
-            current.link_label_pt = item.link_label_pt || current.link_label_pt;
-            current.link_label_en = item.link_label_en || current.link_label_en;
           } else {
             const itemLang = item.idioma === "en" ? "en" : "pt";
             current[`nome_${itemLang}`] = item.nome || current[`nome_${itemLang}`];
-            current[`descricao_${itemLang}`] = item.descricao || current[`descricao_${itemLang}`];
             current[`tipo_${itemLang}`] = item.tipo || current[`tipo_${itemLang}`];
           }
 
