@@ -113,13 +113,24 @@
     {
       "tipo": "artigo",
       "ano": "2017",
-      "titulo": "Emoções no Desenvolvimento de Habilidades Orais com Tecnologias Digitais.",
-      "autores": "Rodrigo Camargo ARAGÃO, Vera Lúcia Menezes de Oliveira e PAIVA, Ronaldo Corrêa GOMES JUNIOR",
-      "veiculo": "Calidoscópio (Unisinos)",
-      "link": "https://revistas.unisinos.br/index.php/calidoscopio/article/view/cld.2017.153.14",
+      "titulo": "Aprendizagem móvel no contexto de formação continuada: um estudo sobre as affordances emergentes de interações de professores de inglês via WhatsApp.",
+      "autores": "Junia de Carvalho Fidelis BRAGA, Ronaldo Corrêa GOMES JUNIOR, Antônio Carlos MARTINS",
+      "veiculo": "Polifonia (UFMT)",
+      "link": "https://periodicoscientificos.ufmt.br/ojs/index.php/polifonia/article/view/6033",
       "visivel": true,
       "destaque": false,
-      "ordem": 1783723531189
+      "ordem": 1783723453772
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2018",
+      "titulo": " Affordances de tecnologias digitais para o desenvolvimento de habilidades orais em inglês.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Revista Brasileira de Linguística Aplicada (UFMG)",
+      "link": "https://www.scielo.br/j/rbla/a/WFWh7H5pykw367XDvgVkhMs/abstract/?lang=pt",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783723633349
     }
   ]
 }
