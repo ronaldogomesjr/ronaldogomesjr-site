@@ -24,40 +24,40 @@
         "ordem": 2
       },
       {
+        "label": "ORIENTAÇÕES",
+        "url": "/pt/orientacoes/",
+        "visivel": true,
+        "ordem": 3
+      },
+      {
         "label": "PUBLICAÇÕES",
         "url": "/pt/publicacoes/",
         "visivel": true,
-        "ordem": 3
+        "ordem": 4
       },
       {
         "label": "LIVROS DIDÁTICOS",
         "url": "/pt/livros-didaticos/",
         "visivel": true,
-        "ordem": 4
+        "ordem": 5
       },
       {
         "label": "SOBRE",
         "url": "/pt/sobre/",
         "visivel": true,
-        "ordem": 5
+        "ordem": 6
       },
       {
         "label": "CONTATO",
         "url": "/pt/contato/",
         "visivel": true,
-        "ordem": 6
+        "ordem": 7
       },
       {
         "label": "EN",
         "url": "/en/",
         "visivel": true,
         "ordem": 8
-      },
-      {
-        "label": "ORIENTAÇÕES",
-        "url": "/pt/orientacoes/",
-        "visivel": true,
-        "ordem": 7
       }
     ]
   },
@@ -76,40 +76,40 @@
         "ordem": 2
       },
       {
+        "label": "SUPERVISIONS",
+        "url": "/en/supervisions/",
+        "visivel": true,
+        "ordem": 3
+      },
+      {
         "label": "PUBLICATIONS",
         "url": "/en/publications/",
         "visivel": true,
-        "ordem": 3
+        "ordem": 4
       },
       {
         "label": "TEXTBOOKS",
         "url": "/en/textbooks/",
         "visivel": true,
-        "ordem": 4
+        "ordem": 5
       },
       {
         "label": "ABOUT",
         "url": "/en/about/",
         "visivel": true,
-        "ordem": 5
+        "ordem": 6
       },
       {
         "label": "CONTACT",
         "url": "/en/contact/",
         "visivel": true,
-        "ordem": 6
+        "ordem": 7
       },
       {
         "label": "PT",
         "url": "/pt/",
         "visivel": true,
         "ordem": 8
-      },
-      {
-        "label": "SUPERVISIONS",
-        "url": "/en/supervisions/",
-        "visivel": true,
-        "ordem": 7
       }
     ]
   }
