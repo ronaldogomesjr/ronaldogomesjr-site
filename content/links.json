@@ -3,17 +3,19 @@
     {
       "nome_pt": "Lattes",
       "nome_en": "Lattes",
+      "descricao_pt": "Currículo",
+      "descricao_en": "CV",
       "tipo_pt": "Acessar",
       "tipo_en": "View",
       "link": "http://lattes.cnpq.br/6357439967840461",
       "visivel": true,
-      "ordem": 2,
-      "descricao_pt": "Currículo",
-      "descricao_en": "CV"
+      "ordem": 2
     },
     {
       "nome_pt": "Google Acadêmico",
       "nome_en": "Google Scholar",
+      "descricao_pt": "",
+      "descricao_en": "",
       "tipo_pt": "Ver",
       "tipo_en": "View",
       "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
@@ -23,6 +25,8 @@
     {
       "nome_pt": "ORCID",
       "nome_en": "ORCID",
+      "descricao_pt": "",
+      "descricao_en": "",
       "tipo_pt": "Perfil acadêmico",
       "tipo_en": "Academic profile",
       "link": "https://orcid.org/0000-0003-4165-8629",
@@ -32,11 +36,14 @@
     {
       "nome_pt": "E-mail",
       "nome_en": "Email",
+      "descricao_pt": "ronaldocgomes@ufmg.br",
+      "descricao_en": "ronaldocgomes@ufmg.br",
       "tipo_pt": "Enviar e-mail",
       "tipo_en": "Send an email",
       "link": "mailto:ronaldocgomes@ufmg.br",
       "visivel": true,
-      "ordem": 1
+      "ordem": 1,
+      "descricao": "ronaldocgomes@ufmg.br"
     }
   ]
 }
