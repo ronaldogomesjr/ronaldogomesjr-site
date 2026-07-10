@@ -915,11 +915,11 @@ a { color: inherit; text-decoration: none; }
 
 .supervision-group-title {
   margin: 0 0 22px;
-  font-family: var(--sans);
-  font-size: clamp(1.45rem, 2.8vw, 2.15rem);
+  font-family: var(--serif);
+  font-size: clamp(1.65rem, 2.6vw, 2.4rem);
   font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
   text-transform: lowercase;
 }
 
