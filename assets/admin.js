@@ -312,23 +312,43 @@
       mode: "list",
       path: "content/projetos.json",
       root: "items",
-      labelField: "titulo",
+      labelField: "titulo_pt",
+      bilingualProjects: true,
       minItems: 10,
       emptyLabel: "seção disponível",
-      meta: item => [projectPeriod(item), item.idioma].filter(Boolean).join(" · "),
+      label: item => item.titulo_pt || item.titulo_en || "",
+      meta: item => [projectPeriod(item), item.titulo_en].filter(Boolean).join(" · "),
       fields: [
-        ["idioma", "select", "Idioma", ["pt", "en"]],
-        ["titulo", "text", "Título"],
-        ["descricao", "textarea", "Descrição"],
-        ["ano_inicio", "text", "Ano de início"],
-        ["ano_fim", "text", "Ano de término"],
-        ["parceiros", "text", "Parceiros"],
-        ["link", "text", "Hiperlink externo"],
-        ["visivel", "checkbox", "Visível no site"],
+        ["titulo_pt", "text", "Título em português"],
+        ["titulo_en", "text", "Título em inglês"],
+        ["descricao_pt", "textarea", "Descrição em português"],
+        ["descricao_en", "textarea", "Descrição em inglês"],
+        ["ano_inicio", "text", "Ano de início — compartilhado"],
+        ["ano_fim", "text", "Ano de término — compartilhado"],
+        ["parceiros_pt", "text", "Parceiros / instituições em português"],
+        ["parceiros_en", "text", "Partners / institutions in English"],
+        ["link_pt", "text", "Hiperlink da versão em português"],
+        ["link_en", "text", "Hiperlink da versão em inglês"],
+        ["visivel", "checkbox", "Visível nas duas versões do site"],
         ["destaque", "checkbox", "Destaque"],
         ["ordem", "number", "Ordem"]
       ],
-      blank: { idioma: "pt", titulo: "", descricao: "", ano_inicio: "", ano_fim: "", periodo: "", parceiros: "", link: "#", visivel: true, destaque: false, ordem: 999 }
+      blank: {
+        titulo_pt: "",
+        titulo_en: "",
+        descricao_pt: "",
+        descricao_en: "",
+        ano_inicio: "",
+        ano_fim: "",
+        periodo: "",
+        parceiros_pt: "",
+        parceiros_en: "",
+        link_pt: "#",
+        link_en: "#",
+        visivel: false,
+        destaque: false,
+        ordem: 999
+      }
     },
     "livros-didaticos": {
       mode: "list",
@@ -622,6 +642,165 @@
     return { items: Array.from(merged.values()) };
   }
 
+  function firstProjectLink(...values) {
+    const found = values.find((value) => {
+      const link = String(value || "").trim();
+      return link && link !== "#";
+    });
+    return found ? String(found).trim() : "#";
+  }
+
+  function parseProjectPeriod(item) {
+    const directStart = String(item && item.ano_inicio || "").trim();
+    const directEnd = String(item && item.ano_fim || "").trim();
+    if (directStart || directEnd) return { start: directStart, end: directEnd };
+
+    const period = String(item && item.periodo || "").trim();
+    if (!period) return { start: "", end: "" };
+
+    const normalized = period.replace(/[—-]/g, "–");
+    const range = normalized.match(/^(\d{4})\s*–\s*(\d{4})?$/);
+    if (range) return { start: range[1] || "", end: range[2] || "" };
+
+    const single = normalized.match(/^(\d{4})$/);
+    if (single) return { start: single[1], end: single[1] };
+    return { start: "", end: "" };
+  }
+
+  function normalizeProjectItem(item) {
+    const period = parseProjectPeriod(item);
+    const hasBilingualFields = [
+      "titulo_pt", "titulo_en", "descricao_pt", "descricao_en",
+      "parceiros_pt", "parceiros_en", "link_pt", "link_en"
+    ].some((key) => Object.prototype.hasOwnProperty.call(item || {}, key));
+
+    if (hasBilingualFields) {
+      return {
+        titulo_pt: item.titulo_pt || (item.idioma !== "en" ? item.titulo || "" : ""),
+        titulo_en: item.titulo_en || (item.idioma === "en" ? item.titulo || "" : ""),
+        descricao_pt: item.descricao_pt || (item.idioma !== "en" ? item.descricao || "" : ""),
+        descricao_en: item.descricao_en || (item.idioma === "en" ? item.descricao || "" : ""),
+        ano_inicio: item.ano_inicio || period.start,
+        ano_fim: item.ano_fim || period.end,
+        periodo: item.periodo || "",
+        parceiros_pt: item.parceiros_pt || (item.idioma !== "en" ? item.parceiros || "" : ""),
+        parceiros_en: item.parceiros_en || (item.idioma === "en" ? item.parceiros || "" : ""),
+        link_pt: firstProjectLink(item.link_pt, item.idioma !== "en" ? item.link : ""),
+        link_en: firstProjectLink(item.link_en, item.idioma === "en" ? item.link : ""),
+        visivel: item.visivel !== false,
+        destaque: Boolean(item.destaque),
+        ordem: Number(item.ordem || 999)
+      };
+    }
+
+    const lang = item && item.idioma === "en" ? "en" : "pt";
+    return {
+      titulo_pt: lang === "pt" ? item.titulo || "" : "",
+      titulo_en: lang === "en" ? item.titulo || "" : "",
+      descricao_pt: lang === "pt" ? item.descricao || "" : "",
+      descricao_en: lang === "en" ? item.descricao || "" : "",
+      ano_inicio: period.start,
+      ano_fim: period.end,
+      periodo: item.periodo || "",
+      parceiros_pt: lang === "pt" ? item.parceiros || "" : "",
+      parceiros_en: lang === "en" ? item.parceiros || "" : "",
+      link_pt: lang === "pt" ? item.link || "#" : "#",
+      link_en: lang === "en" ? item.link || "#" : "#",
+      visivel: item.visivel !== false,
+      destaque: Boolean(item.destaque),
+      ordem: Number(item.ordem || 999)
+    };
+  }
+
+  function normalizeBilingualProjects(data) {
+    const source = Array.isArray(data && data.items) ? data.items : [];
+    const ready = [];
+    const legacyPt = [];
+    const legacyEn = [];
+
+    source.forEach((item, index) => {
+      const hasBilingualFields = [
+        "titulo_pt", "titulo_en", "descricao_pt", "descricao_en",
+        "parceiros_pt", "parceiros_en", "link_pt", "link_en"
+      ].some((key) => Object.prototype.hasOwnProperty.call(item || {}, key));
+
+      if (hasBilingualFields) {
+        ready.push({ item: normalizeProjectItem(item), index });
+      } else if (item && item.idioma === "en") {
+        legacyEn.push({ item, index });
+      } else {
+        legacyPt.push({ item, index });
+      }
+    });
+
+    const byOrder = (a, b) => {
+      const orderA = Number(a.item.ordem || 9999);
+      const orderB = Number(b.item.ordem || 9999);
+      return orderA === orderB ? a.index - b.index : orderA - orderB;
+    };
+    legacyPt.sort(byOrder);
+    legacyEn.sort(byOrder);
+
+    const usedEn = new Set();
+    const pairs = [];
+
+    legacyPt.forEach((ptEntry) => {
+      const ptLink = String(ptEntry.item.link || "").trim().toLowerCase();
+      let enIndex = -1;
+
+      if (ptLink && ptLink !== "#") {
+        enIndex = legacyEn.findIndex((entry, index) => !usedEn.has(index) && String(entry.item.link || "").trim().toLowerCase() === ptLink);
+      }
+      if (enIndex < 0) {
+        enIndex = legacyEn.findIndex((entry, index) => !usedEn.has(index));
+      }
+
+      const enEntry = enIndex >= 0 ? legacyEn[enIndex] : null;
+      if (enEntry) usedEn.add(enIndex);
+      pairs.push({ pt: ptEntry.item, en: enEntry ? enEntry.item : null, index: ptEntry.index });
+    });
+
+    legacyEn.forEach((enEntry, index) => {
+      if (!usedEn.has(index)) pairs.push({ pt: null, en: enEntry.item, index: enEntry.index });
+    });
+
+    pairs.forEach(({ pt, en, index }) => {
+      const ptItem = pt ? normalizeProjectItem(pt) : normalizeProjectItem({ idioma: "pt", visivel: false });
+      const enItem = en ? normalizeProjectItem(en) : normalizeProjectItem({ idioma: "en", visivel: false });
+      const start = ptItem.ano_inicio || enItem.ano_inicio;
+      const end = ptItem.ano_fim || enItem.ano_fim;
+      const visibleValues = [pt, en].filter(Boolean).map((entry) => entry.visivel !== false);
+
+      ready.push({
+        index,
+        item: {
+          titulo_pt: ptItem.titulo_pt,
+          titulo_en: enItem.titulo_en,
+          descricao_pt: ptItem.descricao_pt,
+          descricao_en: enItem.descricao_en,
+          ano_inicio: start,
+          ano_fim: end,
+          periodo: projectPeriod({ ano_inicio: start, ano_fim: end, periodo: ptItem.periodo || enItem.periodo }),
+          parceiros_pt: ptItem.parceiros_pt,
+          parceiros_en: enItem.parceiros_en,
+          link_pt: ptItem.link_pt || "#",
+          link_en: enItem.link_en || "#",
+          visivel: visibleValues.length ? visibleValues.some(Boolean) : false,
+          destaque: Boolean(ptItem.destaque || enItem.destaque),
+          ordem: Math.min(Number(ptItem.ordem || 999), Number(enItem.ordem || 999))
+        }
+      });
+    });
+
+    ready.sort((a, b) => {
+      const orderA = Number(a.item.ordem || 9999);
+      const orderB = Number(b.item.ordem || 9999);
+      return orderA === orderB ? a.index - b.index : orderA - orderB;
+    });
+
+    return { items: ready.map((entry) => entry.item) };
+  }
+
   function projectPeriod(item) {
     const start = String(item && item.ano_inicio || "").trim();
     const end = String(item && item.ano_fim || "").trim();
@@ -635,11 +814,18 @@
     const minimum = Number(config.minItems || 0);
     if (!minimum) return;
     const items = getAllItems(config);
+    let nextOrder = items.reduce((max, item) => Math.max(max, Number(item.ordem || 0)), 0) + 1;
     while (items.length < minimum) {
       const item = JSON.parse(JSON.stringify(config.blank));
-      item.ordem = items.length + 1;
+      item.ordem = nextOrder++;
       items.push(item);
     }
+  }
+
+  function getItemLabel(config, item) {
+    if (!item) return "";
+    if (typeof config.label === "function") return config.label(item) || "";
+    return item[config.labelField] || "";
   }
 
   async function loadCollection(preferLabel = "") {
@@ -653,6 +839,10 @@
 
     if (config.bilingualLinks) {
       currentData = normalizeBilingualLinks(currentData);
+    }
+
+    if (config.bilingualProjects) {
+      currentData = normalizeBilingualProjects(currentData);
     }
 
     if (["object-singleton", "home-bilingual"].includes(config.mode)) {
@@ -684,7 +874,7 @@
     rebuildVisibleRows();
 
     if (preferLabel) {
-      const found = visibleRows.find(row => (row.item[config.labelField] || "") === preferLabel);
+      const found = visibleRows.find(row => getItemLabel(config, row.item) === preferLabel);
       currentActualIndex = found ? found.actualIndex : (visibleRows[0] ? visibleRows[0].actualIndex : null);
     } else {
       currentActualIndex = visibleRows[0] ? visibleRows[0].actualIndex : null;
@@ -714,7 +904,7 @@
         const orderA = Number(a.item.ordem || 9999);
         const orderB = Number(b.item.ordem || 9999);
         if (orderA !== orderB) return orderA - orderB;
-        return String(a.item[config.labelField] || "").localeCompare(String(b.item[config.labelField] || ""));
+        return String(getItemLabel(config, a.item)).localeCompare(String(getItemLabel(config, b.item)));
       });
   }
 
@@ -757,7 +947,7 @@
       btn.type = "button";
       btn.className = "item-button" + (actualIndex === currentActualIndex ? " active" : "");
       const fallbackLabel = config.emptyLabel ? `${config.emptyLabel} ${visibleIndex + 1}` : "(sem título)";
-      btn.innerHTML = `<span class="item-title">${escapeHTML(item[config.labelField] || fallbackLabel)}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
+      btn.innerHTML = `<span class="item-title">${escapeHTML(getItemLabel(config, item) || fallbackLabel)}</span><span class="item-meta">${escapeHTML(config.meta ? config.meta(item) : "")}</span>`;
       btn.addEventListener("click", () => {
         currentActualIndex = actualIndex;
         renderList();
@@ -875,7 +1065,7 @@
     if (currentCollection === "projetos") {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Há 10 seções disponíveis. Preencha o título, escolha o idioma e informe os anos. Se o projeto estiver em andamento, deixe o ano de término vazio.";
+      p.textContent = "Cada seção corresponde a um único projeto. Preencha, na mesma seção, o título e a descrição em português e em inglês. Os anos, a visibilidade e a ordem são compartilhados pelas duas versões. Há pelo menos 10 seções disponíveis.";
       form.appendChild(p);
     }
 
@@ -1029,7 +1219,7 @@
     const items = getAllItems(config);
     if (currentActualIndex === null || !items[currentActualIndex]) throw new Error("Nenhum item selecionado.");
 
-    const oldLabel = items[currentActualIndex][config.labelField] || "";
+    const oldLabel = getItemLabel(config, items[currentActualIndex]);
     const values = collectEditorValues();
 
     if (currentCollection === "livros-academicos") {
@@ -1051,9 +1241,14 @@
     const mergedValues = { ...items[currentActualIndex], ...values };
     if (currentCollection === "projetos") {
       mergedValues.periodo = projectPeriod(mergedValues);
+      mergedValues.link = firstProjectLink(mergedValues.link_pt, mergedValues.link_en);
+      mergedValues.titulo = mergedValues.titulo_pt || mergedValues.titulo_en || "";
+      mergedValues.descricao = mergedValues.descricao_pt || mergedValues.descricao_en || "";
+      mergedValues.parceiros = mergedValues.parceiros_pt || mergedValues.parceiros_en || "";
+      delete mergedValues.idioma;
     }
     items[currentActualIndex] = mergedValues;
-    await saveFile(`Atualiza ${currentCollection}`, mergedValues[config.labelField] || oldLabel);
+    await saveFile(`Atualiza ${currentCollection}`, getItemLabel(config, mergedValues) || oldLabel);
   }
 
   async function saveFile(message, preferLabel = "") {

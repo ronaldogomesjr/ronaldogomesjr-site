@@ -72,16 +72,74 @@
     return String(item && item.periodo || "").trim();
   }
 
+  function isBilingualProject(item) {
+    return [
+      "titulo_pt", "titulo_en", "descricao_pt", "descricao_en",
+      "parceiros_pt", "parceiros_en", "link_pt", "link_en"
+    ].some((key) => Object.prototype.hasOwnProperty.call(item || {}, key));
+  }
+
+  function projectTitle(item, lang) {
+    if (!isBilingualProject(item)) return item.titulo || "";
+    return lang === "en"
+      ? (item.titulo_en || item.titulo_pt || item.titulo || "")
+      : (item.titulo_pt || item.titulo_en || item.titulo || "");
+  }
+
+  function projectDescription(item, lang) {
+    if (!isBilingualProject(item)) return item.descricao || "";
+    return lang === "en"
+      ? (item.descricao_en || item.descricao_pt || item.descricao || "")
+      : (item.descricao_pt || item.descricao_en || item.descricao || "");
+  }
+
+  function projectPartners(item, lang) {
+    if (!isBilingualProject(item)) return item.parceiros || "";
+    return lang === "en"
+      ? (item.parceiros_en || item.parceiros_pt || item.parceiros || "")
+      : (item.parceiros_pt || item.parceiros_en || item.parceiros || "");
+  }
+
+  function firstProjectLink(...values) {
+    const found = values.find((value) => {
+      const link = String(value || "").trim();
+      return link && link !== "#";
+    });
+    return found ? String(found).trim() : "#";
+  }
+
+  function projectLink(item, lang) {
+    if (!isBilingualProject(item)) return firstProjectLink(item.link);
+    return lang === "en"
+      ? firstProjectLink(item.link_en, item.link_pt, item.link)
+      : firstProjectLink(item.link_pt, item.link_en, item.link);
+  }
+
+  function projectsForLanguage(items, lang) {
+    return (items || [])
+      .filter((item) => item.visivel !== false)
+      .filter((item) => isBilingualProject(item) || item.idioma === lang)
+      .filter((item) => String(projectTitle(item, lang)).trim())
+      .sort((a, b) => {
+        const orderA = Number(a.ordem || 9999);
+        const orderB = Number(b.ordem || 9999);
+        if (orderA !== orderB) return orderA - orderB;
+        return String(projectTitle(a, lang)).localeCompare(String(projectTitle(b, lang)));
+      });
+  }
+
   function projectHTML(item, lang) {
     const label = lang === "en" ? "Access →" : "Acessar →";
-    const meta = [projectPeriod(item), item.parceiros].filter(Boolean).join(" · ");
+    const title = projectTitle(item, lang);
+    const description = projectDescription(item, lang);
+    const meta = [projectPeriod(item), projectPartners(item, lang)].filter(Boolean).join(" · ");
     return `
       <article class="section-row">
-        <h2>${escapeHTML(item.titulo)}</h2>
+        <h2>${escapeHTML(title)}</h2>
         <div>
-          <p>${escapeHTML(lang === "en" ? (item.descricao_en || item.descricao_pt || item.descricao || "") : (item.descricao_pt || item.descricao || ""))}</p>
+          ${description ? `<p>${escapeHTML(description)}</p>` : ""}
           ${meta ? `<p class="item-meta">${escapeHTML(meta)}</p>` : ""}
-          ${externalLink(item.link, label)}
+          ${externalLink(projectLink(item, lang), label)}
         </div>
       </article>
     `;
@@ -182,8 +240,7 @@
 
       if (kind === "projetos") {
         const data = await loadJSON("/content/projetos.json");
-        const items = sortedVisible(data.items, lang)
-          .filter((item) => String(item.titulo || "").trim());
+        const items = projectsForLanguage(data.items, lang);
         element.innerHTML = items.length ? items.map((item) => projectHTML(item, lang)).join("") : emptyMessage(lang);
       }
 
