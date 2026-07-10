@@ -17,6 +17,15 @@
       "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nome_pt": "ORCID",
+      "nome_en": "ORCID",
+      "tipo_pt": "Perfil acadêmico",
+      "tipo_en": "Academic profile",
+      "link": "https://orcid.org/0000-0003-4165-8629",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
