@@ -24,6 +24,71 @@
     return `<a href="${escapeHTML(url)}" ${String(url).startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${escapeHTML(label)}</a>`;
   }
 
+  function ensureResearchGroupsStyles() {
+    if (document.querySelector('link[data-research-groups-styles]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/assets/research-groups-v71.css?v=71';
+    link.setAttribute('data-research-groups-styles', '');
+    document.head.appendChild(link);
+  }
+
+  async function loadResearchGroups() {
+    const response = await fetch('/content/research-groups.json', { cache: 'no-store' });
+    if (!response.ok) return [];
+    const data = await response.json();
+    return Array.isArray(data.items) ? data.items : [];
+  }
+
+  function researchGroupField(group, name, lang) {
+    return group[`${name}_${lang}`] || group[`${name}_${lang === 'en' ? 'pt' : 'en'}`] || group[name] || '';
+  }
+
+  async function renderResearchGroups(shell, lang, page) {
+    const isResearchPage = page && (
+      page.id === 'pesquisa' ||
+      page.slug_pt === 'pesquisa' ||
+      page.slug_en === 'research'
+    );
+    if (!isResearchPage) return;
+
+    const sectionsEl = shell.querySelector('[data-page-sections]');
+    if (!sectionsEl) return;
+
+    const groups = (await loadResearchGroups())
+      .filter((group) => group && group.visivel !== false)
+      .filter((group) => researchGroupField(group, 'nome', lang) || researchGroupField(group, 'descricao', lang))
+      .sort((a, b) => {
+        const orderA = Number(a.ordem ?? 9999);
+        const orderB = Number(b.ordem ?? 9999);
+        if (orderA !== orderB) return orderA - orderB;
+        return researchGroupField(a, 'nome', lang).localeCompare(researchGroupField(b, 'nome', lang));
+      });
+
+    if (!groups.length) return;
+    ensureResearchGroupsStyles();
+
+    const sectionTitle = lang === 'en' ? 'Research Groups' : 'Grupos de Pesquisa';
+    const linkLabel = lang === 'en' ? 'Visit website →' : 'Acessar site →';
+    const itemsHTML = groups.map((group) => {
+      const name = researchGroupField(group, 'nome', lang);
+      const description = researchGroupField(group, 'descricao', lang);
+      const url = String(group.link || '').trim();
+      return `
+        <article class="research-group-item">
+          ${name ? `<h3>${escapeHTML(name)}</h3>` : ''}
+          ${description ? `<p>${escapeHTML(description)}</p>` : ''}
+          ${url ? linkHTML(linkLabel, url) : ''}
+        </article>`;
+    }).join('');
+
+    sectionsEl.insertAdjacentHTML('beforeend', `
+      <article class="section-row research-groups-section">
+        <h2>${escapeHTML(sectionTitle)}</h2>
+        <div class="research-groups-list">${itemsHTML}</div>
+      </article>`);
+  }
+
   document.addEventListener('DOMContentLoaded', async function () {
     const shell = document.querySelector('[data-page-shell]');
     if (!shell) return;
@@ -87,6 +152,8 @@
           </article>
         `).join('');
       }
+
+      await renderResearchGroups(shell, lang, page);
     } catch (error) {
       console.error('Erro ao carregar páginas:', error);
     }
