@@ -30,11 +30,13 @@
     {
       "nome_pt": "E-mail",
       "nome_en": "Email",
-      "tipo_pt": "ronaldocgomes@ufmg.br",
-      "tipo_en": "ronaldocgomes@ufmg.br",
+      "tipo_pt": "Enviar e-mail",
+      "tipo_en": "Send an email",
       "link": "mailto:ronaldocgomes@ufmg.br",
       "visivel": true,
-      "ordem": 1
+      "ordem": 1,
+      "descricao_pt": "ronaldocgomes@ufmg.br",
+      "descricao_en": "ronaldocgomes@ufmg.br"
     }
   ]
 }
