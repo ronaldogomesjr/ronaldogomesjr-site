@@ -8,15 +8,44 @@
       .replaceAll("'", '&#039;');
   }
 
+  async function loadJSON(path) {
+    const separator = path.includes('?') ? '&' : '?';
+    const response = await fetch(`${path}${separator}v=70&t=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(path);
+    return response.json();
+  }
+
   async function loadPages() {
-    const response = await fetch('/content/pages.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('pages');
-    const data = await response.json();
-    return data.items || [];
+    const data = await loadJSON('/content/pages.json');
+    return Array.isArray(data.items) ? data.items : [];
+  }
+
+  async function loadPublicationPages() {
+    try {
+      const data = await loadJSON('/content/publication-pages.json');
+      return data && typeof data === 'object' ? data : {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  function hasLocalizedField(page, name, lang) {
+    return Boolean(page) && (
+      Object.prototype.hasOwnProperty.call(page, `${name}_${lang}`) ||
+      Object.prototype.hasOwnProperty.call(page, name)
+    );
   }
 
   function field(page, name, lang) {
-    return page[`${name}_${lang}`] || page[name] || '';
+    if (!page) return '';
+    const localizedKey = `${name}_${lang}`;
+    if (Object.prototype.hasOwnProperty.call(page, localizedKey)) {
+      return String(page[localizedKey] ?? '');
+    }
+    if (Object.prototype.hasOwnProperty.call(page, name)) {
+      return String(page[name] ?? '');
+    }
+    return '';
   }
 
   function linkHTML(label, url) {
@@ -30,15 +59,26 @@
 
     const pageId = shell.getAttribute('data-page-id') || '';
     const slug = shell.getAttribute('data-page-slug') || '';
-    const lang = shell.getAttribute('data-lang') || 'pt';
+    const explicitLang = shell.getAttribute('data-lang');
+    const lang = explicitLang || ((document.documentElement.lang || 'pt').toLowerCase().startsWith('en') ? 'en' : 'pt');
 
     try {
-      const items = await loadPages();
-      const page = items.find((item) => {
+      const [items, publicationPages] = await Promise.all([
+        loadPages(),
+        loadPublicationPages()
+      ]);
+
+      const generalPage = items.find((item) => {
         if (pageId && item.id === pageId) return true;
         if (lang === 'en') return item.slug_en === slug || item.slug === slug;
         return item.slug_pt === slug || item.slug === slug;
-      });
+      }) || null;
+
+      const dedicatedPublicationPage = publicationPages[pageId] || null;
+      const page = dedicatedPublicationPage
+        ? { ...(generalPage || {}), ...dedicatedPublicationPage }
+        : generalPage;
+
       if (!page) return;
 
       const title = field(page, 'title', lang);
@@ -48,31 +88,42 @@
 
       const titleEl = shell.querySelector('[data-page-title]');
       const introEl = shell.querySelector('[data-page-intro]');
-      if (titleEl && title) titleEl.textContent = title;
-      if (introEl && intro) introEl.textContent = intro;
+
+      if (titleEl && hasLocalizedField(page, 'title', lang)) {
+        titleEl.textContent = title;
+      }
+
+      if (introEl && hasLocalizedField(page, 'intro', lang)) {
+        introEl.textContent = intro;
+        introEl.hidden = intro.trim() === '';
+      }
 
       const aboutPhoto = shell.querySelector('[data-about-photo]');
       if (aboutPhoto) {
-        const photoURL = page.foto || page.photo || "";
+        const photoURL = page.foto || page.photo || '';
         if (photoURL) {
-          aboutPhoto.innerHTML = `<img src="${escapeHTML(photoURL)}" alt="${lang === "en" ? "Photo of Ronaldo Gomes Jr." : "Foto de Ronaldo Gomes Jr."}">`;
-          aboutPhoto.classList.add("has-photo");
+          aboutPhoto.innerHTML = `<img src="${escapeHTML(photoURL)}" alt="${lang === 'en' ? 'Photo of Ronaldo Gomes Jr.' : 'Foto de Ronaldo Gomes Jr.'}">`;
+          aboutPhoto.classList.add('has-photo');
         } else {
-          aboutPhoto.innerHTML = `<span class="about-photo-placeholder" aria-hidden="true"></span>`;
-          aboutPhoto.classList.remove("has-photo");
+          aboutPhoto.innerHTML = '<span class="about-photo-placeholder" aria-hidden="true"></span>';
+          aboutPhoto.classList.remove('has-photo');
         }
       }
 
-      document.title = `${metaTitle || title || document.title} — Ronaldo Gomes Jr.`;
+      if (metaTitle.trim()) {
+        document.title = `${metaTitle} — Ronaldo Gomes Jr.`;
+      } else if (title.trim()) {
+        document.title = `${title} — Ronaldo Gomes Jr.`;
+      }
 
       const metaDescriptionEl = document.querySelector('meta[name="description"]');
-      if (metaDescriptionEl && metaDescription) {
+      if (metaDescriptionEl && hasLocalizedField(page, 'meta_description', lang)) {
         metaDescriptionEl.setAttribute('content', metaDescription);
       }
 
       const sectionsEl = shell.querySelector('[data-page-sections]');
       if (sectionsEl) {
-        const sections = [1,2,3,4].map((n) => ({
+        const sections = [1, 2, 3, 4].map((n) => ({
           title: field(page, `section${n}_title`, lang),
           text: field(page, `section${n}_text`, lang),
           linkLabel: field(page, `section${n}_link_label`, lang),

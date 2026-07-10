@@ -1,0 +1,32 @@
+{
+  "artigos": {
+    "title_pt": "artigos",
+    "title_en": "journal articles",
+    "intro_pt": "Artigos publicados em periódicos acadêmicos.",
+    "intro_en": "Articles published in academic journals.",
+    "meta_title_pt": "",
+    "meta_title_en": "",
+    "meta_description_pt": "",
+    "meta_description_en": ""
+  },
+  "capitulos": {
+    "title_pt": "capítulos",
+    "title_en": "book chapters",
+    "intro_pt": "Capítulos publicados em livros acadêmicos e coletâneas.",
+    "intro_en": "Chapters published in academic books and edited collections.",
+    "meta_title_pt": "",
+    "meta_title_en": "",
+    "meta_description_pt": "",
+    "meta_description_en": ""
+  },
+  "livros-academicos": {
+    "title_pt": "livros acadêmicos",
+    "title_en": "academic books",
+    "intro_pt": "Livros acadêmicos e obras organizadas.",
+    "intro_en": "Academic books and edited volumes.",
+    "meta_title_pt": "",
+    "meta_title_en": "",
+    "meta_description_pt": "",
+    "meta_description_en": ""
+  }
+}
