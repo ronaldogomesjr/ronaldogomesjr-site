@@ -164,6 +164,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783723932489
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2020",
+      "titulo": "Instanarratives: stories of foreign language learning on Instagram.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "System",
+      "link": "https://www.sciencedirect.com/science/article/abs/pii/S0346251X20306904",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783724081182
     }
   ]
 }
