@@ -87,6 +87,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783723249134
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2016",
+      "titulo": "Viagens de aprendizagem: um estudo de metáforas em narrativas de aprendizagem de inglês. ",
+      "autores": "Vera Lúcia Menezes de Oliveira e PAIVA, Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Signo (UNISC)",
+      "link": "https://seer.unisc.br/index.php/signo/article/view/5752#:~:text=Os%20dados%20foram%20retirados%20do,de%20ingl%C3%AAs%20do%20projeto%20AMFALE%20.&text=A%20an%C3%A1lise%20evidencia%20que%20a,e%20ao%20destino%20da%20viagem.",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783723292249
     }
   ]
 }
