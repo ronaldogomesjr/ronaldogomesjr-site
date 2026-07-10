@@ -197,6 +197,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783724215144
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2022",
+      "titulo": "Tecnologias digitais para aprender e ensinar inglês no Brasil.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR, Luciana de Oliveira SILVA, Vera Lúcia Menezes de Oliveira e PAIVA",
+      "veiculo": "Texto Livre: Linguagem e Tecnologia (UFMG)",
+      "link": "https://periodicos.ufmg.br/index.php/textolivre/article/view/38008",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783724278162
     }
   ]
 }
