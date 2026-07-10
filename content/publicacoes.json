@@ -109,6 +109,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783723403134
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2017",
+      "titulo": "Aprendizagem móvel no contexto de formação continuada: um estudo sobre as affordances emergentes de interações de professores de inglês via WhatsApp.",
+      "autores": "Junia de Carvalho Fidelis BRAGA, Ronaldo Corrêa GOMES JUNIOR, Antônio Carlos MARTINS",
+      "veiculo": "Polifonia (UFMT)",
+      "link": "https://periodicoscientificos.ufmt.br/ojs/index.php/polifonia/article/view/6033",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783723453772
     }
   ]
 }
