@@ -12,8 +12,8 @@
     {
       "nome_pt": "Google Acadêmico",
       "nome_en": "Google Scholar",
-      "tipo_pt": "Perfil",
-      "tipo_en": "Profile",
+      "tipo_pt": "Perfil acadêmico",
+      "tipo_en": "Academic profile",
       "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
       "visivel": true,
       "ordem": 999
