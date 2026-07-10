@@ -20,19 +20,19 @@
       "tipo_en": "View",
       "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
       "visivel": true,
-      "ordem": 3,
-      "descricao": "Perfil acadêmico"
+      "ordem": 3
     },
     {
       "nome_pt": "ORCID",
       "nome_en": "ORCID",
-      "descricao_pt": "",
-      "descricao_en": "",
+      "descricao_pt": "Perfil acadêmico",
+      "descricao_en": "Academic profile",
       "tipo_pt": "Perfil acadêmico",
       "tipo_en": "Academic profile",
       "link": "https://orcid.org/0000-0003-4165-8629",
       "visivel": true,
-      "ordem": 4
+      "ordem": 4,
+      "descricao": "Perfil acadêmico"
     },
     {
       "nome_pt": "E-mail",
