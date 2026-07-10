@@ -7,18 +7,18 @@
       "tipo_en": "View",
       "link": "http://lattes.cnpq.br/6357439967840461",
       "visivel": true,
-      "ordem": 2,
-      "descricao_pt": "Currículo",
-      "descricao_en": "CV"
+      "ordem": 2
     },
     {
       "nome_pt": "Google Acadêmico",
       "nome_en": "Google Scholar",
-      "tipo_pt": "Perfil",
-      "tipo_en": "Profile",
+      "tipo_pt": "Ver",
+      "tipo_en": "View",
       "link": "https://scholar.google.com/citations?user=PbMKSm8AAAAJ&hl=pt-BR",
       "visivel": true,
-      "ordem": 3
+      "ordem": 3,
+      "descricao_pt": "Perfil acadêmico",
+      "descricao_en": "Academic profile"
     },
     {
       "nome_pt": "ORCID",
