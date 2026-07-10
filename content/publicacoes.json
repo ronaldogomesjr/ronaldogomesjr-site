@@ -208,6 +208,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783724278162
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2024",
+      "titulo": "\"In the palm of your hand\": the ecological and complex nature of teacher agency.",
+      "autores": "Junia de Carvalho Fidelis BRAGA, Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Texto Livre: Linguagem e Tecnologia (UFMG)",
+      "link": "https://www.scielo.br/j/tl/a/KnjbSv6qFrWvn9bF5sG5RbM/abstract/?lang=en",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783724354094
     }
   ]
 }
