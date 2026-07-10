@@ -27,11 +27,12 @@
       "nome_en": "ORCID",
       "descricao_pt": "Perfil acadêmico",
       "descricao_en": "Academic profile",
-      "tipo_pt": "Perfil acadêmico",
-      "tipo_en": "Academic profile",
+      "tipo_pt": "Ver",
+      "tipo_en": "View",
       "link": "https://orcid.org/0000-0003-4165-8629",
       "visivel": true,
-      "ordem": 4
+      "ordem": 4,
+      "descricao": "Perfil acadêmico"
     },
     {
       "nome_pt": "E-mail",
@@ -53,8 +54,7 @@
       "tipo_en": "View",
       "link": "https://somos.ufmg.br/professor/ronaldo-correa-gomes-junior",
       "visivel": true,
-      "ordem": 5,
-      "descricao": "Perfil institucional"
+      "ordem": 5
     }
   ]
 }
