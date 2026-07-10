@@ -186,6 +186,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783724137410
+    },
+    {
+      "tipo": "artigo",
+      "ano": "2021",
+      "titulo": "Linguagem e Tecnologia na contemporaneidade: uma apresentação.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR, Rodrigo Esteves de Lima LOPES",
+      "veiculo": "Entrepalavras (UFC)",
+      "link": "http://www.entrepalavras.ufc.br/revista/index.php/Revista/article/view/2379/876",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783724215144
     }
   ]
 }
