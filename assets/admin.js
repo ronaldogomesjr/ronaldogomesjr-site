@@ -419,10 +419,12 @@
       meta: item => item.link || "",
       bilingualLinks: true,
       fields: [
-        ["nome_pt", "text", "Texto do hiperlink em português"],
-        ["nome_en", "text", "Texto do hiperlink em inglês"],
-        ["tipo_pt", "text", "Descrição em português"],
-        ["tipo_en", "text", "Descrição em inglês"],
+        ["nome_pt", "text", "Nome do item em português"],
+        ["nome_en", "text", "Nome do item em inglês"],
+        ["descricao_pt", "textarea", "Descrição em português"],
+        ["descricao_en", "textarea", "Descrição em inglês"],
+        ["tipo_pt", "text", "Texto do hiperlink em português"],
+        ["tipo_en", "text", "Texto do hiperlink em inglês"],
         ["link", "text", "URL do hiperlink — compartilhada entre PT e EN"],
         ["visivel", "checkbox", "Visível no contato e no rodapé"],
         ["ordem", "number", "Ordem"]
@@ -430,6 +432,8 @@
       blank: {
         nome_pt: "",
         nome_en: "",
+        descricao_pt: "",
+        descricao_en: "",
         tipo_pt: "",
         tipo_en: "",
         link: "#",
@@ -1058,7 +1062,7 @@
     if (config.bilingualLinks) {
       const p = document.createElement("p");
       p.className = "hint";
-      p.textContent = "Cadastre cada link uma única vez. O mesmo endereço aparecerá no contato e no rodapé, com textos em português e inglês.";
+      p.textContent = "Cadastre cada item uma única vez. Preencha o nome, a descrição e o texto do hiperlink em português e em inglês. A URL é compartilhada; o nome do item também será usado no rodapé.";
       form.appendChild(p);
     }
 
