@@ -30,10 +30,11 @@
         <input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off" />
       </label>
       <div class="actions">
-        <button id="saveTokenBtn">salvar token neste navegador</button>
-        <button id="forgetTokenBtn" class="secondary">apagar token</button>
+        <button id="saveTokenBtn" type="button">salvar e testar token</button>
+        <button id="forgetTokenBtn" type="button" class="secondary">apagar token</button>
       </div>
-      <p class="hint">Não envie esse token por e-mail, print ou mensagem. Ele funciona como uma senha de edição do site.</p>
+      <p id="tokenStatus" class="status" aria-live="polite">Nenhum token confirmado neste navegador.</p>
+      <p class="hint">Não envie esse token por e-mail, print ou mensagem. Ele funciona como uma senha de edição do site. O token é salvo separadamente em cada domínio: use sempre o mesmo endereço do painel.</p>
     </section>
 
     <section class="admin-card">
@@ -99,6 +100,6 @@
     </section>
   </main>
 
-  <script src="/assets/admin-v67.js?v=67"></script>
+  <script src="/assets/admin-v68.js?v=68"></script>
 </body>
 </html>
