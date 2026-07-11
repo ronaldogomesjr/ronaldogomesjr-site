@@ -2,14 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap');
 
 :root {
-  --bg: #fbfaf6;
-  --ink: #212224;
-  --muted: #50514e;
-  --line: rgba(33, 34, 36, 0.13);
+  --bg: #fefdf9;
+  --ink: #242526;
+  --muted: #4f514e;
+  --line: rgba(36, 37, 38, 0.11);
   --sage: #879579;
   --teal: #245f6b;
   --sand: #c79f69;
-  --paper: #f3efe6;
+  --paper: #f7f4ec;
   --sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --serif: 'Literata', Georgia, serif;
 }
@@ -1676,4 +1676,125 @@ body {
   .publication-entry p {
     font-size: .96rem;
   }
+}
+
+
+/* V88 — sistema tipográfico e cromático unificado em todas as páginas */
+html,
+body {
+  background-color: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.site-header {
+  background: var(--bg) !important;
+  color: var(--ink);
+  border-bottom-color: transparent;
+}
+
+.brand,
+.main-nav,
+.eyebrow,
+.section-row h2,
+.publication-entry > h2,
+.supervision-student h2,
+.item-meta,
+.publication-meta,
+.site-footer,
+.section-row a,
+.publication-entry a,
+.supervision-access-link,
+.textbook-link-label {
+  font-family: var(--sans);
+}
+
+.page-hero h1,
+.keyword,
+.supervision-group-title,
+.research-groups-section > h2,
+.publication-title,
+.supervision-work-title,
+.academic-book-title,
+.textbook-heading h2 {
+  font-family: var(--serif);
+  color: var(--ink);
+}
+
+.intro-copy p,
+.page-hero p,
+.section-row p,
+.publication-entry p,
+.publication-authors,
+.publication-source,
+.supervision-years,
+.item-meta,
+.publication-meta,
+.cms-message,
+.site-footer {
+  color: var(--muted);
+}
+
+.section-row h2,
+.publication-entry > h2,
+.supervision-student h2,
+.brand,
+.main-nav a {
+  color: var(--ink);
+}
+
+.main-nav a {
+  opacity: .78;
+}
+
+.main-nav a:hover,
+.lang-link,
+.section-row a,
+.publication-entry a,
+.supervision-access-link,
+.textbook-link-label,
+.academic-book-access,
+.contact-description-link {
+  color: var(--teal);
+}
+
+.page-hero h1,
+.supervision-group-title,
+.research-groups-section > h2 {
+  font-weight: 500;
+}
+
+.page-hero p,
+.intro-copy p,
+.section-row p,
+.publication-entry p {
+  font-weight: 400;
+}
+
+.section-list,
+.publication-list,
+.section-row,
+.publication-entry,
+.site-footer {
+  border-color: var(--line);
+}
+
+.about-photo-frame,
+.academic-book-cover,
+.textbook-link-thumb,
+.content-thumb {
+  background-color: var(--paper);
+}
+
+.download-button {
+  color: var(--teal);
+  background: rgba(254, 253, 249, .84);
+}
+
+::selection {
+  background: rgba(135, 149, 121, .22);
+  color: var(--ink);
 }
