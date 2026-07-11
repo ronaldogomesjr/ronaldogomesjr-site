@@ -1818,3 +1818,24 @@ body {
     letter-spacing: .17em;
   }
 }
+
+
+/* V90 — correção definitiva da tipografia dos nomes em Livros didáticos */
+body .textbook-row .textbook-heading > h2 {
+  margin: 0 !important;
+  font-family: var(--sans) !important;
+  font-size: .8rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  color: var(--ink) !important;
+}
+
+@media (min-width: 981px) {
+  body .textbook-row .textbook-heading > h2 {
+    font-size: .69rem !important;
+    line-height: 1.38 !important;
+    letter-spacing: .17em !important;
+  }
+}
