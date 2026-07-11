@@ -143,6 +143,18 @@
       "ano_fim": "",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "doutorado",
+      "orientando": "Carolina Duarte Garcia",
+      "titulo_pt": "Professoras/es designers de práticas de ensino e aprendizagem com tecnologias digitais: uma análise discursiva crítica interseccional ",
+      "link_pt": "",
+      "titulo_en": "Teachers as designers of teaching and learning practices with digital technologies: a critical intersectional discourse analysis",
+      "link_en": "",
+      "ano_inicio": "2022",
+      "ano_fim": "",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
