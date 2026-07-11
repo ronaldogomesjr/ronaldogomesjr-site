@@ -25,6 +25,32 @@
       "botao6_url": "",
       "descricao_pt": "Ápis Mais Língua Inglesa é uma coleção para os anos iniciais do Ensino Fundamental que apresenta o inglês como prática de comunicação, descoberta e participação no mundo. A obra propõe uma aprendizagem leve, significativa e integrada, articulando escuta, fala, leitura e escrita a situações reais, músicas, jogos, atividades colaborativas e temas próximos ao universo das crianças. Com progressão em espiral, suporte bilíngue estratégico e atenção à formação crítica e cidadã, a coleção favorece o desenvolvimento linguístico dos estudantes desde os primeiros contatos com a língua inglesa.",
       "descricao_en": "Ápis Mais Língua Inglesa is a collection for the early years of primary education that approaches English as a practice of communication, discovery and participation in the world. The series promotes a meaningful and engaging learning experience by integrating listening, speaking, reading and writing with real-life situations, songs, games, collaborative tasks and themes connected to children’s everyday lives. With spiral progression, strategic bilingual support and a focus on critical and citizenship education, the collection supports students’ language development from their first encounters with English."
+    },
+    {
+      "titulo": "Alive!",
+      "editora": "Edições SM",
+      "ano": "2024",
+      "nivel": "Ensino Fundamental - Anos Finais",
+      "descricao": "",
+      "descricao_pt": "Alive! é uma coleção de Língua Inglesa para os anos finais do Ensino Fundamental, aprovada no PNLD 2024, que compreende o ensino da língua como prática social, cultural e dinâmica. A obra articula leitura, escuta, escrita e oralidade a temas contemporâneos, multiletramentos, pensamento computacional e propostas colaborativas, favorecendo o uso significativo do inglês em contextos reais e diversos. Com atenção às variedades da língua e às diferentes trajetórias de aprendizagem dos estudantes, a coleção busca promover reflexão crítica, comunicação, cidadania e participação em um mundo mediado pela linguagem.",
+      "descricao_en": "Alive! is an English language collection for lower secondary education, approved by PNLD 2024, that approaches language learning as a social, cultural and dynamic practice. The series integrates reading, listening, writing and speaking with contemporary themes, multiliteracies, computational thinking and collaborative tasks, encouraging the meaningful use of English in real and diverse contexts. By valuing language variation and different learning paths, the collection aims to foster critical reflection, communication, citizenship and participation in a world mediated by language.",
+      "link": "https://pnld.smeducacao.com.br/obras/pnld-2024-alive/",
+      "imagem": "https://pnld.smeducacao.com.br/wp-content/uploads/2023/04/ALIVE2.png.webp",
+      "botao1_label": "6º ano",
+      "botao1_url": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQCQxvRSmC9OS57qZKESPgsFAWAQjzgblNDDmz-zhwtpphk?e=UPSREH",
+      "botao2_label": "7º ano",
+      "botao2_url": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQCygV_u3UsrRKL2TtHc1_82Af441vsxlWKUriGpoJvMkxQ?e=RCG3Vq",
+      "botao3_label": "8º ano",
+      "botao3_url": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQBLMvLKNR44S7zlsK7nOX_IARyllv2uvafjocxlK5qfoEQ?e=iZXMr7",
+      "botao4_label": "9º ano",
+      "botao4_url": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQBLMvLKNR44S7zlsK7nOX_IARyllv2uvafjocxlK5qfoEQ?e=iZXMr7",
+      "botao5_label": "",
+      "botao5_url": "",
+      "botao6_label": "",
+      "botao6_url": "",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 999
     }
   ]
 }
