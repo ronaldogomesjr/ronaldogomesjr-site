@@ -57,14 +57,15 @@
     },
     {
       "tipo": "livro_academico",
-      "ano": "2026",
-      "titulo": "Academic book to add",
+      "ano": "2020",
+      "titulo": "Pesquisa Narrativa: histórias sobre ensinar e aprender línguas",
       "autores": "Ronaldo Gomes Jr.",
-      "veiculo": "Publisher",
-      "link": "#",
+      "veiculo": "Pimenta Cultural",
+      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQBDzwDYhihGT6rraUeB7lxUAVdaSWMjofUcTjaL2GsN0a4?e=LAV3RU",
       "visivel": true,
       "destaque": false,
-      "ordem": 6
+      "ordem": 6,
+      "imagem": "/assets/uploads/livros-academicos/1783801754366-pesquisanarrativa.png"
     },
     {
       "tipo": "artigo",
