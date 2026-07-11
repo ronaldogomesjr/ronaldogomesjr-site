@@ -47,6 +47,18 @@
       "ano_fim": "2022",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Brenda Michelle Buhr Pedro",
+      "titulo_pt": "O material físico em tempos digitais: como os livros didáticos educam para a leitura de textos multimodais e multissemióticos",
+      "link_pt": "https://repositorio.ufmg.br/items/30c0753f-17bb-4d49-a745-e2fcaf527988",
+      "titulo_en": "Physical material in the digital age: how textbooks foster the reading of multimodal and multisemiotic texts",
+      "link_en": "https://repositorio.ufmg.br/items/30c0753f-17bb-4d49-a745-e2fcaf527988",
+      "ano_inicio": "2020",
+      "ano_fim": "2022",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
