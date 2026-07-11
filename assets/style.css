@@ -1332,3 +1332,15 @@ body {
     width: 112px;
   }
 }
+
+
+/* V82 — link de acesso acima do thumbnail */
+.textbook-link-label {
+  order: 1;
+  margin: 0 0 12px;
+}
+
+.textbook-link-thumb {
+  order: 2;
+  margin: 0;
+}
