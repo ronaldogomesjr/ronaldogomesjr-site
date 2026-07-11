@@ -1208,3 +1208,41 @@ body {
     margin-top: 6px;
   }
 }
+
+/* V79 — capas dos livros acadêmicos em miniatura vertical, acima do título */
+.academic-book-row .academic-book-details {
+  display: block;
+  min-width: 0;
+}
+
+.academic-book-row .academic-book-cover {
+  display: block;
+  width: clamp(108px, 11vw, 140px);
+  height: auto;
+  aspect-ratio: 2 / 3;
+  margin: 0 0 20px;
+  object-fit: contain;
+  object-position: center;
+  background: var(--paper);
+  border-radius: 5px;
+  box-shadow: 0 8px 22px rgba(33, 34, 36, 0.13);
+}
+
+.academic-book-row .academic-book-title {
+  margin: 0;
+}
+
+.academic-book-row .academic-book-meta {
+  margin-top: 7px;
+}
+
+.academic-book-row .academic-book-access {
+  margin-top: 14px;
+}
+
+@media (max-width: 640px) {
+  .academic-book-row .academic-book-cover {
+    width: 100px;
+    margin-bottom: 16px;
+  }
+}
