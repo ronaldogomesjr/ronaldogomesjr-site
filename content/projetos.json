@@ -62,22 +62,6 @@
       "link_en": "#",
       "visivel": false,
       "destaque": false,
-      "ordem": 5
-    },
-    {
-      "titulo_pt": "",
-      "titulo_en": "",
-      "descricao_pt": "",
-      "descricao_en": "",
-      "ano_inicio": "",
-      "ano_fim": "",
-      "periodo": "",
-      "parceiros_pt": "",
-      "parceiros_en": "",
-      "link_pt": "#",
-      "link_en": "#",
-      "visivel": false,
-      "destaque": false,
       "ordem": 6
     },
     {
@@ -143,6 +127,22 @@
       "visivel": false,
       "destaque": false,
       "ordem": 10
+    },
+    {
+      "titulo_pt": "",
+      "titulo_en": "",
+      "descricao_pt": "",
+      "descricao_en": "",
+      "ano_inicio": "",
+      "ano_fim": "",
+      "periodo": "",
+      "parceiros_pt": "",
+      "parceiros_en": "",
+      "link_pt": "#",
+      "link_en": "#",
+      "visivel": false,
+      "destaque": false,
+      "ordem": 11
     }
   ]
 }
