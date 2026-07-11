@@ -23,6 +23,18 @@
       "ano_fim": "2021",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": " Natália Eliza Novais Alves",
+      "titulo_pt": "Identidades Tecnológicas: metáforas de professores de inglês sobre o uso de tecnologias digitais",
+      "link_pt": "https://repositorio.ufmg.br/items/c415eafb-a6ee-4e56-b0e3-046dd6853b44",
+      "titulo_en": "Technological Identities: English teachers' metaphors regarding the use of digital technologies",
+      "link_en": "https://repositorio.ufmg.br/items/c415eafb-a6ee-4e56-b0e3-046dd6853b44",
+      "ano_inicio": "2019",
+      "ano_fim": "2021",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
