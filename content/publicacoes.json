@@ -286,6 +286,18 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783730300078
+    },
+    {
+      "tipo": "livro_academico",
+      "ano": "2021",
+      "titulo": "Identidades Metaforizadas",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Pontes Editores",
+      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQDAthx8VEknSalnxQBzFpHbAZRQoyVcLJQ6ZGqSjVbCoSc?e=WLY6O3",
+      "imagem": "",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783801928070
     }
   ]
 }
