@@ -1798,3 +1798,23 @@ body {
   background: rgba(135, 149, 121, .22);
   color: var(--ink);
 }
+
+/* V89 — títulos dos itens de livros didáticos no mesmo padrão das demais listas */
+.textbook-heading h2 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: .8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+@media (min-width: 981px) {
+  .textbook-heading h2 {
+    font-size: .69rem;
+    line-height: 1.38;
+    letter-spacing: .17em;
+  }
+}
