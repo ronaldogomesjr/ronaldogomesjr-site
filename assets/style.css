@@ -1132,3 +1132,32 @@ a { color: inherit; text-decoration: none; }
 .contact-description-link:hover {
   opacity: .66;
 }
+
+
+/* V74 — tipografia de Grupos de Pesquisa e integração visual do cabeçalho */
+body {
+  background: var(--bg);
+}
+
+.site-header {
+  background: var(--bg) !important;
+  background-image: none !important;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+
+.research-groups-section > h2 {
+  margin: 0 0 22px;
+  font-family: var(--serif);
+  font-size: clamp(1.65rem, 2.6vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+  text-transform: lowercase;
+}
+
+@media (max-width: 980px) {
+  .research-groups-section > h2 {
+    margin-bottom: 10px;
+  }
+}
