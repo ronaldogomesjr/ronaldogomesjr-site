@@ -83,6 +83,18 @@
       "ano_fim": "",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Cibele Cristiane Soares",
+      "titulo_pt": "Linguagem cinematográfica (na era) digital: affordances percebidas por professores de línguas adicionais para o design do ensino e da aprendizagem ",
+      "link_pt": "",
+      "titulo_en": "Cinematic language in the digital age: affordances perceived by additional language teachers for the design of teaching and learning",
+      "link_en": "",
+      "ano_inicio": "2024",
+      "ano_fim": "",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
