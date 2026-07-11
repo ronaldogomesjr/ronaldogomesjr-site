@@ -8,10 +8,20 @@
       .replaceAll("'", '&#039;');
   }
 
-  function linkedTitle(title, url) {
-    if (!title) return '';
-    if (!url) return `<strong>${escapeHTML(title)}</strong>`;
-    return `<a class="supervision-title-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer"><strong>${escapeHTML(title)}</strong></a>`;
+  function formatYears(start, end) {
+    const startYear = String(start || '').trim();
+    const endYear = String(end || '').trim();
+
+    if (startYear && endYear) return `${startYear}–${endYear}`;
+    if (startYear) return `${startYear}–`;
+    if (endYear) return endYear;
+    return '';
+  }
+
+  function accessLink(url, lang) {
+    if (!url) return '';
+    const label = lang === 'en' ? 'View' : 'Acessar';
+    return `<a class="supervision-access-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${label} →</a>`;
   }
 
   async function render(element) {
@@ -46,16 +56,23 @@
         if (!filtered.length) return '';
 
         const rows = filtered.map(item => {
-          const title = lang === 'en' ? (item.titulo_en || item.titulo_pt) : (item.titulo_pt || item.titulo_en);
-          const url = lang === 'en' ? (item.link_en || item.link_pt) : (item.link_pt || item.link_en);
-          const years = [item.ano_inicio, item.ano_fim].filter(Boolean).join('–');
+          const title = lang === 'en'
+            ? (item.titulo_en || item.titulo_pt)
+            : (item.titulo_pt || item.titulo_en);
+          const url = lang === 'en'
+            ? (item.link_en || item.link_pt)
+            : (item.link_pt || item.link_en);
+          const years = formatYears(item.ano_inicio, item.ano_fim);
 
           return `
             <article class="section-row supervision-row">
-              <h2>${escapeHTML(item.orientando || '')}</h2>
-              <div>
-                <p>${linkedTitle(title, url)}</p>
-                ${years ? `<p class="item-meta">${escapeHTML(years)}</p>` : ''}
+              <div class="supervision-student">
+                <h2>${escapeHTML(item.orientando || '')}</h2>
+                ${years ? `<p class="supervision-years">${escapeHTML(years)}</p>` : ''}
+              </div>
+              <div class="supervision-work">
+                ${title ? `<p class="supervision-work-title"><strong>${escapeHTML(title)}</strong></p>` : ''}
+                ${accessLink(url, lang)}
               </div>
             </article>
           `;
