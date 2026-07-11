@@ -298,6 +298,18 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783801928070
+    },
+    {
+      "tipo": "livro_academico",
+      "ano": "2021",
+      "titulo": "Keywords: termos e conceitos de linguagem e tecnologia na linguística aplicad",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "FALE-UFMG",
+      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQCcbA7r5yVVIICZF2UAAAAAAXaqo_dvRtrp9Is7tsfqZas?e=VpERo8",
+      "imagem": "/assets/uploads/livros-academicos/1783802340916-keywords.png",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783802273592
     }
   ]
 }
