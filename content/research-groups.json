@@ -1,11 +1,11 @@
 {
   "items": [
     {
-      "nome_pt": "anpoll",
-      "nome_en": "anpoll",
-      "descricao_pt": "anpoll",
-      "descricao_en": "anpoll",
-      "link": "",
+      "nome_pt": "Grupo de Trabalho de Linguagem e Tecnologias da ANPOLL",
+      "nome_en": "ANPOLL Working Group on Language and Technologies",
+      "descricao_pt": "O Grupo de Trabalho Linguagem e Tecnologias, da ANPOLL, reúne pesquisadores dedicados ao estudo das relações entre linguagem, tecnologias e práticas sociodiscursivas, com atenção especial aos contextos educacionais. Criado em 2010, o GT desenvolve projetos coletivos e promove diálogos sobre temas como letramentos digitais, ensino de línguas mediado por tecnologias, mídias sociais, jogos, ética digital e inteligência artificial.",
+      "descricao_en": "The ANPOLL Language and Technologies Working Group brings together researchers interested in the relationships between language, technologies, and sociodiscursive practices, with particular attention to educational contexts. Established in 2010, the group develops collaborative research projects and fosters discussion on topics such as digital literacies, technology-mediated language education, social media, games, digital ethics, and artificial intelligence.",
+      "link": "https://anpoll.org.br/gt/linguagem-e-tecnologias/",
       "visivel": true,
       "ordem": 999,
       "id": "grupo-1783728634996"
