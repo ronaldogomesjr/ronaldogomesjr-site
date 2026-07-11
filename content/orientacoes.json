@@ -131,6 +131,18 @@
       "ano_fim": "2023",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Rosana Cardoso Gondim",
+      "titulo_pt": "Visual Law: um estudo sobre o potencial dos elementos visuais na comunicação jurídica",
+      "link_pt": "",
+      "titulo_en": "Visual Law: a study on the potential of visual elements in legal communication",
+      "link_en": "",
+      "ano_inicio": "2023",
+      "ano_fim": "",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
