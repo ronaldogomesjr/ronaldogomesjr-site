@@ -51,6 +51,32 @@
       "visivel": true,
       "destaque": false,
       "ordem": 999
+    },
+    {
+      "titulo": "New Alive High",
+      "editora": "Edições SM",
+      "ano": "2021",
+      "nivel": "Ensino Médio",
+      "descricao": "",
+      "descricao_pt": "**PT**\n*New Alive High* é uma coleção de Língua Inglesa para o Ensino Médio que propõe uma aprendizagem contemporânea, crítica e conectada às práticas sociais dos estudantes. Alinhada à BNCC e às diretrizes do Novo Ensino Médio, a obra articula listening, reading, speaking e writing a temas relevantes, experiências próximas ao cotidiano juvenil e diálogos com outras áreas do conhecimento. Ao integrar linguagem, cultura, cidadania e reflexão crítica, a coleção apoia professores e estudantes no desenvolvimento de competências para usar o inglês em diferentes contextos de comunicação e participação no mundo.",
+      "descricao_en": "**EN**\n*New Alive High* is an English language collection for upper secondary education that promotes contemporary, critical and socially connected learning experiences. Aligned with the BNCC and the guidelines of the New High School curriculum in Brazil, the series integrates listening, reading, speaking and writing with relevant themes, students’ everyday experiences and connections to other areas of knowledge. By bringing together language, culture, citizenship and critical reflection, the collection supports teachers and students in developing competencies to use English across different contexts of communication and participation in the world.",
+      "link": "#",
+      "imagem": "",
+      "botao1_label": "Volume único",
+      "botao1_url": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQCfubpnQ3T5QaTRvGZzWa7_AWYGVhzjp3LyrpEsPvF4TNA?e=VQQbdH",
+      "botao2_label": "",
+      "botao2_url": "",
+      "botao3_label": "",
+      "botao3_url": "",
+      "botao4_label": "",
+      "botao4_url": "",
+      "botao5_label": "",
+      "botao5_url": "",
+      "botao6_label": "",
+      "botao6_url": "",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 999
     }
   ]
 }
