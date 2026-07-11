@@ -1490,3 +1490,190 @@ body {
     font-size: 3.75rem;
   }
 }
+
+/* V87 — escala editorial mais leve e elegante no desktop */
+@media (min-width: 981px) {
+  .site-header {
+    padding: 22px clamp(28px, 3vw, 48px);
+  }
+
+  .brand {
+    font-size: .64rem;
+    letter-spacing: .15em;
+  }
+
+  .main-nav {
+    gap: clamp(16px, 1.55vw, 23px);
+    font-size: .61rem;
+    letter-spacing: .155em;
+  }
+
+  .home-shell {
+    padding: 96px clamp(48px, 6.2vw, 104px) 46px;
+  }
+
+  .hero-editorial {
+    min-height: calc(100svh - 142px);
+    grid-template-columns: minmax(330px, .88fr) minmax(420px, 1.12fr);
+    column-gap: clamp(40px, 5vw, 86px);
+    row-gap: clamp(24px, 4vh, 38px);
+  }
+
+  .keyword-list {
+    gap: 8px;
+  }
+
+  .keyword {
+    gap: 14px;
+    font-size: clamp(2.15rem, 2.75vw, 3.1rem);
+    line-height: 1.04;
+    letter-spacing: -.052em;
+  }
+
+  .keyword i {
+    width: 8px;
+    height: 8px;
+  }
+
+  .intro-copy {
+    max-width: 480px;
+    padding-top: 22px;
+  }
+
+  .intro-copy p {
+    max-width: 470px;
+    margin-bottom: .88rem;
+    font-size: clamp(.88rem, .82vw, .98rem);
+    line-height: 1.58;
+  }
+
+  .hero-system {
+    min-height: 470px;
+  }
+
+  .halo-wrap,
+  .dynamic-diagram-frame {
+    width: min(40vw, 590px);
+  }
+
+  .page-shell {
+    padding: 116px clamp(50px, 7vw, 120px) 68px;
+  }
+
+  .page-hero {
+    max-width: 720px;
+    margin-bottom: 46px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px !important;
+    font-size: .62rem !important;
+    letter-spacing: .2em;
+  }
+
+  .page-hero h1 {
+    margin-bottom: 16px;
+    font-size: clamp(2.2rem, 2.65vw, 3.05rem);
+    line-height: 1.04;
+    letter-spacing: -.05em;
+  }
+
+  .page-hero p {
+    max-width: 680px;
+    font-size: clamp(.96rem, .94vw, 1.08rem);
+    line-height: 1.48;
+  }
+
+  .section-row,
+  .publication-entry {
+    grid-template-columns: minmax(170px, .42fr) minmax(320px, 1fr);
+    gap: clamp(32px, 4.2vw, 62px);
+    padding: 24px 0;
+  }
+
+  .section-row h2,
+  .publication-entry > h2,
+  .supervision-student h2 {
+    font-size: .69rem;
+    line-height: 1.38;
+    letter-spacing: .17em;
+  }
+
+  .section-row p,
+  .publication-entry p {
+    font-size: clamp(.9rem, .86vw, .99rem);
+    line-height: 1.54;
+  }
+
+  .publication-entry h2:not(:first-child),
+  .publication-entry .publication-title,
+  .publication-entry strong,
+  .supervision-work-title strong {
+    font-size: clamp(.94rem, .92vw, 1.02rem);
+    line-height: 1.44;
+  }
+
+  .section-row a,
+  .publication-entry a,
+  .supervision-access-link,
+  .textbook-link-label {
+    font-size: .68rem;
+    letter-spacing: .13em;
+  }
+
+  .supervision-group {
+    margin-bottom: 38px;
+  }
+
+  .supervision-group-title,
+  .research-groups-section > h2 {
+    margin-bottom: 14px;
+    font-size: clamp(1.25rem, 1.4vw, 1.55rem);
+    line-height: 1.16;
+  }
+
+  .supervision-student .supervision-years,
+  .item-meta,
+  .publication-meta {
+    font-size: .72rem;
+  }
+
+  .academic-book-cover,
+  .textbook-link-thumb {
+    width: 108px;
+  }
+
+  .textbook-links-grid {
+    grid-template-columns: repeat(auto-fit, minmax(108px, 108px));
+    gap: 15px 18px;
+  }
+
+  .site-footer {
+    padding-block: 28px 34px;
+    font-size: .66rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .home-shell {
+    padding-inline: clamp(92px, 6.2vw, 118px);
+  }
+
+  .page-shell {
+    padding-inline: clamp(96px, 7vw, 132px);
+  }
+
+  .keyword {
+    font-size: 3rem;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+  }
+
+  .intro-copy p,
+  .section-row p,
+  .publication-entry p {
+    font-size: .96rem;
+  }
+}
