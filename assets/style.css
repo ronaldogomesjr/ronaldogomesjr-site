@@ -1161,3 +1161,50 @@ body {
     margin-bottom: 10px;
   }
 }
+
+
+/* V76 — ajuste fino de alinhamento nas orientações */
+.supervision-student,
+.supervision-work {
+  min-width: 0;
+  align-self: start;
+}
+
+.supervision-work {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.supervision-student h2,
+.supervision-work .supervision-work-title {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.supervision-student .supervision-years {
+  margin: 10px 0 0;
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.supervision-work .supervision-work-title {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.supervision-work .supervision-access-link {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+@media (max-width: 560px) {
+  .supervision-student .supervision-years {
+    margin-top: 6px;
+  }
+}
