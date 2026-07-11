@@ -88,7 +88,13 @@
       "botao6_url": "",
       "visivel": true,
       "destaque": false,
-      "ordem": 999
+      "ordem": 999,
+      "botao1_imagem": "/assets/uploads/livros-didaticos/1783804580682-alivehigh.png",
+      "botao2_imagem": "",
+      "botao3_imagem": "",
+      "botao4_imagem": "",
+      "botao5_imagem": "",
+      "botao6_imagem": ""
     }
   ]
 }
