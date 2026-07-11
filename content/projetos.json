@@ -14,7 +14,11 @@
       "link_en": "https://wun.ac.uk/wun/research/view/critical-ai-literacies-in-language-education-building-with-design-justice/",
       "visivel": true,
       "destaque": false,
-      "ordem": 1
+      "ordem": 1,
+      "link": "https://wun.ac.uk/wun/research/view/critical-ai-literacies-in-language-education-building-with-design-justice/",
+      "titulo": "Letramentos Críticos em IA na Educação Linguística",
+      "descricao": "Projeto internacional apoiado pela Worldwide Universities Network (WUN), voltado à investigação dos usos, percepções e impactos da inteligência artificial na educação linguística. A pesquisa analisa como estudantes e professores interagem com ferramentas de IA em diferentes contextos linguísticos, culturais e socioeconômicos, com atenção a questões de acesso, desigualdade, autoria, viés e justiça. Orientado pelos princípios da justiça de design, o projeto compreende a IA como um sistema sociotécnico e busca contribuir para práticas mais críticas, éticas e inclusivas no ensino e na aprendizagem de línguas.",
+      "parceiros": "UFMG, University of Leeds, Tecnológico de Monterrey, University of Sousse"
     },
     {
       "titulo_pt": "Tecnologias e Design na Educação de Línguas",
@@ -143,6 +147,22 @@
       "visivel": false,
       "destaque": false,
       "ordem": 11
+    },
+    {
+      "titulo_pt": "",
+      "titulo_en": "",
+      "descricao_pt": "",
+      "descricao_en": "",
+      "ano_inicio": "",
+      "ano_fim": "",
+      "periodo": "",
+      "parceiros_pt": "",
+      "parceiros_en": "",
+      "link_pt": "#",
+      "link_en": "#",
+      "visivel": false,
+      "destaque": false,
+      "ordem": 12
     }
   ]
 }
