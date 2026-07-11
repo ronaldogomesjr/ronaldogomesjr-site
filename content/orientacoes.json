@@ -2,13 +2,13 @@
   "items": [
     {
       "nivel": "mestrado",
-      "orientando": "Nome do orientando",
-      "titulo_pt": "Título do trabalho em português",
-      "titulo_en": "Title of the work in English",
-      "link_pt": "",
-      "link_en": "",
-      "ano_inicio": "",
-      "ano_fim": "",
+      "orientando": "Giovana Garcia Gonçalves Gutierrez",
+      "titulo_pt": "Affordances de ambientes informais para a aprendizagem de língua inglesa",
+      "titulo_en": "Affordances of informal environments for English language learning",
+      "link_pt": "https://repositorio.ufmg.br/items/c04a666b-14dc-4e15-967e-1ceb15e31707",
+      "link_en": "https://repositorio.ufmg.br/items/c04a666b-14dc-4e15-967e-1ceb15e31707",
+      "ano_inicio": "2018",
+      "ano_fim": "2020",
       "visivel": true,
       "ordem": 1
     }
