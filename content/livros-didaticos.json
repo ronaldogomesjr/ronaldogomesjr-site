@@ -25,32 +25,6 @@
       "botao6_url": "",
       "descricao_pt": "Ápis Mais Língua Inglesa é uma coleção para os anos iniciais do Ensino Fundamental que apresenta o inglês como prática de comunicação, descoberta e participação no mundo. A obra propõe uma aprendizagem leve, significativa e integrada, articulando escuta, fala, leitura e escrita a situações reais, músicas, jogos, atividades colaborativas e temas próximos ao universo das crianças. Com progressão em espiral, suporte bilíngue estratégico e atenção à formação crítica e cidadã, a coleção favorece o desenvolvimento linguístico dos estudantes desde os primeiros contatos com a língua inglesa.",
       "descricao_en": "Ápis Mais Língua Inglesa is a collection for the early years of primary education that approaches English as a practice of communication, discovery and participation in the world. The series promotes a meaningful and engaging learning experience by integrating listening, speaking, reading and writing with real-life situations, songs, games, collaborative tasks and themes connected to children’s everyday lives. With spiral progression, strategic bilingual support and a focus on critical and citizenship education, the collection supports students’ language development from their first encounters with English."
-    },
-    {
-      "titulo": "Textbook to add",
-      "editora": "Publisher",
-      "ano": "2026",
-      "nivel": "Basic education",
-      "descricao": "Short description of the textbook, collection, or authorial contribution.",
-      "link": "#",
-      "imagem": "",
-      "visivel": true,
-      "destaque": false,
-      "ordem": 2,
-      "botao1_label": "",
-      "botao1_url": "",
-      "botao2_label": "",
-      "botao2_url": "",
-      "botao3_label": "",
-      "botao3_url": "",
-      "botao4_label": "",
-      "botao4_url": "",
-      "botao5_label": "",
-      "botao5_url": "",
-      "botao6_label": "",
-      "botao6_url": "",
-      "descricao_pt": "Short description of the textbook, collection, or authorial contribution.",
-      "descricao_en": ""
     }
   ]
 }
