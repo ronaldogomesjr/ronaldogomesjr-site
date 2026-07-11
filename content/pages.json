@@ -196,6 +196,7 @@
       "meta_title_en": "",
       "meta_description_pt": "",
       "meta_description_en": "",
+      "foto": "/assets/uploads/sobre/1783447232723-fotosobre_.png",
       "section1_title_pt": "Trajetória",
       "section1_title_en": "Trajectory",
       "section1_text_pt": "Minha trajetória reúne docência, pesquisa, extensão, produção editorial e formação de professores, em projetos que aproximam linguagem, tecnologia e design.",
@@ -228,8 +229,7 @@
       "section4_link_label_en": "",
       "section4_link_url_pt": "",
       "section4_link_url_en": "",
-      "ordem": 5,
-      "foto": "/assets/uploads/sobre/1783447232723-fotosobre_.png"
+      "ordem": 5
     },
     {
       "id": "contato",
