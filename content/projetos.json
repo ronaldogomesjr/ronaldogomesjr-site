@@ -46,11 +46,7 @@
       "link_en": "#",
       "visivel": false,
       "destaque": false,
-      "ordem": 3,
-      "link": "#",
-      "titulo": "sabIA - Saberes sobre Inteligência Artificial para a Aprendizagem de Línguas",
-      "descricao": "O sabIA é uma plataforma de curadoria e exploração de ferramentas de inteligência artificial voltadas ao ensino e à aprendizagem de línguas. Desenvolvido no contexto da Área de Linguagem e Tecnologia e do DELTA Lab/FALE-UFMG, o projeto reúne, organiza e analisa recursos digitais que podem apoiar práticas de leitura, escrita, fala, escuta, vocabulário, tradução, planejamento textual e aprendizagem autônoma. Mais do que um catálogo de ferramentas, o sabIÁ propõe uma aproximação crítica, educativa e colaborativa da IA, incentivando estudantes, professores e pesquisadores a refletirem sobre usos, limites, possibilidades e implicações éticas das tecnologias na educação linguística.",
-      "parceiros": ""
+      "ordem": 3
     },
     {
       "titulo_pt": "",
@@ -147,22 +143,6 @@
       "visivel": false,
       "destaque": false,
       "ordem": 9
-    },
-    {
-      "titulo_pt": "",
-      "titulo_en": "",
-      "descricao_pt": "",
-      "descricao_en": "",
-      "ano_inicio": "",
-      "ano_fim": "",
-      "periodo": "",
-      "parceiros_pt": "",
-      "parceiros_en": "",
-      "link_pt": "#",
-      "link_en": "#",
-      "visivel": false,
-      "destaque": false,
-      "ordem": 10
     }
   ]
 }
