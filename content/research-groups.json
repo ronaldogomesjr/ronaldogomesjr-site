@@ -9,6 +9,16 @@
       "visivel": true,
       "ordem": 999,
       "id": "grupo-1783728634996"
+    },
+    {
+      "nome_pt": "DELTA - Design, Educação Linguística e Tecnologias Digitais",
+      "nome_en": "DELTA - Design, Language Education, and Digital Technologies",
+      "descricao_pt": "O DELTA reúne docentes e estudantes de graduação e pós-graduação interessados nas relações entre design, tecnologias digitais e ensino e aprendizagem de línguas. O grupo investiga modelos, ferramentas e experiências de design voltados à integração crítica e criativa das tecnologias na educação linguística, buscando contribuir para práticas pedagógicas inovadoras que ampliem a autonomia, a autoria e a participação de professores e aprendizes.",
+      "descricao_en": "DELTA brings together faculty members and undergraduate and graduate students interested in the relationships between design, digital technologies, and language teaching and learning. The group investigates design models, tools, and experiences for the critical and creative integration of technologies into language education, contributing to innovative pedagogical practices that strengthen teacher and learner agency, authorship, and participation.",
+      "link": "https://sites.google.com/view/deltaufmg/",
+      "visivel": true,
+      "ordem": 999,
+      "id": "grupo-1783729038733"
     }
   ]
 }
