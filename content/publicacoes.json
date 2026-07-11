@@ -263,6 +263,17 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783730014353
+    },
+    {
+      "tipo": "capitulo",
+      "ano": "2026",
+      "titulo": "Narrativas e Metáforas.",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Ronaldo Corrêa GOMES JUNIOR (Org.). Pesquisa Narrativa: Histórias sobre Ensinar e Aprender Línguas.",
+      "link": "https://www.pimentacultural.com/pesquisa-narrativa",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783730108788
     }
   ]
 }
