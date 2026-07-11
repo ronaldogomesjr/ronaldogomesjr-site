@@ -107,6 +107,18 @@
       "ano_fim": "2026",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "doutorado",
+      "orientando": "Carlos Henrique Rodrigues Valadares",
+      "titulo_pt": "Do Prompt à Prática: agência docente e o (re)design de práticas pedagógicas com inteligência artificial generativa no ensino de línguas",
+      "link_pt": "",
+      "titulo_en": "From Prompt to Practice: teacher agency and the (re)design of pedagogical practices with generative artificial intelligence in language teaching",
+      "link_en": "2022",
+      "ano_inicio": "",
+      "ano_fim": "",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
