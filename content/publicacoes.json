@@ -310,6 +310,18 @@
       "visivel": true,
       "destaque": false,
       "ordem": 1783802273592
+    },
+    {
+      "tipo": "livro_academico",
+      "ano": "2024",
+      "titulo": "Tecnologias digitais e aprendizagem de línguas além da sala de aula",
+      "autores": "Ronaldo Corrêa GOMES JUNIOR",
+      "veiculo": "Mercado de Letras",
+      "link": "https://1drv.ms/b/c/995525e7eb0e6c9c/IQC4ocT1ygxWTaKu7xG64EQ0AZo0J_MVh5aKjggleCs2fK8?e=umhNqc",
+      "imagem": "/assets/uploads/livros-academicos/1783802475110-alemdasaladeaula.png",
+      "visivel": true,
+      "destaque": false,
+      "ordem": 1783802415712
     }
   ]
 }
