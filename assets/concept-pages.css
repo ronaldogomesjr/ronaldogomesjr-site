@@ -269,3 +269,34 @@
     margin-inline: auto !important;
   }
 }
+
+/* V3 — títulos conceituais na mesma escala das demais páginas internas */
+body .concept-page .concept-copy.page-hero h1 {
+  font-size: 3rem !important;
+  line-height: 1.04 !important;
+  letter-spacing: -.05em !important;
+}
+
+@media (min-width: 981px) {
+  body .concept-page .concept-copy.page-hero h1 {
+    font-size: clamp(2.2rem, 2.65vw, 3.05rem) !important;
+  }
+}
+
+@media (min-width: 1500px) {
+  body .concept-page .concept-copy.page-hero h1 {
+    font-size: 3rem !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body .concept-page .concept-copy.page-hero h1 {
+    font-size: clamp(2rem, 8.5vw, 3.1rem) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body .concept-page .concept-copy.page-hero h1 {
+    font-size: clamp(1.78rem, 8vw, 2.55rem) !important;
+  }
+}

@@ -2069,3 +2069,32 @@ body .keyword {
     font-size: clamp(2.5rem, 11.4vw, 3.85rem) !important;
   }
 }
+
+/* V98 — títulos da página inicial na mesma escala dos títulos das páginas internas */
+body .keyword {
+  font-size: 3rem !important;
+}
+
+@media (min-width: 981px) {
+  body .keyword {
+    font-size: clamp(2.2rem, 2.65vw, 3.05rem) !important;
+  }
+}
+
+@media (min-width: 1500px) {
+  body .keyword {
+    font-size: 3rem !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body .keyword {
+    font-size: clamp(2rem, 8.5vw, 3.1rem) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body .keyword {
+    font-size: clamp(1.78rem, 8vw, 2.55rem) !important;
+  }
+}
