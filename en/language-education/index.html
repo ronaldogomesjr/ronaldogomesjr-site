@@ -6,7 +6,8 @@
   <title>Language education — Ronaldo Gomes Jr.</title>
   <meta name="description" content="Language education as a field of education, critical practice and knowledge production about language." />
   <link rel="stylesheet" href="/assets/style.css" />
-  <link rel="stylesheet" href="/assets/language-education.css?v=3" />
+  <link rel="stylesheet" href="/assets/language-education.css?v=5" />
+  <link rel="stylesheet" href="/assets/concept-pages.css?v=1" />
 </head>
 <body>
 <header class="site-header">
@@ -17,21 +18,72 @@
   </nav>
 </header>
 
-<main class="page-shell language-page" data-language-page data-lang="en">
-  <section class="language-hero">
-    <div class="page-hero language-copy">
+<main class="page-shell language-page concept-page" data-language-page data-lang="en">
+  <section class="language-hero concept-hero">
+    <div class="page-hero language-copy concept-copy">
       <h1 data-language-title>language education</h1>
       <p data-language-intro>Language education is understood as a field of education, critical practice and knowledge production about language. More than developing isolated skills, it brings together reading, writing, speaking, listening and reflection to expand repertoires, participation, authorship and understanding across different contexts.</p>
     </div>
 
-    <div class="language-art" aria-hidden="true">
-      <img src="/assets/language-education-art.png" alt="" />
+    <div class="language-dynamic-art concept-art" aria-hidden="true">
+      <svg class="language-dynamic-art__svg" viewBox="0 0 900 520" role="presentation">
+        <defs>
+          <filter id="langGlow">
+            <feGaussianBlur stdDeviation="3.2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <g class="language-art__layer language-art__layer--soft">
+          <path id="langPathA" class="language-art__line language-art__line--soft" d="M40 290 C120 250 175 255 240 235 C315 212 360 130 435 128 C522 126 558 222 648 224 C734 226 792 158 860 110"/>
+          <path id="langPathB" class="language-art__line language-art__line--soft" d="M55 350 C126 330 178 340 252 322 C340 300 380 192 460 184 C542 176 600 280 690 286 C764 292 820 252 880 212"/>
+          <path id="langPathC" class="language-art__line language-art__line--faint" d="M65 404 C155 366 225 382 300 360 C382 336 440 244 520 238 C614 230 658 318 754 324 C812 328 852 302 892 274"/>
+        </g>
+
+        <g class="language-art__layer language-art__layer--cross">
+          <path class="language-art__line language-art__line--cross" d="M208 42 C170 134 182 220 294 302"/>
+          <path class="language-art__line language-art__line--cross" d="M355 34 C324 112 334 198 430 270"/>
+          <path class="language-art__line language-art__line--cross" d="M598 36 C546 118 560 214 640 286"/>
+          <path class="language-art__line language-art__line--cross language-art__line--faint" d="M748 56 C714 132 716 214 786 292"/>
+          <path class="language-art__line language-art__line--cross language-art__line--faint" d="M286 404 C244 446 228 482 228 516"/>
+          <path class="language-art__line language-art__line--cross" d="M512 292 C476 372 486 456 584 516"/>
+          <path class="language-art__line language-art__line--cross language-art__line--faint" d="M760 356 C806 402 834 446 850 520"/>
+        </g>
+
+        <g class="language-art__layer language-art__layer--dashed">
+          <path id="langPathD" class="language-art__line language-art__line--dashed" d="M58 334 C146 334 206 318 280 278 C350 240 398 184 480 180 C582 176 654 274 736 274 C796 274 842 252 888 226"/>
+          <path id="langPathE" class="language-art__line language-art__line--dotted" d="M102 186 C182 174 256 162 344 152 C466 138 564 132 656 154 C744 174 806 176 878 150"/>
+        </g>
+
+        <g class="language-art__nodes">
+          <circle class="language-art__node language-art__node--main" cx="498" cy="200" r="7"/>
+          <circle class="language-art__node language-art__node--soft" cx="598" cy="356" r="6"/>
+          <circle class="language-art__node language-art__node--gold" cx="648" cy="258" r="5"/>
+          <circle class="language-art__node language-art__node--gold" cx="758" cy="398" r="4.5"/>
+          <circle class="language-art__node language-art__node--main" cx="228" cy="312" r="6"/>
+          <circle class="language-art__node language-art__node--main" cx="418" cy="128" r="4.5"/>
+          <circle class="language-art__node language-art__node--soft" cx="772" cy="208" r="5"/>
+        </g>
+
+        <circle class="language-art__pulse" r="5" filter="url(#langGlow)">
+          <animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#langPathA"/></animateMotion>
+        </circle>
+        <circle class="language-art__pulse language-art__pulse--gold" r="4.4" filter="url(#langGlow)">
+          <animateMotion dur="11s" begin="1.2s" repeatCount="indefinite" rotate="auto"><mpath href="#langPathD"/></animateMotion>
+        </circle>
+        <circle class="language-art__pulse" r="4" filter="url(#langGlow)">
+          <animateMotion dur="13s" begin=".8s" repeatCount="indefinite" rotate="auto"><mpath href="#langPathB"/></animateMotion>
+        </circle>
+        <circle class="language-art__pulse language-art__pulse--soft" r="3.6" filter="url(#langGlow)">
+          <animateMotion dur="16s" begin="2s" repeatCount="indefinite" rotate="auto"><mpath href="#langPathE"/></animateMotion>
+        </circle>
+      </svg>
     </div>
   </section>
 
-  <section class="language-perspective">
-    <div class="language-perspective__heading"><h2 data-language-perspective-title>Perspective</h2></div>
-    <p class="language-perspective__copy" data-language-perspective-text>Language is a social, historical and ethical practice. Language education creates conditions for each person to understand the world, express themselves, engage in dialogue and transform realities. This perspective values multiple voices, diversity, equity and the shared construction of meaning.</p>
+  <section class="language-perspective concept-perspective">
+    <div class="language-perspective__heading concept-perspective-heading"><h2 data-language-perspective-title>Perspective</h2></div>
+    <p class="language-perspective__copy concept-perspective-copy" data-language-perspective-text>Language is a social, historical and ethical practice. Language education creates conditions for each person to understand the world, express themselves, engage in dialogue and transform realities. This perspective values multiple voices, diversity, equity and the shared construction of meaning.</p>
   </section>
 </main>
 
@@ -39,6 +91,6 @@
 <script src="/assets/site.js"></script>
 <script src="/assets/site-content.js"></script>
 <script src="/assets/footer-links.js"></script>
-<script src="/assets/language-education.js?v=3"></script>
+<script src="/assets/language-education.js?v=4"></script>
 </body>
 </html>

@@ -60,16 +60,88 @@ body {
   color: var(--language-text);
 }
 
-.language-art {
-  width: min(100%, 840px);
+.language-dynamic-art {
+  width: min(100%, 880px);
   margin-left: auto;
 }
 
-.language-art img {
+.language-dynamic-art__svg {
   display: block;
   width: 100%;
   height: auto;
-  border: 0;
+  overflow: visible;
+}
+
+.language-art__line {
+  fill: none;
+  stroke: rgba(247, 244, 236, .92);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.language-art__line--soft {
+  stroke: rgba(247, 244, 236, .76);
+  stroke-width: 2.2;
+}
+
+.language-art__line--faint {
+  stroke: rgba(247, 244, 236, .42);
+  stroke-width: 1.35;
+}
+
+.language-art__line--cross {
+  stroke: rgba(247, 244, 236, .55);
+  stroke-width: 1.4;
+}
+
+.language-art__line--dashed {
+  stroke: rgba(208, 168, 103, .86);
+  stroke-width: 1.7;
+  stroke-dasharray: 8 14;
+  animation: langDash 14s linear infinite;
+}
+
+.language-art__line--dotted {
+  stroke: rgba(247, 244, 236, .2);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 9;
+  animation: langDashReverse 20s linear infinite;
+}
+
+.language-art__layer--soft {
+  animation: langFloatA 9s ease-in-out infinite;
+}
+
+.language-art__layer--cross {
+  animation: langFloatB 11s ease-in-out infinite;
+}
+
+.language-art__layer--dashed {
+  animation: langFloatC 10s ease-in-out infinite;
+}
+
+.language-art__node {
+  fill: rgba(247, 244, 236, .92);
+  opacity: .95;
+}
+
+.language-art__node--soft {
+  fill: rgba(247, 244, 236, .78);
+}
+
+.language-art__node--gold,
+.language-art__pulse--gold {
+  fill: rgba(208, 168, 103, .98);
+}
+
+.language-art__pulse {
+  fill: rgba(247, 244, 236, .98);
+}
+
+.language-art__pulse--soft {
+  fill: rgba(247, 244, 236, .72);
 }
 
 .language-perspective {
@@ -125,7 +197,7 @@ body {
     align-items: start;
   }
 
-  .language-art {
+  .language-dynamic-art {
     margin-inline: auto;
   }
 }
@@ -153,4 +225,36 @@ body .language-page .language-copy.page-hero p[data-language-intro],
 body .language-page .language-perspective__heading h2,
 body .language-page .language-perspective__copy {
   color: var(--language-text) !important;
+}
+
+
+/* arte dinâmica com fundo transparente */
+.language-dynamic-art,
+.language-dynamic-art__svg {
+  background: transparent !important;
+}
+
+@keyframes langDash { to { stroke-dashoffset: -88; } }
+@keyframes langDashReverse { to { stroke-dashoffset: 88; } }
+@keyframes langFloatA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes langFloatB {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+@keyframes langFloatC {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-art__layer--soft,
+  .language-art__layer--cross,
+  .language-art__layer--dashed,
+  .language-art__line--dashed,
+  .language-art__line--dotted {
+    animation: none !important;
+  }
 }

@@ -413,12 +413,3 @@ body {
     gap: 1rem;
   }
 }
-
-
-/* v12: make all visible text on Design page the same color */
-.design-page .design-copy.page-hero h1,
-.design-page .design-copy.page-hero p[data-design-intro],
-.design-page .design-perspective__heading h2,
-.design-page .design-perspective__copy {
-  color: var(--design-text) !important;
-}

@@ -1,0 +1,239 @@
+/*
+  Padronização compartilhada das páginas conceituais:
+  Design, Tecnologia digital e Educação linguística.
+*/
+
+.concept-page {
+  padding-top: 126px !important;
+  padding-bottom: 82px !important;
+}
+
+.concept-hero {
+  display: grid !important;
+  grid-template-columns: minmax(320px, .86fr) minmax(470px, 1.14fr) !important;
+  gap: clamp(3rem, 5vw, 6.25rem) !important;
+  align-items: start !important;
+  min-height: 460px;
+}
+
+.concept-copy.page-hero {
+  width: 100%;
+  max-width: 560px !important;
+  margin: 0 !important;
+  padding-top: 8px;
+}
+
+.concept-copy.page-hero h1 {
+  margin: 0 0 22px !important;
+  max-width: 560px;
+  font-family: var(--serif) !important;
+  font-size: clamp(4rem, 6.35vw, 6.8rem) !important;
+  font-weight: 500 !important;
+  line-height: .93 !important;
+  letter-spacing: -.068em !important;
+  text-transform: lowercase !important;
+  color: inherit !important;
+}
+
+.concept-copy.page-hero p {
+  margin: 0 !important;
+  max-width: 540px !important;
+  font-family: var(--serif) !important;
+  font-size: clamp(.98rem, 1.2vw, 1.12rem) !important;
+  line-height: 1.72 !important;
+  color: inherit !important;
+}
+
+/* A área visual ocupa o mesmo espaço nas três páginas. */
+.concept-art {
+  position: relative;
+  align-self: start;
+  justify-self: center;
+  margin: 0 !important;
+  min-height: 0 !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.concept-art,
+.concept-art svg,
+.concept-art__svg {
+  background: transparent !important;
+}
+
+.icon-system.concept-art {
+  width: min(100%, 460px) !important;
+  height: 460px !important;
+  aspect-ratio: 1 / 1 !important;
+}
+
+.wave-network.concept-art,
+.language-dynamic-art.concept-art {
+  width: min(100%, 700px) !important;
+  height: 460px !important;
+}
+
+.wave-network.concept-art .wave-network__svg,
+.language-dynamic-art.concept-art .language-dynamic-art__svg {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  overflow: visible !important;
+}
+
+.concept-perspective {
+  margin-top: clamp(2.25rem, 4vw, 3.5rem) !important;
+  padding-top: clamp(1.8rem, 3vw, 2.5rem) !important;
+  display: grid !important;
+  grid-template-columns: minmax(150px, .31fr) minmax(320px, 1fr) !important;
+  gap: clamp(1.75rem, 3.5vw, 4.25rem) !important;
+  align-items: start !important;
+}
+
+.concept-perspective-heading h2 {
+  margin: 0 !important;
+  font-family: var(--serif) !important;
+  font-size: clamp(1.45rem, 1.8vw, 1.75rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -.025em !important;
+  text-transform: none !important;
+  color: inherit !important;
+}
+
+.concept-perspective-heading h2::before {
+  width: 52px !important;
+  height: 1.5px !important;
+  margin-bottom: 14px !important;
+}
+
+.concept-perspective-copy {
+  margin: 0 !important;
+  max-width: 840px !important;
+  font-family: var(--sans) !important;
+  font-size: clamp(.86rem, .94vw, .94rem) !important;
+  line-height: 1.85 !important;
+  letter-spacing: 0 !important;
+  color: inherit !important;
+}
+
+/* Mantém a mesma cor em cada bloco de texto dentro de sua própria página. */
+.design-page .concept-copy h1,
+.design-page .concept-copy p,
+.design-page .concept-perspective-heading h2,
+.design-page .concept-perspective-copy {
+  color: var(--design-text) !important;
+}
+
+.tech-page .concept-copy h1,
+.tech-page .concept-copy p,
+.tech-page .concept-perspective-heading h2,
+.tech-page .concept-perspective-copy {
+  color: var(--tech-text) !important;
+}
+
+.language-page .concept-copy h1,
+.language-page .concept-copy p,
+.language-page .concept-perspective-heading h2,
+.language-page .concept-perspective-copy {
+  color: var(--language-text) !important;
+}
+
+@media (max-width: 1120px) {
+  .concept-page {
+    padding-top: 118px !important;
+  }
+
+  .concept-hero {
+    grid-template-columns: 1fr !important;
+    gap: 2.6rem !important;
+    min-height: 0;
+  }
+
+  .concept-copy.page-hero {
+    max-width: 690px !important;
+    padding-top: 0;
+  }
+
+  .concept-copy.page-hero h1,
+  .concept-copy.page-hero p {
+    max-width: 650px !important;
+  }
+
+  .icon-system.concept-art {
+    width: min(100%, 440px) !important;
+    height: 440px !important;
+  }
+
+  .wave-network.concept-art,
+  .language-dynamic-art.concept-art {
+    width: min(100%, 680px) !important;
+    height: 420px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .concept-page {
+    padding-top: 104px !important;
+    padding-bottom: 58px !important;
+  }
+
+  .concept-hero {
+    gap: 2rem !important;
+  }
+
+  .concept-copy.page-hero h1 {
+    margin-bottom: 18px !important;
+    font-size: clamp(3.25rem, 15vw, 4.8rem) !important;
+    line-height: .96 !important;
+  }
+
+  .concept-copy.page-hero p {
+    font-size: .94rem !important;
+    line-height: 1.7 !important;
+  }
+
+  .icon-system.concept-art {
+    width: min(100%, 320px) !important;
+    height: 320px !important;
+  }
+
+  .wave-network.concept-art,
+  .language-dynamic-art.concept-art {
+    width: min(100%, 390px) !important;
+    height: 300px !important;
+  }
+
+  .concept-perspective {
+    margin-top: 2rem !important;
+    padding-top: 1.6rem !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .concept-perspective-heading h2 {
+    font-size: 1.42rem !important;
+  }
+
+  .concept-perspective-copy {
+    font-size: .88rem !important;
+    line-height: 1.78 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .concept-copy.page-hero h1 {
+    font-size: clamp(3rem, 14.5vw, 4.2rem) !important;
+  }
+
+  .icon-system.concept-art {
+    width: min(100%, 292px) !important;
+    height: 292px !important;
+  }
+
+  .wave-network.concept-art,
+  .language-dynamic-art.concept-art {
+    height: 270px !important;
+  }
+}
