@@ -36,6 +36,46 @@ body {
 .main-nav a:hover { opacity: 1; color: var(--design-text) !important; }
 .brand-dots span { opacity: .95; }
 
+
+
+/* V11 — menu legível como nas demais páginas; conteúdo da página na cor do diagrama */
+.site-header {
+  background: rgba(254, 253, 249, .98);
+  border-bottom: 1px solid rgba(33, 34, 36, 0.08);
+  backdrop-filter: none;
+}
+
+.brand,
+.brand-name,
+.main-nav a,
+.menu-toggle span {
+  color: var(--ink) !important;
+}
+
+.lang-link {
+  color: var(--teal) !important;
+}
+
+.main-nav a {
+  opacity: 1;
+}
+
+.main-nav a:hover {
+  color: var(--teal) !important;
+}
+
+.design-page,
+.design-page .design-copy.page-hero h1,
+.design-page .design-copy.page-hero p[data-design-intro],
+.design-page .design-perspective__heading h2,
+.design-page .design-perspective__copy {
+  color: var(--design-text);
+}
+
+.design-page .design-copy.page-hero p[data-design-intro],
+.design-page .design-perspective__copy {
+  color: var(--design-text-soft);
+}
 .design-page {
   color: var(--design-text);
   padding-bottom: 96px;
