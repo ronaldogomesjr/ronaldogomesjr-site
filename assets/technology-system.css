@@ -218,3 +218,11 @@ body {
     gap: 1rem;
   }
 }
+
+/* v2 — título, descrição e perspectiva com a mesma cor */
+body .tech-page .tech-copy.page-hero h1,
+body .tech-page .tech-copy.page-hero p[data-tech-intro],
+body .tech-page .tech-perspective__heading h2,
+body .tech-page .tech-perspective__copy {
+  color: var(--tech-text) !important;
+}
