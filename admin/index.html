@@ -8,27 +8,20 @@
 </head>
 <body>
   <main class="admin-shell">
-
-      <p class="admin-photo-note">
-        Para alterar sua foto, selecione <strong>página: sobre / about — texto e foto</strong>,
-        clique em <strong>carregar</strong> e use o campo <strong>Foto da página sobre / about</strong>.
-      </p>
+    <p class="admin-photo-note">
+      Para alterar sua foto, selecione <strong>página: sobre / about — texto e foto</strong>,
+      clique em <strong>carregar</strong> e use o campo <strong>Foto da página sobre / about</strong>.
+    </p>
 
     <header class="admin-header">
-      <div>
-        <p class="eyebrow">painel de conteúdo</p>
-        <h1>ronaldo gomes jr.</h1>
-      </div>
+      <div><p class="eyebrow">painel de conteúdo</p><h1>ronaldo gomes jr.</h1></div>
       <a href="/pt/" class="back-link">ver site →</a>
     </header>
 
     <section class="admin-card" id="tokenPanel">
       <h2>1. conectar ao GitHub</h2>
       <p>Insira um token do GitHub com acesso de escrita ao repositório. O token fica salvo apenas neste navegador.</p>
-      <label>
-        Token GitHub
-        <input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off" />
-      </label>
+      <label>Token GitHub<input id="tokenInput" type="password" placeholder="github_pat_..." autocomplete="off" /></label>
       <div class="actions">
         <button id="saveTokenBtn" type="button">salvar e testar token</button>
         <button id="forgetTokenBtn" type="button" class="secondary">apagar token</button>
@@ -40,8 +33,7 @@
     <section class="admin-card">
       <h2>2. escolher conteúdo</h2>
       <div class="toolbar">
-        <label>
-          Conteúdo
+        <label>Conteúdo
           <select id="collectionSelect">
             <optgroup label="Configurações gerais">
               <option value="identidade">identidade e cabeçalho</option>
@@ -49,7 +41,6 @@
               <option value="menu-en">menu superior (en)</option>
               <option value="links">contato / contact e rodapé — bilíngue</option>
             </optgroup>
-
             <optgroup label="Páginas bilíngues">
               <option value="home">página inicial / home</option>
               <option value="page-pesquisa">página: pesquisa / research</option>
@@ -67,7 +58,6 @@
               <option value="page-orientacoes">página: orientações / supervisions — apresentação</option>
               <option value="paginas">estrutura: todas as páginas internas</option>
             </optgroup>
-
             <optgroup label="Conteúdos específicos">
               <option value="grupos-pesquisa">conteúdo da página: grupos de pesquisa / research groups</option>
               <option value="orientacoes">conteúdo da página: orientações / supervisions</option>
@@ -85,11 +75,7 @@
     </section>
 
     <section class="admin-grid">
-      <aside class="admin-card list-card">
-        <h2>itens</h2>
-        <div id="itemList" class="item-list"></div>
-      </aside>
-
+      <aside class="admin-card list-card"><h2>itens</h2><div id="itemList" class="item-list"></div></aside>
       <section class="admin-card editor-card">
         <h2>editar item</h2>
         <form id="editorForm" class="editor-form"></form>
@@ -102,5 +88,6 @@
   </main>
 
   <script src="/assets/admin-v86.js?v=86"></script>
+  <script src="/assets/admin-design-v1.js?v=1"></script>
 </body>
 </html>
