@@ -6,40 +6,69 @@
   <title>Design — Ronaldo Gomes Jr.</title>
   <meta name="description" content="Ronaldo Gomes Jr." />
   <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/design-system.css?v=1" />
 </head>
 <body>
-
 <header class="site-header">
   <a href="/pt/" class="brand" aria-label="Ronaldo Gomes Jr.">
     <span class="brand-dots" aria-hidden="true"><span></span><span></span><span></span></span>
     <span class="brand-name">RONALDO GOMES JR.</span>
   </a>
-  <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menu">
-    <span></span><span></span>
-  </button>
+  <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span></button>
   <nav class="main-nav" aria-label="Menu principal">
     <a href="/pt/pesquisa/">PESQUISA</a>
-<a href="/pt/projetos/">PROJETOS</a>
-<a href="/pt/publicacoes/">PUBLICAÇÕES</a>
-<a href="/pt/livros-didaticos/">LIVROS DIDÁTICOS</a>
-<a href="/pt/sobre/">SOBRE</a>
-<a href="/pt/contato/">CONTATO</a>
-<a class="lang-link" href="/en/">EN</a>
+    <a href="/pt/projetos/">PROJETOS</a>
+    <a href="/pt/orientacoes/">ORIENTAÇÕES</a>
+    <a href="/pt/publicacoes/">PUBLICAÇÕES</a>
+    <a href="/pt/livros-didaticos/">LIVROS DIDÁTICOS</a>
+    <a href="/pt/sobre/">SOBRE</a>
+    <a href="/pt/contato/">CONTATO</a>
+    <a class="lang-link" href="/en/design/">EN</a>
   </nav>
 </header>
 
-<main class="page-shell" data-page-shell data-page-slug="design" data-lang="pt">
-  <section class="page-hero">
-    <p class="eyebrow">Ronaldo Gomes Jr.</p>
-    <h1 data-page-title>design</h1>
-    <p data-page-intro>Design, aqui, é entendido como prática de criação, mediação e organização de experiências de aprendizagem.</p>
+<main class="page-shell design-page" data-design-page data-lang="pt">
+  <section class="design-hero">
+    <div class="design-copy">
+      <p class="eyebrow">Ronaldo Gomes Jr.</p>
+      <h1 data-design-title>design</h1>
+      <p data-design-intro>Design é entendido como prática de criação, mediação e organização de experiências de aprendizagem.</p>
+    </div>
+
+    <div class="design-network" aria-label="Diagrama sistêmico de design">
+      <svg viewBox="0 0 760 540" aria-hidden="true">
+        <ellipse class="design-orbit" cx="380" cy="270" rx="270" ry="190" />
+        <path class="design-path design-path--green" d="M132 112 C244 62 326 128 376 266 C428 412 564 450 664 368" />
+        <path class="design-path design-path--sage" d="M128 420 C224 350 246 214 376 266 C492 312 540 116 658 104" />
+        <path class="design-path design-path--gold" d="M130 116 C226 226 258 382 378 268 C494 160 548 250 665 366" />
+        <path class="design-path design-path--green" d="M129 421 C282 470 332 386 378 268 C430 137 526 74 658 104" />
+      </svg>
+      <div class="design-center"><div><strong data-design-center-title>design</strong><span data-design-center-text>Criação, mediação e organização de experiências de aprendizagem.</span></div></div>
+      <article class="design-node design-node--1"><h2 data-node-title="1">Pessoas</h2><p data-node-text="1">Sujeitos ativos no processo.</p></article>
+      <article class="design-node design-node--2"><h2 data-node-title="2">Linguagem</h2><p data-node-text="2">Produção de sentidos em práticas e mídias.</p></article>
+      <article class="design-node design-node--3"><h2 data-node-title="3">Tecnologias</h2><p data-node-text="3">Ferramentas e ambientes que ampliam possibilidades.</p></article>
+      <article class="design-node design-node--4"><h2 data-node-title="4">Contextos</h2><p data-node-text="4">Ambientes sociais e culturais que dão significado.</p></article>
+    </div>
   </section>
-  <section class="section-list" data-page-sections></section>
+
+  <section class="design-perspective">
+    <div class="design-perspective__intro">
+      <h2 data-perspective-title>Perspectiva</h2>
+      <p data-perspective-text>Na interface entre linguagem, tecnologia e educação, o design permite pensar experiências de aprendizagem mais significativas, críticas e participativas.</p>
+    </div>
+    <div class="design-steps">
+      <article class="design-step"><span class="design-step__number">01</span><h3 data-step-title="1">Pessoas</h3><p data-step-text="1">Sujeitos ativos no processo.</p></article>
+      <article class="design-step"><span class="design-step__number">02</span><h3 data-step-title="2">Linguagem</h3><p data-step-text="2">Produção de sentidos em práticas e mídias.</p></article>
+      <article class="design-step"><span class="design-step__number">03</span><h3 data-step-title="3">Tecnologias</h3><p data-step-text="3">Ferramentas e ambientes que ampliam possibilidades.</p></article>
+      <article class="design-step"><span class="design-step__number">04</span><h3 data-step-title="4">Contextos</h3><p data-step-text="4">Ambientes sociais e culturais que dão significado.</p></article>
+    </div>
+  </section>
 </main>
+
 <footer class="site-footer" data-site-footer data-lang="pt"><a href="#">Email</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/site-content.js"></script>
-<script src="/assets/page-content.js"></script>
 <script src="/assets/footer-links.js"></script>
+<script src="/assets/design-system.js?v=1"></script>
 </body>
 </html>
