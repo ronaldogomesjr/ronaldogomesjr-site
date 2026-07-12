@@ -331,105 +331,126 @@
 }
 
 
-/* V4 — nova arte da página Tecnologia digital */
-.tech-page .wave-network--data-stream.concept-art {
-  overflow: visible !important;
+/* V4 — arte da página Design com as 3 cores do site */
+:root {
+  --site-accent-design: #b0b7a5;
+  --site-accent-tech: #8fd8ee;
+  --site-accent-education: #e0c091;
+  --site-accent-cream: rgba(247, 244, 236, .96);
 }
 
-.tech-page .wave-network--data-stream .wave-network__svg {
-  width: 100% !important;
-  height: 100% !important;
-  transform: none !important;
+.design-page .icon-system.concept-art {
+  filter: saturate(1.02);
 }
 
-.tech-page .wave-network--data-stream .wave-network__mesh--fine {
-  stroke: rgba(246, 241, 231, .12);
-  stroke-width: 1.05;
+.design-page .icon-system.concept-art .icon-system__ring {
+  stroke: rgba(247, 244, 236, .18) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__grid--light {
-  stroke: rgba(246, 241, 231, .08);
+.design-page .icon-system.concept-art .icon-system__axis {
+  stroke: rgba(247, 244, 236, .16) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__guide--poly {
-  stroke: rgba(246, 241, 231, .12);
-  stroke-width: 1.15;
+.design-page .icon-system.concept-art .icon-system__path {
+  stroke: rgba(247, 244, 236, .42) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow {
-  fill: none;
-  vector-effect: non-scaling-stroke;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.design-page .icon-system.concept-art .icon-system__path-soft {
+  stroke: rgba(247, 244, 236, .18) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--hero {
-  stroke-width: 2.25;
+/* camadas com acentos cromáticos */
+.design-page .icon-system.concept-art .icon-system__svg .icon-system__path:nth-of-type(1) {
+  stroke: rgba(143, 216, 238, .72) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--blue {
-  stroke: url(#techFlowBlue);
+.design-page .icon-system.concept-art .icon-system__svg .icon-system__path:nth-of-type(2) {
+  stroke: rgba(224, 192, 145, .70) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--gold {
-  stroke: url(#techFlowGold);
+.design-page .icon-system.concept-art .icon-system__svg .icon-system__path:nth-of-type(3) {
+  stroke: rgba(176, 183, 165, .78) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--softblue {
-  stroke: rgba(122, 217, 250, .28);
-  stroke-width: 1.25;
+.design-page .icon-system.concept-art .icon-system__svg .icon-system__path-soft:nth-of-type(1) {
+  stroke: rgba(143, 216, 238, .28) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--softgold {
-  stroke: rgba(234, 187, 110, .26);
-  stroke-width: 1.2;
+.design-page .icon-system.concept-art .icon-system__svg .icon-system__path-soft:nth-of-type(2) {
+  stroke: rgba(224, 192, 145, .28) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--micro {
-  stroke: rgba(246, 241, 231, .48);
-  stroke-width: 1.05;
-  stroke-dasharray: 2 8;
-  animation: flowDash 18s linear infinite;
+.design-page .icon-system.concept-art .icon-system__svg .icon-system__path-soft:nth-of-type(3) {
+  stroke: rgba(176, 183, 165, .32) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--dashedX {
-  stroke-width: 1.35;
-  stroke-dasharray: 1 10;
-  animation: flowDash 16s linear infinite;
+.design-page .icon-system.concept-art .icon-system__glow {
+  background: var(--site-accent-cream) !important;
+  box-shadow:
+    0 0 0 18px rgba(247,244,236,.05),
+    0 0 36px rgba(143,216,238,.16),
+    0 0 48px rgba(224,192,145,.14) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--glow {
-  filter: url(#softTechGlow);
+.design-page .icon-system.concept-art .icon-system__glow::before {
+  border-color: rgba(143,216,238,.20) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__flow--delayA { animation: flowDash 24s linear infinite reverse; }
-.tech-page .wave-network--data-stream .wave-network__flow--delayB { animation: flowDash 20s linear infinite reverse; }
-.tech-page .wave-network--data-stream .wave-network__flow--delayC { animation: flowDash 22s linear infinite; }
-.tech-page .wave-network--data-stream .wave-network__flow--delayD { animation: flowDash 26s linear infinite reverse; }
-
-.tech-page .wave-network--data-stream .wave-network__pulse {
-  transform-origin: center;
+.design-page .icon-system.concept-art .icon-system__glow::after {
+  border-color: rgba(224,192,145,.18) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__pulse--blue {
-  fill: #9be8ff;
-  filter: drop-shadow(0 0 9px rgba(155, 232, 255, .65));
+/* órbitas */
+.design-page .icon-system.concept-art .orbit-layer--a::before {
+  border-color: rgba(143, 216, 238, .34) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__pulse--gold {
-  fill: #f4cb87;
-  filter: drop-shadow(0 0 9px rgba(244, 203, 135, .62));
+.design-page .icon-system.concept-art .orbit-layer--b::before {
+  border-color: rgba(224, 192, 145, .34) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__pulse--white {
-  fill: rgba(246, 241, 231, .96);
-  filter: drop-shadow(0 0 9px rgba(246, 241, 231, .55));
+.design-page .icon-system.concept-art .orbit-layer--c::before {
+  border-color: rgba(247, 244, 236, .26) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__node {
-  opacity: .82;
+.design-page .icon-system.concept-art .orbit-node {
+  background: rgba(247,244,236,.06) !important;
 }
 
-.tech-page .wave-network--data-stream .wave-network__node--white { fill: rgba(246, 241, 231, .88); }
-.tech-page .wave-network--data-stream .wave-network__node--gold { fill: rgba(244, 203, 135, .82); }
-.tech-page .wave-network--data-stream .wave-network__node--blue { fill: rgba(155, 232, 255, .78); }
+.design-page .icon-system.concept-art .orbit-layer--a .orbit-node {
+  border-color: rgba(143, 216, 238, .46) !important;
+  box-shadow:
+    0 0 0 10px rgba(143, 216, 238, .08),
+    0 0 20px rgba(143, 216, 238, .12) !important;
+}
+
+.design-page .icon-system.concept-art .orbit-layer--b .orbit-node {
+  border-color: rgba(224, 192, 145, .48) !important;
+  box-shadow:
+    0 0 0 10px rgba(224, 192, 145, .08),
+    0 0 20px rgba(224, 192, 145, .12) !important;
+}
+
+.design-page .icon-system.concept-art .orbit-layer--c .orbit-node {
+  border-color: rgba(247, 244, 236, .42) !important;
+  box-shadow:
+    0 0 0 10px rgba(247, 244, 236, .05),
+    0 0 18px rgba(247, 244, 236, .08) !important;
+}
+
+.design-page .icon-system.concept-art .orbit-layer--a .orbit-node svg {
+  stroke: rgba(143, 216, 238, .94) !important;
+}
+
+.design-page .icon-system.concept-art .orbit-layer--b .orbit-node svg {
+  stroke: rgba(224, 192, 145, .95) !important;
+}
+
+.design-page .icon-system.concept-art .orbit-layer--c .orbit-node svg {
+  stroke: rgba(247, 244, 236, .95) !important;
+}
+
+/* pontos internos discretos nas 3 cores */
+.design-page .icon-system.concept-art .icon-system__svg > circle[filter="url(#softGlow)"] {
+  fill: rgba(247, 244, 236, .95) !important;
+}
