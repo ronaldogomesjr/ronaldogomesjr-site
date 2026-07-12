@@ -6,7 +6,7 @@
   <title>Design — Ronaldo Gomes Jr.</title>
   <meta name="description" content="Design como prática sistêmica de criação, mediação e organização de experiências de aprendizagem." />
   <link rel="stylesheet" href="/assets/style.css?v=6" />
-  <link rel="stylesheet" href="/assets/design-system.css?v=6" />
+  <link rel="stylesheet" href="/assets/design-system.css?v=7" />
 </head>
 <body>
 <header class="site-header">
@@ -20,57 +20,54 @@
 <main class="page-shell design-page" data-design-page data-lang="pt">
   <section class="design-hero">
     <div class="page-hero design-copy">
-      <p class="eyebrow">Ronaldo Gomes Jr.</p>
       <h1 data-design-title>design</h1>
-      <p data-design-intro>Design é entendido como prática de criação, mediação e organização de experiências de aprendizagem.</p>
+      <p data-design-intro>Design é entendido como prática de criação, mediação e organização de experiências de aprendizagem. Mais do que uma dimensão estética ou instrumental, o design envolve escolhas pedagógicas, tecnológicas, discursivas e sociais que orientam modos de ensinar, aprender, interagir e produzir sentidos.</p>
     </div>
 
     <div class="design-network" aria-label="Diagrama sistêmico de design">
-      <svg class="design-network__drawing" viewBox="0 0 820 560" aria-hidden="true">
+      <svg class="design-network__drawing" viewBox="0 0 820 620" aria-hidden="true">
         <defs>
-          <marker id="arrow-sage" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
-            <path d="M0,0 L10,5 L0,10 z" fill="rgba(135,149,121,.78)" />
-          </marker>
-          <marker id="arrow-gold" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
-            <path d="M0,0 L10,5 L0,10 z" fill="rgba(199,159,105,.72)" />
-          </marker>
-          <marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
-            <path d="M0,0 L10,5 L0,10 z" fill="rgba(36,95,107,.66)" />
-          </marker>
-          <marker id="arrow-soft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
-            <path d="M0,0 L10,5 L0,10 z" fill="rgba(36,37,38,.28)" />
-          </marker>
+          <marker id="arrow-sage" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="rgba(135,149,121,.82)" /></marker>
+          <marker id="arrow-gold" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="rgba(199,159,105,.76)" /></marker>
+          <marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="rgba(85,136,150,.72)" /></marker>
         </defs>
 
-        <ellipse class="design-network__orbit" cx="430" cy="280" rx="224" ry="198" />
-        <ellipse class="design-network__micro" cx="430" cy="280" rx="168" ry="146" />
+        <circle class="design-network__orbit-soft" cx="430" cy="308" r="218" />
+        <circle class="design-network__orbit" cx="430" cy="308" r="170" />
+        <circle class="design-network__orbit-soft" cx="430" cy="308" r="132" />
+        <circle class="design-network__orbit" cx="430" cy="308" r="96" style="stroke-width:1.05; opacity:.4" />
 
-        <path class="design-network__ambient" d="M190 178 C276 108 412 94 562 122 C664 142 730 198 744 286" />
-        <path class="design-network__ambient" d="M196 382 C290 438 414 456 548 438 C652 424 724 378 744 296" />
-        <path class="design-network__ambient" d="M190 178 C168 252 170 326 196 382" />
-        <path class="design-network__ambient" d="M212 184 C252 248 260 328 232 392" />
-        <path class="design-network__ambient" d="M562 122 C648 152 716 214 742 298 C754 338 748 378 726 412" />
+        <path class="design-network__thread design-network__thread--sage" marker-end="url(#arrow-sage)" d="M430 108 C322 124 238 202 216 316 C198 410 250 500 340 546" />
+        <path class="design-network__thread design-network__thread--gold" marker-end="url(#arrow-gold)" d="M430 108 C536 120 624 188 666 284 C704 370 688 472 604 528" />
+        <path class="design-network__thread design-network__thread--teal" marker-end="url(#arrow-teal)" d="M604 528 C520 582 416 586 326 546 C250 512 202 440 212 350" />
+        <path class="design-network__thread design-network__thread--soft" marker-end="url(#arrow-sage)" d="M212 350 C220 262 290 196 382 174 C470 154 570 178 630 242" />
+        <path class="design-network__thread design-network__thread--gold" marker-end="url(#arrow-gold)" d="M228 420 C292 456 362 472 434 470 C514 468 576 448 640 404" />
+        <path class="design-network__thread design-network__thread--teal" marker-end="url(#arrow-teal)" d="M608 182 C560 224 524 274 510 336 C496 402 510 466 566 520" />
 
-        <path class="design-network__flow design-network__flow--sage" marker-end="url(#arrow-sage)" d="M188 170 C256 194 324 232 370 286 C412 336 460 404 520 450" />
-        <path class="design-network__flow design-network__flow--gold" marker-end="url(#arrow-gold)" d="M188 170 C292 114 420 102 546 128 C632 146 690 180 724 228" />
-        <path class="design-network__flow design-network__flow--soft" marker-end="url(#arrow-soft)" d="M318 286 C410 214 536 210 648 236 C692 246 724 264 742 288" />
-        <path class="design-network__flow design-network__flow--teal" marker-end="url(#arrow-teal)" d="M724 228 C744 264 752 312 746 358 C740 392 718 418 682 430" />
-        <path class="design-network__flow design-network__flow--teal" marker-end="url(#arrow-teal)" d="M682 430 C620 406 560 388 502 376 C470 370 446 366 430 368" />
-        <path class="design-network__flow design-network__flow--sage" marker-end="url(#arrow-sage)" d="M520 450 C474 438 422 426 364 420 C308 414 250 406 186 390" />
-        <path class="design-network__flow design-network__flow--gold" marker-end="url(#arrow-gold)" d="M186 390 C248 352 308 314 360 270 C408 230 456 194 506 162" />
-        <path class="design-network__flow design-network__flow--soft" marker-end="url(#arrow-soft)" d="M186 390 C300 434 430 444 566 424 C654 410 718 386 746 346" />
+        <path class="design-network__connector" d="M430 108 C430 176 430 228 430 258" />
+        <path class="design-network__connector" d="M634 190 C582 224 544 252 510 292" />
+        <path class="design-network__connector" d="M678 364 C610 354 556 344 510 330" />
+        <path class="design-network__connector" d="M494 532 C470 474 454 430 444 368" />
+        <path class="design-network__connector" d="M232 442 C300 410 352 382 398 340" />
 
-        <path class="design-network__connector" d="M188 170 C244 236 284 316 348 392" />
-        <path class="design-network__connector" d="M724 228 C640 240 554 272 474 324" />
-        <path class="design-network__connector" d="M520 450 C486 418 468 380 460 322" />
-        <path class="design-network__connector" d="M682 430 C602 392 536 362 474 330" />
-        <path class="design-network__connector" d="M186 390 C268 360 332 332 390 290" />
+        <path class="design-network__radial" d="M430 258 L430 140" />
+        <path class="design-network__radial" d="M510 292 L612 214" />
+        <path class="design-network__radial" d="M512 332 L654 356" />
+        <path class="design-network__radial" d="M444 368 L480 500" />
+        <path class="design-network__radial" d="M398 340 L274 420" />
 
-        <circle class="design-network__dot--gold design-network__pulse" cx="318" cy="286" r="15" />
-        <circle class="design-network__dot--sage design-network__pulse design-network__pulse--delay" cx="520" cy="204" r="6.5" />
-        <circle class="design-network__dot--sage design-network__pulse design-network__pulse--slow" cx="430" cy="366" r="8.5" />
+        <circle class="design-network__dot--sage design-network__pulse" cx="430" cy="156" r="6" />
+        <circle class="design-network__dot--gold design-network__pulse design-network__pulse--delay" cx="602" cy="216" r="5" />
+        <circle class="design-network__dot--teal design-network__pulse design-network__pulse--slow" cx="626" cy="350" r="6" />
+        <circle class="design-network__dot--sage design-network__pulse" cx="474" cy="498" r="5" />
+        <circle class="design-network__dot--gold design-network__pulse design-network__pulse--delay" cx="286" cy="414" r="5" />
+        <circle class="design-network__dot--sage" cx="330" cy="214" r="4" />
+        <circle class="design-network__dot--gold" cx="552" cy="444" r="4" />
+        <circle class="design-network__dot--teal" cx="520" cy="238" r="4" />
       </svg>
+
       <div class="design-center"><div><strong data-design-center-title>design</strong><span data-design-center-text>Mediação e organização de experiências de aprendizagem.</span></div></div>
+
       <article class="design-node design-node--people"><h2 data-node-title="1">Pessoas</h2><p data-node-text="1">Sujeitos ativos no processo.</p><i class="design-node__marker" aria-hidden="true"></i></article>
       <article class="design-node design-node--language"><h2 data-node-title="2">Linguagem</h2><p data-node-text="2">Sentidos que constroem realidades.</p><i class="design-node__marker" aria-hidden="true"></i></article>
       <article class="design-node design-node--contexts"><h2 data-node-title="3">Contextos</h2><p data-node-text="3">Ambientes que dão significado.</p><i class="design-node__marker" aria-hidden="true"></i></article>
@@ -81,7 +78,7 @@
 
   <section class="design-perspective" id="perspectiva">
     <div class="design-perspective__heading"><h2 data-perspective-title>Perspectiva</h2></div>
-    <p class="design-perspective__copy" data-perspective-text>Na interface entre linguagem, tecnologia e educação, o design permite pensar experiências de aprendizagem mais significativas, críticas e participativas.</p>
+    <p class="design-perspective__copy" data-perspective-text>Na interface entre linguagem, tecnologia e educação, o design permite pensar como materiais, ambientes, mídias, tarefas e recursos digitais podem favorecer experiências de aprendizagem mais significativas, críticas e participativas.</p>
     <div class="design-steps">
       <article class="design-step"><span class="design-step__number" data-step-number="1">01</span><p data-step-text="1">Parte da escuta e da compreensão de contextos reais.</p></article>
       <article class="design-step"><span class="design-step__number" data-step-number="2">02</span><p data-step-text="2">Articula saberes e recursos em configurações significativas.</p></article>
@@ -89,11 +86,9 @@
       <article class="design-step"><span class="design-step__number" data-step-number="4">04</span><p data-step-text="4">Gera transformações que se sustentam no tempo e na prática.</p></article>
     </div>
   </section>
-
-  <aside class="design-quote"><span class="design-quote__mark" aria-hidden="true">“</span><p data-design-quote>Essa perspectiva compreende professores e estudantes como sujeitos que não apenas utilizam tecnologias, mas também interpretam, adaptam, recriam e transformam práticas de linguagem em diferentes contextos.</p></aside>
 </main>
 
 <footer class="site-footer" data-site-footer data-lang="pt"><a href="#">Email</a></footer>
-<script src="/assets/site.js"></script><script src="/assets/site-content.js"></script><script src="/assets/footer-links.js"></script><script src="/assets/design-system.js?v=6"></script>
+<script src="/assets/site.js"></script><script src="/assets/site-content.js"></script><script src="/assets/footer-links.js"></script><script src="/assets/design-system.js?v=7"></script>
 </body>
 </html>
