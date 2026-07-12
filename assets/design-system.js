@@ -1,26 +1,9 @@
 (function () {
   'use strict';
 
-  const RAW_URL = 'https://raw.githubusercontent.com/ronaldogomesjr/ronaldogomesjr-site/main/content/design.json';
-  const LOCAL_URL = '/content/design.json';
-
-  function hasOwn(object, key) {
-    return Object.prototype.hasOwnProperty.call(object || {}, key);
-  }
-
-  function localized(data, key, lang) {
-    const localizedKey = `${key}_${lang}`;
-    if (hasOwn(data, localizedKey)) return data[localizedKey];
-    if (hasOwn(data, key)) return data[key];
-    return undefined;
-  }
-
-  function setText(root, selector, value) {
-    if (value === undefined || value === null) return;
-    root.querySelectorAll(selector).forEach((element) => {
-      element.textContent = String(value);
-    });
-  }
+  const PAGE_ID = 'design';
+  const RAW_URL = 'https://raw.githubusercontent.com/ronaldogomesjr/ronaldogomesjr-site/main/content/pages.json';
+  const LOCAL_URL = '/content/pages.json';
 
   async function fetchJson(url) {
     const separator = url.includes('?') ? '&' : '?';
@@ -32,7 +15,7 @@
     return response.json();
   }
 
-  async function loadData() {
+  async function loadDocument() {
     try {
       return await fetchJson(RAW_URL);
     } catch (rawError) {
@@ -41,31 +24,38 @@
     }
   }
 
+  function findPage(documentData) {
+    return Array.isArray(documentData?.items)
+      ? documentData.items.find((item) => item && item.id === PAGE_ID)
+      : null;
+  }
+
+  function value(item, field, lang) {
+    return item?.[`${field}_${lang}`];
+  }
+
+  function setText(root, selector, text) {
+    if (text === undefined || text === null) return;
+    root.querySelectorAll(selector).forEach((element) => { element.textContent = String(text); });
+  }
+
   async function render() {
     const root = document.querySelector('[data-design-page]');
     if (!root) return;
-
     const lang = root.dataset.lang === 'en' ? 'en' : 'pt';
-    const data = await loadData();
+    const page = findPage(await loadDocument());
+    if (!page) throw new Error('Página Design não encontrada em content/pages.json.');
 
-    setText(root, '[data-design-title]', localized(data, 'title', lang));
-    setText(root, '[data-design-intro]', localized(data, 'intro', lang));
-    setText(root, '[data-design-center-title]', localized(data, 'title', lang));
-    setText(root, '[data-design-center-text]', localized(data, 'center', lang));
-    setText(root, '[data-perspective-title]', localized(data, 'perspective_title', lang));
-    setText(root, '[data-perspective-text]', localized(data, 'perspective_text', lang));
+    setText(root, '[data-design-title]', value(page, 'title', lang));
+    setText(root, '[data-design-intro]', value(page, 'intro', lang));
+    setText(root, '[data-design-center-title]', value(page, 'title', lang));
+    setText(root, '[data-perspective-title]', value(page, 'section1_title', lang));
+    setText(root, '[data-perspective-text]', value(page, 'section1_text', lang));
 
-    const nodes = Array.isArray(data.nodes) ? data.nodes : [];
-    nodes.slice(0, 5).forEach((node, index) => {
-      const position = index + 1;
-      setText(root, `[data-node-title="${position}"]`, localized(node, 'title', lang));
-      setText(root, `[data-node-text="${position}"]`, localized(node, 'text', lang));
-    });
-
-    const metaTitle = localized(data, 'meta_title', lang);
-    const metaDescription = localized(data, 'meta_description', lang);
-    if (metaTitle !== undefined && metaTitle !== null) document.title = String(metaTitle);
-    if (metaDescription !== undefined && metaDescription !== null) {
+    const metaTitle = value(page, 'meta_title', lang);
+    const metaDescription = value(page, 'meta_description', lang);
+    if (metaTitle) document.title = String(metaTitle);
+    if (metaDescription) {
       let meta = document.querySelector('meta[name="description"]');
       if (!meta) {
         meta = document.createElement('meta');
