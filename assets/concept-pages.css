@@ -331,126 +331,169 @@
 }
 
 
-/* V4 — arte da página Design com as 3 cores do site */
+/* V5 — nova arte radial para a página Educação linguística */
 :root {
-  --site-accent-design: #b0b7a5;
-  --site-accent-tech: #8fd8ee;
-  --site-accent-education: #e0c091;
-  --site-accent-cream: rgba(247, 244, 236, .96);
+  --site-point-design: #b0b7a5;
+  --site-point-tech: #7bcfe8;
+  --site-point-edu: #d9be9b;
+  --site-point-cream: rgba(247, 244, 236, .96);
 }
 
-.design-page .icon-system.concept-art {
-  filter: saturate(1.02);
+.language-page .language-radiant-system.concept-art {
+  width: min(100%, 740px) !important;
+  height: 470px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.design-page .icon-system.concept-art .icon-system__ring {
-  stroke: rgba(247, 244, 236, .18) !important;
+.language-page .language-radiant-system .language-dynamic-art__svg {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
 }
 
-.design-page .icon-system.concept-art .icon-system__axis {
-  stroke: rgba(247, 244, 236, .16) !important;
+.language-page .language-radiant__halo {
+  fill: url(#langCoreGlow);
+  opacity: .92;
 }
 
-.design-page .icon-system.concept-art .icon-system__path {
-  stroke: rgba(247, 244, 236, .42) !important;
+.language-page .language-radiant__core {
+  fill: rgba(247, 244, 236, .74);
+  filter: drop-shadow(0 0 24px rgba(247,244,236,.35));
 }
 
-.design-page .icon-system.concept-art .icon-system__path-soft {
-  stroke: rgba(247, 244, 236, .18) !important;
+.language-page .language-radiant__core-ring {
+  fill: none;
+  stroke: rgba(247, 244, 236, .28);
+  stroke-width: 1.25;
 }
 
-/* camadas com acentos cromáticos */
-.design-page .icon-system.concept-art .icon-system__svg .icon-system__path:nth-of-type(1) {
-  stroke: rgba(143, 216, 238, .72) !important;
+.language-page .language-radiant__core-ring--thin {
+  stroke: rgba(247, 244, 236, .17);
+  stroke-width: 1;
 }
 
-.design-page .icon-system.concept-art .icon-system__svg .icon-system__path:nth-of-type(2) {
-  stroke: rgba(224, 192, 145, .70) !important;
+.language-page .language-radiant__core-ring--dash {
+  stroke: rgba(123, 207, 232, .34);
+  stroke-dasharray: 2 10;
+  animation: flowDash 16s linear infinite;
 }
 
-.design-page .icon-system.concept-art .icon-system__svg .icon-system__path:nth-of-type(3) {
-  stroke: rgba(176, 183, 165, .78) !important;
+.language-page .language-radiant__core-ring--outer {
+  stroke: rgba(176, 183, 165, .26);
 }
 
-.design-page .icon-system.concept-art .icon-system__svg .icon-system__path-soft:nth-of-type(1) {
-  stroke: rgba(143, 216, 238, .28) !important;
+.language-page .language-radiant__ray,
+.language-page .language-radiant__trail,
+.language-page .language-radiant__orbit {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.design-page .icon-system.concept-art .icon-system__svg .icon-system__path-soft:nth-of-type(2) {
-  stroke: rgba(224, 192, 145, .28) !important;
+.language-page .language-radiant__ray {
+  stroke-width: 1.7;
 }
 
-.design-page .icon-system.concept-art .icon-system__svg .icon-system__path-soft:nth-of-type(3) {
-  stroke: rgba(176, 183, 165, .32) !important;
+.language-page .language-radiant__ray--teal,
+.language-page .language-radiant__trail--teal,
+.language-page .language-radiant__pulse--teal,
+.language-page .language-radiant__node--teal,
+.language-page .language-radiant__spark--teal {
+  stroke: rgba(123, 207, 232, .78);
+  fill: rgba(123, 207, 232, .92);
 }
 
-.design-page .icon-system.concept-art .icon-system__glow {
-  background: var(--site-accent-cream) !important;
-  box-shadow:
-    0 0 0 18px rgba(247,244,236,.05),
-    0 0 36px rgba(143,216,238,.16),
-    0 0 48px rgba(224,192,145,.14) !important;
+.language-page .language-radiant__ray--gold,
+.language-page .language-radiant__trail--gold,
+.language-page .language-radiant__pulse--gold,
+.language-page .language-radiant__node--gold,
+.language-page .language-radiant__spark--gold {
+  stroke: rgba(224, 192, 145, .82);
+  fill: rgba(224, 192, 145, .94);
 }
 
-.design-page .icon-system.concept-art .icon-system__glow::before {
-  border-color: rgba(143,216,238,.20) !important;
+.language-page .language-radiant__ray--sage,
+.language-page .language-radiant__trail--sage,
+.language-page .language-radiant__pulse--sage,
+.language-page .language-radiant__node--sage,
+.language-page .language-radiant__spark--sage {
+  stroke: rgba(176, 183, 165, .82);
+  fill: rgba(176, 183, 165, .92);
 }
 
-.design-page .icon-system.concept-art .icon-system__glow::after {
-  border-color: rgba(224,192,145,.18) !important;
+.language-page .language-radiant__ray--cream,
+.language-page .language-radiant__trail--cream,
+.language-page .language-radiant__pulse--cream,
+.language-page .language-radiant__node--cream {
+  stroke: rgba(247, 244, 236, .88);
+  fill: rgba(247, 244, 236, .96);
 }
 
-/* órbitas */
-.design-page .icon-system.concept-art .orbit-layer--a::before {
-  border-color: rgba(143, 216, 238, .34) !important;
+.language-page .language-radiant__trail {
+  stroke-width: 1.08;
+  opacity: .68;
 }
 
-.design-page .icon-system.concept-art .orbit-layer--b::before {
-  border-color: rgba(224, 192, 145, .34) !important;
+.language-page .language-radiant__orbit {
+  stroke: rgba(247,244,236,.22);
+  stroke-width: 1.1;
 }
 
-.design-page .icon-system.concept-art .orbit-layer--c::before {
-  border-color: rgba(247, 244, 236, .26) !important;
+.language-page .language-radiant__orbit--dash {
+  stroke-dasharray: 2 9;
+  animation: flowDash 18s linear infinite reverse;
 }
 
-.design-page .icon-system.concept-art .orbit-node {
-  background: rgba(247,244,236,.06) !important;
+.language-page .language-radiant__orbit--soft {
+  stroke: rgba(224,192,145,.18);
 }
 
-.design-page .icon-system.concept-art .orbit-layer--a .orbit-node {
-  border-color: rgba(143, 216, 238, .46) !important;
-  box-shadow:
-    0 0 0 10px rgba(143, 216, 238, .08),
-    0 0 20px rgba(143, 216, 238, .12) !important;
+.language-page .language-radiant__node {
+  filter: drop-shadow(0 0 8px rgba(247,244,236,.16));
 }
 
-.design-page .icon-system.concept-art .orbit-layer--b .orbit-node {
-  border-color: rgba(224, 192, 145, .48) !important;
-  box-shadow:
-    0 0 0 10px rgba(224, 192, 145, .08),
-    0 0 20px rgba(224, 192, 145, .12) !important;
+.language-page .language-radiant__spark {
+  opacity: .88;
+  animation: techPulse 4.8s ease-in-out infinite;
 }
 
-.design-page .icon-system.concept-art .orbit-layer--c .orbit-node {
-  border-color: rgba(247, 244, 236, .42) !important;
-  box-shadow:
-    0 0 0 10px rgba(247, 244, 236, .05),
-    0 0 18px rgba(247, 244, 236, .08) !important;
+.language-page .language-radiant__pulse {
+  transform-origin: center;
 }
 
-.design-page .icon-system.concept-art .orbit-layer--a .orbit-node svg {
-  stroke: rgba(143, 216, 238, .94) !important;
+.language-page .language-radiant__pulse--teal {
+  filter: drop-shadow(0 0 9px rgba(123,207,232,.56));
+}
+.language-page .language-radiant__pulse--gold {
+  filter: drop-shadow(0 0 9px rgba(224,192,145,.56));
+}
+.language-page .language-radiant__pulse--sage {
+  filter: drop-shadow(0 0 9px rgba(176,183,165,.52));
+}
+.language-page .language-radiant__pulse--cream {
+  filter: drop-shadow(0 0 9px rgba(247,244,236,.5));
 }
 
-.design-page .icon-system.concept-art .orbit-layer--b .orbit-node svg {
-  stroke: rgba(224, 192, 145, .95) !important;
+@media (max-width: 1120px) {
+  .language-page .language-radiant-system.concept-art {
+    width: min(100%, 700px) !important;
+    height: 430px !important;
+  }
 }
 
-.design-page .icon-system.concept-art .orbit-layer--c .orbit-node svg {
-  stroke: rgba(247, 244, 236, .95) !important;
+@media (max-width: 760px) {
+  .language-page .language-radiant-system.concept-art {
+    width: min(100%, 420px) !important;
+    height: 320px !important;
+  }
 }
 
-/* pontos internos discretos nas 3 cores */
-.design-page .icon-system.concept-art .icon-system__svg > circle[filter="url(#softGlow)"] {
-  fill: rgba(247, 244, 236, .95) !important;
+@media (max-width: 420px) {
+  .language-page .language-radiant-system.concept-art {
+    width: min(100%, 390px) !important;
+    height: 294px !important;
+  }
 }
