@@ -139,10 +139,10 @@ a { color: inherit; text-decoration: none; }
   min-width: 0;
   overflow-wrap: break-word;
   max-width: 555px;
-  font-family: var(--serif);
-  font-size: clamp(1rem, 1.08vw, 1.13rem);
-  line-height: 1.72;
-  color: #2a2a29;
+  font-family: var(--sans);
+  font-size: clamp(.88rem, .98vw, .96rem);
+  line-height: 1.85;
+  color: var(--muted);
 }
 .keyword-list {
   display: grid;
@@ -233,13 +233,14 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -.06em;
   font-size: clamp(3rem, 4.45vw, 5.35rem);
   line-height: 1;
+  color: var(--ink);
 }
 .page-hero p {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(1.15rem, 1.6vw, 1.65rem);
-  line-height: 1.5;
-  color: var(--muted);
+  line-height: 1.56;
+  color: #3b3c39;
 }
 .section-list, .publication-list { border-top: 1px solid var(--line); }
 .section-row, .publication-entry {
@@ -258,9 +259,9 @@ a { color: inherit; text-decoration: none; }
 }
 .section-row p, .publication-entry p {
   margin: 0;
-  font-family: var(--serif);
-  font-size: clamp(1.02rem, 1.35vw, 1.28rem);
-  line-height: 1.65;
+  font-family: var(--sans);
+  font-size: clamp(.88rem, .98vw, .96rem);
+  line-height: 1.85;
   color: var(--muted);
 }
 .section-row a {
@@ -278,6 +279,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -.045em;
   text-transform: none;
   font-weight: 500;
+  line-height: 1.15;
 }
 
 /* V65 — metadados dos artigos em linhas separadas */
@@ -292,6 +294,14 @@ a { color: inherit; text-decoration: none; }
 .publication-details .publication-source {
   margin-top: 2px;
   color: var(--muted);
+}
+.publication-details .publication-authors,
+.publication-details .publication-source,
+.item-meta,
+.cms-message {
+  font-family: var(--sans);
+  font-size: clamp(.86rem, .96vw, .94rem);
+  line-height: 1.8;
 }
 .site-footer {
   display: flex;
@@ -362,7 +372,7 @@ a { color: inherit; text-decoration: none; }
   }
   .keyword i { width: 10px; height: 10px; }
   .intro-copy { max-width: none; padding-top: 26px; }
-  .intro-copy p { font-size: 1rem; line-height: 1.68; }
+  .intro-copy p { font-size: .94rem; line-height: 1.8; }
   .page-shell { padding: 42px 24px 64px; }
   .section-row { grid-template-columns: 1fr; gap: 12px; }
 }
@@ -384,7 +394,7 @@ a { color: inherit; text-decoration: none; }
     font-size: clamp(2rem, 8.5vw, 3.1rem);
     line-height: 1.04;
   }
-  .page-hero p { font-size: 1.08rem; }
+  .page-hero p { font-size: 1.08rem; line-height: 1.58; }
   .site-footer { gap: 14px 20px; padding: 26px 18px 34px; font-size: .68rem; }
 }
 
@@ -441,10 +451,14 @@ a { color: inherit; text-decoration: none; }
     padding-top: 22px;
   }
   .intro-copy p,
-  .page-hero p,
   .section-row p,
   .publication-entry p {
-    font-size: .94rem;
+    font-size: .88rem;
+    line-height: 1.75;
+    overflow-wrap: break-word;
+  }
+  .page-hero p {
+    font-size: 1rem;
     line-height: 1.58;
     overflow-wrap: break-word;
   }
@@ -1896,5 +1910,71 @@ body .research-groups-section > h2.networks-section-title {
 @media (max-width: 980px) {
   body .research-groups-host {
     margin-top: 42px;
+  }
+}
+
+/* V93 — padronização tipográfica global solicitada */
+body .page-hero h1 {
+  font-family: var(--serif) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.06em !important;
+  text-transform: lowercase !important;
+  color: var(--ink) !important;
+}
+
+body .page-hero p {
+  font-family: var(--serif) !important;
+  font-size: clamp(1.15rem, 1.6vw, 1.65rem) !important;
+  line-height: 1.56 !important;
+  color: #3b3c39 !important;
+}
+
+body .intro-copy p,
+body .section-row p,
+body .publication-entry p,
+body .publication-authors,
+body .publication-source,
+body .publication-meta,
+body .supervision-years,
+body .item-meta,
+body .cms-message {
+  font-family: var(--sans) !important;
+  font-size: clamp(.88rem, .98vw, .96rem) !important;
+  line-height: 1.85 !important;
+  color: var(--muted) !important;
+}
+
+@media (max-width: 980px) {
+  body .intro-copy p,
+  body .section-row p,
+  body .publication-entry p,
+  body .publication-authors,
+  body .publication-source,
+  body .publication-meta,
+  body .supervision-years,
+  body .item-meta,
+  body .cms-message {
+    font-size: .94rem !important;
+    line-height: 1.8 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body .page-hero p {
+    font-size: 1rem !important;
+    line-height: 1.58 !important;
+  }
+
+  body .intro-copy p,
+  body .section-row p,
+  body .publication-entry p,
+  body .publication-authors,
+  body .publication-source,
+  body .publication-meta,
+  body .supervision-years,
+  body .item-meta,
+  body .cms-message {
+    font-size: .88rem !important;
+    line-height: 1.75 !important;
   }
 }
