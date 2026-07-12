@@ -10,7 +10,10 @@ const include = [
   "content",
   "en",
   "pt",
-  "index.html"
+  "index.html",
+  "favicon.ico",
+  "favicon.svg",
+  "apple-touch-icon.png"
 ];
 
 fs.rmSync(out, { recursive: true, force: true });
