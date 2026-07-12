@@ -270,33 +270,62 @@
   }
 }
 
-/* V3 — títulos conceituais na mesma escala das demais páginas internas */
-body .concept-page .concept-copy.page-hero h1 {
-  font-size: 3rem !important;
-  line-height: 1.04 !important;
-  letter-spacing: -.05em !important;
+
+/* V3 — tecnologia digital: arte maior e centralizada */
+.tech-page .wave-network.concept-art {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-inline: auto !important;
 }
 
-@media (min-width: 981px) {
-  body .concept-page .concept-copy.page-hero h1 {
-    font-size: clamp(2.2rem, 2.65vw, 3.05rem) !important;
+.tech-page .wave-network.concept-art .wave-network__svg {
+  width: calc(100% + 72px) !important;
+  height: 100% !important;
+  max-width: none !important;
+  transform: translateX(-36px) !important;
+  transform-origin: center center !important;
+}
+
+@media (min-width: 1121px) {
+  .tech-page .wave-network.concept-art {
+    width: min(100%, 900px) !important;
+    height: 560px !important;
   }
 }
 
-@media (min-width: 1500px) {
-  body .concept-page .concept-copy.page-hero h1 {
-    font-size: 3rem !important;
+@media (max-width: 1120px) {
+  .tech-page .wave-network.concept-art {
+    width: min(100%, 820px) !important;
+    height: 480px !important;
+  }
+
+  .tech-page .wave-network.concept-art .wave-network__svg {
+    width: calc(100% + 60px) !important;
+    transform: translateX(-30px) !important;
   }
 }
 
 @media (max-width: 760px) {
-  body .concept-page .concept-copy.page-hero h1 {
-    font-size: clamp(2rem, 8.5vw, 3.1rem) !important;
+  .tech-page .wave-network.concept-art {
+    width: min(100%, 460px) !important;
+    height: 360px !important;
+  }
+
+  .tech-page .wave-network.concept-art .wave-network__svg {
+    width: calc(100% + 44px) !important;
+    transform: translateX(-22px) !important;
   }
 }
 
 @media (max-width: 420px) {
-  body .concept-page .concept-copy.page-hero h1 {
-    font-size: clamp(1.78rem, 8vw, 2.55rem) !important;
+  .tech-page .wave-network.concept-art {
+    width: min(100%, 430px) !important;
+    height: 330px !important;
+  }
+
+  .tech-page .wave-network.concept-art .wave-network__svg {
+    width: calc(100% + 36px) !important;
+    transform: translateX(-18px) !important;
   }
 }
