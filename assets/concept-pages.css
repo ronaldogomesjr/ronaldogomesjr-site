@@ -329,3 +329,107 @@
     transform: translateX(-18px) !important;
   }
 }
+
+
+/* V4 — nova arte da página Tecnologia digital */
+.tech-page .wave-network--data-stream.concept-art {
+  overflow: visible !important;
+}
+
+.tech-page .wave-network--data-stream .wave-network__svg {
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+}
+
+.tech-page .wave-network--data-stream .wave-network__mesh--fine {
+  stroke: rgba(246, 241, 231, .12);
+  stroke-width: 1.05;
+}
+
+.tech-page .wave-network--data-stream .wave-network__grid--light {
+  stroke: rgba(246, 241, 231, .08);
+}
+
+.tech-page .wave-network--data-stream .wave-network__guide--poly {
+  stroke: rgba(246, 241, 231, .12);
+  stroke-width: 1.15;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--hero {
+  stroke-width: 2.25;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--blue {
+  stroke: url(#techFlowBlue);
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--gold {
+  stroke: url(#techFlowGold);
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--softblue {
+  stroke: rgba(122, 217, 250, .28);
+  stroke-width: 1.25;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--softgold {
+  stroke: rgba(234, 187, 110, .26);
+  stroke-width: 1.2;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--micro {
+  stroke: rgba(246, 241, 231, .48);
+  stroke-width: 1.05;
+  stroke-dasharray: 2 8;
+  animation: flowDash 18s linear infinite;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--dashedX {
+  stroke-width: 1.35;
+  stroke-dasharray: 1 10;
+  animation: flowDash 16s linear infinite;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--glow {
+  filter: url(#softTechGlow);
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--delayA { animation: flowDash 24s linear infinite reverse; }
+.tech-page .wave-network--data-stream .wave-network__flow--delayB { animation: flowDash 20s linear infinite reverse; }
+.tech-page .wave-network--data-stream .wave-network__flow--delayC { animation: flowDash 22s linear infinite; }
+.tech-page .wave-network--data-stream .wave-network__flow--delayD { animation: flowDash 26s linear infinite reverse; }
+
+.tech-page .wave-network--data-stream .wave-network__pulse {
+  transform-origin: center;
+}
+
+.tech-page .wave-network--data-stream .wave-network__pulse--blue {
+  fill: #9be8ff;
+  filter: drop-shadow(0 0 9px rgba(155, 232, 255, .65));
+}
+
+.tech-page .wave-network--data-stream .wave-network__pulse--gold {
+  fill: #f4cb87;
+  filter: drop-shadow(0 0 9px rgba(244, 203, 135, .62));
+}
+
+.tech-page .wave-network--data-stream .wave-network__pulse--white {
+  fill: rgba(246, 241, 231, .96);
+  filter: drop-shadow(0 0 9px rgba(246, 241, 231, .55));
+}
+
+.tech-page .wave-network--data-stream .wave-network__node {
+  opacity: .82;
+}
+
+.tech-page .wave-network--data-stream .wave-network__node--white { fill: rgba(246, 241, 231, .88); }
+.tech-page .wave-network--data-stream .wave-network__node--gold { fill: rgba(244, 203, 135, .82); }
+.tech-page .wave-network--data-stream .wave-network__node--blue { fill: rgba(155, 232, 255, .78); }
