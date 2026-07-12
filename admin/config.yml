@@ -16,6 +16,49 @@ collections:
   - name: "conteudo"
     label: "Conteúdo do site"
     files:
+      - label: "Página Design"
+        name: "pagina_design"
+        file: "content/design.json"
+        format: "json"
+        fields:
+          - {label: "Título — PT", name: "title_pt", widget: "string"}
+          - {label: "Título — EN", name: "title_en", widget: "string"}
+          - {label: "Introdução — PT", name: "intro_pt", widget: "text"}
+          - {label: "Introdução — EN", name: "intro_en", widget: "text"}
+          - {label: "Texto central do diagrama — PT", name: "center_pt", widget: "text"}
+          - {label: "Texto central do diagrama — EN", name: "center_en", widget: "text"}
+          - label: "Nós do diagrama"
+            name: "nodes"
+            widget: "list"
+            min: 5
+            max: 5
+            summary: "{{fields.title_pt}} / {{fields.title_en}}"
+            fields:
+              - {label: "Título — PT", name: "title_pt", widget: "string"}
+              - {label: "Título — EN", name: "title_en", widget: "string"}
+              - {label: "Descrição — PT", name: "text_pt", widget: "text"}
+              - {label: "Descrição — EN", name: "text_en", widget: "text"}
+          - {label: "Título da perspectiva — PT", name: "perspective_title_pt", widget: "string"}
+          - {label: "Título da perspectiva — EN", name: "perspective_title_en", widget: "string"}
+          - {label: "Texto da perspectiva — PT", name: "perspective_text_pt", widget: "text"}
+          - {label: "Texto da perspectiva — EN", name: "perspective_text_en", widget: "text"}
+          - label: "Etapas"
+            name: "steps"
+            widget: "list"
+            min: 4
+            max: 4
+            summary: "{{fields.number}} — {{fields.text_pt}}"
+            fields:
+              - {label: "Número", name: "number", widget: "string"}
+              - {label: "Texto — PT", name: "text_pt", widget: "text"}
+              - {label: "Texto — EN", name: "text_en", widget: "text"}
+          - {label: "Frase final — PT", name: "quote_pt", widget: "text"}
+          - {label: "Frase final — EN", name: "quote_en", widget: "text"}
+          - {label: "Título SEO — PT", name: "meta_title_pt", widget: "string", required: false}
+          - {label: "Título SEO — EN", name: "meta_title_en", widget: "string", required: false}
+          - {label: "Descrição SEO — PT", name: "meta_description_pt", widget: "text", required: false}
+          - {label: "Descrição SEO — EN", name: "meta_description_en", widget: "text", required: false}
+
       - label: "Publicações"
         name: "publicacoes"
         file: "content/publicacoes.json"
@@ -98,45 +141,3 @@ collections:
               - {label: "Visível no site", name: "visivel", widget: "boolean", default: true}
               - {label: "Ordem", name: "ordem", widget: "number", value_type: "int", required: false}
 
-      - label: "Página Design"
-        name: "pagina_design"
-        file: "content/design.json"
-        format: "json"
-        fields:
-          - {label: "Título — PT", name: "title_pt", widget: "string"}
-          - {label: "Título — EN", name: "title_en", widget: "string"}
-          - {label: "Introdução — PT", name: "intro_pt", widget: "text"}
-          - {label: "Introdução — EN", name: "intro_en", widget: "text"}
-          - {label: "Texto central do diagrama — PT", name: "center_pt", widget: "text"}
-          - {label: "Texto central do diagrama — EN", name: "center_en", widget: "text"}
-          - label: "Nós do diagrama"
-            name: "nodes"
-            widget: "list"
-            min: 5
-            max: 5
-            summary: "{{fields.title_pt}} / {{fields.title_en}}"
-            fields:
-              - {label: "Título — PT", name: "title_pt", widget: "string"}
-              - {label: "Título — EN", name: "title_en", widget: "string"}
-              - {label: "Descrição — PT", name: "text_pt", widget: "text"}
-              - {label: "Descrição — EN", name: "text_en", widget: "text"}
-          - {label: "Título da perspectiva — PT", name: "perspective_title_pt", widget: "string"}
-          - {label: "Título da perspectiva — EN", name: "perspective_title_en", widget: "string"}
-          - {label: "Texto da perspectiva — PT", name: "perspective_text_pt", widget: "text"}
-          - {label: "Texto da perspectiva — EN", name: "perspective_text_en", widget: "text"}
-          - label: "Etapas"
-            name: "steps"
-            widget: "list"
-            min: 4
-            max: 4
-            summary: "{{fields.number}} — {{fields.text_pt}}"
-            fields:
-              - {label: "Número", name: "number", widget: "string"}
-              - {label: "Texto — PT", name: "text_pt", widget: "text"}
-              - {label: "Texto — EN", name: "text_en", widget: "text"}
-          - {label: "Frase final — PT", name: "quote_pt", widget: "text"}
-          - {label: "Frase final — EN", name: "quote_en", widget: "text"}
-          - {label: "Título SEO — PT", name: "meta_title_pt", widget: "string", required: false}
-          - {label: "Título SEO — EN", name: "meta_title_en", widget: "string", required: false}
-          - {label: "Descrição SEO — PT", name: "meta_description_pt", widget: "text", required: false}
-          - {label: "Descrição SEO — EN", name: "meta_description_en", widget: "text", required: false}
