@@ -59,6 +59,24 @@ collections:
           - {label: "Descrição SEO — PT", name: "meta_description_pt", widget: "text", required: false}
           - {label: "Descrição SEO — EN", name: "meta_description_en", widget: "text", required: false}
 
+      - label: "Página Tecnologia Digital"
+        name: "pagina_tecnologia_digital"
+        file: "content/tecnologia-digital.json"
+        format: "json"
+        fields:
+          - {label: "Título — PT", name: "title_pt", widget: "string"}
+          - {label: "Título — EN", name: "title_en", widget: "string"}
+          - {label: "Introdução — PT", name: "intro_pt", widget: "text"}
+          - {label: "Introdução — EN", name: "intro_en", widget: "text"}
+          - {label: "Título da perspectiva — PT", name: "perspective_title_pt", widget: "string"}
+          - {label: "Título da perspectiva — EN", name: "perspective_title_en", widget: "string"}
+          - {label: "Texto da perspectiva — PT", name: "perspective_text_pt", widget: "text"}
+          - {label: "Texto da perspectiva — EN", name: "perspective_text_en", widget: "text"}
+          - {label: "Título SEO — PT", name: "meta_title_pt", widget: "string", required: false}
+          - {label: "Título SEO — EN", name: "meta_title_en", widget: "string", required: false}
+          - {label: "Descrição SEO — PT", name: "meta_description_pt", widget: "text", required: false}
+          - {label: "Descrição SEO — EN", name: "meta_description_en", widget: "text", required: false}
+
       - label: "Publicações"
         name: "publicacoes"
         file: "content/publicacoes.json"
