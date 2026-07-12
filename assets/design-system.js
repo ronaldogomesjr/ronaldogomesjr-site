@@ -39,7 +39,6 @@
     set(root, '[data-design-intro]', localized(data, 'intro', lang));
     set(root, '[data-design-center-title]', localized(data, 'title', lang));
     set(root, '[data-design-center-text]', localized(data, 'center', lang));
-    set(root, '[data-design-button]', localized(data, 'button', lang));
     set(root, '[data-perspective-title]', localized(data, 'perspective_title', lang));
     set(root, '[data-perspective-text]', localized(data, 'perspective_text', lang));
     set(root, '[data-design-quote]', localized(data, 'quote', lang));

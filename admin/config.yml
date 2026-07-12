@@ -109,8 +109,6 @@ collections:
           - {label: "Introdução — EN", name: "intro_en", widget: "text"}
           - {label: "Texto central do diagrama — PT", name: "center_pt", widget: "text"}
           - {label: "Texto central do diagrama — EN", name: "center_en", widget: "text"}
-          - {label: "Botão — PT", name: "button_pt", widget: "string"}
-          - {label: "Botão — EN", name: "button_en", widget: "string"}
           - label: "Nós do diagrama"
             name: "nodes"
             widget: "list"

@@ -6,7 +6,7 @@
   <title>Design — Ronaldo Gomes Jr.</title>
   <meta name="description" content="Design como prática sistêmica de criação, mediação e organização de experiências de aprendizagem." />
   <link rel="stylesheet" href="/assets/style.css" />
-  <link rel="stylesheet" href="/assets/design-system.css?v=2" />
+  <link rel="stylesheet" href="/assets/design-system.css?v=3" />
 </head>
 <body>
 <header class="site-header">
@@ -23,24 +23,49 @@
       <p class="eyebrow">Ronaldo Gomes Jr.</p>
       <h1 data-design-title>design</h1>
       <p data-design-intro>Design é entendido como prática de criação, mediação e organização de experiências de aprendizagem.</p>
-      <a class="design-explore" href="#perspectiva"><span data-design-button>Explorar perspectiva</span><span aria-hidden="true">↓</span></a>
     </div>
 
     <div class="design-network" aria-label="Diagrama sistêmico de design">
       <svg class="design-network__drawing" viewBox="0 0 820 560" aria-hidden="true">
+        <defs>
+          <marker id="arrow-sage" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L10,5 L0,10 z" fill="rgba(135,149,121,.78)" />
+          </marker>
+          <marker id="arrow-gold" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L10,5 L0,10 z" fill="rgba(199,159,105,.72)" />
+          </marker>
+          <marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L10,5 L0,10 z" fill="rgba(36,95,107,.66)" />
+          </marker>
+          <marker id="arrow-soft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L10,5 L0,10 z" fill="rgba(36,37,38,.34)" />
+          </marker>
+        </defs>
+
         <ellipse class="design-network__orbit" cx="410" cy="280" rx="286" ry="225" />
-        <ellipse class="design-network__micro" cx="410" cy="280" rx="188" ry="168" />
-        <path class="design-network__path design-network__path--gold" d="M150 118 C270 68 402 84 544 160 C646 215 690 282 718 350" />
-        <path class="design-network__path design-network__path--sage" d="M154 121 C212 226 270 312 406 278 C520 248 620 310 708 350" />
-        <path class="design-network__path design-network__path--neutral" d="M156 120 C320 118 420 198 516 302 C578 370 620 422 568 494" />
-        <path class="design-network__path design-network__path--teal" d="M160 448 C256 380 326 352 420 286 C528 210 614 170 664 112" />
-        <path class="design-network__path design-network__path--gold" d="M160 448 C262 476 370 488 472 440 C576 390 630 372 712 350" />
-        <path class="design-network__path design-network__path--sage" d="M160 448 C286 390 340 278 416 282 C500 286 538 400 568 494" />
-        <path class="design-network__connector" d="M194 148 L330 248 M632 144 L490 238 M676 342 L500 300 M552 470 L470 336 M190 420 L332 316" />
-        <circle class="design-network__dot--sage" cx="516" cy="254" r="7" />
-        <circle class="design-network__dot--gold" cx="335" cy="257" r="16" />
-        <circle class="design-network__dot--sage" cx="440" cy="356" r="9" />
-        <path class="design-network__arrow" d="M216 134 l10 2 -6 8z M662 346 l9 -3 -2 10z M568 474 l-8 6 -1 -10z M175 430 l-4 -10 10 3z" />
+        <ellipse class="design-network__micro" cx="410" cy="280" rx="192" ry="170" />
+
+        <path class="design-network__ambient" d="M176 140 C250 46 430 40 602 110 C696 148 735 236 720 332" />
+        <path class="design-network__ambient" d="M184 440 C302 514 474 522 590 462 C674 418 724 330 700 244" />
+        <path class="design-network__ambient" d="M198 428 C170 314 188 182 274 110 C354 42 502 40 588 110" />
+
+        <path class="design-network__flow design-network__flow--sage" marker-end="url(#arrow-sage)" d="M196 126 C260 150 318 182 350 238 C372 274 394 320 440 352 C480 380 520 412 552 468" />
+        <path class="design-network__flow design-network__flow--gold" marker-end="url(#arrow-gold)" d="M196 126 C306 74 452 62 578 110 C626 128 656 144 676 160" />
+        <path class="design-network__flow design-network__flow--soft" marker-end="url(#arrow-soft)" d="M334 258 C400 208 470 186 548 184 C610 182 658 214 684 250" />
+        <path class="design-network__flow design-network__flow--teal" marker-end="url(#arrow-teal)" d="M684 250 C722 286 736 324 716 358 C694 394 650 418 598 430" />
+        <path class="design-network__flow design-network__flow--teal" marker-end="url(#arrow-teal)" d="M716 358 C656 346 590 338 520 350 C486 356 470 364 454 384" />
+        <path class="design-network__flow design-network__flow--sage" marker-end="url(#arrow-sage)" d="M454 384 C430 420 402 446 360 458 C314 470 256 466 200 432" />
+        <path class="design-network__flow design-network__flow--gold" marker-end="url(#arrow-gold)" d="M200 432 C266 382 320 336 360 298 C394 266 426 234 448 206" />
+        <path class="design-network__flow design-network__flow--soft" marker-end="url(#arrow-soft)" d="M200 432 C310 456 428 460 524 434 C612 410 674 390 716 358" />
+        <path class="design-network__connector" d="M196 126 C228 264 260 360 352 434" />
+        <path class="design-network__connector" d="M676 160 C612 206 546 252 468 318" />
+        <path class="design-network__connector" d="M552 468 C504 430 482 392 468 320" />
+        <path class="design-network__connector" d="M598 430 C530 398 484 366 450 336" />
+        <path class="design-network__connector" d="M200 432 C278 390 326 346 356 302" />
+
+        <circle class="design-network__dot--gold design-network__pulse" cx="334" cy="258" r="15" />
+        <circle class="design-network__dot--sage design-network__pulse design-network__pulse--delay" cx="518" cy="196" r="6.5" />
+        <circle class="design-network__dot--sage design-network__pulse design-network__pulse--slow" cx="440" cy="352" r="8.5" />
       </svg>
       <div class="design-center"><div><strong data-design-center-title>design</strong><span data-design-center-text>Mediação e organização de experiências de aprendizagem.</span></div></div>
       <article class="design-node design-node--people"><h2 data-node-title="1">Pessoas</h2><p data-node-text="1">Sujeitos ativos no processo.</p><i class="design-node__marker" aria-hidden="true"></i></article>
@@ -66,6 +91,6 @@
 </main>
 
 <footer class="site-footer" data-site-footer data-lang="pt"><a href="#">Email</a></footer>
-<script src="/assets/site.js"></script><script src="/assets/site-content.js"></script><script src="/assets/footer-links.js"></script><script src="/assets/design-system.js?v=2"></script>
+<script src="/assets/site.js"></script><script src="/assets/site-content.js"></script><script src="/assets/footer-links.js"></script><script src="/assets/design-system.js?v=3"></script>
 </body>
 </html>
