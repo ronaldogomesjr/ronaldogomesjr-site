@@ -1,0 +1,33 @@
+{
+  "title_pt": "design",
+  "title_en": "design",
+  "intro_pt": "Design é entendido como prática de criação, mediação e organização de experiências de aprendizagem. Mais do que uma dimensão estética ou instrumental, o design envolve escolhas pedagógicas, tecnológicas, discursivas e sociais que orientam modos de ensinar, aprender, interagir e produzir sentidos.",
+  "intro_en": "Design is understood as a practice of creating, mediating and organising learning experiences. More than an aesthetic or instrumental dimension, design involves pedagogical, technological, discursive and social choices that shape ways of teaching, learning, interacting and making meaning.",
+  "center_pt": "Mediação e organização de experiências de aprendizagem.",
+  "center_en": "Mediation and organisation of learning experiences.",
+  "button_pt": "Explorar perspectiva",
+  "button_en": "Explore perspective",
+  "nodes": [
+    {"title_pt": "Pessoas", "title_en": "People", "text_pt": "Sujeitos ativos no processo.", "text_en": "Active participants in the process."},
+    {"title_pt": "Linguagem", "title_en": "Language", "text_pt": "Sentidos que constroem realidades.", "text_en": "Meanings that shape realities."},
+    {"title_pt": "Contextos", "title_en": "Contexts", "text_pt": "Ambientes que dão significado.", "text_en": "Environments that give meaning."},
+    {"title_pt": "Tecnologias", "title_en": "Technologies", "text_pt": "Mídias e ferramentas que potencializam.", "text_en": "Media and tools that expand possibilities."},
+    {"title_pt": "Experiências", "title_en": "Experiences", "text_pt": "Aprendizagens que geram sentido.", "text_en": "Learning that creates meaning."}
+  ],
+  "perspective_title_pt": "Perspectiva",
+  "perspective_title_en": "Perspective",
+  "perspective_text_pt": "Na interface entre linguagem, tecnologia e educação, o design permite pensar como materiais, ambientes, mídias, tarefas e recursos digitais podem favorecer experiências de aprendizagem mais significativas, críticas e participativas.",
+  "perspective_text_en": "At the intersection of language, technology and education, design helps us consider how materials, environments, media, tasks and digital resources can support more meaningful, critical and participatory learning experiences.",
+  "steps": [
+    {"number": "01", "text_pt": "Parte da escuta e da compreensão de contextos reais.", "text_en": "Begins with listening and understanding real contexts."},
+    {"number": "02", "text_pt": "Articula saberes e recursos em configurações significativas.", "text_en": "Connects knowledge and resources in meaningful configurations."},
+    {"number": "03", "text_pt": "Cria condições para experiências de aprendizagem mais ativas e inclusivas.", "text_en": "Creates conditions for more active and inclusive learning experiences."},
+    {"number": "04", "text_pt": "Gera transformações que se sustentam no tempo e na prática.", "text_en": "Generates transformations sustained over time and in practice."}
+  ],
+  "quote_pt": "Essa perspectiva compreende professores e estudantes como sujeitos que não apenas utilizam tecnologias, mas também interpretam, adaptam, recriam e transformam práticas de linguagem em diferentes contextos.",
+  "quote_en": "This perspective understands teachers and students not only as users of technologies, but also as people who interpret, adapt, recreate and transform language practices across different contexts.",
+  "meta_title_pt": "Design — Ronaldo Gomes Jr.",
+  "meta_title_en": "Design — Ronaldo Gomes Jr.",
+  "meta_description_pt": "Design como prática sistêmica de criação, mediação e organização de experiências de aprendizagem.",
+  "meta_description_en": "Design as a systemic practice of creating, mediating and organising learning experiences."
+}

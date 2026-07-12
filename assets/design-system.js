@@ -1,72 +1,72 @@
 (function () {
-  function value(page, key, lang) {
-    return String(page[`${key}_${lang}`] || page[key] || '').trim();
-  }
-
-  function setText(root, selector, text) {
+  const text = (value) => String(value || '').trim();
+  const localized = (data, key, lang) => text(data[`${key}_${lang}`] || data[key]);
+  const set = (root, selector, value) => {
     const element = root.querySelector(selector);
-    if (element && text) element.textContent = text;
+    if (element && text(value)) element.textContent = text(value);
+  };
+
+  async function loadData(lang) {
+    try {
+      const response = await fetch('/content/design.json', { cache: 'no-store' });
+      if (response.ok) return response.json();
+    } catch (_) {}
+
+    const response = await fetch('/content/pages.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Conteúdo indisponível');
+    const payload = await response.json();
+    const page = (payload.items || []).find((item) => item.id === 'design');
+    if (!page) throw new Error('Página Design não encontrada');
+    return {
+      title_pt: page.title_pt,
+      title_en: page.title_en,
+      intro_pt: page.intro_pt,
+      intro_en: page.intro_en,
+      perspective_title_pt: page.section1_title_pt,
+      perspective_title_en: page.section1_title_en,
+      perspective_text_pt: page.section1_text_pt,
+      perspective_text_en: page.section1_text_en
+    };
   }
 
   async function render() {
     const root = document.querySelector('[data-design-page]');
     if (!root) return;
+    const lang = root.dataset.lang || 'pt';
+    const data = await loadData(lang);
 
-    const lang = root.getAttribute('data-lang') || 'pt';
-    const response = await fetch('/content/pages.json', { cache: 'no-store' });
-    if (!response.ok) return;
+    set(root, '[data-design-title]', localized(data, 'title', lang));
+    set(root, '[data-design-intro]', localized(data, 'intro', lang));
+    set(root, '[data-design-center-title]', localized(data, 'title', lang));
+    set(root, '[data-design-center-text]', localized(data, 'center', lang));
+    set(root, '[data-design-button]', localized(data, 'button', lang));
+    set(root, '[data-perspective-title]', localized(data, 'perspective_title', lang));
+    set(root, '[data-perspective-text]', localized(data, 'perspective_text', lang));
+    set(root, '[data-design-quote]', localized(data, 'quote', lang));
 
-    const data = await response.json();
-    const page = (data.items || []).find((item) => item.id === 'design' || item.slug_pt === 'design' || item.slug_en === 'design');
-    if (!page) return;
+    (data.nodes || []).slice(0, 5).forEach((node, index) => {
+      set(root, `[data-node-title="${index + 1}"]`, localized(node, 'title', lang));
+      set(root, `[data-node-text="${index + 1}"]`, localized(node, 'text', lang));
+    });
 
-    const defaults = lang === 'en'
-      ? [
-          ['People', 'Active participants in the process.'],
-          ['Language', 'Meaning-making across practices and media.'],
-          ['Technologies', 'Tools and environments that expand possibilities.'],
-          ['Contexts', 'Social and cultural settings that shape experience.']
-        ]
-      : [
-          ['Pessoas', 'Sujeitos ativos no processo.'],
-          ['Linguagem', 'Produção de sentidos em práticas e mídias.'],
-          ['Tecnologias', 'Ferramentas e ambientes que ampliam possibilidades.'],
-          ['Contextos', 'Ambientes sociais e culturais que dão significado.']
-        ];
+    (data.steps || []).slice(0, 4).forEach((step, index) => {
+      set(root, `[data-step-number="${index + 1}"]`, step.number || String(index + 1).padStart(2, '0'));
+      set(root, `[data-step-text="${index + 1}"]`, localized(step, 'text', lang));
+    });
 
-    setText(root, '[data-design-title]', value(page, 'title', lang));
-    setText(root, '[data-design-intro]', value(page, 'intro', lang));
-    setText(root, '[data-design-center-title]', value(page, 'title', lang));
-
-    const intro = value(page, 'intro', lang);
-    const centerText = intro.split(/\n|\./).map((part) => part.trim()).find(Boolean) || '';
-    setText(root, '[data-design-center-text]', centerText);
-
-    const perspectiveTitle = value(page, 'section1_title', lang) || (lang === 'en' ? 'Perspective' : 'Perspectiva');
-    const perspectiveText = value(page, 'section1_text', lang);
-    setText(root, '[data-perspective-title]', perspectiveTitle);
-    setText(root, '[data-perspective-text]', perspectiveText);
-
-    for (let index = 0; index < 4; index += 1) {
-      const section = index + 1;
-      const title = value(page, `section${section}_title`, lang) || defaults[index][0];
-      const text = value(page, `section${section}_text`, lang) || defaults[index][1];
-      setText(root, `[data-node-title="${section}"]`, title);
-      setText(root, `[data-node-text="${section}"]`, text);
-      setText(root, `[data-step-title="${section}"]`, title);
-      setText(root, `[data-step-text="${section}"]`, text);
-    }
-
-    const metaTitle = value(page, 'meta_title', lang);
-    const metaDescription = value(page, 'meta_description', lang);
+    const metaTitle = localized(data, 'meta_title', lang);
+    const metaDescription = localized(data, 'meta_description', lang);
     if (metaTitle) document.title = metaTitle;
     if (metaDescription) {
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute('content', metaDescription);
+      let meta = document.querySelector('meta[name="description"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'description';
+        document.head.appendChild(meta);
+      }
+      meta.content = metaDescription;
     }
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    render().catch(function () {});
-  });
+  document.addEventListener('DOMContentLoaded', () => render().catch(() => {}));
 })();
