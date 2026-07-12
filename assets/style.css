@@ -2058,3 +2058,14 @@ body .keyword {
     font-size: clamp(2.7rem, 12.4vw, 4.15rem) !important;
   }
 }
+
+/* V97 — palavras conceituais da página inicial ligeiramente menores */
+body .keyword {
+  font-size: clamp(3rem, 4.45vw, 5.3rem) !important;
+}
+
+@media (max-width: 760px) {
+  body .keyword {
+    font-size: clamp(2.5rem, 11.4vw, 3.85rem) !important;
+  }
+}
