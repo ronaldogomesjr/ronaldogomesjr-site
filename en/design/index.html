@@ -4,15 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Design — Ronaldo Gomes Jr.</title>
-  <meta name="description" content="Design como prática sistêmica de criação, mediação e organização de experiências de aprendizagem." />
-  <link rel="stylesheet" href="/assets/style.css?v=8" />
-  <link rel="stylesheet" href="/assets/design-system.css?v=8" />
+  <meta name="description" content="Design as a systemic practice of creating, mediating and organising learning experiences." />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/design-system.css?v=10" />
 </head>
 <body>
 <header class="site-header">
-  <a href="/en/" class="brand" aria-label="Ronaldo Gomes Jr."><span class="brand-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-name">RONALDO GOMES JR.</span></a>
+  <a href="/en/" class="brand" aria-label="Ronaldo Gomes Jr.">
+    <span class="brand-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="brand-name">RONALDO GOMES JR.</span>
+  </a>
   <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
-  <nav class="main-nav" aria-label="Main menu"><a href="/en/research/">RESEARCH</a><a href="/en/projects/">PROJECTS</a><a href="/en/supervisions/">SUPERVISIONS</a><a href="/en/publications/">PUBLICATIONS</a><a href="/en/textbooks/">TEXTBOOKS</a><a href="/en/about/">ABOUT</a><a href="/en/contact/">CONTACT</a><a class="lang-link" href="/pt/design/">PT</a></nav>
+  <nav class="main-nav" aria-label="Main menu">
+    <a href="/en/research/">RESEARCH</a>
+    <a href="/en/projects/">PROJECTS</a>
+    <a href="/en/supervisions/">SUPERVISIONS</a>
+    <a href="/en/publications/">PUBLICATIONS</a>
+    <a href="/en/textbooks/">TEXTBOOKS</a>
+    <a href="/en/about/">ABOUT</a>
+    <a href="/en/contact/">CONTACT</a>
+    <a class="lang-link" href="/pt/design/">PT</a>
+  </nav>
 </header>
 
 <main class="page-shell design-page" data-design-page data-lang="en">
@@ -22,117 +34,80 @@
       <p data-design-intro>Design is understood as a practice of creating, mediating and organising learning experiences. More than an aesthetic or instrumental dimension, design involves pedagogical, technological, discursive and social choices that shape ways of teaching, learning, interacting and making meaning.</p>
     </div>
 
-    <div class="design-diagram design-diagram--desktop" aria-label="Systemic design diagram"><svg viewBox="0 0 820 650" role="img" aria-labelledby="designDiagramTitle">
-  <title id="designDiagramTitle">Diagrama sistêmico de design</title>
-  <defs>
-    <marker id="arrowSageD" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 z" fill="rgba(135,149,121,.78)"/></marker>
-    <marker id="arrowGoldD" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 z" fill="rgba(199,159,105,.74)"/></marker>
-    <marker id="arrowTealD" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 z" fill="rgba(75,132,146,.70)"/></marker>
-  </defs>
+    <div class="icon-system" aria-label="Systemic diagram with moving icons">
+      <svg class="icon-system__svg" viewBox="0 0 680 680" aria-hidden="true">
+        <defs>
+          <filter id="softGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <circle class="icon-system__ring" cx="340" cy="340" r="92" />
+        <circle class="icon-system__ring" cx="340" cy="340" r="150" />
+        <path class="icon-system__path-soft" d="M142 224 C214 138 334 110 442 142 C542 172 604 250 620 356" />
+        <path class="icon-system__path-soft" d="M188 526 C116 462 88 362 114 270 C144 164 222 94 334 78" />
+        <path class="icon-system__path-soft" d="M536 536 C462 590 356 606 264 580 C164 552 94 474 74 372" />
+        <path class="icon-system__path" d="M164 216 C238 166 334 150 424 172 C516 194 582 258 604 350" />
+        <path class="icon-system__path" d="M138 432 C120 334 148 244 212 182 C274 122 360 102 444 122" />
+        <path class="icon-system__path" d="M222 566 C316 602 430 598 520 548 C586 512 628 444 634 364" />
+        <path class="icon-system__axis" d="M340 122 L340 558" />
+        <path class="icon-system__axis" d="M154 248 L526 432" />
+        <path class="icon-system__axis" d="M170 446 L528 250" />
+        <circle cx="340" cy="340" r="5.5" fill="rgba(247,244,236,.95)" filter="url(#softGlow)" />
+      </svg>
 
-  <circle class="design-ring design-ring--soft" cx="410" cy="325" r="236"/>
-  <circle class="design-ring" cx="410" cy="325" r="184"/>
-  <circle class="design-ring design-ring--soft" cx="410" cy="325" r="142"/>
-  <circle class="design-ring" cx="410" cy="325" r="106" opacity=".5"/>
+      <div class="icon-system__glow" aria-hidden="true"></div>
+      <div class="icon-system__overlay" aria-hidden="true">
+        <div class="orbit-layer orbit-layer--a">
+          <div class="orbit-node node-people">
+            <div class="orbit-node__inner">
+              <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><path d="M3.5 18c0-2.5 2.2-4.5 4.5-4.5S12.5 15.5 12.5 18"/><path d="M11.5 18c0-2.3 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>
+            </div>
+            <span class="sr-only" data-node-title="1">People</span><span class="sr-only" data-node-text="1">Active participants in the process.</span>
+          </div>
+          <div class="orbit-node node-experiences">
+            <div class="orbit-node__inner">
+              <svg viewBox="0 0 24 24"><path d="M5 4.5h5.5c1.8 0 3 .9 3.5 2.1.5-1.2 1.7-2.1 3.5-2.1H23v15h-5.5c-1.7 0-3 .7-3.5 1.8-.5-1.1-1.8-1.8-3.5-1.8H5z"/><path d="M14 6.6v12.7"/></svg>
+            </div>
+            <span class="sr-only" data-node-title="5">Experiences</span><span class="sr-only" data-node-text="5">Learning that creates meaning.</span>
+          </div>
+        </div>
+        <div class="orbit-layer orbit-layer--b">
+          <div class="orbit-node node-language">
+            <div class="orbit-node__inner">
+              <svg viewBox="0 0 24 24"><path d="M6 7h12a3 3 0 0 1 3 3v.6A3.4 3.4 0 0 1 17.6 14H14l-4.5 3V14H6a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3Z"/><path d="M9 11h6"/></svg>
+            </div>
+            <span class="sr-only" data-node-title="2">Language</span><span class="sr-only" data-node-text="2">Meanings that shape realities.</span>
+          </div>
+          <div class="orbit-node node-technologies">
+            <div class="orbit-node__inner">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.8"/><path d="M9 19h6"/><path d="M12 16v3"/></svg>
+            </div>
+            <span class="sr-only" data-node-title="4">Technologies</span><span class="sr-only" data-node-text="4">Media and tools that expand possibilities.</span>
+          </div>
+        </div>
+        <div class="orbit-layer orbit-layer--c">
+          <div class="orbit-node node-contexts">
+            <div class="orbit-node__inner">
+              <svg viewBox="0 0 24 24"><path d="M12 3c4.9 0 9 4 9 9s-4.1 9-9 9-9-4-9-9 4.1-9 9-9Z"/><path d="M3.5 10.5h17"/><path d="M12 3.5c2.2 2.3 3.4 5.1 3.4 8.5S14.2 18.2 12 20.5C9.8 18.2 8.6 15.4 8.6 12S9.8 5.8 12 3.5Z"/></svg>
+            </div>
+            <span class="sr-only" data-node-title="3">Contexts</span><span class="sr-only" data-node-text="3">Environments that give meaning.</span>
+          </div>
+        </div>
+      </div>
 
-  <path class="design-orbit design-orbit--sage" marker-end="url(#arrowSageD)" d="M410 92 C286 110 198 206 190 326 C182 444 260 540 374 566"/>
-  <path class="design-orbit design-orbit--gold" marker-end="url(#arrowGoldD)" d="M410 92 C534 108 626 194 650 310 C674 426 606 530 498 566"/>
-  <path class="design-orbit design-orbit--teal" marker-end="url(#arrowTealD)" d="M498 566 C570 536 624 470 636 396 C646 334 628 274 588 226"/>
-  <path class="design-orbit design-orbit--neutral" marker-end="url(#arrowSageD)" d="M190 326 C206 242 272 182 356 164 C448 144 548 170 610 242"/>
-  <path class="design-orbit design-orbit--gold" marker-end="url(#arrowGoldD)" d="M208 430 C286 472 374 488 462 478 C536 470 594 446 640 406"/>
-
-  <path class="design-flow" d="M410 118 C410 184 410 226 410 260"/>
-  <path class="design-flow" d="M622 214 C566 248 522 278 488 312"/>
-  <path class="design-flow" d="M654 370 C594 360 548 350 498 336"/>
-  <path class="design-flow" d="M482 552 C462 490 446 432 432 386"/>
-  <path class="design-flow" d="M214 440 C284 406 340 374 382 344"/>
-
-  <path class="design-spoke" d="M410 260 L410 132"/>
-  <path class="design-spoke" d="M488 312 L596 232"/>
-  <path class="design-spoke" d="M498 336 L628 364"/>
-  <path class="design-spoke" d="M432 386 L470 530"/>
-  <path class="design-spoke" d="M382 344 L244 424"/>
-
-  <g class="design-node design-node--sage" transform="translate(410 105)">
-    <circle class="design-node-halo" r="27"/><circle class="design-node-disc" r="17"/><circle class="design-node-core" r="6"/>
-  </g>
-  <g class="design-node design-node--gold" transform="translate(622 214)">
-    <circle class="design-node-halo" r="27"/><circle class="design-node-disc" r="17"/><circle class="design-node-core design-node-core--delay" r="6"/>
-  </g>
-  <g class="design-node design-node--teal" transform="translate(654 370)">
-    <circle class="design-node-halo" r="27"/><circle class="design-node-disc" r="17"/><circle class="design-node-core design-node-core--slow" r="6"/>
-  </g>
-  <g class="design-node design-node--sage" transform="translate(482 552)">
-    <circle class="design-node-halo" r="27"/><circle class="design-node-disc" r="17"/><circle class="design-node-core design-node-core--delay" r="6"/>
-  </g>
-  <g class="design-node design-node--gold" transform="translate(214 440)">
-    <circle class="design-node-halo" r="27"/><circle class="design-node-disc" r="17"/><circle class="design-node-core design-node-core--slow" r="6"/>
-  </g>
-
-  <circle class="design-svg-center-ring" cx="410" cy="325" r="94"/>
-  <circle class="design-svg-center" cx="410" cy="325" r="78"/>
-
-  <foreignObject x="332" y="277" width="156" height="100">
-    <div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-center-copy"><strong data-design-center-title>design</strong><span data-design-center-text>Mediação e organização de experiências de aprendizagem.</span></div>
-  </foreignObject>
-
-  <foreignObject x="325" y="38" width="170" height="62"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label" style="text-align:center"><h2 data-node-title="1">Pessoas</h2><p data-node-text="1">Sujeitos ativos no processo.</p></div></foreignObject>
-  <foreignObject x="650" y="160" width="160" height="78"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label"><h2 data-node-title="2">Linguagem</h2><p data-node-text="2">Sentidos que constroem realidades.</p></div></foreignObject>
-  <foreignObject x="670" y="342" width="146" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label"><h2 data-node-title="3">Contextos</h2><p data-node-text="3">Ambientes que dão significado.</p></div></foreignObject>
-  <foreignObject x="500" y="548" width="172" height="76"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label"><h2 data-node-title="4">Tecnologias</h2><p data-node-text="4">Mídias e ferramentas que potencializam.</p></div></foreignObject>
-  <foreignObject x="18" y="410" width="178" height="82"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label" style="text-align:right"><h2 data-node-title="5">Experiências</h2><p data-node-text="5">Aprendizagens que geram sentido.</p></div></foreignObject>
-</svg>
-</div>
-    <div class="design-diagram design-diagram--mobile" aria-label="Systemic design diagram"><svg viewBox="0 0 360 650" role="img" aria-labelledby="designDiagramTitleMobile">
-  <title id="designDiagramTitleMobile">Diagrama sistêmico de design</title>
-  <defs>
-    <marker id="arrowSageM" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="rgba(135,149,121,.78)"/></marker>
-    <marker id="arrowGoldM" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="rgba(199,159,105,.74)"/></marker>
-    <marker id="arrowTealM" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 z" fill="rgba(75,132,146,.70)"/></marker>
-  </defs>
-
-  <circle class="design-ring design-ring--soft" cx="180" cy="345" r="150"/>
-  <circle class="design-ring" cx="180" cy="345" r="118"/>
-  <circle class="design-ring design-ring--soft" cx="180" cy="345" r="86"/>
-
-  <path class="design-orbit design-orbit--sage" marker-end="url(#arrowSageM)" d="M180 118 C100 132 50 204 48 294 C46 386 92 458 154 486"/>
-  <path class="design-orbit design-orbit--gold" marker-end="url(#arrowGoldM)" d="M180 118 C258 132 310 198 314 286 C318 374 278 450 216 486"/>
-  <path class="design-orbit design-orbit--teal" marker-end="url(#arrowTealM)" d="M216 486 C266 462 298 412 300 354 C302 310 290 268 260 234"/>
-  <path class="design-orbit design-orbit--neutral" marker-end="url(#arrowSageM)" d="M50 302 C66 232 120 188 180 180 C238 172 286 198 310 246"/>
-
-  <path class="design-flow" d="M180 130 L180 238"/>
-  <path class="design-flow" d="M286 234 C252 258 228 282 214 306"/>
-  <path class="design-flow" d="M306 356 C270 350 242 342 216 332"/>
-  <path class="design-flow" d="M212 488 C202 442 194 404 190 366"/>
-  <path class="design-flow" d="M54 386 C98 370 126 354 148 336"/>
-
-  <g class="design-node design-node--sage" transform="translate(180 124)"><circle class="design-node-halo" r="23"/><circle class="design-node-disc" r="15"/><circle class="design-node-core" r="5"/></g>
-  <g class="design-node design-node--gold" transform="translate(286 234)"><circle class="design-node-halo" r="23"/><circle class="design-node-disc" r="15"/><circle class="design-node-core design-node-core--delay" r="5"/></g>
-  <g class="design-node design-node--teal" transform="translate(306 356)"><circle class="design-node-halo" r="23"/><circle class="design-node-disc" r="15"/><circle class="design-node-core design-node-core--slow" r="5"/></g>
-  <g class="design-node design-node--sage" transform="translate(212 488)"><circle class="design-node-halo" r="23"/><circle class="design-node-disc" r="15"/><circle class="design-node-core design-node-core--delay" r="5"/></g>
-  <g class="design-node design-node--gold" transform="translate(54 386)"><circle class="design-node-halo" r="23"/><circle class="design-node-disc" r="15"/><circle class="design-node-core design-node-core--slow" r="5"/></g>
-
-  <circle class="design-svg-center-ring" cx="180" cy="345" r="73"/>
-  <circle class="design-svg-center" cx="180" cy="345" r="60"/>
-
-  <foreignObject x="122" y="310" width="116" height="74"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-center-copy"><strong data-design-center-title>design</strong><span data-design-center-text>Mediação e organização de experiências de aprendizagem.</span></div></foreignObject>
-
-  <foreignObject x="105" y="40" width="150" height="65"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label" style="text-align:center"><h2 data-node-title="1">Pessoas</h2><p data-node-text="1">Sujeitos ativos no processo.</p></div></foreignObject>
-  <foreignObject x="238" y="150" width="116" height="74"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label"><h2 data-node-title="2">Linguagem</h2><p data-node-text="2">Sentidos que constroem realidades.</p></div></foreignObject>
-  <foreignObject x="238" y="378" width="116" height="76"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label"><h2 data-node-title="3">Contextos</h2><p data-node-text="3">Ambientes que dão significado.</p></div></foreignObject>
-  <foreignObject x="154" y="510" width="168" height="84"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label"><h2 data-node-title="4">Tecnologias</h2><p data-node-text="4">Mídias e ferramentas que potencializam.</p></div></foreignObject>
-  <foreignObject x="4" y="408" width="118" height="82"><div xmlns="http://www.w3.org/1999/xhtml" class="design-svg-label" style="text-align:right"><h2 data-node-title="5">Experiências</h2><p data-node-text="5">Aprendizagens que geram sentido.</p></div></foreignObject>
-</svg>
-</div>
+      <span class="sr-only" data-design-center-title>design</span>
+      <span class="sr-only" data-design-center-text>Mediation and organisation of learning experiences.</span>
+    </div>
   </section>
 
-  <section class="design-perspective" id="perspectiva">
+  <section class="design-perspective" id="perspective">
     <div class="design-perspective__heading"><h2 data-perspective-title>Perspective</h2></div>
     <p class="design-perspective__copy" data-perspective-text>At the intersection of language, technology and education, design helps us consider how materials, environments, media, tasks and digital resources can support more meaningful, critical and participatory learning experiences.</p>
   </section>
 </main>
 
 <footer class="site-footer" data-site-footer data-lang="en"><a href="#">Email</a></footer>
-<script src="/assets/site.js"></script><script src="/assets/site-content.js"></script><script src="/assets/footer-links.js"></script><script src="/assets/design-system.js?v=8"></script>
+<script src="/assets/site.js"></script>
+<script src="/assets/site-content.js"></script>
+<script src="/assets/footer-links.js"></script>
+<script src="/assets/design-system.js?v=10"></script>
 </body>
 </html>
