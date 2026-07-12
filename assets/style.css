@@ -2029,3 +2029,32 @@ body .page-hero p {
     line-height: 1.54 !important;
   }
 }
+
+/* V93 — identidade tipográfica do cabeçalho e maior destaque na página inicial */
+body .brand {
+  gap: 12px;
+  letter-spacing: 0 !important;
+}
+
+body .brand-name {
+  font-family: var(--serif) !important;
+  font-size: clamp(.98rem, 1.15vw, 1.12rem) !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: -.035em !important;
+  text-transform: lowercase !important;
+}
+
+body .keyword {
+  font-size: clamp(3.25rem, 4.85vw, 5.8rem) !important;
+}
+
+@media (max-width: 760px) {
+  body .brand-name {
+    font-size: 1rem !important;
+  }
+
+  body .keyword {
+    font-size: clamp(2.7rem, 12.4vw, 4.15rem) !important;
+  }
+}

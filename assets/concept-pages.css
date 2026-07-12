@@ -237,3 +237,35 @@
     height: 270px !important;
   }
 }
+
+/* V2 — ajustes específicos após a padronização inicial */
+@media (min-width: 1121px) {
+  .tech-page .concept-hero {
+    grid-template-columns: minmax(300px, .72fr) minmax(600px, 1.28fr) !important;
+    gap: clamp(2.5rem, 4vw, 5rem) !important;
+  }
+
+  .tech-page .wave-network.concept-art {
+    width: min(100%, 820px) !important;
+    height: 500px !important;
+    justify-self: center !important;
+    margin-inline: auto !important;
+  }
+}
+
+@media (max-width: 1120px) {
+  .tech-page .wave-network.concept-art {
+    width: min(100%, 760px) !important;
+    height: 440px !important;
+    justify-self: center !important;
+    margin-inline: auto !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .tech-page .wave-network.concept-art {
+    width: min(100%, 420px) !important;
+    height: 320px !important;
+    margin-inline: auto !important;
+  }
+}
