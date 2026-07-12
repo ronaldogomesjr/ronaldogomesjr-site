@@ -1,0 +1,27 @@
+# Generated build output
+public/
+
+# Dependencies and local Vercel data
+node_modules/
+.vercel/
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Local archives and patch packages
+*.zip
+*.tar
+*.tar.gz
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
