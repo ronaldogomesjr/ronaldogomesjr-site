@@ -2097,8 +2097,4 @@ body .keyword {
   body .keyword {
     font-size: clamp(1.78rem, 8vw, 2.55rem) !important;
   }
-if (!shell) {
-  window.clearTimeout(contentFallback);
-  document.documentElement.classList.add('page-content-ready');
-  return;
 }
