@@ -1,0 +1,193 @@
+diff --git a/assets/style.css b/assets/style.css
+--- a/assets/style.css
++++ b/assets/style.css
+@@
++/*
++ * Evita a exibição momentânea do conteúdo estático antigo enquanto
++ * content/pages.json é carregado por assets/page-content.js.
++ */
++html.page-content-loading [data-page-shell] {
++  visibility: hidden;
++}
++
+
+diff --git a/assets/page-content.js b/assets/page-content.js
+--- a/assets/page-content.js
++++ b/assets/page-content.js
+@@
+   document.addEventListener('DOMContentLoaded', async function () {
+     const shell = document.querySelector('[data-page-shell]');
+-    if (!shell) return;
++    if (!shell) {
++      document.documentElement.classList.remove('page-content-loading');
++      return;
++    }
+     const slug = shell.getAttribute('data-page-slug');
+     const lang = shell.getAttribute('data-lang') || 'pt';
+@@
+     } catch (error) {
+       console.error('Erro ao carregar páginas:', error);
++    } finally {
++      if (window.__pageContentFallback) {
++        window.clearTimeout(window.__pageContentFallback);
++      }
++      document.documentElement.classList.remove('page-content-loading');
+     }
+   });
+ })();
+
+diff --git a/pt/sobre/index.html b/pt/sobre/index.html
+--- a/pt/sobre/index.html
++++ b/pt/sobre/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/pt/pesquisa/index.html b/pt/pesquisa/index.html
+--- a/pt/pesquisa/index.html
++++ b/pt/pesquisa/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/pt/contato/index.html b/pt/contato/index.html
+--- a/pt/contato/index.html
++++ b/pt/contato/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/pt/design/index.html b/pt/design/index.html
+--- a/pt/design/index.html
++++ b/pt/design/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/pt/tecnologia-digital/index.html b/pt/tecnologia-digital/index.html
+--- a/pt/tecnologia-digital/index.html
++++ b/pt/tecnologia-digital/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/pt/educacao-linguistica/index.html b/pt/educacao-linguistica/index.html
+--- a/pt/educacao-linguistica/index.html
++++ b/pt/educacao-linguistica/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/en/about/index.html b/en/about/index.html
+--- a/en/about/index.html
++++ b/en/about/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/en/research/index.html b/en/research/index.html
+--- a/en/research/index.html
++++ b/en/research/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/en/contact/index.html b/en/contact/index.html
+--- a/en/contact/index.html
++++ b/en/contact/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/en/design/index.html b/en/design/index.html
+--- a/en/design/index.html
++++ b/en/design/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/en/digital-technology/index.html b/en/digital-technology/index.html
+--- a/en/digital-technology/index.html
++++ b/en/digital-technology/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
+
+diff --git a/en/language-education/index.html b/en/language-education/index.html
+--- a/en/language-education/index.html
++++ b/en/language-education/index.html
+@@
+   <link rel="stylesheet" href="/assets/style.css" />
++  <script>
+    document.documentElement.classList.add('page-content-loading');
+    window.__pageContentFallback = window.setTimeout(function () {
+      document.documentElement.classList.remove('page-content-loading');
+    }, 4000);
+  </script>
+ </head>
