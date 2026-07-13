@@ -1,4 +1,10 @@
-/* Design sistêmico — versão mais fiel ao mockup aprovado */
+/*
+  Design sistêmico — versão definitiva v3
+  Correção principal: as linhas paralelas usam transformações SVG próprias.
+  Nenhuma animação CSS altera o atributo transform dos elementos <use>,
+  portanto os feixes não colapsam em uma única linha.
+*/
+
 .design-page .design-systemic-orchestration.concept-art {
   width: min(100%, 900px);
   height: 520px;
@@ -28,31 +34,59 @@
   vector-effect: non-scaling-stroke;
 }
 
+/* Malha central */
 .design-page .dso__backmesh path {
   stroke: rgba(247,244,236,.11);
   stroke-width: 1;
   fill: rgba(247,244,236,.018);
 }
+
 .design-page .dso__backmesh .dso__backmesh-line {
   fill: none;
   stroke: rgba(247,244,236,.075);
 }
 
+/*
+  Feixes paralelos: não aplicar transform CSS ou animação de transform aos <use>.
+  Isso preserva os deslocamentos translate(...) definidos no próprio SVG.
+*/
 .design-page .dso__band use {
   stroke: rgba(247,244,236,.80);
   stroke-width: .95;
   opacity: .82;
-  animation: dsoFloat 9s ease-in-out infinite;
 }
-.design-page .dso__band--b use { stroke: rgba(247,244,236,.64); animation-delay: -2s; }
-.design-page .dso__band--c use { stroke: rgba(247,244,236,.38); stroke-width: .85; animation-delay: -3.5s; }
-.design-page .dso__band--d use { stroke: rgba(247,244,236,.70); animation-delay: -1.2s; }
-.design-page .dso__band--e use { stroke: rgba(247,244,236,.32); stroke-width: .8; animation-delay: -4.2s; }
 
+.design-page .dso__band--b use {
+  stroke: rgba(247,244,236,.64);
+}
+
+.design-page .dso__band--c use {
+  stroke: rgba(247,244,236,.38);
+  stroke-width: .85;
+}
+
+.design-page .dso__band--d use {
+  stroke: rgba(247,244,236,.70);
+}
+
+.design-page .dso__band--e use {
+  stroke: rgba(247,244,236,.32);
+  stroke-width: .8;
+}
+
+/* Movimento seguro: altera apenas a opacidade dos grupos, nunca a geometria. */
+.design-page .dso__band--a { animation: dsoBreatheA 8s ease-in-out infinite; }
+.design-page .dso__band--b { animation: dsoBreatheB 10s ease-in-out infinite; }
+.design-page .dso__band--c { animation: dsoBreatheC 12s ease-in-out infinite; }
+.design-page .dso__band--d { animation: dsoBreatheB 9s ease-in-out infinite reverse; }
+.design-page .dso__band--e { animation: dsoBreatheC 11s ease-in-out infinite reverse; }
+
+/* Linhas de orientação e conectores */
 .design-page .dso__guide {
   stroke: rgba(247,244,236,.24);
   stroke-width: 1;
 }
+
 .design-page .dso__guide--dots {
   stroke-dasharray: 2 10;
   animation: dsoDash 18s linear infinite;
@@ -64,24 +98,41 @@
   stroke-dasharray: 2 8;
 }
 
+/* Nós */
 .design-page .dso__diamond,
 .design-page .dso__dot,
 .design-page .dso__pulse {
   fill: rgba(247,244,236,.96);
 }
+
 .design-page .dso__diamond,
 .design-page .dso__dot {
   filter: drop-shadow(0 0 8px rgba(247,244,236,.18));
 }
+
 .design-page .dso__pulse {
   filter: drop-shadow(0 0 10px rgba(247,244,236,.24));
 }
-.design-page .dso__pulse--soft { opacity: .82; }
 
-@keyframes dsoFloat {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+.design-page .dso__pulse--soft {
+  opacity: .82;
 }
+
+@keyframes dsoBreatheA {
+  0%,100% { opacity: .82; }
+  50% { opacity: 1; }
+}
+
+@keyframes dsoBreatheB {
+  0%,100% { opacity: .68; }
+  50% { opacity: .88; }
+}
+
+@keyframes dsoBreatheC {
+  0%,100% { opacity: .42; }
+  50% { opacity: .66; }
+}
+
 @keyframes dsoDash {
   from { stroke-dashoffset: 0; }
   to { stroke-dashoffset: -120; }
@@ -100,11 +151,25 @@
     height: 300px;
     margin-inline: auto;
   }
+
+  .design-page .design-systemic-orchestration__svg {
+    width: 100%;
+    height: 100%;
+    margin-inline: auto;
+    transform: none;
+  }
 }
 
 @media (max-width: 420px) {
   .design-page .design-systemic-orchestration.concept-art {
     width: min(calc(100vw - 20px), 390px);
     height: 270px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-page .dso__band,
+  .design-page .dso__guide--dots {
+    animation: none !important;
   }
 }
