@@ -770,3 +770,241 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* V7 — centralização das três artes na versão mobile */
+@media (max-width: 760px) {
+  .concept-page .concept-hero {
+    width: 100% !important;
+  }
+
+  .design-page .icon-system.concept-art,
+  .tech-page .wave-network.concept-art,
+  .language-page .language-dynamic-art.concept-art {
+    justify-self: center !important;
+    align-self: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  .design-page .icon-system.concept-art {
+    width: min(calc(100vw - 40px), 320px) !important;
+  }
+
+  .tech-page .wave-network.concept-art {
+    width: min(calc(100vw - 28px), 460px) !important;
+  }
+
+  .language-page .language-dynamic-art.concept-art {
+    width: min(calc(100vw - 28px), 420px) !important;
+  }
+
+  .design-page .icon-system.concept-art .icon-system__svg,
+  .design-page .icon-system.concept-art .icon-system__overlay,
+  .tech-page .wave-network.concept-art .wave-network__svg,
+  .language-page .language-dynamic-art.concept-art .language-dynamic-art__svg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform-origin: center center !important;
+  }
+
+  /* Compensa o centro óptico dos desenhos dentro de seus viewBoxes. */
+  .tech-page .wave-network--data-stream.concept-art .wave-network__svg,
+  .language-page .language-radiant-system.concept-art .language-dynamic-art__svg {
+    transform: translateX(-4%) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .design-page .icon-system.concept-art {
+    width: min(calc(100vw - 36px), 292px) !important;
+  }
+
+  .tech-page .wave-network.concept-art,
+  .language-page .language-dynamic-art.concept-art {
+    width: min(calc(100vw - 20px), 400px) !important;
+  }
+}
+
+
+/* V4 — centralização definitiva no mobile + artes em uma única cor clara */
+:root {
+  --art-light: rgba(247, 244, 236, .94);
+  --art-light-soft: rgba(247, 244, 236, .62);
+  --art-light-faint: rgba(247, 244, 236, .28);
+  --art-light-glow: rgba(247, 244, 236, .16);
+}
+
+/* 1) Centralização definitiva das artes */
+.concept-page .concept-art {
+  justify-self: center !important;
+  margin-inline: auto !important;
+}
+
+.concept-page .concept-art,
+.concept-page .concept-art svg,
+.concept-page .concept-art .concept-art__svg,
+.tech-page .wave-network.concept-art .wave-network__svg,
+.language-page .language-dynamic-art.concept-art .language-dynamic-art__svg,
+.design-page .icon-system.concept-art .icon-system__svg {
+  transform: none !important;
+}
+
+@media (max-width: 760px) {
+  .concept-page .concept-art {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    overflow: visible !important;
+  }
+
+  .design-page .icon-system.concept-art {
+    width: min(100%, 320px) !important;
+    height: 320px !important;
+  }
+
+  .tech-page .wave-network.concept-art,
+  .language-page .language-dynamic-art.concept-art {
+    width: min(100%, 400px) !important;
+    height: 300px !important;
+  }
+
+  .concept-page .concept-art svg,
+  .concept-page .concept-art .concept-art__svg,
+  .tech-page .wave-network.concept-art .wave-network__svg,
+  .language-page .language-dynamic-art.concept-art .language-dynamic-art__svg,
+  .design-page .icon-system.concept-art .icon-system__svg {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    margin-inline: auto !important;
+    object-fit: contain !important;
+    transform: none !important;
+    transform-origin: center center !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .tech-page .wave-network.concept-art,
+  .language-page .language-dynamic-art.concept-art {
+    width: min(100%, 360px) !important;
+    height: 270px !important;
+  }
+}
+
+/* 2) Arte Design em uma única cor clara */
+.design-page .icon-system.concept-art {
+  filter: none !important;
+}
+
+.design-page .icon-system.concept-art .icon-system__ring,
+.design-page .icon-system.concept-art .icon-system__axis,
+.design-page .icon-system.concept-art .icon-system__path,
+.design-page .icon-system.concept-art .icon-system__path-soft {
+  stroke: var(--art-light-soft) !important;
+}
+
+.design-page .icon-system.concept-art .icon-system__glow {
+  background: var(--art-light) !important;
+  box-shadow: 0 0 0 18px rgba(247,244,236,.06), 0 0 34px var(--art-light-glow) !important;
+}
+
+.design-page .icon-system.concept-art .icon-system__glow::before,
+.design-page .icon-system.concept-art .icon-system__glow::after,
+.design-page .icon-system.concept-art .orbit-layer--a::before,
+.design-page .icon-system.concept-art .orbit-layer--b::before,
+.design-page .icon-system.concept-art .orbit-layer--c::before {
+  border-color: var(--art-light-faint) !important;
+}
+
+.design-page .icon-system.concept-art .orbit-node {
+  background: rgba(247,244,236,.04) !important;
+  border-color: var(--art-light-soft) !important;
+  box-shadow: 0 0 0 10px rgba(247,244,236,.05), 0 0 18px rgba(247,244,236,.08) !important;
+}
+
+.design-page .icon-system.concept-art .orbit-node svg {
+  stroke: var(--art-light) !important;
+}
+
+.design-page .icon-system.concept-art .icon-system__svg > circle {
+  fill: var(--art-light-soft) !important;
+}
+
+/* 3) Arte Tecnologia digital em uma única cor clara */
+.tech-page .wave-network--data-stream .wave-network__mesh,
+.tech-page .wave-network--data-stream .wave-network__grid,
+.tech-page .wave-network--data-stream .wave-network__guide,
+.tech-page .wave-network--data-stream .wave-network__flow,
+.tech-page .wave-network--data-stream .wave-network__node {
+  stroke: var(--art-light-soft) !important;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--hero {
+  stroke: var(--art-light) !important;
+}
+
+.tech-page .wave-network--data-stream .wave-network__flow--softblue,
+.tech-page .wave-network--data-stream .wave-network__flow--softgold,
+.tech-page .wave-network--data-stream .wave-network__flow--micro,
+.tech-page .wave-network--data-stream .wave-network__flow--dashedX {
+  stroke: var(--art-light-soft) !important;
+}
+
+.tech-page .wave-network--data-stream .wave-network__pulse,
+.tech-page .wave-network--data-stream .wave-network__node {
+  fill: var(--art-light) !important;
+  filter: drop-shadow(0 0 8px rgba(247,244,236,.22)) !important;
+}
+
+/* fallback para a arte anterior de tecnologia digital */
+.tech-page .wave-network .wave-network__flow,
+.tech-page .wave-network .wave-network__mesh,
+.tech-page .wave-network .wave-network__grid,
+.tech-page .wave-network .wave-network__guide {
+  stroke: var(--art-light-soft) !important;
+}
+
+.tech-page .wave-network .wave-network__pulse,
+.tech-page .wave-network .wave-network__node {
+  fill: var(--art-light) !important;
+}
+
+/* 4) Arte Educação linguística em uma única cor clara */
+.language-page .language-radiant__halo {
+  opacity: .88 !important;
+}
+
+.language-page .language-radiant__core {
+  fill: rgba(247,244,236,.72) !important;
+  filter: drop-shadow(0 0 22px rgba(247,244,236,.18)) !important;
+}
+
+.language-page .language-radiant__core-ring,
+.language-page .language-radiant__ray,
+.language-page .language-radiant__trail,
+.language-page .language-radiant__orbit {
+  stroke: var(--art-light-soft) !important;
+}
+
+.language-page .language-radiant__node,
+.language-page .language-radiant__spark,
+.language-page .language-radiant__pulse {
+  fill: var(--art-light) !important;
+  stroke: var(--art-light) !important;
+  filter: drop-shadow(0 0 8px rgba(247,244,236,.22)) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concept-page .concept-art * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
