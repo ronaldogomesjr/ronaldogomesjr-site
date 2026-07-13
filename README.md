@@ -2,143 +2,123 @@
 
 Site acadêmico e portfólio bilíngue de Ronaldo Gomes Jr., professor e pesquisador na área de linguagem e tecnologia.
 
-**Site:** https://www.ronaldogomesjr.com  
-**Idiomas:** português e inglês  
-**Hospedagem:** Vercel  
-**Conteúdo:** arquivos JSON editados por um painel próprio conectado ao GitHub
+- **Produção:** `https://www.ronaldogomesjr.com`
+- **Português:** `/pt/`
+- **English:** `/en/`
+- **Hospedagem e build:** Vercel
+- **Conteúdo:** JSON editado pelo painel em `/admin/`
 
-## Visão geral
+## Arquitetura atual
 
-O site apresenta pesquisa, projetos, orientações, publicações, livros didáticos, perfil acadêmico e formas de contato. A versão em português está em `/pt/` e a versão em inglês em `/en/`.
+O projeto é um site estático em HTML, CSS e JavaScript, sem framework no navegador. O conteúdo é mantido em arquivos JSON e o GitHub funciona como repositório e fonte de publicação.
 
-Principais áreas:
+Durante o deploy, `npm run build` executa `build.js`, que:
 
-- **Pesquisa / Research** — linhas de pesquisa e redes;
-- **Projetos / Projects** — projetos bilíngues, com período, descrição, parceiros e links;
-- **Orientações / Supervisions** — mestrado e doutorado;
-- **Publicações / Publications** — artigos, capítulos e livros acadêmicos;
-- **Livros didáticos / Textbooks** — coleções, links e thumbnails;
-- **Sobre / About** — trajetória, interesses e foto;
-- **Contato / Contact** — e-mail e perfis acadêmicos;
-- páginas conceituais sobre **design**, **tecnologia digital** e **educação linguística**.
+1. recria a pasta `public/`;
+2. copia os arquivos necessários do projeto;
+3. lê `content/pages.json` e `content/publication-pages.json`;
+4. grava o conteúdo atual nos HTMLs publicados;
+5. marca as páginas sincronizadas para impedir uma segunda substituição visual no navegador.
 
-## Tecnologias
+Esse processo evita o flash de conteúdo antigo: a página já chega ao visitante com o texto atual.
 
-O projeto usa uma arquitetura estática e leve:
-
-- HTML;
-- CSS;
-- JavaScript sem framework;
-- JSON para armazenamento do conteúdo;
-- Node.js apenas no processo de build;
-- Vercel para build, hospedagem e domínio;
-- GitHub como repositório e fonte de conteúdo.
-
-## Estrutura do repositório
+## Estrutura
 
 ```text
 .
-├── admin/            # painel de edição de conteúdo
-├── api/              # endpoints auxiliares/legados do painel
-├── assets/           # CSS, JavaScript, uploads e imagens
-├── content/          # conteúdo editável em JSON
-├── en/               # páginas em inglês
-├── pt/               # páginas em português
-├── build.js          # gera a pasta public/ para a Vercel
-├── index.html        # entrada do site
-├── package.json      # comando de build
-└── vercel.json       # configuração de deploy, redirects e headers
+├── admin/              # interface do painel de conteúdo
+├── api/                # autenticação e callback do painel
+├── assets/             # estilos, scripts ativos e uploads usados
+├── content/            # conteúdo editável em JSON
+├── en/                 # páginas-fonte em inglês
+├── pt/                 # páginas-fonte em português
+├── build.js            # geração e sincronização de public/
+├── index.html          # entrada do domínio
+├── package.json        # comando de build
+└── vercel.json         # deploy, redirects e cache
 ```
 
-A pasta `public/` é gerada automaticamente durante o build e não deve ser versionada.
+A pasta `public/` é gerada automaticamente e não deve ser versionada.
 
-## Arquivos de conteúdo
+## Conteúdo editável
 
-| Arquivo | Conteúdo |
+| Arquivo | Finalidade |
 |---|---|
-| `content/site.json` | identidade, menus e configurações gerais |
+| `content/site.json` | nome, identidade e menus |
 | `content/home.json` | página inicial |
-| `content/pages.json` | títulos, introduções e seções das páginas internas |
-| `content/projetos.json` | projetos bilíngues |
+| `content/pages.json` | títulos, introduções, seções e foto da página Sobre |
+| `content/publication-pages.json` | introduções das páginas de publicações |
+| `content/projetos.json` | projetos |
 | `content/orientacoes.json` | orientações de mestrado e doutorado |
 | `content/publicacoes.json` | artigos, capítulos e livros acadêmicos |
-| `content/publication-pages.json` | textos introdutórios das páginas de publicações |
-| `content/livros-didaticos.json` | livros didáticos, links e thumbnails |
-| `content/research-groups.json` | redes exibidas em Pesquisa / Research |
-| `content/links.json` | contato, perfis acadêmicos e rodapé |
+| `content/livros-didaticos.json` | coleções didáticas |
+| `content/research-groups.json` | grupos e redes de pesquisa |
+| `content/links.json` | contato, perfis e rodapé |
+| `content/design.json` | arte e conteúdo específico de Design |
+| `content/tecnologia-digital.json` | arte e conteúdo específico de Tecnologia Digital |
+| `content/educacao-linguistica.json` | arte e conteúdo específico de Educação Linguística |
+
+## Scripts ativos principais
+
+- `assets/page-content.js` — carregador unificado das páginas internas;
+- `assets/site-content.js` — identidade e menu;
+- `assets/home-content.js` — página inicial;
+- `assets/footer-links.js` — rodapé e links;
+- `assets/admin-v86.js` — painel principal;
+- `assets/admin-concept-pages-v5.js` — páginas conceituais no painel;
+- `assets/projects-render-v78.js` — projetos;
+- `assets/textbooks-render-v83.js` — livros didáticos;
+- `assets/academic-books-render-v79.js` — livros acadêmicos;
+- `assets/research-groups-v72.js` — redes e grupos de pesquisa;
+- `assets/supervisions-render.js` — orientações;
+- `assets/design-system.js`, `technology-system.js` e `language-education.js` — artes dinâmicas.
+
+Arquivos antigos sem referência foram removidos na limpeza v94. Não crie novas cópias numeradas quando uma query string de versão, como `?v=94`, for suficiente.
 
 ## Painel de conteúdo
 
-O painel está disponível em:
+Acesse:
 
 ```text
 https://www.ronaldogomesjr.com/admin/
 ```
 
-Ele usa um Personal Access Token do GitHub com permissão de escrita no repositório. O token fica armazenado apenas no navegador em que foi inserido.
+Fluxo recomendado:
 
-### Fluxo de edição
+1. informe um token do GitHub com acesso de escrita;
+2. escolha a página ou coleção;
+3. carregue o conteúdo;
+4. edite português e inglês;
+5. publique a alteração;
+6. aguarde o deployment da Vercel.
 
-1. Abra `/admin/`.
-2. Salve e teste o token do GitHub.
-3. Escolha a página ou coleção.
-4. Clique em **carregar**.
-5. Edite o conteúdo em português e inglês.
-6. Clique em **publicar alteração**.
-7. Aguarde o novo deployment da Vercel.
-
-Nunca publique o token no repositório, em mensagens, capturas de tela ou arquivos de configuração.
+O token funciona como senha. Não o inclua no repositório, em capturas de tela ou em mensagens.
 
 ## Desenvolvimento local
 
-Requisitos:
-
-- Node.js 18 ou superior;
-- npm.
+Requisitos: Node.js 18 ou superior e npm.
 
 ```bash
 npm install
 npm run build
-```
-
-O comando gera a pasta `public/`. Para visualizar localmente, use um servidor estático, por exemplo:
-
-```bash
 npx serve public
 ```
 
-## Deploy
+## Manutenção segura
 
-A Vercel executa:
+- Edite textos e coleções pelo painel sempre que possível.
+- Preserve os atributos `data-*` usados pelos scripts.
+- Não versione `public/`, `node_modules/`, `.vercel/`, arquivos ZIP ou segredos.
+- Antes de apagar um asset, pesquise referências em HTML, CSS, JavaScript e JSON.
+- Preserve uploads que estejam referenciados nos arquivos de conteúdo.
+- Faça alterações estruturais em pequenos commits e teste desktop e mobile após o deploy.
 
-```bash
-npm run build
-```
+## Licença
 
-O arquivo `build.js` recria `public/` a partir das pastas-fonte. A configuração de domínio, redirects, trailing slashes e cache de favicon fica em `vercel.json`.
-
-O domínio principal é:
-
-```text
-www.ronaldogomesjr.com
-```
-
-O domínio sem `www` redireciona para o endereço principal, e a raiz do projeto direciona o visitante para `/pt/`.
-
-## Manutenção
-
-- Edite conteúdo pelo painel sempre que possível.
-- Evite criar novos arquivos com números de versão no nome; prefira arquivos estáveis e cache busting na query string.
-- Não versione `public/`, arquivos ZIP, logs, `.DS_Store`, `node_modules/` ou a pasta local `.vercel/`.
-- Antes de apagar scripts antigos em `assets/`, confirme que nenhum HTML ainda os referencia.
-- Preserve `assets/uploads/`, pois contém imagens enviadas pelo painel.
-
-## Licença e uso
-
-Conteúdo e identidade visual pertencem a Ronaldo Gomes Jr. O código do site não possui, neste momento, uma licença aberta declarada.
+O conteúdo e a identidade visual pertencem a Ronaldo Gomes Jr. O código não possui licença aberta declarada.
 
 ---
 
-## English summary
+### English summary
 
-This repository contains Ronaldo Gomes Jr.'s bilingual academic website. It is a static HTML/CSS/JavaScript project with JSON-based content, a GitHub-backed editing panel, and automated deployment on Vercel. Portuguese pages live under `/pt/`, English pages under `/en/`, and the production domain is `www.ronaldogomesjr.com`.
+This repository contains Ronaldo Gomes Jr.'s bilingual academic website. It is a static HTML/CSS/JavaScript project with JSON-managed content, a GitHub-backed editing panel, and an automated Vercel build that writes current content into the published HTML to prevent stale-content flashes.
