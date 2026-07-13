@@ -1181,3 +1181,39 @@
     height: 270px !important;
   }
 }
+
+
+/* V9 — centralização óptica da Malha direcional no mobile */
+@media (max-width: 760px) {
+  .tech-page .tech-directional-grid.concept-art {
+    place-self: center !important;
+    width: min(100%, 410px) !important;
+    max-width: 410px !important;
+    height: 292px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    overflow: visible !important;
+  }
+
+  /* O conteúdo da arte ocupa mais a metade direita do viewBox.
+     Esta compensação alinha o centro visual ao centro real da tela. */
+  .tech-page .tech-directional-grid.concept-art .tech-directional-grid__svg {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: translateX(-3.5%) !important;
+    transform-origin: center center !important;
+    overflow: visible !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .tech-page .tech-directional-grid.concept-art {
+    width: min(100%, 370px) !important;
+    max-width: 370px !important;
+    height: 264px !important;
+  }
+}
