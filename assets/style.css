@@ -2101,4 +2101,11 @@ if (!shell) {
   window.clearTimeout(contentFallback);
   document.documentElement.classList.add('page-content-ready');
   return;
+}/* Impede que o conteúdo estático antigo apareça antes do CMS */
+html:not(.page-content-ready) [data-page-shell] {
+  visibility: hidden !important;
+}
+
+html.page-content-ready [data-page-shell] {
+  visibility: visible !important;
 }
