@@ -1,91 +1,145 @@
-/* Arte orgânica da página Design — patch corrigido */
-.design-page .design-organic-ribbons.concept-art {
-  width: min(100%, 860px);
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: center;
-  margin-inline: auto;
-  overflow: visible;
+/* Arte orgânica simples e fiel para a página Design */
+.design-page .design-organic-network.concept-art {
+  width: min(100%, 820px) !important;
+  height: 470px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  justify-self: center !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
 }
 
-.design-page .design-organic-ribbons__svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  object-fit: contain;
+.design-page .design-organic-network__svg {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+  transform: none !important;
 }
 
-.design-page .design-organic-ribbons__mass,
-.design-page .design-organic-ribbons__ribbon,
-.design-page .design-organic-ribbons__trace {
+.design-page .design-organic-network__line,
+.design-page .design-organic-network__branch,
+.design-page .design-organic-network__route {
+  fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 
-.design-page .design-organic-ribbons__mass {
-  stroke: rgba(247,244,236,.10);
-  stroke-width: 1;
-}
-.design-page .design-organic-ribbons__mass--back { fill: url(#ribbonFillA); }
-.design-page .design-organic-ribbons__mass--mid { fill: url(#ribbonFillB); }
-
-.design-page .design-organic-ribbons__ribbon {
-  fill: none;
-  stroke: rgba(247,244,236,.82);
-  stroke-width: 1.8;
-  animation: dorRibbonFloat 8.8s ease-in-out infinite;
-}
-.design-page .design-organic-ribbons__ribbon--b { stroke-width: 1.4; stroke: rgba(247,244,236,.72); animation-delay: -1.6s; }
-.design-page .design-organic-ribbons__ribbon--c { stroke-width: 1.45; stroke: rgba(247,244,236,.64); animation-delay: -3.2s; }
-.design-page .design-organic-ribbons__ribbon--soft { fill: rgba(247,244,236,.03); stroke: rgba(247,244,236,.18); stroke-width: 1; }
-
-.design-page .design-organic-ribbons__trace {
-  fill: none;
-  stroke: rgba(247,244,236,.25);
+.design-page .design-organic-network__line--faint {
+  stroke: rgba(247,244,236,.18);
   stroke-width: 1.05;
 }
-.design-page .design-organic-ribbons__trace--main { stroke: rgba(247,244,236,.90); stroke-width: 1.25; }
-.design-page .design-organic-ribbons__trace--soft { stroke: rgba(247,244,236,.34); }
-.design-page .design-organic-ribbons__trace--dots { stroke: rgba(247,244,236,.38); stroke-dasharray: 2 10; animation: flowDash 18s linear infinite; }
-.design-page .design-organic-ribbons__trace--curve { stroke: rgba(247,244,236,.24); }
 
-.design-page .design-organic-ribbons__node,
-.design-page .design-organic-ribbons__spark,
-.design-page .design-organic-ribbons__pulse {
-  fill: rgba(247,244,236,.94);
+.design-page .design-organic-network__line--dotted {
+  stroke: rgba(247,244,236,.26);
+  stroke-width: 1.05;
+  stroke-dasharray: 2 10;
+  animation: designOrganicDash 18s linear infinite;
 }
-.design-page .design-organic-ribbons__node { filter: drop-shadow(0 0 8px rgba(247,244,236,.18)); }
-.design-page .design-organic-ribbons__spark { opacity: .78; animation: techPulse 5s ease-in-out infinite; }
-.design-page .design-organic-ribbons__pulse { filter: drop-shadow(0 0 10px rgba(247,244,236,.22)); }
-.design-page .design-organic-ribbons__pulse--soft { opacity: .84; }
 
-@keyframes dorRibbonFloat {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
+.design-page .design-organic-network__branch {
+  stroke: rgba(247,244,236,.34);
+  stroke-width: 1.1;
+}
+
+.design-page .design-organic-network__branch--soft {
+  stroke: rgba(247,244,236,.20);
+  stroke-dasharray: 4 8;
+}
+
+.design-page .design-organic-network__route {
+  stroke: rgba(247,244,236,.94);
+  stroke-width: 1.9;
+}
+
+.design-page .design-organic-network__route--secondary {
+  stroke: rgba(247,244,236,.68);
+  stroke-width: 1.5;
+}
+
+.design-page .design-organic-network__route--upper {
+  stroke: rgba(247,244,236,.54);
+  stroke-width: 1.35;
+  stroke-dasharray: 5 10;
+  animation: designOrganicDash 21s linear infinite reverse;
+}
+
+.design-page .design-organic-network__node,
+.design-page .design-organic-network__spark,
+.design-page .design-organic-network__pulse {
+  fill: rgba(247,244,236,.96);
+}
+
+.design-page .design-organic-network__node {
+  filter: drop-shadow(0 0 7px rgba(247,244,236,.18));
+}
+
+.design-page .design-organic-network__node--large {
+  filter: drop-shadow(0 0 11px rgba(247,244,236,.24));
+}
+
+.design-page .design-organic-network__spark {
+  opacity: .8;
+  animation: designOrganicPulse 4.6s ease-in-out infinite;
+}
+
+.design-page .design-organic-network__pulse {
+  filter: drop-shadow(0 0 9px rgba(247,244,236,.24));
+}
+
+.design-page .design-organic-network__pulse--soft {
+  opacity: .82;
+}
+
+@keyframes designOrganicDash {
+  to { stroke-dashoffset: -120; }
+}
+
+@keyframes designOrganicPulse {
+  0%,100% { opacity: .45; }
+  50% { opacity: 1; }
 }
 
 @media (max-width: 1120px) {
-  .design-page .design-organic-ribbons.concept-art {
-    width: min(100%, 760px);
-    height: 440px;
+  .design-page .design-organic-network.concept-art {
+    width: min(100%, 720px) !important;
+    height: 420px !important;
   }
 }
 
 @media (max-width: 760px) {
-  .design-page .design-organic-ribbons.concept-art {
-    width: min(calc(100vw - 28px), 430px);
-    height: 300px;
-    margin-inline: auto;
+  .design-page .design-organic-network.concept-art {
+    width: min(calc(100vw - 32px), 410px) !important;
+    height: 285px !important;
+    justify-self: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .design-page .design-organic-network__svg {
+    width: 100% !important;
+    height: 100% !important;
+    margin-inline: auto !important;
+    transform: none !important;
   }
 }
 
 @media (max-width: 420px) {
-  .design-page .design-organic-ribbons.concept-art {
-    width: min(calc(100vw - 20px), 390px);
-    height: 270px;
+  .design-page .design-organic-network.concept-art {
+    width: min(calc(100vw - 24px), 380px) !important;
+    height: 260px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-page .design-organic-network * {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
