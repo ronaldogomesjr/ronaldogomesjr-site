@@ -1061,4 +1061,38 @@
 }
 
 
-/* V7 — ativa a nova arte dinâmica da página Educação linguística */
+/* V7 — correção definitiva da centralização da arte de Educação linguística no mobile */
+@media (max-width: 760px) {
+  .language-page .language-radiant-system.concept-art {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: min(100%, 400px) !important;
+    height: 300px !important;
+    margin-inline: auto !important;
+    overflow: visible !important;
+  }
+
+  .language-page .language-radiant-system.concept-art .language-dynamic-art__svg {
+    display: block !important;
+    width: calc(100% + 56px) !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin-inline: auto !important;
+    transform: translateX(-28px) !important;
+    transform-origin: center center !important;
+    overflow: visible !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .language-page .language-radiant-system.concept-art {
+    width: min(100%, 360px) !important;
+    height: 270px !important;
+  }
+
+  .language-page .language-radiant-system.concept-art .language-dynamic-art__svg {
+    width: calc(100% + 48px) !important;
+    transform: translateX(-24px) !important;
+  }
+}
