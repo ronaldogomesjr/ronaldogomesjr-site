@@ -1,0 +1,97 @@
+/*
+  Arte de Design baseada diretamente no mockup aprovado.
+  A imagem contém apenas a composição visual; o fundo escuro é neutralizado
+  por mix-blend-mode: lighten sobre o fundo sage da página.
+*/
+.design-page .design-systemic-image.concept-art {
+  position: relative !important;
+  width: min(100%, 860px) !important;
+  height: 500px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  justify-self: center !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+  isolation: isolate;
+}
+
+.design-page .design-systemic-image__art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: .94;
+  filter: drop-shadow(0 0 10px rgba(247,244,236,.08));
+  transform-origin: center;
+  animation: designSystemicDrift 13s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+/* brilho discreto que percorre a composição sem alterar a geometria */
+.design-page .design-systemic-image::after {
+  content: "";
+  position: absolute;
+  inset: 15% 5%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 44%, rgba(247,244,236,.24) 0 2px, transparent 7px),
+    radial-gradient(circle at 57% 48%, rgba(247,244,236,.22) 0 2px, transparent 8px),
+    radial-gradient(circle at 78% 35%, rgba(247,244,236,.20) 0 2px, transparent 7px);
+  mix-blend-mode: screen;
+  opacity: .35;
+  animation: designSystemicGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes designSystemicDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: .89;
+    filter: drop-shadow(0 0 8px rgba(247,244,236,.07));
+  }
+  50% {
+    transform: translate3d(0, -5px, 0) scale(1.008);
+    opacity: .96;
+    filter: drop-shadow(0 0 12px rgba(247,244,236,.12));
+  }
+}
+
+@keyframes designSystemicGlow {
+  0% { transform: translateX(-6px); opacity: .22; }
+  100% { transform: translateX(8px); opacity: .45; }
+}
+
+@media (max-width: 1120px) {
+  .design-page .design-systemic-image.concept-art {
+    width: min(100%, 760px) !important;
+    height: 440px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .design-page .design-systemic-image.concept-art {
+    width: min(calc(100vw - 28px), 430px) !important;
+    height: 300px !important;
+    margin-inline: auto !important;
+  }
+
+  .design-page .design-systemic-image__art {
+    object-position: center;
+    transform: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .design-page .design-systemic-image.concept-art {
+    width: min(calc(100vw - 20px), 390px) !important;
+    height: 270px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-page .design-systemic-image__art,
+  .design-page .design-systemic-image::after {
+    animation: none !important;
+  }
+}
