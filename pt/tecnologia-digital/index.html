@@ -7,7 +7,7 @@
   <meta name="description" content="Tecnologia digital como infraestrutura, prática social e mediação para aprendizagem, comunicação e autoria." />
   <link rel="stylesheet" href="/assets/style.css?v=94" />
   <link rel="stylesheet" href="/assets/technology-system.css?v=3" />
-  <link rel="stylesheet" href="/assets/concept-pages.css?v=6" />
+  <link rel="stylesheet" href="/assets/concept-pages.css?v=7" />
 </head>
 <body>
 <header class="site-header">
@@ -25,69 +25,69 @@
       <p data-tech-intro>Tecnologia digital é compreendida como infraestrutura, linguagem e prática social que medeia aprendizagens, comunicações e produções autorais. Mais do que ferramentas, os dispositivos, redes e plataformas constituem ecossistemas sociotécnicos que reorganizam tempos, espaços e formas de participar, colaborar e significar.</p>
     </div>
 
-    <div class="wave-network concept-art wave-network--data-stream" aria-hidden="true">
-      <svg class="wave-network__svg" viewBox="0 0 940 520">
+    <div class="tech-directional-grid concept-art" aria-hidden="true">
+      <svg class="tech-directional-grid__svg" viewBox="0 0 940 520" role="presentation">
         <defs>
-          <linearGradient id="techFlowBlue" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(126, 220, 255, 0)"/>
-            <stop offset="22%" stop-color="rgba(126, 220, 255, .42)"/>
-            <stop offset="56%" stop-color="rgba(160, 236, 255, .95)"/>
-            <stop offset="100%" stop-color="rgba(126, 220, 255, .20)"/>
-          </linearGradient>
-          <linearGradient id="techFlowGold" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(234, 187, 110, 0)"/>
-            <stop offset="24%" stop-color="rgba(234, 187, 110, .34)"/>
-            <stop offset="62%" stop-color="rgba(255, 221, 165, .90)"/>
-            <stop offset="100%" stop-color="rgba(234, 187, 110, .18)"/>
-          </linearGradient>
-          <filter id="softTechGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3.6" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
+          <filter id="techGridGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
+          <path id="techDiagA" d="M120 392 L292 246 L446 312 L618 188 L790 254 L914 146"/>
+          <path id="techDiagB" d="M98 306 L244 184 L402 246 L560 140 L720 202 L882 120"/>
+          <path id="techDiagC" d="M160 438 L316 332 L470 384 L654 274 L804 332 L920 262"/>
+          <path id="techDiagD" d="M232 118 L380 202 L552 96 L714 184 L860 102"/>
         </defs>
 
-        <g class="wave-network__backlines">
-          <path class="wave-network__mesh wave-network__mesh--fine" d="M130 188 C250 118 378 110 496 154 C606 196 730 202 906 154" />
-          <path class="wave-network__mesh wave-network__mesh--fine" d="M126 236 C250 176 376 164 498 192 C612 218 734 224 902 182" />
-          <path class="wave-network__mesh wave-network__mesh--fine" d="M104 288 C240 244 368 234 502 248 C618 260 742 272 892 250" />
-          <path class="wave-network__mesh wave-network__mesh--fine" d="M104 340 C248 300 390 292 532 306 C652 318 758 336 906 330" />
-          <path class="wave-network__grid wave-network__grid--light" d="M436 108V398M550 96V416M664 116V392M780 132V378" />
-          <path class="wave-network__guide wave-network__guide--poly" d="M266 260 L342 210 L404 252 L474 188 L552 226 L624 166 L706 214 L786 142 L860 198" />
-          <path class="wave-network__guide wave-network__guide--poly" d="M304 316 L374 272 L446 324 L532 260 L618 318 L706 248 L792 302 L868 246" />
+        <g class="tech-directional-grid__back">
+          <path class="tech-directional-grid__line tech-directional-grid__line--soft" d="M82 422 L264 270 L420 334 L602 204 L782 268 L920 158"/>
+          <path class="tech-directional-grid__line tech-directional-grid__line--soft" d="M86 334 L228 214 L388 276 L548 168 L708 226 L884 138"/>
+          <path class="tech-directional-grid__line tech-directional-grid__line--soft" d="M118 246 L266 136 L418 198 L572 102 L742 162 L900 88"/>
+          <path class="tech-directional-grid__line tech-directional-grid__line--soft" d="M184 458 L360 340 L520 394 L688 292 L846 346 L924 306"/>
+
+          <path class="tech-directional-grid__cross" d="M208 88 L760 456"/>
+          <path class="tech-directional-grid__cross" d="M120 170 L694 470"/>
+          <path class="tech-directional-grid__cross" d="M338 78 L862 392"/>
+          <path class="tech-directional-grid__cross" d="M462 66 L926 332"/>
+          <path class="tech-directional-grid__cross" d="M248 458 L760 118"/>
+          <path class="tech-directional-grid__cross" d="M120 406 L656 92"/>
+          <path class="tech-directional-grid__cross" d="M92 304 L548 84"/>
         </g>
 
-        <g class="wave-network__mainflows">
-          <path class="wave-network__flow wave-network__flow--glow wave-network__flow--blue wave-network__flow--hero" d="M112 252 C212 212 314 182 420 194 C516 204 620 266 724 252 C812 240 866 194 926 168" />
-          <path class="wave-network__flow wave-network__flow--glow wave-network__flow--gold wave-network__flow--hero wave-network__flow--delayA" d="M152 296 C252 258 344 244 438 258 C554 274 656 324 764 316 C832 312 884 284 934 252" />
-          <path class="wave-network__flow wave-network__flow--blue wave-network__flow--dashedX" d="M108 220 C232 194 348 214 468 246 C592 278 716 302 930 280" />
-          <path class="wave-network__flow wave-network__flow--gold wave-network__flow--dashedX wave-network__flow--delayB" d="M202 166 C306 136 406 130 514 146 C642 164 758 214 932 210" />
-          <path class="wave-network__flow wave-network__flow--softblue" d="M88 334 C214 292 320 286 448 304 C592 324 724 374 922 350" />
-          <path class="wave-network__flow wave-network__flow--softgold" d="M194 124 C320 98 438 100 556 136 C666 168 782 214 930 194" />
-          <path class="wave-network__flow wave-network__flow--micro wave-network__flow--delayC" d="M250 206 C354 174 464 174 574 208 C682 242 784 258 904 250" />
-          <path class="wave-network__flow wave-network__flow--micro wave-network__flow--delayD" d="M238 278 C354 250 466 252 576 282 C678 310 792 318 916 302" />
+        <g class="tech-directional-grid__main">
+          <path class="tech-directional-grid__line tech-directional-grid__line--main" d="M120 392 L292 246 L446 312 L618 188 L790 254 L914 146"/>
+          <path class="tech-directional-grid__line tech-directional-grid__line--main tech-directional-grid__line--delay" d="M98 306 L244 184 L402 246 L560 140 L720 202 L882 120"/>
+          <path class="tech-directional-grid__line tech-directional-grid__line--main tech-directional-grid__line--delayB" d="M160 438 L316 332 L470 384 L654 274 L804 332 L920 262"/>
+          <path class="tech-directional-grid__line tech-directional-grid__line--main tech-directional-grid__line--delayC" d="M232 118 L380 202 L552 96 L714 184 L860 102"/>
         </g>
 
-        <g class="wave-network__signal-dots">
-          <circle class="wave-network__pulse wave-network__pulse--blue" cx="492" cy="192" r="7" />
-          <circle class="wave-network__pulse wave-network__pulse--gold wave-network__pulse--delay" cx="300" cy="284" r="6" />
-          <circle class="wave-network__pulse wave-network__pulse--white wave-network__pulse--late" cx="650" cy="308" r="6" />
-          <circle class="wave-network__pulse wave-network__pulse--gold" cx="788" cy="244" r="5.2" />
-          <circle class="wave-network__pulse wave-network__pulse--blue wave-network__pulse--delay" cx="844" cy="190" r="5.8" />
-          <circle class="wave-network__pulse wave-network__pulse--white" cx="600" cy="146" r="4.8" />
+        <g class="tech-directional-grid__nodes">
+          <circle class="tech-directional-grid__node tech-directional-grid__node--big" cx="292" cy="246" r="5.6"/>
+          <circle class="tech-directional-grid__node" cx="446" cy="312" r="4.6"/>
+          <circle class="tech-directional-grid__node tech-directional-grid__node--big" cx="618" cy="188" r="5.8"/>
+          <circle class="tech-directional-grid__node" cx="790" cy="254" r="4.8"/>
+          <circle class="tech-directional-grid__node" cx="244" cy="184" r="4.8"/>
+          <circle class="tech-directional-grid__node" cx="560" cy="140" r="4.5"/>
+          <circle class="tech-directional-grid__node tech-directional-grid__node--big" cx="804" cy="332" r="5.4"/>
+          <circle class="tech-directional-grid__node" cx="380" cy="202" r="4.2"/>
+          <circle class="tech-directional-grid__node" cx="714" cy="184" r="4.2"/>
+          <circle class="tech-directional-grid__spark" cx="508" cy="270" r="2.5"/>
+          <circle class="tech-directional-grid__spark" cx="676" cy="238" r="2.2"/>
+          <circle class="tech-directional-grid__spark" cx="348" cy="286" r="2.3"/>
+          <circle class="tech-directional-grid__spark" cx="630" cy="332" r="2.2"/>
         </g>
 
-        <g class="wave-network__nodes wave-network__nodes--small">
-          <circle class="wave-network__node wave-network__node--white" cx="226" cy="162" r="3.2" />
-          <circle class="wave-network__node wave-network__node--gold" cx="362" cy="198" r="3.4" />
-          <circle class="wave-network__node wave-network__node--blue" cx="424" cy="334" r="3" />
-          <circle class="wave-network__node wave-network__node--white" cx="556" cy="228" r="3.2" />
-          <circle class="wave-network__node wave-network__node--gold" cx="710" cy="164" r="3.2" />
-          <circle class="wave-network__node wave-network__node--blue" cx="742" cy="330" r="3" />
-          <circle class="wave-network__node wave-network__node--white" cx="894" cy="276" r="3.4" />
-        </g>
+        <circle class="tech-directional-grid__pulse" r="3.8" filter="url(#techGridGlow)">
+          <animateMotion dur="14s" repeatCount="indefinite" rotate="auto"><mpath href="#techDiagA"/></animateMotion>
+        </circle>
+        <circle class="tech-directional-grid__pulse tech-directional-grid__pulse--late" r="3.6" filter="url(#techGridGlow)">
+          <animateMotion dur="12s" begin="1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#techDiagB"/></animateMotion>
+        </circle>
+        <circle class="tech-directional-grid__pulse tech-directional-grid__pulse--late" r="3.6" filter="url(#techGridGlow)">
+          <animateMotion dur="16s" begin=".8s" repeatCount="indefinite" rotate="auto"><mpath href="#techDiagC"/></animateMotion>
+        </circle>
+        <circle class="tech-directional-grid__pulse" r="3.4" filter="url(#techGridGlow)">
+          <animateMotion dur="11s" begin="2.4s" repeatCount="indefinite" rotate="auto"><mpath href="#techDiagD"/></animateMotion>
+        </circle>
       </svg>
     </div>
   </section>
