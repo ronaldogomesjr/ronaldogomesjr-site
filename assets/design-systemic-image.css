@@ -1,8 +1,4 @@
-/*
-  Arte de Design baseada diretamente no mockup aprovado.
-  A imagem contém apenas a composição visual; o fundo escuro é neutralizado
-  por mix-blend-mode: lighten sobre o fundo sage da página.
-*/
+
 .design-page .design-systemic-image.concept-art {
   position: relative !important;
   width: min(100%, 860px) !important;
@@ -16,50 +12,143 @@
   isolation: isolate;
 }
 
+.design-page .design-systemic-image__stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .design-page .design-systemic-image__art {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
-  opacity: .94;
-  filter: drop-shadow(0 0 10px rgba(247,244,236,.08));
   transform-origin: center;
-  animation: designSystemicDrift 13s ease-in-out infinite;
   will-change: transform, opacity, filter;
+  pointer-events: none;
 }
 
-/* brilho discreto que percorre a composição sem alterar a geometria */
+.design-page .design-systemic-image__art--base {
+  opacity: .96;
+  filter: drop-shadow(0 0 10px rgba(247,244,236,.08));
+  animation: designBaseFloat 10s ease-in-out infinite;
+}
+
+.design-page .design-systemic-image__art--glow {
+  opacity: .26;
+  mix-blend-mode: screen;
+  filter: blur(0.6px) drop-shadow(0 0 16px rgba(247,244,236,.16));
+  animation: designGlowSweep 13s ease-in-out infinite;
+}
+
+.design-page .design-systemic-image__art--trail {
+  opacity: .18;
+  mix-blend-mode: screen;
+  filter: blur(1.2px);
+  animation: designTrailDrift 16s ease-in-out infinite reverse;
+}
+
+.design-page .design-systemic-image::before {
+  content: "";
+  position: absolute;
+  inset: 12% 8%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 24% 36%, rgba(247,244,236,.16) 0 2px, transparent 8px),
+    radial-gradient(circle at 46% 50%, rgba(247,244,236,.14) 0 2px, transparent 8px),
+    radial-gradient(circle at 66% 40%, rgba(247,244,236,.14) 0 2px, transparent 8px),
+    radial-gradient(circle at 82% 30%, rgba(247,244,236,.14) 0 2px, transparent 8px),
+    linear-gradient(115deg, transparent 38%, rgba(247,244,236,.10) 48%, transparent 58%);
+  opacity: .55;
+  animation: designSparkFlow 9s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
 .design-page .design-systemic-image::after {
   content: "";
   position: absolute;
-  inset: 15% 5%;
+  inset: 14% 6%;
   pointer-events: none;
-  background:
-    radial-gradient(circle at 30% 44%, rgba(247,244,236,.24) 0 2px, transparent 7px),
-    radial-gradient(circle at 57% 48%, rgba(247,244,236,.22) 0 2px, transparent 8px),
-    radial-gradient(circle at 78% 35%, rgba(247,244,236,.20) 0 2px, transparent 7px);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(247,244,236,.00) 18%,
+    rgba(247,244,236,.08) 50%,
+    rgba(247,244,236,.00) 82%,
+    transparent 100%);
+  opacity: .40;
+  transform: skewX(-14deg);
+  animation: designLightPass 7.2s ease-in-out infinite;
   mix-blend-mode: screen;
-  opacity: .35;
-  animation: designSystemicGlow 7s ease-in-out infinite alternate;
 }
 
-@keyframes designSystemicDrift {
+@keyframes designBaseFloat {
   0%, 100% {
     transform: translate3d(0, 0, 0) scale(1);
-    opacity: .89;
-    filter: drop-shadow(0 0 8px rgba(247,244,236,.07));
+    opacity: .93;
+    filter: drop-shadow(0 0 8px rgba(247,244,236,.08));
   }
   50% {
-    transform: translate3d(0, -5px, 0) scale(1.008);
-    opacity: .96;
-    filter: drop-shadow(0 0 12px rgba(247,244,236,.12));
+    transform: translate3d(0, -6px, 0) scale(1.008);
+    opacity: .98;
+    filter: drop-shadow(0 0 12px rgba(247,244,236,.14));
   }
 }
 
-@keyframes designSystemicGlow {
-  0% { transform: translateX(-6px); opacity: .22; }
-  100% { transform: translateX(8px); opacity: .45; }
+@keyframes designGlowSweep {
+  0%, 100% {
+    transform: translate3d(-10px, 4px, 0) scale(1.01);
+    opacity: .16;
+  }
+  50% {
+    transform: translate3d(12px, -6px, 0) scale(1.03);
+    opacity: .34;
+  }
+}
+
+@keyframes designTrailDrift {
+  0%, 100% {
+    transform: translate3d(8px, 6px, 0) scale(1.015);
+    opacity: .10;
+  }
+  50% {
+    transform: translate3d(-14px, -8px, 0) scale(1.025);
+    opacity: .24;
+  }
+}
+
+@keyframes designSparkFlow {
+  0%, 100% {
+    transform: translate3d(-8px, 0, 0);
+    opacity: .30;
+  }
+  50% {
+    transform: translate3d(12px, -6px, 0);
+    opacity: .58;
+  }
+}
+
+@keyframes designLightPass {
+  0% {
+    transform: translateX(-10%) skewX(-14deg);
+    opacity: .00;
+  }
+  25% {
+    opacity: .12;
+  }
+  50% {
+    transform: translateX(12%) skewX(-14deg);
+    opacity: .36;
+  }
+  75% {
+    opacity: .12;
+  }
+  100% {
+    transform: translateX(26%) skewX(-14deg);
+    opacity: .00;
+  }
 }
 
 @media (max-width: 1120px) {
@@ -75,11 +164,6 @@
     height: 300px !important;
     margin-inline: auto !important;
   }
-
-  .design-page .design-systemic-image__art {
-    object-position: center;
-    transform: none;
-  }
 }
 
 @media (max-width: 420px) {
@@ -91,6 +175,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .design-page .design-systemic-image__art,
+  .design-page .design-systemic-image::before,
   .design-page .design-systemic-image::after {
     animation: none !important;
   }
