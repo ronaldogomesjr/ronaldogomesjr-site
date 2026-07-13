@@ -115,6 +115,7 @@
   async function render() {
     const root = document.querySelector(ROOT_SELECTOR);
     if (!root) return;
+    if (root.dataset.contentReady === '93') return;
     const lang = root.dataset.lang === 'en' ? 'en' : 'pt';
 
     let item = null;
