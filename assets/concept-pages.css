@@ -1061,46 +1061,67 @@
 }
 
 
-/* V8 — centralização real da arte de Educação linguística no viewport mobile */
+/* V10 — arte nova e centralização geométrica definitiva em Educação linguística */
+.language-page .language-halo-burst.concept-art {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  justify-self: center !important;
+  width: min(100%, 760px) !important;
+  height: 480px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
+  overflow: visible !important;
+}
+
+.language-page .language-halo-burst.concept-art .language-dynamic-art__svg {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+  transform: none !important;
+  transform-origin: center center !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 1120px) {
+  .language-page .language-halo-burst.concept-art {
+    width: min(100%, 700px) !important;
+    height: 440px !important;
+  }
+}
+
 @media (max-width: 760px) {
-  .language-page .language-radiant-system.concept-art {
-    position: relative !important;
-    left: 50% !important;
-    right: auto !important;
-    width: 100vw !important;
-    max-width: none !important;
-    height: 300px !important;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-    transform: none !important;
+  .language-page .concept-hero {
+    justify-items: stretch !important;
   }
 
-  .language-page .language-radiant-system.concept-art .language-dynamic-art__svg {
-    display: block !important;
-    width: min(100vw, 400px) !important;
-    max-width: 400px !important;
+  .language-page .language-halo-burst.concept-art {
+    width: min(calc(100vw - 40px), 400px) !important;
+    max-width: none !important;
     height: 300px !important;
-    margin: 0 !important;
-    transform: translateX(-7.8%) !important;
-    transform-origin: center center !important;
-    overflow: visible !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+  }
+
+  .language-page .language-halo-burst.concept-art .language-dynamic-art__svg {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 auto !important;
+    transform: none !important;
   }
 }
 
 @media (max-width: 420px) {
-  .language-page .language-radiant-system.concept-art {
+  .language-page .language-halo-burst.concept-art {
+    width: min(calc(100vw - 32px), 360px) !important;
     height: 270px !important;
-  }
-
-  .language-page .language-radiant-system.concept-art .language-dynamic-art__svg {
-    width: min(100vw, 360px) !important;
-    max-width: 360px !important;
-    height: 270px !important;
-    transform: translateX(-7.8%) !important;
   }
 }
