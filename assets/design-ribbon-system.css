@@ -1,0 +1,141 @@
+/* Solução definitiva — arte da página Design */
+.design-page .design-ribbon-system.concept-art {
+  width: min(100%, 760px) !important;
+  height: 440px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  justify-self: center !important;
+  align-self: start !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.design-page .design-ribbon-system__svg {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.design-page .design-ribbon-system__mesh path,
+.design-page .design-ribbon-system__band use,
+.design-page .design-ribbon-system__guide,
+.design-page .design-ribbon-system__connectors path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.design-page .design-ribbon-system__mesh path {
+  stroke: rgba(247,244,236,.10);
+  stroke-width: 1;
+  fill: rgba(247,244,236,.018);
+}
+
+.design-page .design-ribbon-system__mesh .design-ribbon-system__mesh-line {
+  fill: none;
+  stroke: rgba(247,244,236,.065);
+}
+
+
+.design-page .design-ribbon-system__underlay use {
+  fill: none;
+  stroke: rgba(247,244,236,.075);
+  stroke-width: 30;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.design-page .design-ribbon-system__band use {
+  stroke: rgba(247,244,236,.84);
+  stroke-width: 1.05;
+}
+
+.design-page .design-ribbon-system__band--a,
+.design-page .design-ribbon-system__band--b,
+.design-page .design-ribbon-system__band--c,
+.design-page .design-ribbon-system__band--d {
+  animation: designRibbonBreathe 8s ease-in-out infinite;
+}
+
+.design-page .design-ribbon-system__band--b { opacity: .82; animation-delay: -2s; }
+.design-page .design-ribbon-system__band--c { opacity: .58; animation-delay: -4s; }
+.design-page .design-ribbon-system__band--d { opacity: .52; animation-delay: -1s; }
+
+.design-page .design-ribbon-system__guide {
+  stroke: rgba(247,244,236,.26);
+  stroke-width: 1;
+}
+
+.design-page .design-ribbon-system__guide--dotted {
+  stroke-dasharray: 2 10;
+  animation: designRibbonDash 18s linear infinite;
+}
+
+.design-page .design-ribbon-system__connectors path {
+  stroke: rgba(247,244,236,.30);
+  stroke-width: 1;
+  stroke-dasharray: 2 8;
+}
+
+.design-page .design-ribbon-system__diamond,
+.design-page .design-ribbon-system__dot,
+.design-page .design-ribbon-system__pulse {
+  fill: rgba(247,244,236,.96);
+}
+
+.design-page .design-ribbon-system__diamond,
+.design-page .design-ribbon-system__dot {
+  filter: drop-shadow(0 0 7px rgba(247,244,236,.18));
+}
+
+.design-page .design-ribbon-system__pulse {
+  filter: drop-shadow(0 0 10px rgba(247,244,236,.24));
+}
+
+.design-page .design-ribbon-system__pulse--soft { opacity: .80; }
+
+@keyframes designRibbonBreathe {
+  0%,100% { opacity: .64; }
+  50% { opacity: 1; }
+}
+
+@keyframes designRibbonDash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -120; }
+}
+
+@media (max-width: 1120px) {
+  .design-page .design-ribbon-system.concept-art {
+    width: min(100%, 720px) !important;
+    height: 420px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .design-page .design-ribbon-system.concept-art {
+    width: min(calc(100vw - 28px), 420px) !important;
+    height: 290px !important;
+    margin-inline: auto !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .design-page .design-ribbon-system.concept-art {
+    width: min(calc(100vw - 20px), 380px) !important;
+    height: 265px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-page .design-ribbon-system__band,
+  .design-page .design-ribbon-system__guide--dotted {
+    animation: none !important;
+  }
+}
