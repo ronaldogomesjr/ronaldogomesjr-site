@@ -1008,3 +1008,54 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* V6 — nova arte dinâmica para Educação linguística */
+.language-page .language-halo-burst.concept-art {
+  width: min(100%, 760px) !important;
+  height: 480px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.language-page .language-halo-burst .language-dynamic-art__svg {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+}
+.language-page .edu-burst__glow { fill: url(#eduCenterGlow); }
+.language-page .edu-burst__core { fill: rgba(247,244,236,.78); filter: drop-shadow(0 0 18px rgba(247,244,236,.18)); }
+.language-page .edu-burst__ring,
+.language-page .edu-burst__orbit,
+.language-page .edu-burst__curve,
+.language-page .edu-burst__ray {
+  fill: none; stroke: rgba(247,244,236,.52); vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round;
+}
+.language-page .edu-burst__ring { stroke-width: 1.1; }
+.language-page .edu-burst__ring--soft { stroke: rgba(247,244,236,.28); }
+.language-page .edu-burst__ring--dash,
+.language-page .edu-burst__orbit { stroke-dasharray: 2 10; animation: flowDash 18s linear infinite; }
+.language-page .edu-burst__ring--outer,
+.language-page .edu-burst__orbit--soft,
+.language-page .edu-burst__curve--soft { stroke: rgba(247,244,236,.18); }
+.language-page .edu-burst__curve { stroke-width: 1.2; }
+.language-page .edu-burst__ray { stroke-width: .9; opacity: .34; transform-origin: 560px 250px; animation: eduRayFloat 9s ease-in-out infinite; }
+.language-page .edu-burst__ray:nth-child(2n) { animation-duration: 12s; animation-delay: -3s; }
+.language-page .edu-burst__ray:nth-child(3n) { animation-duration: 10.5s; animation-delay: -1s; }
+.language-page .edu-burst__node,
+.language-page .edu-burst__spark,
+.language-page .edu-burst__pulse { fill: rgba(247,244,236,.94); stroke: rgba(247,244,236,.94); }
+.language-page .edu-burst__node { filter: drop-shadow(0 0 8px rgba(247,244,236,.14)); }
+.language-page .edu-burst__spark { opacity: .82; animation: techPulse 5s ease-in-out infinite; }
+.language-page .edu-burst__pulse { filter: drop-shadow(0 0 8px rgba(247,244,236,.2)); }
+.language-page .edu-burst__pulse--slow { opacity: .84; }
+@keyframes eduRayFloat { 0%,100% { opacity: .22; } 50% { opacity: .44; } }
+@media (max-width: 1120px) {
+  .language-page .language-halo-burst.concept-art { width: min(100%, 700px) !important; height: 440px !important; }
+}
+@media (max-width: 760px) {
+  .language-page .language-halo-burst.concept-art { width: min(100%, 400px) !important; height: 300px !important; }
+}
+@media (max-width: 420px) {
+  .language-page .language-halo-burst.concept-art { width: min(100%, 360px) !important; height: 270px !important; }
+}
