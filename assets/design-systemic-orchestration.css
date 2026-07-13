@@ -1,0 +1,110 @@
+/* Design sistêmico — versão mais fiel ao mockup aprovado */
+.design-page .design-systemic-orchestration.concept-art {
+  width: min(100%, 900px);
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.design-page .design-systemic-orchestration__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  overflow: visible;
+}
+
+.design-page .dso__backmesh path,
+.design-page .dso__band use,
+.design-page .dso__guide,
+.design-page .dso__connectors path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.design-page .dso__backmesh path {
+  stroke: rgba(247,244,236,.11);
+  stroke-width: 1;
+  fill: rgba(247,244,236,.018);
+}
+.design-page .dso__backmesh .dso__backmesh-line {
+  fill: none;
+  stroke: rgba(247,244,236,.075);
+}
+
+.design-page .dso__band use {
+  stroke: rgba(247,244,236,.80);
+  stroke-width: .95;
+  opacity: .82;
+  animation: dsoFloat 9s ease-in-out infinite;
+}
+.design-page .dso__band--b use { stroke: rgba(247,244,236,.64); animation-delay: -2s; }
+.design-page .dso__band--c use { stroke: rgba(247,244,236,.38); stroke-width: .85; animation-delay: -3.5s; }
+.design-page .dso__band--d use { stroke: rgba(247,244,236,.70); animation-delay: -1.2s; }
+.design-page .dso__band--e use { stroke: rgba(247,244,236,.32); stroke-width: .8; animation-delay: -4.2s; }
+
+.design-page .dso__guide {
+  stroke: rgba(247,244,236,.24);
+  stroke-width: 1;
+}
+.design-page .dso__guide--dots {
+  stroke-dasharray: 2 10;
+  animation: dsoDash 18s linear infinite;
+}
+
+.design-page .dso__connectors path {
+  stroke: rgba(247,244,236,.34);
+  stroke-width: 1;
+  stroke-dasharray: 2 8;
+}
+
+.design-page .dso__diamond,
+.design-page .dso__dot,
+.design-page .dso__pulse {
+  fill: rgba(247,244,236,.96);
+}
+.design-page .dso__diamond,
+.design-page .dso__dot {
+  filter: drop-shadow(0 0 8px rgba(247,244,236,.18));
+}
+.design-page .dso__pulse {
+  filter: drop-shadow(0 0 10px rgba(247,244,236,.24));
+}
+.design-page .dso__pulse--soft { opacity: .82; }
+
+@keyframes dsoFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes dsoDash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -120; }
+}
+
+@media (max-width: 1120px) {
+  .design-page .design-systemic-orchestration.concept-art {
+    width: min(100%, 780px);
+    height: 450px;
+  }
+}
+
+@media (max-width: 760px) {
+  .design-page .design-systemic-orchestration.concept-art {
+    width: min(calc(100vw - 28px), 430px);
+    height: 300px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .design-page .design-systemic-orchestration.concept-art {
+    width: min(calc(100vw - 20px), 390px);
+    height: 270px;
+  }
+}

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/assets/style.css?v=94" />
   <link rel="stylesheet" href="/assets/design-system.css?v=13" />
   <link rel="stylesheet" href="/assets/concept-pages.css?v=6" />
-  <link rel="stylesheet" href="/assets/design-systemic-weave.css?v=1" />
+  <link rel="stylesheet" href="/assets/design-systemic-orchestration.css?v=2" />
 </head>
 <body>
 <header class="site-header">
@@ -36,103 +36,131 @@
       <p data-design-intro>Design é entendido como prática de criação, mediação e organização de experiências de aprendizagem. Mais do que uma dimensão estética ou instrumental, o design envolve escolhas pedagógicas, tecnológicas, discursivas e sociais que orientam modos de ensinar, aprender, interagir e produzir sentidos.</p>
     </div>
 
-    <div class="design-systemic-weave concept-art" aria-label="Arte dinâmica de design sistêmico">
-      <svg class="design-systemic-weave__svg" viewBox="0 0 980 560" aria-hidden="true" role="presentation">
+    <div class="design-systemic-orchestration concept-art" aria-label="Arte dinâmica de design sistêmico">
+      <svg class="design-systemic-orchestration__svg" viewBox="0 0 980 560" aria-hidden="true" role="presentation">
         <defs>
-          <filter id="weaveGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
+          <filter id="dsoGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3.2" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-          <path id="weavePathA" d="M98 418 C210 374 324 314 438 250 C534 198 664 154 856 92"/>
-          <path id="weavePathB" d="M146 192 C250 216 360 252 486 304 C604 354 738 392 934 446"/>
-          <path id="weavePathC" d="M186 110 C300 154 398 212 506 284 C608 352 720 424 900 494"/>
-          <path id="weavePathD" d="M230 470 C340 386 432 314 528 220 C626 128 746 86 924 44"/>
+          <path id="dsoBandA" d="M70 418 C205 350 320 292 446 236 C572 180 708 132 930 76"/>
+          <path id="dsoBandB" d="M112 126 C238 180 356 240 496 306 C640 374 762 426 934 492"/>
+          <path id="dsoBandC" d="M54 302 C198 292 322 302 454 326 C596 352 736 370 938 352"/>
+          <path id="dsoBandD" d="M170 476 C284 390 380 324 492 246 C614 162 742 116 942 58"/>
+          <path id="dsoBandE" d="M120 218 C252 232 382 250 506 276 C648 306 788 330 942 318"/>
+          <path id="dsoPulseA" d="M70 418 C205 350 320 292 446 236 C572 180 708 132 930 76"/>
+          <path id="dsoPulseB" d="M112 126 C238 180 356 240 496 306 C640 374 762 426 934 492"/>
+          <path id="dsoPulseC" d="M170 476 C284 390 380 324 492 246 C614 162 742 116 942 58"/>
         </defs>
 
-        <g class="design-systemic-weave__mesh">
-          <path class="design-systemic-weave__plane" d="M472 148 L648 116 L824 180 L810 352 L624 398 L458 308 Z"/>
-          <path class="design-systemic-weave__plane-line" d="M472 148 L458 308"/>
-          <path class="design-systemic-weave__plane-line" d="M516 140 L504 320"/>
-          <path class="design-systemic-weave__plane-line" d="M560 132 L552 332"/>
-          <path class="design-systemic-weave__plane-line" d="M604 124 L600 344"/>
-          <path class="design-systemic-weave__plane-line" d="M648 116 L648 356"/>
-          <path class="design-systemic-weave__plane-line" d="M692 132 L696 366"/>
-          <path class="design-systemic-weave__plane-line" d="M736 148 L744 374"/>
-          <path class="design-systemic-weave__plane-line" d="M780 164 L792 362"/>
-          <path class="design-systemic-weave__plane-line" d="M500 204 L794 236"/>
-          <path class="design-systemic-weave__plane-line" d="M486 252 L804 286"/>
-          <path class="design-systemic-weave__plane-line" d="M472 300 L812 336"/>
+        <g class="dso__backmesh">
+          <path d="M408 166 L548 108 L722 150 L840 248 L764 372 L602 414 L446 352 L356 248 Z"/>
+          <path d="M438 186 L560 138 L704 174 L806 252 L744 344 L610 380 L476 330 L396 252 Z"/>
+          <path d="M474 206 L570 166 L684 194 L770 256 L724 318 L618 348 L506 312 L438 254 Z"/>
+          <path d="M516 226 L584 196 L664 216 L728 260 L696 292 L626 314 L544 292 L488 258 Z"/>
+          <path class="dso__backmesh-line" d="M392 212 L812 292"/>
+          <path class="dso__backmesh-line" d="M398 270 L786 342"/>
+          <path class="dso__backmesh-line" d="M448 154 L668 410"/>
+          <path class="dso__backmesh-line" d="M532 120 L744 376"/>
+          <path class="dso__backmesh-line" d="M612 116 L812 314"/>
         </g>
 
-        <g class="design-systemic-weave__ribbons">
-          <g class="design-systemic-weave__bundle design-systemic-weave__bundle--a">
-            <path d="M84 424 C202 382 316 324 432 258 C532 202 662 160 860 96"/>
-            <path d="M92 416 C208 372 322 314 438 248 C534 198 664 154 864 92"/>
-            <path d="M100 408 C214 362 328 304 444 238 C540 190 668 148 870 86"/>
-            <path d="M108 400 C220 352 336 294 450 228 C548 182 676 142 878 82"/>
-            <path d="M116 392 C230 344 344 286 458 220 C556 176 686 136 888 78"/>
-          </g>
-
-          <g class="design-systemic-weave__bundle design-systemic-weave__bundle--b">
-            <path d="M132 188 C244 214 356 250 482 304 C602 356 736 394 930 448"/>
-            <path d="M140 194 C252 220 364 258 490 312 C608 360 740 398 934 452"/>
-            <path d="M148 200 C260 226 370 266 496 320 C612 366 744 404 938 458"/>
-            <path d="M156 206 C266 234 376 274 504 328 C620 374 748 412 942 468"/>
-          </g>
-
-          <g class="design-systemic-weave__bundle design-systemic-weave__bundle--c">
-            <path d="M174 106 C288 150 390 210 500 284 C604 354 716 426 896 496"/>
-            <path d="M182 112 C296 156 398 216 508 290 C610 360 722 432 902 502"/>
-            <path d="M190 118 C304 162 404 222 514 296 C616 366 728 438 908 508"/>
-          </g>
-
-          <g class="design-systemic-weave__bundle design-systemic-weave__bundle--d">
-            <path d="M220 474 C332 390 426 316 522 222 C620 130 740 90 920 48"/>
-            <path d="M228 468 C340 384 434 310 530 216 C628 124 748 84 928 42"/>
-            <path d="M236 462 C348 378 442 304 538 210 C636 118 756 78 936 36"/>
-          </g>
+        <g class="dso__band dso__band--a">
+          <use href="#dsoBandA" transform="translate(0,-28)"/>
+          <use href="#dsoBandA" transform="translate(0,-23)"/>
+          <use href="#dsoBandA" transform="translate(0,-18)"/>
+          <use href="#dsoBandA" transform="translate(0,-13)"/>
+          <use href="#dsoBandA" transform="translate(0,-8)"/>
+          <use href="#dsoBandA" transform="translate(0,-3)"/>
+          <use href="#dsoBandA" transform="translate(0,2)"/>
+          <use href="#dsoBandA" transform="translate(0,7)"/>
+          <use href="#dsoBandA" transform="translate(0,12)"/>
+          <use href="#dsoBandA" transform="translate(0,17)"/>
+          <use href="#dsoBandA" transform="translate(0,22)"/>
+          <use href="#dsoBandA" transform="translate(0,27)"/>
         </g>
 
-        <g class="design-systemic-weave__guides">
-          <path class="design-systemic-weave__guide design-systemic-weave__guide--dots" d="M164 146 C272 184 386 232 500 300 C610 366 724 430 882 486"/>
-          <path class="design-systemic-weave__guide design-systemic-weave__guide--dots" d="M120 392 C222 350 324 304 430 250 C542 192 670 152 876 86"/>
-          <path class="design-systemic-weave__guide" d="M120 238 C280 260 410 282 534 312 C668 346 800 396 942 462"/>
-          <path class="design-systemic-weave__guide" d="M292 470 C388 396 464 322 560 228 C664 126 768 76 930 38"/>
+        <g class="dso__band dso__band--b">
+          <use href="#dsoBandB" transform="translate(0,-26)"/>
+          <use href="#dsoBandB" transform="translate(0,-21)"/>
+          <use href="#dsoBandB" transform="translate(0,-16)"/>
+          <use href="#dsoBandB" transform="translate(0,-11)"/>
+          <use href="#dsoBandB" transform="translate(0,-6)"/>
+          <use href="#dsoBandB" transform="translate(0,-1)"/>
+          <use href="#dsoBandB" transform="translate(0,4)"/>
+          <use href="#dsoBandB" transform="translate(0,9)"/>
+          <use href="#dsoBandB" transform="translate(0,14)"/>
+          <use href="#dsoBandB" transform="translate(0,19)"/>
+          <use href="#dsoBandB" transform="translate(0,24)"/>
         </g>
 
-        <g class="design-systemic-weave__connectors">
-          <path d="M380 170 L380 334"/>
-          <path d="M536 198 L536 454"/>
-          <path d="M674 126 L674 430"/>
-          <path d="M840 168 L840 410"/>
+        <g class="dso__band dso__band--c">
+          <use href="#dsoBandC" transform="translate(0,-18)"/>
+          <use href="#dsoBandC" transform="translate(0,-13)"/>
+          <use href="#dsoBandC" transform="translate(0,-8)"/>
+          <use href="#dsoBandC" transform="translate(0,-3)"/>
+          <use href="#dsoBandC" transform="translate(0,2)"/>
+          <use href="#dsoBandC" transform="translate(0,7)"/>
+          <use href="#dsoBandC" transform="translate(0,12)"/>
+          <use href="#dsoBandC" transform="translate(0,17)"/>
         </g>
 
-        <g class="design-systemic-weave__nodes">
-          <rect class="design-systemic-weave__diamond" x="370" y="160" width="20" height="20" rx="1" transform="rotate(45 380 170)"/>
-          <rect class="design-systemic-weave__diamond" x="526" y="188" width="20" height="20" rx="1" transform="rotate(45 536 198)"/>
-          <rect class="design-systemic-weave__diamond" x="664" y="116" width="20" height="20" rx="1" transform="rotate(45 674 126)"/>
-          <rect class="design-systemic-weave__diamond" x="830" y="158" width="20" height="20" rx="1" transform="rotate(45 840 168)"/>
-          <rect class="design-systemic-weave__diamond" x="526" y="444" width="20" height="20" rx="1" transform="rotate(45 536 454)"/>
-          <rect class="design-systemic-weave__diamond" x="664" y="420" width="20" height="20" rx="1" transform="rotate(45 674 430)"/>
-          <rect class="design-systemic-weave__diamond" x="830" y="400" width="20" height="20" rx="1" transform="rotate(45 840 410)"/>
-          <circle class="design-systemic-weave__dot" cx="304" cy="304" r="4.5"/>
-          <circle class="design-systemic-weave__dot" cx="456" cy="252" r="4.5"/>
-          <circle class="design-systemic-weave__dot" cx="620" cy="276" r="4.5"/>
-          <circle class="design-systemic-weave__dot" cx="748" cy="238" r="4.5"/>
-          <circle class="design-systemic-weave__dot" cx="718" cy="338" r="4.5"/>
+        <g class="dso__band dso__band--d">
+          <use href="#dsoBandD" transform="translate(0,-16)"/>
+          <use href="#dsoBandD" transform="translate(0,-11)"/>
+          <use href="#dsoBandD" transform="translate(0,-6)"/>
+          <use href="#dsoBandD" transform="translate(0,-1)"/>
+          <use href="#dsoBandD" transform="translate(0,4)"/>
+          <use href="#dsoBandD" transform="translate(0,9)"/>
+          <use href="#dsoBandD" transform="translate(0,14)"/>
         </g>
 
-        <circle class="design-systemic-weave__pulse" r="4" filter="url(#weaveGlow)">
-          <animateMotion dur="12s" repeatCount="indefinite" rotate="auto"><mpath href="#weavePathA"/></animateMotion>
+        <g class="dso__band dso__band--e">
+          <use href="#dsoBandE" transform="translate(0,-14)"/>
+          <use href="#dsoBandE" transform="translate(0,-9)"/>
+          <use href="#dsoBandE" transform="translate(0,-4)"/>
+          <use href="#dsoBandE" transform="translate(0,1)"/>
+          <use href="#dsoBandE" transform="translate(0,6)"/>
+          <use href="#dsoBandE" transform="translate(0,11)"/>
+        </g>
+
+        <g class="dso__guides">
+          <path class="dso__guide dso__guide--dots" d="M92 390 C226 334 338 284 462 226 C592 166 724 122 924 70"/>
+          <path class="dso__guide dso__guide--dots" d="M128 144 C258 194 372 246 504 308 C646 374 770 430 928 486"/>
+          <path class="dso__guide" d="M112 252 C244 264 366 282 492 308 C634 338 772 356 930 344"/>
+          <path class="dso__guide" d="M210 458 C314 382 404 316 512 238 C628 154 750 108 930 54"/>
+        </g>
+
+        <g class="dso__connectors">
+          <path d="M366 176 L366 360"/>
+          <path d="M522 190 L522 434"/>
+          <path d="M680 128 L680 414"/>
+          <path d="M836 170 L836 384"/>
+        </g>
+
+        <g class="dso__nodes">
+          <rect class="dso__diamond" x="356" y="166" width="20" height="20" transform="rotate(45 366 176)"/>
+          <rect class="dso__diamond" x="512" y="180" width="20" height="20" transform="rotate(45 522 190)"/>
+          <rect class="dso__diamond" x="670" y="118" width="20" height="20" transform="rotate(45 680 128)"/>
+          <rect class="dso__diamond" x="826" y="160" width="20" height="20" transform="rotate(45 836 170)"/>
+          <rect class="dso__diamond" x="512" y="424" width="20" height="20" transform="rotate(45 522 434)"/>
+          <rect class="dso__diamond" x="670" y="404" width="20" height="20" transform="rotate(45 680 414)"/>
+          <rect class="dso__diamond" x="826" y="374" width="20" height="20" transform="rotate(45 836 384)"/>
+          <circle class="dso__dot" cx="294" cy="292" r="4.5"/>
+          <circle class="dso__dot" cx="448" cy="244" r="4.5"/>
+          <circle class="dso__dot" cx="604" cy="278" r="4.5"/>
+          <circle class="dso__dot" cx="742" cy="236" r="4.5"/>
+          <circle class="dso__dot" cx="708" cy="344" r="4.5"/>
+        </g>
+
+        <circle class="dso__pulse" r="4" filter="url(#dsoGlow)">
+          <animateMotion dur="13s" repeatCount="indefinite"><mpath href="#dsoPulseA"/></animateMotion>
         </circle>
-        <circle class="design-systemic-weave__pulse design-systemic-weave__pulse--soft" r="3.8" filter="url(#weaveGlow)">
-          <animateMotion dur="15s" begin="1.2s" repeatCount="indefinite" rotate="auto"><mpath href="#weavePathB"/></animateMotion>
+        <circle class="dso__pulse dso__pulse--soft" r="3.8" filter="url(#dsoGlow)">
+          <animateMotion dur="15s" begin="1.4s" repeatCount="indefinite"><mpath href="#dsoPulseB"/></animateMotion>
         </circle>
-        <circle class="design-systemic-weave__pulse design-systemic-weave__pulse--soft" r="3.6" filter="url(#weaveGlow)">
-          <animateMotion dur="16s" begin="0.6s" repeatCount="indefinite" rotate="auto"><mpath href="#weavePathC"/></animateMotion>
-        </circle>
-        <circle class="design-systemic-weave__pulse" r="3.8" filter="url(#weaveGlow)">
-          <animateMotion dur="14s" begin="2.1s" repeatCount="indefinite" rotate="auto"><mpath href="#weavePathD"/></animateMotion>
+        <circle class="dso__pulse" r="3.8" filter="url(#dsoGlow)">
+          <animateMotion dur="14s" begin="2.2s" repeatCount="indefinite"><mpath href="#dsoPulseC"/></animateMotion>
         </circle>
       </svg>
     </div>
