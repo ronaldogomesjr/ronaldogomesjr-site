@@ -1,28 +1,4 @@
 (function () {
-  /*
-   * CORREÇÃO DO FLASH DE CONTEÚDO ANTIGO
-   *
-   * O HTML possui conteúdo estático de reserva. Este script esconde o bloco
-   * imediatamente, antes de buscar content/pages.json, e só o revela depois
-   * que o conteúdo atual foi aplicado.
-   */
-  const loadingStyle = document.createElement('style');
-  loadingStyle.id = 'page-content-loading-style';
-  loadingStyle.textContent = `
-    html.page-content-loading [data-page-shell] {
-      visibility: hidden !important;
-    }
-  `;
-  document.head.appendChild(loadingStyle);
-  document.documentElement.classList.add('page-content-loading');
-
-  let fallbackTimer = window.setTimeout(revealPageContent, 4000);
-
-  function revealPageContent() {
-    window.clearTimeout(fallbackTimer);
-    document.documentElement.classList.remove('page-content-loading');
-  }
-
   function escapeHTML(value) {
     return String(value || '')
       .replaceAll('&', '&amp;')
@@ -33,14 +9,8 @@
   }
 
   async function loadPages() {
-    const response = await fetch('/content/pages.json', {
-      cache: 'no-store'
-    });
-
-    if (!response.ok) {
-      throw new Error('pages');
-    }
-
+    const response = await fetch('/content/pages.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('pages');
     const data = await response.json();
     return data.items || [];
   }
@@ -51,17 +21,11 @@
 
   function linkHTML(label, url) {
     if (!label || !url) return '';
-
-    const externalAttributes = String(url).startsWith('http')
-      ? 'target="_blank" rel="noopener noreferrer"'
-      : '';
-
-    return `<a href="${escapeHTML(url)}" ${externalAttributes}>${escapeHTML(label)}</a>`;
+    return `<a href="${escapeHTML(url)}" ${String(url).startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>${escapeHTML(label)}</a>`;
   }
 
   function ensureResearchGroupsStyles() {
     if (document.querySelector('link[data-research-groups-styles]')) return;
-
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = '/assets/research-groups-v71.css?v=71';
@@ -70,34 +34,22 @@
   }
 
   async function loadResearchGroups() {
-    const response = await fetch('/content/research-groups.json', {
-      cache: 'no-store'
-    });
-
+    const response = await fetch('/content/research-groups.json', { cache: 'no-store' });
     if (!response.ok) return [];
-
     const data = await response.json();
     return Array.isArray(data.items) ? data.items : [];
   }
 
   function researchGroupField(group, name, lang) {
-    return (
-      group[`${name}_${lang}`] ||
-      group[`${name}_${lang === 'en' ? 'pt' : 'en'}`] ||
-      group[name] ||
-      ''
-    );
+    return group[`${name}_${lang}`] || group[`${name}_${lang === 'en' ? 'pt' : 'en'}`] || group[name] || '';
   }
 
   async function renderResearchGroups(shell, lang, page) {
-    const isResearchPage =
-      page &&
-      (
-        page.id === 'pesquisa' ||
-        page.slug_pt === 'pesquisa' ||
-        page.slug_en === 'research'
-      );
-
+    const isResearchPage = page && (
+      page.id === 'pesquisa' ||
+      page.slug_pt === 'pesquisa' ||
+      page.slug_en === 'research'
+    );
     if (!isResearchPage) return;
 
     const sectionsEl = shell.querySelector('[data-page-sections]');
@@ -105,81 +57,51 @@
 
     const groups = (await loadResearchGroups())
       .filter((group) => group && group.visivel !== false)
-      .filter(
-        (group) =>
-          researchGroupField(group, 'nome', lang) ||
-          researchGroupField(group, 'descricao', lang)
-      )
+      .filter((group) => researchGroupField(group, 'nome', lang) || researchGroupField(group, 'descricao', lang))
       .sort((a, b) => {
         const orderA = Number(a.ordem ?? 9999);
         const orderB = Number(b.ordem ?? 9999);
-
         if (orderA !== orderB) return orderA - orderB;
-
-        return researchGroupField(a, 'nome', lang).localeCompare(
-          researchGroupField(b, 'nome', lang)
-        );
+        return researchGroupField(a, 'nome', lang).localeCompare(researchGroupField(b, 'nome', lang));
       });
 
     if (!groups.length) return;
-
     ensureResearchGroupsStyles();
 
-    const sectionTitle =
-      lang === 'en' ? 'Research Groups' : 'Grupos de Pesquisa';
+    const sectionTitle = lang === 'en' ? 'Research Groups' : 'Grupos de Pesquisa';
+    const linkLabel = lang === 'en' ? 'Visit website →' : 'Acessar site →';
+    const itemsHTML = groups.map((group) => {
+      const name = researchGroupField(group, 'nome', lang);
+      const description = researchGroupField(group, 'descricao', lang);
+      const url = String(group.link || '').trim();
+      return `
+        <article class="research-group-item">
+          ${name ? `<h3>${escapeHTML(name)}</h3>` : ''}
+          ${description ? `<p>${escapeHTML(description)}</p>` : ''}
+          ${url ? linkHTML(linkLabel, url) : ''}
+        </article>`;
+    }).join('');
 
-    const linkLabel =
-      lang === 'en' ? 'Visit website →' : 'Acessar site →';
-
-    const itemsHTML = groups
-      .map((group) => {
-        const name = researchGroupField(group, 'nome', lang);
-        const description = researchGroupField(group, 'descricao', lang);
-        const url = String(group.link || '').trim();
-
-        return `
-          <article class="research-group-item">
-            ${name ? `<h3>${escapeHTML(name)}</h3>` : ''}
-            ${description ? `<p>${escapeHTML(description)}</p>` : ''}
-            ${url ? linkHTML(linkLabel, url) : ''}
-          </article>
-        `;
-      })
-      .join('');
-
-    sectionsEl.insertAdjacentHTML(
-      'beforeend',
-      `
-        <article class="section-row research-groups-section">
-          <h2>${escapeHTML(sectionTitle)}</h2>
-          <div class="research-groups-list">${itemsHTML}</div>
-        </article>
-      `
-    );
+    sectionsEl.insertAdjacentHTML('beforeend', `
+      <article class="section-row research-groups-section">
+        <h2>${escapeHTML(sectionTitle)}</h2>
+        <div class="research-groups-list">${itemsHTML}</div>
+      </article>`);
   }
 
-  async function renderCurrentPage() {
+  document.addEventListener('DOMContentLoaded', async function () {
     const shell = document.querySelector('[data-page-shell]');
-
-    if (!shell) {
-      revealPageContent();
-      return;
-    }
+    if (!shell) return;
 
     const slug = shell.getAttribute('data-page-slug');
     const lang = shell.getAttribute('data-lang') || 'pt';
 
     try {
       const items = await loadPages();
-
       const page = items.find((item) => {
-        if (lang === 'en') {
-          return item.slug_en === slug || item.slug === slug;
-        }
-
+        if (lang === 'en') return item.slug_en === slug || item.slug === slug;
         return item.slug_pt === slug || item.slug === slug;
       });
-
       if (!page) return;
 
       const title = field(page, 'title', lang);
@@ -189,89 +111,51 @@
 
       const titleEl = shell.querySelector('[data-page-title]');
       const introEl = shell.querySelector('[data-page-intro]');
-
       if (titleEl && title) titleEl.textContent = title;
       if (introEl && intro) introEl.textContent = intro;
 
       const aboutPhoto = shell.querySelector('[data-about-photo]');
-
       if (aboutPhoto) {
-        const photoURL = page.foto || page.photo || '';
-
+        const photoURL = page.foto || page.photo || "";
         if (photoURL) {
-          aboutPhoto.innerHTML =
-            `<img src="${escapeHTML(photoURL)}" ` +
-            `alt="${lang === 'en' ? 'Photo of Ronaldo Gomes Jr.' : 'Foto de Ronaldo Gomes Jr.'}">`;
-
-          aboutPhoto.classList.add('has-photo');
+          aboutPhoto.innerHTML = `<img src="${escapeHTML(photoURL)}" alt="${lang === "en" ? "Photo of Ronaldo Gomes Jr." : "Foto de Ronaldo Gomes Jr."}">`;
+          aboutPhoto.classList.add("has-photo");
         } else {
-          aboutPhoto.innerHTML =
-            '<span class="about-photo-placeholder" aria-hidden="true"></span>';
-
-          aboutPhoto.classList.remove('has-photo');
+          aboutPhoto.innerHTML = `<span class="about-photo-placeholder" aria-hidden="true"></span>`;
+          aboutPhoto.classList.remove("has-photo");
         }
       }
 
-      document.title =
-        `${metaTitle || title || document.title} — Ronaldo Gomes Jr.`;
+      document.title = `${metaTitle || title || document.title} — Ronaldo Gomes Jr.`;
 
-      const metaDescriptionEl =
-        document.querySelector('meta[name="description"]');
-
+      const metaDescriptionEl = document.querySelector('meta[name="description"]');
       if (metaDescriptionEl && metaDescription) {
         metaDescriptionEl.setAttribute('content', metaDescription);
       }
 
       const sectionsEl = shell.querySelector('[data-page-sections]');
-
       if (sectionsEl) {
-        const sections = [1, 2, 3, 4]
-          .map((number) => ({
-            title: field(page, `section${number}_title`, lang),
-            text: field(page, `section${number}_text`, lang),
-            linkLabel: field(page, `section${number}_link_label`, lang),
-            linkUrl: field(page, `section${number}_link_url`, lang)
-          }))
-          .filter(
-            (section) =>
-              section.title ||
-              section.text ||
-              section.linkLabel ||
-              section.linkUrl
-          );
+        const sections = [1,2,3,4].map((n) => ({
+          title: field(page, `section${n}_title`, lang),
+          text: field(page, `section${n}_text`, lang),
+          linkLabel: field(page, `section${n}_link_label`, lang),
+          linkUrl: field(page, `section${n}_link_url`, lang)
+        })).filter((section) => section.title || section.text || section.linkLabel || section.linkUrl);
 
-        sectionsEl.innerHTML = sections
-          .map(
-            (section) => `
-              <article class="section-row">
-                <h2>${escapeHTML(section.title)}</h2>
-                <div>
-                  ${section.text ? `<p>${escapeHTML(section.text)}</p>` : ''}
-                  ${linkHTML(section.linkLabel, section.linkUrl)}
-                </div>
-              </article>
-            `
-          )
-          .join('');
+        sectionsEl.innerHTML = sections.map((section) => `
+          <article class="section-row">
+            <h2>${escapeHTML(section.title)}</h2>
+            <div>
+              ${section.text ? `<p>${escapeHTML(section.text)}</p>` : ''}
+              ${linkHTML(section.linkLabel, section.linkUrl)}
+            </div>
+          </article>
+        `).join('');
       }
 
       await renderResearchGroups(shell, lang, page);
     } catch (error) {
       console.error('Erro ao carregar páginas:', error);
-    } finally {
-      /*
-       * A página só é revelada depois de a tentativa de carregamento terminar.
-       * Assim, o visitante nunca vê o conteúdo antigo sendo substituído.
-       */
-      window.requestAnimationFrame(revealPageContent);
     }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderCurrentPage, {
-      once: true
-    });
-  } else {
-    renderCurrentPage();
-  }
+  });
 })();
