@@ -1061,25 +1061,32 @@
 }
 
 
-/* V7 — correção definitiva da centralização da arte de Educação linguística no mobile */
+/* V8 — centralização real da arte de Educação linguística no viewport mobile */
 @media (max-width: 760px) {
   .language-page .language-radiant-system.concept-art {
+    position: relative !important;
+    left: 50% !important;
+    right: auto !important;
+    width: 100vw !important;
+    max-width: none !important;
+    height: 300px !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    padding: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: min(100%, 400px) !important;
-    height: 300px !important;
-    margin-inline: auto !important;
-    overflow: visible !important;
+    overflow: hidden !important;
+    transform: none !important;
   }
 
   .language-page .language-radiant-system.concept-art .language-dynamic-art__svg {
     display: block !important;
-    width: calc(100% + 56px) !important;
-    max-width: none !important;
-    height: 100% !important;
-    margin-inline: auto !important;
-    transform: translateX(-28px) !important;
+    width: min(100vw, 400px) !important;
+    max-width: 400px !important;
+    height: 300px !important;
+    margin: 0 !important;
+    transform: translateX(-7.8%) !important;
     transform-origin: center center !important;
     overflow: visible !important;
   }
@@ -1087,12 +1094,13 @@
 
 @media (max-width: 420px) {
   .language-page .language-radiant-system.concept-art {
-    width: min(100%, 360px) !important;
     height: 270px !important;
   }
 
   .language-page .language-radiant-system.concept-art .language-dynamic-art__svg {
-    width: calc(100% + 48px) !important;
-    transform: translateX(-24px) !important;
+    width: min(100vw, 360px) !important;
+    max-width: 360px !important;
+    height: 270px !important;
+    transform: translateX(-7.8%) !important;
   }
 }

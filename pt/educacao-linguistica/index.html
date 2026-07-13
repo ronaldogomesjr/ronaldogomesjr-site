@@ -7,7 +7,7 @@
   <meta name="description" content="Educação linguística como campo de formação, prática crítica e produção de conhecimento sobre linguagem." />
   <link rel="stylesheet" href="/assets/style.css?v=94" />
   <link rel="stylesheet" href="/assets/language-education.css?v=5" />
-  <link rel="stylesheet" href="/assets/concept-pages.css?v=7" />
+  <link rel="stylesheet" href="/assets/concept-pages.css?v=8" />
 </head>
 <body>
 <header class="site-header">
@@ -25,73 +25,81 @@
       <p data-language-intro>Educação linguística é entendida como campo de formação, prática crítica e produção de conhecimento sobre linguagem. Mais do que desenvolver habilidades isoladas, ela articula leitura, escrita, oralidade, escuta e reflexão para ampliar repertórios, participação, autoria e compreensão de diferentes contextos.</p>
     </div>
 
-    <div class="language-dynamic-art concept-art language-halo-burst" aria-hidden="true">
+    <div class="language-dynamic-art concept-art language-radiant-system" aria-hidden="true">
       <svg class="language-dynamic-art__svg" viewBox="0 0 900 520" role="presentation">
         <defs>
-          <radialGradient id="eduCenterGlow" cx="50%" cy="50%" r="52%">
+          <radialGradient id="langCoreGlow" cx="50%" cy="50%" r="55%">
             <stop offset="0%" stop-color="rgba(247,244,236,.98)"/>
-            <stop offset="28%" stop-color="rgba(247,244,236,.52)"/>
+            <stop offset="36%" stop-color="rgba(247,244,236,.66)"/>
             <stop offset="100%" stop-color="rgba(247,244,236,0)"/>
           </radialGradient>
-          <filter id="eduSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2.8" result="blur"/>
+          <filter id="langSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-          <path id="eduOrbitOne" d="M611 250 C725 202 800 188 858 206 C900 220 898 286 854 304 C790 330 696 338 564 294 C476 266 438 232 414 180"/>
-          <path id="eduOrbitTwo" d="M579 146 C522 140 460 162 412 210 C372 250 350 316 326 392"/>
         </defs>
 
-        <g class="edu-burst__center">
-          <circle class="edu-burst__glow" cx="560" cy="250" r="176"/>
-          <circle class="edu-burst__core" cx="560" cy="250" r="32"/>
-          <circle class="edu-burst__ring" cx="560" cy="250" r="76"/>
-          <circle class="edu-burst__ring edu-burst__ring--soft" cx="560" cy="250" r="114"/>
-          <circle class="edu-burst__ring edu-burst__ring--dash" cx="560" cy="250" r="150"/>
-          <circle class="edu-burst__ring edu-burst__ring--outer" cx="560" cy="250" r="186"/>
+        <g class="language-radiant__field">
+          <circle class="language-radiant__halo" cx="520" cy="254" r="176"/>
+          <circle class="language-radiant__core" cx="520" cy="254" r="44"/>
+          <circle class="language-radiant__core-ring" cx="520" cy="254" r="68"/>
+          <circle class="language-radiant__core-ring language-radiant__core-ring--thin" cx="520" cy="254" r="94"/>
+          <circle class="language-radiant__core-ring language-radiant__core-ring--dash" cx="520" cy="254" r="118"/>
+          <circle class="language-radiant__core-ring language-radiant__core-ring--thin" cx="520" cy="254" r="146"/>
+          <circle class="language-radiant__core-ring language-radiant__core-ring--outer" cx="520" cy="254" r="174"/>
+
+          <path id="langRayA" class="language-radiant__ray language-radiant__ray--teal" d="M520 254 C596 206 688 164 820 116"/>
+          <path id="langRayB" class="language-radiant__ray language-radiant__ray--gold" d="M520 254 C602 238 716 218 858 208"/>
+          <path id="langRayC" class="language-radiant__ray language-radiant__ray--sage" d="M520 254 C618 276 724 316 858 392"/>
+          <path id="langRayD" class="language-radiant__ray language-radiant__ray--cream" d="M520 254 C566 332 606 408 706 488"/>
+          <path id="langRayE" class="language-radiant__ray language-radiant__ray--gold" d="M520 254 C444 302 372 364 290 462"/>
+          <path id="langRayF" class="language-radiant__ray language-radiant__ray--teal" d="M520 254 C412 270 294 286 148 328"/>
+          <path id="langRayG" class="language-radiant__ray language-radiant__ray--sage" d="M520 254 C420 222 306 184 176 132"/>
+          <path id="langRayH" class="language-radiant__ray language-radiant__ray--cream" d="M520 254 C500 170 480 92 510 26"/>
+
+          <path class="language-radiant__trail language-radiant__trail--teal" d="M560 154 C646 122 748 112 858 132"/>
+          <path class="language-radiant__trail language-radiant__trail--gold" d="M614 198 C718 176 796 172 882 190"/>
+          <path class="language-radiant__trail language-radiant__trail--sage" d="M598 310 C700 334 784 364 866 418"/>
+          <path class="language-radiant__trail language-radiant__trail--cream" d="M440 326 C358 366 290 416 240 492"/>
+          <path class="language-radiant__trail language-radiant__trail--teal" d="M390 248 C302 256 208 278 112 316"/>
+          <path class="language-radiant__trail language-radiant__trail--gold" d="M410 168 C308 148 220 118 134 74"/>
+
+          <path id="langPulseRing1" class="language-radiant__orbit language-radiant__orbit--dash" d="M520 136 A118 118 0 1 1 519.9 136"/>
+          <path id="langPulseRing2" class="language-radiant__orbit language-radiant__orbit--soft" d="M520 108 A146 146 0 1 1 519.9 108"/>
         </g>
 
-        <g class="edu-burst__rays">
-          <path class="edu-burst__ray" d="M560 250 L560 34"/>
-          <path class="edu-burst__ray" d="M560 250 L692 46"/>
-          <path class="edu-burst__ray" d="M560 250 L818 108"/>
-          <path class="edu-burst__ray" d="M560 250 L878 222"/>
-          <path class="edu-burst__ray" d="M560 250 L862 354"/>
-          <path class="edu-burst__ray" d="M560 250 L752 464"/>
-          <path class="edu-burst__ray" d="M560 250 L576 500"/>
-          <path class="edu-burst__ray" d="M560 250 L398 466"/>
-          <path class="edu-burst__ray" d="M560 250 L276 390"/>
-          <path class="edu-burst__ray" d="M560 250 L244 236"/>
-          <path class="edu-burst__ray" d="M560 250 L312 114"/>
-          <path class="edu-burst__ray" d="M560 250 L430 44"/>
+        <g class="language-radiant__nodes">
+          <circle class="language-radiant__node language-radiant__node--teal" cx="818" cy="118" r="7"/>
+          <circle class="language-radiant__node language-radiant__node--gold" cx="850" cy="210" r="6"/>
+          <circle class="language-radiant__node language-radiant__node--sage" cx="846" cy="388" r="7"/>
+          <circle class="language-radiant__node language-radiant__node--cream" cx="704" cy="486" r="6"/>
+          <circle class="language-radiant__node language-radiant__node--gold" cx="292" cy="458" r="6.5"/>
+          <circle class="language-radiant__node language-radiant__node--teal" cx="146" cy="328" r="7"/>
+          <circle class="language-radiant__node language-radiant__node--sage" cx="178" cy="132" r="6.5"/>
+          <circle class="language-radiant__node language-radiant__node--cream" cx="510" cy="28" r="5.6"/>
+          <circle class="language-radiant__spark language-radiant__spark--gold" cx="680" cy="164" r="3.2"/>
+          <circle class="language-radiant__spark language-radiant__spark--teal" cx="660" cy="350" r="3"/>
+          <circle class="language-radiant__spark language-radiant__spark--sage" cx="374" cy="170" r="3"/>
+          <circle class="language-radiant__spark language-radiant__spark--gold" cx="402" cy="344" r="3.2"/>
         </g>
 
-        <g class="edu-burst__orbits">
-          <path class="edu-burst__orbit" d="M560 98 A152 152 0 1 1 559.9 98"/>
-          <path class="edu-burst__orbit edu-burst__orbit--soft" d="M560 132 A118 118 0 1 1 559.9 132"/>
-          <path class="edu-burst__curve" d="M430 120 C460 94 500 82 554 88 C644 98 724 164 754 238 C776 292 774 358 728 416"/>
-          <path class="edu-burst__curve edu-burst__curve--soft" d="M388 318 C440 346 490 362 556 360 C648 356 732 314 784 256"/>
-        </g>
-
-        <g class="edu-burst__nodes">
-          <circle class="edu-burst__node" cx="560" cy="34" r="5.4"/>
-          <circle class="edu-burst__node" cx="818" cy="108" r="5.4"/>
-          <circle class="edu-burst__node" cx="862" cy="354" r="5.6"/>
-          <circle class="edu-burst__node" cx="752" cy="464" r="5.4"/>
-          <circle class="edu-burst__node" cx="398" cy="466" r="5.4"/>
-          <circle class="edu-burst__node" cx="276" cy="390" r="5.6"/>
-          <circle class="edu-burst__node" cx="244" cy="236" r="5.4"/>
-          <circle class="edu-burst__node" cx="312" cy="114" r="5.4"/>
-          <circle class="edu-burst__spark" cx="456" cy="146" r="2.6"/>
-          <circle class="edu-burst__spark" cx="694" cy="168" r="2.6"/>
-          <circle class="edu-burst__spark" cx="730" cy="286" r="2.4"/>
-          <circle class="edu-burst__spark" cx="490" cy="340" r="2.5"/>
-        </g>
-
-        <circle class="edu-burst__pulse" r="3.8" filter="url(#eduSoftGlow)">
-          <animateMotion dur="15s" repeatCount="indefinite" rotate="auto"><mpath href="#eduOrbitOne"/></animateMotion>
+        <circle class="language-radiant__pulse language-radiant__pulse--teal" r="4.5" filter="url(#langSoftGlow)">
+          <animateMotion dur="10s" repeatCount="indefinite" rotate="auto"><mpath href="#langRayA"/></animateMotion>
         </circle>
-        <circle class="edu-burst__pulse edu-burst__pulse--slow" r="3.6" filter="url(#eduSoftGlow)">
-          <animateMotion dur="18s" begin="1.4s" repeatCount="indefinite" rotate="auto"><mpath href="#eduOrbitTwo"/></animateMotion>
+        <circle class="language-radiant__pulse language-radiant__pulse--gold" r="4.2" filter="url(#langSoftGlow)">
+          <animateMotion dur="11.5s" begin="1.3s" repeatCount="indefinite" rotate="auto"><mpath href="#langRayE"/></animateMotion>
+        </circle>
+        <circle class="language-radiant__pulse language-radiant__pulse--sage" r="4.1" filter="url(#langSoftGlow)">
+          <animateMotion dur="12.8s" begin=".7s" repeatCount="indefinite" rotate="auto"><mpath href="#langRayC"/></animateMotion>
+        </circle>
+        <circle class="language-radiant__pulse language-radiant__pulse--cream" r="3.9" filter="url(#langSoftGlow)">
+          <animateMotion dur="9.8s" begin="2s" repeatCount="indefinite" rotate="auto"><mpath href="#langRayH"/></animateMotion>
+        </circle>
+        <circle class="language-radiant__pulse language-radiant__pulse--gold" r="3.7" filter="url(#langSoftGlow)">
+          <animateMotion dur="13.2s" begin="2.4s" repeatCount="indefinite" rotate="auto"><mpath href="#langPulseRing1"/></animateMotion>
+        </circle>
+        <circle class="language-radiant__pulse language-radiant__pulse--teal" r="3.6" filter="url(#langSoftGlow)">
+          <animateMotion dur="15.5s" begin="1.6s" repeatCount="indefinite" rotate="auto"><mpath href="#langPulseRing2"/></animateMotion>
         </circle>
       </svg>
     </div>
