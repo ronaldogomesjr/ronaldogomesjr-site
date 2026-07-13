@@ -1,0 +1,64 @@
+.design-page .design-organic-art.concept-art {
+  width: min(100%, 780px) !important;
+  height: 460px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  justify-self: center !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+.design-page .design-organic-art__svg {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+  transform: none !important;
+  transform-origin: center center !important;
+}
+.design-page .design-organic-art__veil,
+.design-page .design-organic-art__stream,
+.design-page .design-organic-art__guide,
+.design-page .design-organic-art__relation {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.design-page .design-organic-art__veil { stroke: rgba(247,244,236,.10); stroke-width: 1; }
+.design-page .design-organic-art__veil--one { fill: rgba(247,244,236,.035); }
+.design-page .design-organic-art__veil--two { fill: rgba(247,244,236,.022); }
+.design-page .design-organic-art__guide { stroke: rgba(247,244,236,.20); stroke-width: 1.05; }
+.design-page .design-organic-art__guide--dotted { stroke: rgba(247,244,236,.25); stroke-dasharray: 2 10; animation: designOrganicDash 22s linear infinite; }
+.design-page .design-organic-art__stream { stroke: rgba(247,244,236,.88); stroke-width: 1.75; animation: designOrganicBreathe 9s ease-in-out infinite; }
+.design-page .design-organic-art__stream--secondary { stroke: rgba(247,244,236,.64); stroke-width: 1.45; animation-delay: -2.4s; }
+.design-page .design-organic-art__stream--upper { stroke: rgba(247,244,236,.56); stroke-width: 1.3; stroke-dasharray: 5 10; animation: designOrganicDash 18s linear infinite; }
+.design-page .design-organic-art__relation { stroke: rgba(247,244,236,.28); stroke-width: 1; }
+.design-page .design-organic-art__node,
+.design-page .design-organic-art__spark,
+.design-page .design-organic-art__pulse { fill: rgba(247,244,236,.94); }
+.design-page .design-organic-art__node { filter: drop-shadow(0 0 8px rgba(247,244,236,.16)); }
+.design-page .design-organic-art__node--large { filter: drop-shadow(0 0 12px rgba(247,244,236,.22)); }
+.design-page .design-organic-art__spark { opacity: .78; animation: designOrganicPulse 4.8s ease-in-out infinite; }
+.design-page .design-organic-art__pulse { filter: drop-shadow(0 0 10px rgba(247,244,236,.22)); }
+.design-page .design-organic-art__pulse--soft { opacity: .82; }
+@keyframes designOrganicDash { to { stroke-dashoffset: -120; } }
+@keyframes designOrganicBreathe { 0%,100% { opacity: .68; } 50% { opacity: 1; } }
+@keyframes designOrganicPulse { 0%,100% { opacity: .42; transform: scale(.88); } 50% { opacity: 1; transform: scale(1.18); } }
+@media (max-width: 1120px) {
+  .design-page .design-organic-art.concept-art { width: min(100%, 720px) !important; height: 420px !important; }
+}
+@media (max-width: 760px) {
+  .design-page .design-organic-art.concept-art { width: min(calc(100vw - 40px), 410px) !important; height: 290px !important; margin-inline: auto !important; }
+  .design-page .design-organic-art__svg { width: 100% !important; height: 100% !important; margin-inline: auto !important; transform: none !important; }
+}
+@media (max-width: 420px) {
+  .design-page .design-organic-art.concept-art { width: min(calc(100vw - 32px), 370px) !important; height: 265px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .design-page .design-organic-art * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}
