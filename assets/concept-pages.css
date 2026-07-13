@@ -1061,67 +1061,123 @@
 }
 
 
-/* V10 — arte nova e centralização geométrica definitiva em Educação linguística */
-.language-page .language-halo-burst.concept-art {
-  position: relative !important;
-  left: auto !important;
-  right: auto !important;
+/* V8 — nova arte direcional para a página Tecnologia digital */
+.tech-page .tech-directional-grid.concept-art {
+  width: min(100%, 860px) !important;
+  height: 500px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   justify-self: center !important;
-  width: min(100%, 760px) !important;
-  height: 480px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  transform: none !important;
+  margin-inline: auto !important;
   overflow: visible !important;
 }
 
-.language-page .language-halo-burst.concept-art .language-dynamic-art__svg {
-  display: block !important;
+.tech-page .tech-directional-grid__svg {
+  display: block;
   width: 100% !important;
-  max-width: 100% !important;
   height: 100% !important;
-  margin: 0 auto !important;
-  transform: none !important;
-  transform-origin: center center !important;
   overflow: visible !important;
+  object-fit: contain;
+  transform: none !important;
+}
+
+.tech-page .tech-directional-grid__line,
+.tech-page .tech-directional-grid__cross {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.tech-page .tech-directional-grid__line {
+  stroke: rgba(247,244,236,.72);
+  stroke-width: 1.6;
+  stroke-dasharray: 4 10;
+  animation: flowDash 18s linear infinite;
+}
+
+.tech-page .tech-directional-grid__line--main {
+  stroke: rgba(247,244,236,.94);
+  stroke-width: 1.9;
+  stroke-dasharray: 0 0;
+  animation: techFloat 9s ease-in-out infinite;
+}
+
+.tech-page .tech-directional-grid__line--delay { animation-delay: -2.2s; }
+.tech-page .tech-directional-grid__line--delayB { animation-delay: -4.1s; }
+.tech-page .tech-directional-grid__line--delayC { animation-delay: -1s; }
+
+.tech-page .tech-directional-grid__line--soft {
+  stroke: rgba(247,244,236,.22);
+  stroke-width: 1.1;
+  stroke-dasharray: 0 0;
+}
+
+.tech-page .tech-directional-grid__cross {
+  stroke: rgba(247,244,236,.14);
+  stroke-width: 1;
+}
+
+.tech-page .tech-directional-grid__node,
+.tech-page .tech-directional-grid__spark,
+.tech-page .tech-directional-grid__pulse {
+  fill: rgba(247,244,236,.94);
+}
+
+.tech-page .tech-directional-grid__node {
+  filter: drop-shadow(0 0 6px rgba(247,244,236,.18));
+}
+
+.tech-page .tech-directional-grid__node--big {
+  filter: drop-shadow(0 0 10px rgba(247,244,236,.22));
+}
+
+.tech-page .tech-directional-grid__spark {
+  opacity: .78;
+  animation: techPulse 4.8s ease-in-out infinite;
+}
+
+.tech-page .tech-directional-grid__pulse {
+  filter: drop-shadow(0 0 10px rgba(247,244,236,.22));
+}
+
+.tech-page .tech-directional-grid__pulse--late {
+  opacity: .84;
+}
+
+@media (min-width: 1121px) {
+  .tech-page .tech-directional-grid.concept-art {
+    width: min(100%, 900px) !important;
+    height: 540px !important;
+  }
 }
 
 @media (max-width: 1120px) {
-  .language-page .language-halo-burst.concept-art {
-    width: min(100%, 700px) !important;
-    height: 440px !important;
+  .tech-page .tech-directional-grid.concept-art {
+    width: min(100%, 780px) !important;
+    height: 460px !important;
   }
 }
 
 @media (max-width: 760px) {
-  .language-page .concept-hero {
-    justify-items: stretch !important;
-  }
-
-  .language-page .language-halo-burst.concept-art {
-    width: min(calc(100vw - 40px), 400px) !important;
-    max-width: none !important;
+  .tech-page .tech-directional-grid.concept-art {
+    width: min(calc(100vw - 28px), 430px) !important;
     height: 300px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 0 !important;
+    margin-inline: auto !important;
   }
 
-  .language-page .language-halo-burst.concept-art .language-dynamic-art__svg {
+  .tech-page .tech-directional-grid__svg {
     width: 100% !important;
-    max-width: none !important;
     height: 100% !important;
-    margin: 0 auto !important;
+    margin-inline: auto !important;
     transform: none !important;
   }
 }
 
 @media (max-width: 420px) {
-  .language-page .language-halo-burst.concept-art {
-    width: min(calc(100vw - 32px), 360px) !important;
+  .tech-page .tech-directional-grid.concept-art {
+    width: min(calc(100vw - 20px), 390px) !important;
     height: 270px !important;
   }
 }
