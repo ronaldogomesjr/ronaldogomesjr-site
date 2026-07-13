@@ -1061,9 +1061,9 @@
 }
 
 
-/* V8 — nova arte direcional para a página Tecnologia digital */
-.tech-page .tech-directional-grid.concept-art {
-  width: min(100%, 860px) !important;
+/* V9 — Design como processo */
+.design-page .design-process-loop.concept-art {
+  width: min(100%, 780px) !important;
   height: 500px !important;
   display: flex !important;
   align-items: center !important;
@@ -1073,7 +1073,7 @@
   overflow: visible !important;
 }
 
-.tech-page .tech-directional-grid__svg {
+.design-page .design-process-loop__svg {
   display: block;
   width: 100% !important;
   height: 100% !important;
@@ -1082,92 +1082,91 @@
   transform: none !important;
 }
 
-.tech-page .tech-directional-grid__line,
-.tech-page .tech-directional-grid__cross {
+.design-page .design-process-loop__guide,
+.design-page .design-process-loop__path,
+.design-page .design-process-loop__axis,
+.design-page .design-process-loop__arrow {
   fill: none;
+  stroke: rgba(247,244,236,.56);
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 
-.tech-page .tech-directional-grid__line {
-  stroke: rgba(247,244,236,.72);
-  stroke-width: 1.6;
-  stroke-dasharray: 4 10;
+.design-page .design-process-loop__guide {
+  stroke: rgba(247,244,236,.18);
+  stroke-width: 1.1;
+}
+
+.design-page .design-process-loop__guide--inner {
+  stroke: rgba(247,244,236,.12);
+  stroke-dasharray: 2 10;
   animation: flowDash 18s linear infinite;
 }
 
-.tech-page .tech-directional-grid__line--main {
-  stroke: rgba(247,244,236,.94);
-  stroke-width: 1.9;
-  stroke-dasharray: 0 0;
+.design-page .design-process-loop__path {
+  stroke: rgba(247,244,236,.92);
+  stroke-width: 1.8;
   animation: techFloat 9s ease-in-out infinite;
 }
 
-.tech-page .tech-directional-grid__line--delay { animation-delay: -2.2s; }
-.tech-page .tech-directional-grid__line--delayB { animation-delay: -4.1s; }
-.tech-page .tech-directional-grid__line--delayC { animation-delay: -1s; }
-
-.tech-page .tech-directional-grid__line--soft {
-  stroke: rgba(247,244,236,.22);
-  stroke-width: 1.1;
-  stroke-dasharray: 0 0;
+.design-page .design-process-loop__path--secondary {
+  stroke: rgba(247,244,236,.42);
+  stroke-width: 1.2;
+  stroke-dasharray: 5 10;
+  animation: flowDash 20s linear infinite reverse;
 }
 
-.tech-page .tech-directional-grid__cross {
+.design-page .design-process-loop__axis {
   stroke: rgba(247,244,236,.14);
   stroke-width: 1;
 }
 
-.tech-page .tech-directional-grid__node,
-.tech-page .tech-directional-grid__spark,
-.tech-page .tech-directional-grid__pulse {
+.design-page .design-process-loop__arrow {
+  stroke: rgba(247,244,236,.76);
+  stroke-width: 1.3;
+}
+
+.design-page .design-process-loop__node,
+.design-page .design-process-loop__spark,
+.design-page .design-process-loop__pulse {
   fill: rgba(247,244,236,.94);
 }
 
-.tech-page .tech-directional-grid__node {
-  filter: drop-shadow(0 0 6px rgba(247,244,236,.18));
+.design-page .design-process-loop__node {
+  filter: drop-shadow(0 0 8px rgba(247,244,236,.18));
 }
 
-.tech-page .tech-directional-grid__node--big {
-  filter: drop-shadow(0 0 10px rgba(247,244,236,.22));
+.design-page .design-process-loop__node--core {
+  filter: drop-shadow(0 0 12px rgba(247,244,236,.26));
 }
 
-.tech-page .tech-directional-grid__spark {
-  opacity: .78;
+.design-page .design-process-loop__spark {
+  opacity: .82;
   animation: techPulse 4.8s ease-in-out infinite;
 }
 
-.tech-page .tech-directional-grid__pulse {
-  filter: drop-shadow(0 0 10px rgba(247,244,236,.22));
+.design-page .design-process-loop__pulse {
+  filter: drop-shadow(0 0 8px rgba(247,244,236,.2));
 }
 
-.tech-page .tech-directional-grid__pulse--late {
-  opacity: .84;
-}
-
-@media (min-width: 1121px) {
-  .tech-page .tech-directional-grid.concept-art {
-    width: min(100%, 900px) !important;
-    height: 540px !important;
-  }
+.design-page .design-process-loop__pulse--late {
+  opacity: .78;
 }
 
 @media (max-width: 1120px) {
-  .tech-page .tech-directional-grid.concept-art {
-    width: min(100%, 780px) !important;
-    height: 460px !important;
+  .design-page .design-process-loop.concept-art {
+    width: min(100%, 720px) !important;
+    height: 450px !important;
   }
 }
 
 @media (max-width: 760px) {
-  .tech-page .tech-directional-grid.concept-art {
-    width: min(calc(100vw - 28px), 430px) !important;
+  .design-page .design-process-loop.concept-art {
+    width: min(calc(100vw - 28px), 410px) !important;
     height: 300px !important;
-    margin-inline: auto !important;
   }
-
-  .tech-page .tech-directional-grid__svg {
+  .design-page .design-process-loop__svg {
     width: 100% !important;
     height: 100% !important;
     margin-inline: auto !important;
@@ -1176,44 +1175,8 @@
 }
 
 @media (max-width: 420px) {
-  .tech-page .tech-directional-grid.concept-art {
-    width: min(calc(100vw - 20px), 390px) !important;
+  .design-page .design-process-loop.concept-art {
+    width: min(calc(100vw - 20px), 370px) !important;
     height: 270px !important;
-  }
-}
-
-
-/* V9 — centralização óptica da Malha direcional no mobile */
-@media (max-width: 760px) {
-  .tech-page .tech-directional-grid.concept-art {
-    place-self: center !important;
-    width: min(100%, 410px) !important;
-    max-width: 410px !important;
-    height: 292px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    overflow: visible !important;
-  }
-
-  /* O conteúdo da arte ocupa mais a metade direita do viewBox.
-     Esta compensação alinha o centro visual ao centro real da tela. */
-  .tech-page .tech-directional-grid.concept-art .tech-directional-grid__svg {
-    display: block !important;
-    width: 100% !important;
-    max-width: none !important;
-    height: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    transform: translateX(-3.5%) !important;
-    transform-origin: center center !important;
-    overflow: visible !important;
-  }
-}
-
-@media (max-width: 420px) {
-  .tech-page .tech-directional-grid.concept-art {
-    width: min(100%, 370px) !important;
-    max-width: 370px !important;
-    height: 264px !important;
   }
 }

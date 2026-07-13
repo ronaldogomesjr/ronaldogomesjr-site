@@ -7,7 +7,7 @@
   <meta name="description" content="Design como prática sistêmica de criação, mediação e organização de experiências de aprendizagem." />
   <link rel="stylesheet" href="/assets/style.css?v=94" />
   <link rel="stylesheet" href="/assets/design-system.css?v=13" />
-  <link rel="stylesheet" href="/assets/concept-pages.css?v=6" />
+  <link rel="stylesheet" href="/assets/concept-pages.css?v=7" />
 </head>
 <body>
 <header class="site-header">
@@ -35,26 +35,56 @@
       <p data-design-intro>Design é entendido como prática de criação, mediação e organização de experiências de aprendizagem. Mais do que uma dimensão estética ou instrumental, o design envolve escolhas pedagógicas, tecnológicas, discursivas e sociais que orientam modos de ensinar, aprender, interagir e produzir sentidos.</p>
     </div>
 
-    <div class="icon-system concept-art" aria-label="Diagrama sistêmico com ícones em movimento">
-      <svg class="icon-system__svg" viewBox="0 0 680 680" aria-hidden="true">
+    <div class="design-process-loop concept-art" aria-label="Arte dinâmica representando design como processo">
+      <svg class="design-process-loop__svg" viewBox="0 0 900 520" aria-hidden="true" role="presentation">
         <defs>
-          <filter id="softGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="designSoftGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <path id="designEightA" d="M248 260 C248 164 326 120 410 120 C492 120 560 170 560 260 C560 352 492 402 410 402 C326 402 248 356 248 260 C248 164 658 120 658 260 C658 402 562 402 490 402"/>
+          <path id="designEightB" d="M228 260 C228 150 320 92 410 92 C514 92 586 160 586 260 C586 360 518 430 410 430 C310 430 228 366 228 260 C228 148 620 114 690 206 C734 262 724 354 658 402 C600 444 518 428 470 380"/>
         </defs>
-        <circle class="icon-system__ring" cx="340" cy="340" r="92" />
-        <circle class="icon-system__ring" cx="340" cy="340" r="150" />
-        <path class="icon-system__path-soft" d="M142 224 C214 138 334 110 442 142 C542 172 604 250 620 356" />
-        <path class="icon-system__path-soft" d="M188 526 C116 462 88 362 114 270 C144 164 222 94 334 78" />
-        <path class="icon-system__path-soft" d="M536 536 C462 590 356 606 264 580 C164 552 94 474 74 372" />
-        <path class="icon-system__path" d="M164 216 C238 166 334 150 424 172 C516 194 582 258 604 350" />
-        <path class="icon-system__path" d="M138 432 C120 334 148 244 212 182 C274 122 360 102 444 122" />
-        <path class="icon-system__path" d="M222 566 C316 602 430 598 520 548 C586 512 628 444 634 364" />
-        <path class="icon-system__axis" d="M340 122 L340 558" />
-        <path class="icon-system__axis" d="M154 248 L526 432" />
-        <path class="icon-system__axis" d="M170 446 L528 250" />
-        <circle cx="340" cy="340" r="5.5" fill="rgba(247,244,236,.95)" filter="url(#softGlow)" />
-      </svg>
 
-      <div class="icon-system__glow" aria-hidden="true"></div>
+        <g class="design-process-loop__field">
+          <path class="design-process-loop__guide design-process-loop__guide--outer" d="M210 260 C210 138 316 74 424 74 C554 74 648 156 648 260 C648 370 554 446 424 446 C308 446 210 374 210 260 C210 134 642 98 724 210 C776 282 756 394 664 448 C576 500 456 474 392 412"/>
+          <path class="design-process-loop__guide design-process-loop__guide--inner" d="M276 260 C276 184 336 146 402 146 C468 146 524 190 524 260 C524 330 472 374 402 374 C334 374 276 332 276 260 C276 192 598 156 626 244 C650 318 600 380 532 380"/>
+          <path class="design-process-loop__path" d="M248 260 C248 164 326 120 410 120 C492 120 560 170 560 260 C560 352 492 402 410 402 C326 402 248 356 248 260 C248 164 658 120 658 260 C658 402 562 402 490 402"/>
+          <path class="design-process-loop__path design-process-loop__path--secondary" d="M228 260 C228 150 320 92 410 92 C514 92 586 160 586 260 C586 360 518 430 410 430 C310 430 228 366 228 260 C228 148 620 114 690 206 C734 262 724 354 658 402 C600 444 518 428 470 380"/>
+          <path class="design-process-loop__axis" d="M410 92 L410 430"/>
+          <path class="design-process-loop__axis" d="M248 260 L658 260"/>
+        </g>
+
+        <g class="design-process-loop__nodes">
+          <circle class="design-process-loop__node design-process-loop__node--core" cx="452" cy="260" r="8"/>
+          <circle class="design-process-loop__node" cx="316" cy="166" r="5.2"/>
+          <circle class="design-process-loop__node" cx="508" cy="160" r="5.2"/>
+          <circle class="design-process-loop__node" cx="312" cy="352" r="5.2"/>
+          <circle class="design-process-loop__node" cx="574" cy="334" r="5.2"/>
+          <circle class="design-process-loop__node" cx="654" cy="260" r="5.8"/>
+          <circle class="design-process-loop__spark" cx="376" cy="118" r="2.6"/>
+          <circle class="design-process-loop__spark" cx="604" cy="198" r="2.5"/>
+          <circle class="design-process-loop__spark" cx="536" cy="396" r="2.4"/>
+          <circle class="design-process-loop__spark" cx="268" cy="310" r="2.4"/>
+        </g>
+
+        <g class="design-process-loop__arrows">
+          <path class="design-process-loop__arrow" d="M566 118 L584 124 L572 138"/>
+          <path class="design-process-loop__arrow" d="M244 270 L234 254 L254 252"/>
+          <path class="design-process-loop__arrow" d="M652 386 L666 370 L676 388"/>
+          <path class="design-process-loop__arrow" d="M406 432 L392 418 L412 410"/>
+        </g>
+
+        <circle class="design-process-loop__pulse" r="4.2" filter="url(#designSoftGlow)">
+          <animateMotion dur="14s" repeatCount="indefinite" rotate="auto"><mpath href="#designEightA"/></animateMotion>
+        </circle>
+        <circle class="design-process-loop__pulse design-process-loop__pulse--late" r="3.8" filter="url(#designSoftGlow)">
+          <animateMotion dur="17s" begin="1.6s" repeatCount="indefinite" rotate="auto"><mpath href="#designEightB"/></animateMotion>
+        </circle>
+      </svg>
+      <span class="sr-only" data-design-center-title>design</span>
+      <span class="sr-only" data-design-center-text>Mediação e organização de experiências de aprendizagem.</span>
+    </div>
       <div class="icon-system__overlay" aria-hidden="true">
         <div class="orbit-layer orbit-layer--a">
           <div class="orbit-node node-people">
