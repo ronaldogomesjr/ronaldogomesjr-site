@@ -27,6 +27,7 @@
   };
 
   roots.forEach((root, rootIndex) => {
+    const stage = root.querySelector('.design-systemic-image__stage') || root;
     const canvas = root.querySelector('.design-systemic-image__motion');
     if (!canvas) return;
     const ctx = canvas.getContext('2d', { alpha: true });
@@ -48,7 +49,7 @@
     }));
 
     const resize = () => {
-      const rect = root.getBoundingClientRect();
+      const rect = stage.getBoundingClientRect();
       cssW = Math.max(1, rect.width);
       cssH = Math.max(1, rect.height);
       dpr = clampDpr();
@@ -69,7 +70,7 @@
       for (let s = 8; s >= 1; s--) {
         const tt = (t - particle.trail * (s / 8) + 1) % 1;
         const tp = cubicPoint(particle.curve, tt);
-        trailPoints.push({ x: tp.x * cssW, y: tp.y * cssH, a: (9 - s) / 9 });
+        trailPoints.push({ x: tp.x * cssW, y: tp.y * cssH });
       }
 
       ctx.save();
@@ -114,7 +115,7 @@
     };
 
     const observer = new ResizeObserver(resize);
-    observer.observe(root);
+    observer.observe(stage);
     resize();
 
     const visibilityObserver = new IntersectionObserver((entries) => {
