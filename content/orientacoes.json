@@ -167,6 +167,18 @@
       "ano_fim": "",
       "visivel": true,
       "ordem": 999
+    },
+    {
+      "nivel": "mestrado",
+      "orientando": "Alice Brandão Azevedo Alves",
+      "titulo_pt": "Educação além das telas: análise do design multimodal e didático de vídeos educacionais sobre a Redação ENEM no TikTok",
+      "link_pt": "",
+      "titulo_en": "Education Beyond the Screen: An Analysis of the Multimodal and Didactic Design of Educational Videos on TikTok Regarding the ENEM Essay",
+      "link_en": "",
+      "ano_inicio": "2025",
+      "ano_fim": "2027",
+      "visivel": true,
+      "ordem": 999
     }
   ]
 }
